@@ -1,13 +1,13 @@
 //%attributes = {"invisible":true}
   // ----------------------------------------------------
-  // Method : xliff_Txt_Get_String
+  // Method : xliff_getString
   // Created 11/01/07 by Vincent de Lachaux
   // ----------------------------------------------------
   // Description
   //
   // ----------------------------------------------------
   // Syntax
-  // xliff_Txt_Get_String (resname{;Path}) -> String
+  // xliff_getString (resname{;Path}) -> String
   // ----------------------------------------------------
 C_TEXT:C284($0)
 C_TEXT:C284($1)
@@ -19,9 +19,9 @@ C_TEXT:C284($Dom_group;$Dom_root;$Dom_source;$Dom_transUnit;$Txt_Buffer;$Txt_Loc
 ARRAY TEXT:C222($tTxt_Documents;0)
 
 If (False:C215)
-	C_TEXT:C284(xliff_Txt_Get_String ;$0)
-	C_TEXT:C284(xliff_Txt_Get_String ;$1)
-	C_TEXT:C284(xliff_Txt_Get_String ;$2)
+	C_TEXT:C284(xliff_getString ;$0)
+	C_TEXT:C284(xliff_getString ;$1)
+	C_TEXT:C284(xliff_getString ;$2)
 End if 
 
 $Txt_Resname:=$1
@@ -58,9 +58,9 @@ Else
 			
 			If ($tTxt_Documents{$Lon_i}="@.xlf")
 				
-				$Txt_Value:=xliff_Txt_Get_String ($Txt_Resname;$Txt_Localized_Folder_Path+$tTxt_Documents{$Lon_i})
+				$Txt_Value:=xliff_getString ($Txt_Resname;$Txt_Localized_Folder_Path+$tTxt_Documents{$Lon_i})
 				
-				If (Length:C16($Txt_Value)>0)  //Finded
+				If (Length:C16($Txt_Value)>0)  // Finded
 					
 					$Lon_i:=Size of array:C274($tTxt_Documents)+1
 					
@@ -77,37 +77,38 @@ If (Length:C16($Txt_Path)>0)
 	
 	If (OK=1)
 		
-		  //Get the first group
+		  // Get the first group
 		$Dom_group:=DOM Find XML element:C864($Dom_root;"/xliff/file/body/group")
 		
 		If (OK=1)
 			
 			Repeat 
 				
-				  //Find : Get the first Unit
+				  // Find : Get the first Unit
 				$Dom_transUnit:=DOM Get first child XML element:C723($Dom_group)
 				
 				If (OK=1)
 					
 					Repeat 
 						
-						  //Get the Unit resname
+						  // Get the Unit resname
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_transUnit;"resname";$Txt_Buffer)
 						
 						If ($Txt_Buffer#$Txt_Resname)
 							
-							  //See next one
+							  // See next one
 							$Dom_transUnit:=DOM Get next sibling XML element:C724($Dom_transUnit)
 							
 						End if 
-					Until ($Txt_Buffer=$Txt_Resname) | (OK=0)
+					Until ($Txt_Buffer=$Txt_Resname)\
+						 | (OK=0)
 					
 					If (OK=1)
 						
-						  //Get the target
+						  // Get the target
 						$Dom_source:=DOM Get first child XML element:C723($Dom_transUnit)
 						
-						  //Is the string translatable ? …
+						  // Is the string translatable ? …
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_transUnit;"translate";$Txt_Buffer)
 						
 						If ($Txt_Buffer="no")
@@ -127,11 +128,12 @@ If (Length:C16($Txt_Path)>0)
 				
 				If (Length:C16($Txt_Value)=0)
 					
-					  //See next one
+					  // See next one
 					$Dom_group:=DOM Get next sibling XML element:C724($Dom_group)
 					
 				End if 
-			Until (Length:C16($Txt_Value)>0) | (OK=0)
+			Until (Length:C16($Txt_Value)>0)\
+				 | (OK=0)
 		End if 
 		
 		DOM CLOSE XML:C722($Dom_root)

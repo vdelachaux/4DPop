@@ -21,137 +21,133 @@
 		null,
 		{
 			"objects": {
-				"list": {
-					"type": "listbox",
-					"top": 1,
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
 					"left": 0,
 					"width": 460,
-					"height": 504,
+					"height": 505,
+					"stroke": "transparent",
+					"fill": "automatic",
 					"sizingX": "grow",
-					"sizingY": "grow",
-					"resizingMode": "legacy",
-					"hideFocusRing": true,
-					"sortable": false,
-					"movableRows": false,
-					"rowHeight": "63px",
-					"rowHeightAutoMin": "20px",
-					"rowHeightAutoMax": "20px",
-					"showHeaders": false,
-					"headerHeight": "20px",
-					"selectionMode": "none",
-					"scrollbarHorizontal": "hidden",
-					"horizontalLineStroke": "transparent",
-					"verticalLineStroke": "transparent",
-					"verticalAlign": "top",
-					"fontFamily": "Libian SC Regular",
-					"fontSize": 14,
-					"borderStyle": "none",
-					"method": "ObjectMethods/list.4dm",
+					"sizingY": "grow"
+				},
+				"about": {
+					"type": "listbox",
+					"left": 0,
+					"top": 65,
+					"width": 460,
+					"height": 440,
 					"events": [
 						"onLoad",
 						"onMouseEnter",
 						"onMouseLeave"
 					],
+					"listboxType": "collection",
+					"showHeaders": false,
+					"dataSource": "Form:C1466.widgets",
+					"selectionMode": "none",
+					"focusable": false,
+					"scrollbarHorizontal": "hidden",
+					"borderStyle": "none",
+					"verticalAlign": "middle",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"scrollbarVertical": "hidden",
+					"fill": "transparent",
 					"columns": [
 						{
-							"name": "pictures",
+							"header": {
+								"text": "Header1",
+								"name": "Header1"
+							},
+							"name": "Column1",
 							"dataSourceTypeHint": "picture",
-							"width": 60,
-							"minWidth": 60,
-							"maxWidth": 60,
-							"enterable": false,
-							"pictureFormat": "truncatedCenter",
-							"textAlign": "center",
-							"verticalAlign": "middle",
-							"fontFamily": "Libian SC Regular",
-							"fontSize": 14,
-							"header": {
-								"name": "Entête4",
-								"text": ".icon",
-								"verticalAlign": "top",
-								"fontFamily": "Libian SC Regular",
-								"fontSize": 14
-							},
+							"dataSource": "This:C1470.picture",
 							"footer": {
-								"name": "Pied1",
-								"timeFormat": "hh_mm_ss",
-								"verticalAlign": "top",
-								"fontFamily": "Libian SC Regular",
-								"fontSize": 14
-							}
-						},
-						{
-							"name": "components",
-							"width": 230,
-							"minWidth": 10,
-							"maxWidth": 32000,
-							"enterable": false,
-							"textAlign": "left",
-							"verticalAlign": "middle",
-							"fontFamily": "Libian SC Regular",
-							"fontSize": 13,
-							"header": {
-								"name": "Entête1",
-								"text": ".Composants",
-								"verticalAlign": "top",
-								"fontFamily": "Libian SC Regular",
-								"fontSize": 14
+								"name": "Footer1"
 							},
-							"footer": {
-								"name": "Pied2",
-								"timeFormat": "hh_mm_ss",
-								"verticalAlign": "top",
-								"fontFamily": "Libian SC Regular",
-								"fontSize": 14
-							}
-						},
-						{
-							"name": "infos",
-							"width": 155,
-							"minWidth": 10,
-							"maxWidth": 32000,
 							"resizable": false,
 							"enterable": false,
-							"wordwrap": "normal",
-							"textAlign": "left",
-							"verticalAlign": "middle",
-							"fontFamily": "Libian SC Regular",
-							"fontSize": 10,
+							"pictureFormat": "proportionalCenter",
+							"width": 70
+						},
+						{
 							"header": {
-								"name": "Entête2",
-								"text": ".Informations",
-								"verticalAlign": "top",
-								"fontFamily": "Libian SC Regular",
-								"fontSize": 14
+								"name": "Header2",
+								"text": "Header2"
 							},
+							"name": "Column2",
+							"dataSource": "This:C1470.infos",
 							"footer": {
-								"name": "Pied3",
-								"timeFormat": "hh_mm_ss",
-								"verticalAlign": "top",
-								"fontFamily": "Libian SC Regular",
-								"fontSize": 14
-							}
+								"name": "Footer2"
+							},
+							"resizable": false,
+							"enterable": false,
+							"truncateMode": "none",
+							"wordwrap": "normal",
+							"width": 230
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Header3"
+							},
+							"name": "Column3",
+							"dataSource": "This:C1470.copyright",
+							"footer": {
+								"name": "Footer3"
+							},
+							"resizable": false,
+							"textAlign": "left"
 						}
 					]
 				},
-				"automatic_font": {
+				"Input": {
 					"type": "input",
-					"top": 594,
-					"left": 21,
-					"width": 150,
-					"height": 16,
-					"visibility": "hidden",
-					"stroke": "#FF6600",
-					"fill": "transparent",
-					"borderStyle": "dotted",
+					"left": 3,
+					"top": 1,
+					"width": 64,
+					"height": 64,
+					"dataSource": "Form:C1466.me.picture",
+					"dataSourceTypeHint": "picture",
+					"pictureFormat": "proportionalCenter",
+					"borderStyle": "none",
+					"contextMenu": "none",
 					"enterable": false,
-					"hideFocusRing": true,
-					"dragging": "none",
-					"dropping": "none",
-					"method": "ObjectMethods/automatic_font.4dm",
-					"events": [
-						"onLoad"
-					]
+					"focusable": false,
+					"fill": "transparent"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 71,
+					"top": 17,
+					"width": 227,
+					"height": 33,
+					"dataSource": "Form:C1466.me.infos",
+					"dataSourceTypeHint": "text",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"focusable": false,
+					"fill": "transparent"
+				},
+				"Input2": {
+					"type": "input",
+					"left": 302,
+					"top": 25,
+					"width": 155,
+					"height": 17,
+					"dataSource": "Form:C1466.me.copyright",
+					"dataSourceTypeHint": "text",
+					"borderStyle": "none",
+					"enterable": false,
+					"focusable": false,
+					"contextMenu": "none",
+					"fill": "transparent"
 				}
 			}
 		}

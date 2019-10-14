@@ -25,7 +25,7 @@ Else
 	
 	COMPILER_4DPOP 
 	
-	$Obj_form:=4DPop_INIT 
+	$Obj_form:=init 
 	
 	FORM GET PROPERTIES:C674("4DPOP";$Lon_width;$Lon_height)
 	

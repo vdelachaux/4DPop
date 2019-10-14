@@ -1,1 +1,0 @@
-OBJECT SET SCROLLBAR:C843(*;OBJECT Get name:C1087(Object current:K67:2);False:C215;Form event code:C388=On Mouse Enter:K2:33)

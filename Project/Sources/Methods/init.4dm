@@ -1,6 +1,6 @@
 //%attributes = {"invisible":true}
   // ----------------------------------------------------
-  // Method : 4DPop_INIT
+  // Method : init
   // Created 01/12/06 by Vincent de Lachaux
   // ----------------------------------------------------
   // Modified by vdl (21/05/07)
@@ -23,21 +23,16 @@
   // ----------------------------------------------------
 C_OBJECT:C1216($0)
 
-C_BLOB:C604($Blb_html)
-C_LONGINT:C283($i;$Lon_bottom;$Lon_height;$Lon_left;$Lon_right;$Lon_top)
-C_LONGINT:C283($Lon_version;$Lon_width)
+C_LONGINT:C283($Lon_bottom;$Lon_height;$Lon_left;$Lon_right;$Lon_top;$Lon_version)
+C_LONGINT:C283($Lon_width)
 C_PICTURE:C286($p;$pp)
-C_TEXT:C284($kTxt_cell;$t;$Txt_buffer;$Txt_cell;$Txt_path;$Txt_tool)
-C_TEXT:C284($Txt_widget)
-C_OBJECT:C1216($file;$folder;$o;$Obj_database;$Obj_form;$Obj_manifest)
-C_OBJECT:C1216($Obj_tool;$Obj_widget;$oo;$Path_file)
+C_TEXT:C284($t;$Txt_buffer;$Txt_key;$Txt_tool)
+C_OBJECT:C1216($file;$Dir_localized;$o;$Obj_database;$Obj_form;$Obj_manifest)
+C_OBJECT:C1216($Obj_tool;$Obj_widget;$oo)
 C_COLLECTION:C1488($c)
 
-ARRAY TEXT:C222($tTxt_helpFiles;0)
-ARRAY TEXT:C222($tTxt_structurefiles;0)
-
 If (False:C215)
-	C_OBJECT:C1216(4DPop_INIT ;$0)
+	C_OBJECT:C1216(init ;$0)
 End if 
 
   // Update version {
@@ -88,49 +83,16 @@ $Obj_database:=database
 If ($Obj_database.components.length>0)
 	
 	  // Get the application Components
-	$o:=Folder:C1567(4DPop_applicationFolder (kComponents);fk platform path:K87:2)
-	
-	If ($o.exists)
-		
-		$c:=$o.folders().query("extension = :1";".4dbase").combine($c)
-		
-		For each ($oo;$o.files())
-			
-			If ($oo.original.isFolder)
-				
-				$c.push($oo)
-				
-			End if 
-		End for each 
-	End if 
+	$c:=loadComponents (Folder:C1567(4DPop_applicationFolder (kComponents);fk platform path:K87:2)).combine($c)
 	
 	  // Get the database Components
-	$o:=Folder:C1567(4DPop_hostDatabaseFolder (kComponents);fk platform path:K87:2)
-	
-	If ($o.exists)
-		
-		$c:=$o.folders().query("extension = :1";".4dbase").combine($c)
-		
-		For each ($oo;$o.files())
-			
-			If ($oo.original.isFolder)
-				
-				$c.push($oo)
-				
-			End if 
-		End for each 
-	End if 
+	$c:=loadComponents (Folder:C1567(4DPop_hostDatabaseFolder (kComponents);fk platform path:K87:2)).combine($c)
 	
 	If (Application type:C494=4D Remote mode:K5:5)
 		
 		  // Get the 4D Server components distributed to the client
-		$o:=Folder:C1567(4DPop_hostDatabaseFolder +"4D"+Folder separator:K24:12+"Components"+Folder separator:K24:12;fk platform path:K87:2)
+		$c:=loadComponents (Folder:C1567(4DPop_hostDatabaseFolder +"4D"+Folder separator:K24:12+"Components"+Folder separator:K24:12;fk platform path:K87:2)).combine($c)
 		
-		If ($o.exists)
-			
-			$c:=$o.folders().query("extension = :1";".4dbase").combine($c)
-			
-		End if 
 	End if 
 End if 
 
@@ -138,17 +100,23 @@ If ($c.length>0)
 	
 	For each ($o;$c)
 		
-		If ($o.name#"4DPop")  // Not me ;-)
+		If ($o.name#$Obj_database.name)  // Not me ;-)
 			
 			  // Always resolve alias
 			$o:=$o.original
+			
+			If ($o.isFile)  // Project
+				
+				$o:=$o.parent.parent
+				
+			End if 
 			
 			  // Get the definition file
 			$file:=$o.file("Resources/4DPop.xml")
 			
 			If (Not:C34($file.exists))
 				
-				  // Compatibility fgor old components
+				  // Compatibility for old components
 				$file:=$o.file("Extras/4DPop.xml")
 				
 			End if 
@@ -167,23 +135,22 @@ If ($c.length>0)
 					"popup";False:C215;\
 					"tool";New collection:C1472;\
 					"help";$o.file($o.name+".html");\
-					"manifest";$Obj_manifest\
-					)
+					"manifest";$Obj_manifest)
 				
 				  // Localization folder
-				$folder:=$o.folder("Resources/"+$Obj_form.language+".lproj")
+				$Dir_localized:=$o.folder("Resources/"+$Obj_form.language+".lproj")
 				
-				For each ($Txt_widget;$Obj_manifest.tools)
+				For each ($Txt_key;$Obj_manifest.tools)
 					
 					Case of 
 							
 							  //______________________________________________________
-						: ($Txt_widget="popup")
+						: ($Txt_key="popup")
 							
 							$Obj_widget.popup:=Bool:C1537($Obj_manifest.tools.popup)
 							
 							  //______________________________________________________
-						: ($Txt_widget="name")
+						: ($Txt_key="name")
 							
 							$t:=String:C10($Obj_manifest.tools.name)
 							
@@ -191,9 +158,9 @@ If ($c.length>0)
 								
 								If (Position:C15(":xliff:";$t)=1)  // Localised
 									
-									If ($folder.exists)
+									If ($Dir_localized.exists)
 										
-										$Obj_widget.name:=xliff_Txt_Get_String (Delete string:C232($t;1;7);$folder.platformPath)
+										$Obj_widget.name:=xliff_getString (Delete string:C232($t;1;7);$Dir_localized.platformPath)
 										
 									End if 
 									
@@ -205,17 +172,17 @@ If ($c.length>0)
 							End if 
 							
 							  //______________________________________________________
-						: ($Txt_widget="picture")
+						: ($Txt_key="picture")
 							
 							$t:=String:C10($Obj_manifest.tools.picture)
 							
 							If (Length:C16($t)>0)
 								
-								$Path_file:=$o.file("Resources/"+$t)
+								$file:=$o.file("Resources/"+$t)
 								
-								If ($Path_file.exists)
+								If ($file.exists)
 									
-									READ PICTURE FILE:C678($Path_file.platformPath;$p)
+									READ PICTURE FILE:C678($file.platformPath;$p)
 									
 									If (OK=1)
 										
@@ -238,7 +205,7 @@ If ($c.length>0)
 							End if 
 							
 							  //______________________________________________________
-						: ($Txt_widget="helptip")
+						: ($Txt_key="helptip")
 							
 							$t:=String:C10($Obj_manifest.tools.helptip)
 							
@@ -246,9 +213,9 @@ If ($c.length>0)
 								
 								If (Position:C15(":xliff:";$t)=1)  // Localised
 									
-									If ($folder.exists)
+									If ($Dir_localized.exists)
 										
-										$Obj_widget.helptip:=xliff_Txt_Get_String (Delete string:C232($t;1;7);$folder.platformPath)
+										$Obj_widget.helptip:=xliff_getString (Delete string:C232($t;1;7);$Dir_localized.platformPath)
 										
 									End if 
 									
@@ -260,12 +227,12 @@ If ($c.length>0)
 							End if 
 							
 							  //______________________________________________________
-						: ($Txt_widget="initproc")
+						: ($Txt_key="initproc")
 							
-							Formula from string:C1601($Obj_manifest.tools[$Txt_widget]).call()
+							Formula from string:C1601($Obj_manifest.tools[$Txt_key]).call()
 							
 							  //______________________________________________________
-						: ($Txt_widget="tool")
+						: ($Txt_key="tool")
 							
 							If (Value type:C1509($Obj_manifest.tools.tool)=Is object:K8:27)
 								
@@ -292,9 +259,9 @@ If ($c.length>0)
 														
 														If (Position:C15(":xliff:";$t)=1)  // Localised
 															
-															If ($folder.exists)
+															If ($Dir_localized.exists)
 																
-																$Obj_tool.name:=xliff_Txt_Get_String (Delete string:C232($t;1;7);$folder.platformPath)
+																$Obj_tool.name:=xliff_getString (Delete string:C232($t;1;7);$Dir_localized.platformPath)
 																
 															End if 
 														End if 
@@ -303,11 +270,11 @@ If ($c.length>0)
 													  //………………………………………………………………………………
 												: ($Txt_tool="picture")
 													
-													$Path_file:=$o.file("Resources/"+$t)
+													$file:=$o.file("Resources/"+$t)
 													
-													If ($Path_file.exists)
+													If ($file.exists)
 														
-														$Obj_tool.picture_path:=$Path_file.platformPath
+														$Obj_tool.picture_path:=$file.platformPath
 														
 													End if 
 													
@@ -324,7 +291,7 @@ If ($c.length>0)
 							  //______________________________________________________
 						Else 
 							
-							$Obj_widget[$Txt_widget]:=$Obj_manifest.tools[$Txt_widget]
+							$Obj_widget[$Txt_key]:=$Obj_manifest.tools[$Txt_key]
 							
 							  //______________________________________________________
 					End case 
@@ -343,57 +310,34 @@ If ($c.length>0)
 				
 			Else 
 				
-				  // Not a 4DPop component
+				  // NOT A 4DPop COMPONENT
 				
 			End if 
 		End if 
 	End for each 
 	
+	  // Sort tools by name
 	$Obj_form.widgets:=$Obj_form.widgets.orderBy("name")
 	
 End if 
 
-  // Update the component list in the help file, if any
-  //VARIABLE TO BLOB($tTxt_helpFiles;$Blb_buffer)
-  //$Txt_buffer:=Generate digest($Blb_buffer;MD5 digest)
-  //_o_PREFERENCES ("digest.get";->$Txt_value)
-  //If ($Txt_value#$Txt_buffer)
-  //_o_PREFERENCES ("digest.set";->$Txt_buffer)
-
-$kTxt_cell:="\t\t\t\t<td  class=\"styleSmall\"><H4><a href=\"{href}\"target=\"_blank\">{linkname}</a></h4></td>\r"
-
-$Txt_buffer:="<html>\r\r"+"\t<head>\r"+"\t\t<style type=\"text/css\">\r<!--\r.styleSmall {font-size: small}\r-->\r</style>\r"+"\t</head>\r\r"+"\t<body leftmargin=\"0\" marginwidth=\"0\" topmargin=\"0\" marginheight=\"0\">\r"
-
-If (Size of array:C274($tTxt_helpFiles)>0)
-	
-	$Txt_buffer:=$Txt_buffer+"\t\t<table border=\"0\" cellpadding=\"4\" cellspacing=\"0\" height=\"50\">\r"+"\t\t\t<tr valign=\"bottom\" align=\"center\">\r"
-	
-	For ($i;1;Size of array:C274($tTxt_helpFiles);1)
-		
-		$Txt_cell:=Replace string:C233($kTxt_cell;"{href}";$tTxt_helpFiles{$i})
-		$Txt_cell:=Replace string:C233($Txt_cell;"{linkname}";$tTxt_structurefiles{$i})
-		$Txt_buffer:=$Txt_buffer+$Txt_cell
-		
-	End for 
-	
-	$Txt_buffer:=$Txt_buffer+"\t\t\t</tr>\r"+"\t\t</table>\r"
-	
-End if 
-
-$Txt_buffer:=$Txt_buffer+"\t</body>\r\r"+"</html>"
-
-TEXT TO BLOB:C554($Txt_buffer;$Blb_html;Mac text without length:K22:10)
-
-$Txt_path:=Get 4D folder:C485(Current resources folder:K5:16)+"Components.html"
-
-If (Test path name:C476($Txt_path)=Is a document:K24:1)
-	
-	DELETE DOCUMENT:C159($Txt_path)
-	
-End if 
-
-BLOB TO DOCUMENT:C526($Txt_path;$Blb_html)
-
+  //$t:="\t\t\t\t<td  class=\"styleSmall\"><H4><a href=\"{href}\"target=\"_blank\">{linkname}</a></h4></td>\r"
+  //$Txt_buffer:="<html>\r\r"+"\t<head>\r"+"\t\t<style type=\"text/css\">\r<!--\r.styleSmall {font-size: small}\r-->\r</style>\r"+"\t</head>\r\r"+"\t<body leftmargin=\"0\" marginwidth=\"0\" topmargin=\"0\" marginheight=\"0\">\r"
+  //If (Size of array($tTxt_helpFiles)>0)
+  //$Txt_buffer:=$Txt_buffer+"\t\t<table border=\"0\" cellpadding=\"4\" cellspacing=\"0\" height=\"50\">\r"+"\t\t\t<tr valign=\"bottom\" align=\"center\">\r"
+  //For ($i;1;Size of array($tTxt_helpFiles);1)
+  //$Txt_cell:=Replace string($t;"{href}";$tTxt_helpFiles{$i})
+  //$Txt_cell:=Replace string($Txt_cell;"{linkname}";$tTxt_structurefiles{$i})
+  //$Txt_buffer:=$Txt_buffer+$Txt_cell
+  // End for
+  //$Txt_buffer:=$Txt_buffer+"\t\t\t</tr>\r"+"\t\t</table>\r"
   // End if
+  //$Txt_buffer:=$Txt_buffer+"\t</body>\r\r"+"</html>"
+  //TEXT TO BLOB($Txt_buffer;$Blb_html;Mac text without length)
+  //$Txt_path:=Get 4D folder(Current resources folder)+"Components.html"
+  //If (Test path name($Txt_path)=Is a document)
+  //DELETE DOCUMENT($Txt_path)
+  // End if
+  //BLOB TO DOCUMENT($Txt_path;$Blb_html)
 
 $0:=$Obj_form

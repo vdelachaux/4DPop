@@ -10,30 +10,27 @@
   // ----------------------------------------------------
 
   // Hierarchical list to store the 4DPop compatible loaded components
-  //C_LONGINT(<>tools)
+  // C_LONGINT(<>tools)
 
   // Flag for automatic mode. If true, the palette is expanded all the time where the
   // Mouse is dragging over and automatically collapsed if not
-  //C_BOOLEAN(<>autoHide)
+  // C_BOOLEAN(<>autoHide)
 
   // Managing errors
 C_TEXT:C284(<>4DPop_CurrentMethodError)
 C_LONGINT:C283(<>4DPop_Error)
 
-  //C_LONGINT(<>timerEvent)
+  // C_LONGINT(<>timerEvent)
 
   // #12-12-2013
   // Flag autoboot. True if the host database allow "On Host database event"
-  //C_BOOLEAN(<>autoBoot)
+  // C_BOOLEAN(<>autoBoot)
 
 If (False:C215)  // Public
 	
 	  //……………………………………………………………………………
 	C_TEXT:C284(4DPop_UPDATE_TOOL ;$1)
 	C_OBJECT:C1216(4DPop_UPDATE_TOOL ;$2)
-	
-	  //……………………………………………………………………………
-	  //C_BOOLEAN(4DPop_Palette ;$1)
 	
 	  //……………………………………………………………………………
 	C_TEXT:C284(4DPop_applicationFolder ;$0)
@@ -75,20 +72,29 @@ End if
 
 If (False:C215)  // Private
 	
+	  //……………………………………………………………………………
 	C_TEXT:C284(4DPOP ;$1)
 	
-	C_OBJECT:C1216(4DPop_INIT ;$0)
+	  //……………………………………………………………………………
+	C_OBJECT:C1216(init ;$0)
 	
+	  //……………………………………………………………………………
 	C_BOOLEAN:C305(ui_darkMode ;$0)
 	
+	  //……………………………………………………………………………
 	C_TEXT:C284(update_tool ;$1)
 	C_OBJECT:C1216(update_tool ;$2)
 	
 	  //……………………………………………………………………………
 	C_TEXT:C284(ABOUT ;$1)
+	C_OBJECT:C1216(ABOUT ;$2)
 	
 	  //……………………………………………………………………………
 	C_TEXT:C284(ASSISTANT ;$1)
+	
+	  //……………………………………………………………………………
+	C_COLLECTION:C1488(loadComponents ;$0)
+	C_OBJECT:C1216(loadComponents ;$1)
 	
 	  //……………………………………………………………………………
 	C_LONGINT:C283(Button_OnDrop ;$0)
@@ -100,10 +106,6 @@ If (False:C215)  // Private
 	C_TEXT:C284(doc_doPath ;$0)
 	C_LONGINT:C283(doc_doPath ;$1)
 	C_TEXT:C284(doc_doPath ;${2})
-	
-	  //……………………………………………………………………………
-	C_TEXT:C284(doc_gTxt_Resolve_Alias ;$0)
-	C_TEXT:C284(doc_gTxt_Resolve_Alias ;$1)
 	
 	  //……………………………………………………………………………
 	C_TEXT:C284(env_Txt_Localized_Folder_Path ;$0)
@@ -153,9 +155,9 @@ If (False:C215)  // Private
 	C_BOOLEAN:C305(win_Lon_Get_Offsets ;$2)
 	
 	  //……………………………………………………………………………
-	C_TEXT:C284(xliff_Txt_Get_String ;$0)
-	C_TEXT:C284(xliff_Txt_Get_String ;$1)
-	C_TEXT:C284(xliff_Txt_Get_String ;$2)
+	C_TEXT:C284(xliff_getString ;$0)
+	C_TEXT:C284(xliff_getString ;$1)
+	C_TEXT:C284(xliff_getString ;$2)
 	
 	  //……………………………………………………………………………
 End if 

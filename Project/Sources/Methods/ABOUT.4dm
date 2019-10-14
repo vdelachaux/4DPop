@@ -12,21 +12,17 @@
 C_TEXT:C284($1)
 C_OBJECT:C1216($2)
 
-C_LONGINT:C283($Lon_height;$Lon_parameters;$Lon_width;$Win_hdl)
+C_LONGINT:C283($Lon_height;$Lon_width;$Win_hdl)
 C_PICTURE:C286($p)
-C_POINTER:C301($Ptr_component;$Ptr_infos;$Ptr_picture)
-C_TEXT:C284($t;$Txt_build;$Txt_displayName;$Txt_entrypoint;$Txt_getInfoString;$Txt_shortVersionString)
-C_TEXT:C284($Txt_toolName)
-C_OBJECT:C1216($file;$o;$o;$Path_file)
+C_TEXT:C284($t;$Txt_build;$Txt_entrypoint)
+C_OBJECT:C1216($file;$o)
 
 If (False:C215)
 	C_TEXT:C284(ABOUT ;$1)
 	C_OBJECT:C1216(ABOUT ;$2)
 End if 
 
-$Lon_parameters:=Count parameters:C259
-
-If ($Lon_parameters>=1)
+If (Count parameters:C259>=1)
 	
 	$Txt_entrypoint:=$1
 	
@@ -69,30 +65,29 @@ Case of
 		  //___________________________________________________________
 	: ($Txt_entrypoint="list")
 		
-		$Ptr_picture:=OBJECT Get pointer:C1124(Object named:K67:5;"pictures")
-		$Ptr_component:=OBJECT Get pointer:C1124(Object named:K67:5;"components")
-		$Ptr_infos:=OBJECT Get pointer:C1124(Object named:K67:5;"infos")
+		LISTBOX SET ROWS HEIGHT:C835(*;"about";64;lk pixels:K53:22)
 		
 		  // Create a line for each 4DPop component
 		For each ($o;Form:C1466.widgets)
 			
-			$Txt_displayName:=String:C10($o.plist.CFBundleDisplayName)
+			$t:=String:C10($o.plist.CFBundleDisplayName)
 			
-			$Txt_displayName:=Choose:C955(Length:C16($Txt_displayName)>0;$Txt_displayName;$Txt_toolName)
+			  //$t:=Choose(Length($t)>0;$t;$o.name)
+			$t:=Choose:C955(Length:C16($t)>0;$t;$o.file.name)
 			
 			If (Length:C16(String:C10($o.plist.CFBundleShortVersionString))>0)
 				
-				$Txt_displayName:=$Txt_displayName+"\rv"+String:C10($o.plist.CFBundleShortVersionString)
+				$t:=$t+"\rv"+String:C10($o.plist.CFBundleShortVersionString)
 				
 				If (Length:C16(String:C10($o.plist.CFBundleVersion))>0)
 					
-					$Txt_displayName:=$Txt_displayName+" build "+String:C10($o.plist.CFBundleVersion)
+					$t:=$t+" build "+String:C10($o.plist.CFBundleVersion)
 					
 				End if 
 			End if 
 			
-			APPEND TO ARRAY:C911($Ptr_component->;$Txt_displayName)
-			APPEND TO ARRAY:C911($Ptr_infos->;String:C10($o.plist.NSHumanReadableCopyright))
+			$o.infos:=$t
+			$o.copyright:=String:C10($o.plist.NSHumanReadableCopyright)
 			
 			$file:=$o.file.file("Resources/4DPop_About.png")
 			
@@ -112,11 +107,11 @@ Case of
 				
 				If (Length:C16($t)>0)
 					
-					$Path_file:=$o.file.file("Resources/"+$t)
+					$file:=$o.file.file("Resources/"+$t)
 					
-					If ($Path_file.exists)
+					If ($file.exists)
 						
-						READ PICTURE FILE:C678($Path_file.platformPath;$p)
+						READ PICTURE FILE:C678($file.platformPath;$p)
 						
 						If (OK=1)
 							
@@ -142,11 +137,14 @@ Case of
 				
 			End if 
 			
-			APPEND TO ARRAY:C911($Ptr_picture->;$p)
+			$o.picture:=$p
 			
 		End for each 
 		
 		  // #12-12-2013 - Dont forget 4DPop ;-)
+		Form:C1466.me:=New object:C1471(\
+			"copyright";"")
+		
 		READ PICTURE FILE:C678(Get 4D folder:C485(Current resources folder:K5:16)+"Images"+Folder separator:K24:12+"4DPop.png";$p)
 		
 		If (OK=1)
@@ -164,34 +162,30 @@ Case of
 			End if 
 		End if 
 		
-		INSERT IN ARRAY:C227($Ptr_picture->;1;1)
-		INSERT IN ARRAY:C227($Ptr_component->;1;1)
-		INSERT IN ARRAY:C227($Ptr_infos->;1;1)
-		
-		$Ptr_picture->{1}:=$p
+		Form:C1466.me.picture:=$p
 		
 		$o:=plist 
 		
 		If ($o.success)
 			
-			$Txt_displayName:=$o.get("CFBundleDisplayName";True:C214)+"\rv"+$o.get("CFBundleShortVersionString";True:C214)
+			$t:=$o.get("CFBundleDisplayName";True:C214)+"\rv"+$o.get("CFBundleShortVersionString";True:C214)
 			$Txt_build:=$o.get("CFBundleVersion";True:C214)
 			
 			If (Length:C16($Txt_build)>0)
 				
-				$Txt_displayName:=$Txt_displayName+" build "+$Txt_build
+				$t:=$t+" build "+$Txt_build
 				
 			End if 
 			
-			$Ptr_infos->{1}:=$o.get("NSHumanReadableCopyright")
+			Form:C1466.me.copyright:=$o.get("NSHumanReadableCopyright")
 			
 		Else 
 			
-			$Txt_displayName:=File:C1566(Structure file:C489;fk platform path:K87:2).name
+			$t:=File:C1566(Structure file:C489;fk platform path:K87:2).name
 			
 		End if 
 		
-		$Ptr_component->{1}:=$Txt_displayName
+		Form:C1466.me.infos:=$t
 		
 		  //___________________________________________________________
 	: ($Txt_entrypoint="_declarations")
