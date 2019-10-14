@@ -1,0 +1,151 @@
+<HTML>
+<HEAD>
+<TITLE>4DPop</TITLE>
+<META http-equiv="content-type" content="text/html;charset=utf-8">
+<LINK href="../../Common/style.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY leftmargin="20" marginheight="20" marginwidth="20" topmargin="20">
+<DIV class="Section1">
+  <DIV class="Section1" align="left">
+    <HR>
+    <TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+      <TR>
+        <TD width="100"><IMG src="../Common/4d.png" border="0"></TD>
+        <TD valign="middle"><TABLE width="100%" border="0" cellspacing="0" cellpadding="4" height="100%">
+            <TR>
+              <TD width="97"><H1>4DPop</H1></TD>
+              <TD><IFRAME src="../Components.html" frameborder="0" scrolling="no" align="middle" height="40" width="100%" NORESIZE="true"></IFRAME></TD>
+            </TR>
+            <TR>
+              <TD colspan="2"><IFRAME src="../Common/Localisation.html" frameborder="0" scrolling="no" align="middle" height="40" width="100%" NORESIZE="true"></IFRAME></TD>
+            </TR>
+          </TABLE></TD>
+      </TR>
+    </TABLE>
+    <HR>
+    <P>このコンポーネントはデザインモードにパレットをインストールします。互換のあるコンポーネントがインストールされると、このパレットにツールが追加されていきます。<BR>
+    </P>
+  </DIV>
+</DIV>
+<DIV class="Section1" align="left">
+  <H2>インストール</H2>
+  <DIV class="Section1" align="left">
+    <TABLE width="100%" border="0" cellspacing="4" cellpadding="2">
+      <TR>
+        <TD align="right" valign="top">1.</TD>
+        <TD>データベースのストラクチャファイル (&quot;.4db&quot;) と同階層に &quot;<I>Components</I>&quot; フォルダを作成します。</TD>
+      </TR>
+      <TR>
+        <TD align="right" valign="top">2.</TD>
+        <TD>&quot;4DPop.4dbase&quot; フォルダまたはこのフォルダのエイリアスを &quot;<I>Components</I>&quot; に置きます。.</TD>
+      </TR>
+      <TR>
+        <TD align="right" valign="top">3.</TD>
+        <TD>データベースを開きます。</TD>
+      </TR>
+      <TR>
+        <TD align="right" valign="top">4.</TD>
+        <TD>&quot;On Statup&quot;データベースメソッドに &quot;Install 4DPop&quot; とタイプし、Tabキーを押すと、4DPopパレットをロードする以下のメソッドが挿入されます。
+          <P>        `Run 4DPop<BR>
+                    `This code is available even if the component is not present like in the final application.<BR>
+            <B>If</B> (<B>Not</B>(<B>Is compiled mode)</B>)<BR>
+                    <B>ARRAY TEXT</B>($tTxt_Components;0)<BR>
+                    <B>COMPONENT LIST</B>($tTxt_Components)<BR>
+                    <B>If</B> (<B>Find in array</B>($tTxt_Components;&quot;4DPop&quot;)&gt;0)<BR>
+                            <B>EXECUTE METHOD</B>(&quot;4DPop_Palette&quot;)<BR>
+                    <B>End if</B><BR>
+            <B>End if</B></P></TD>
+      </TR>
+      <TR>
+        <TD align="right" valign="top">5.</TD>
+        <TD>データベースを再起動すると、デザインモードでスクリーンの左下にパレットが表示されます。</TD>
+      </TR>
+    </TABLE>
+    <P>*Macintoshでは拡張子 &quot;4dbase&quot; のコンポーネントはパッケージです。</P>
+    <H2>利用方法</H2>
+    <P>ヘルプメニュー、あるいはパレットの &quot;<I>i</I>&quot; アイコンをクリックして、4DPopのヘルプを表示させることができます。</P>
+    <P>パレットはデザインモードで、スクリーンの左下に表示されます。パレットが閉じられている場合、ハンドルをドラッグすると開くことができます。</P>
+    <P><IMG src="../Common/close.png" width="32"></P>
+    <DIV class="Section1" align="left">
+      <P>パレットが閉じられているときにハンドルをダブルクリックすると、パレットが開かれ、インストールされている4DPopコンポーネントに従ってサイズが調整されます。開かれたパレットのハンドルをダブルクリックすると、パレットは閉じられます。</P>
+      <P>互換のあるコンポーネントがインストールされていない場合、開かれたパレットには以下の画像が表示されます:</P>
+      <P><IMG src="../Common/none.png" height="68" width="98"></P>
+      <P>コンポーネントがインストールされていると、対応するボタンが表示されます。 </P>
+      <UL>
+        <LI>ボタンをクリックすると、対応するツールが起動されるか、またはツールを選択するためのメニューが表示されます。
+        <LI>Optionキー (Mac OS) またはAltキー (Windows) を押しながらクリックすると、コンポーネントのヘルプファイルが開かれます (コンポーネントのストラクチャファイルと同階層にある&quot;MyComponent.htm&quot;ファイル)。
+      </UL>
+      <DIV align="left"> <IMG src="../Common/Palette.png" alt="" height="68" width="428" border="0">
+        <P>タイトルバーをクリックしてパレットを移動し、スクリーンの左または右に配置できます。パレットの位置は記憶されます。</P>
+        <P>パレットのタイトルバーにはコンテキストメニューが割り当てられています。ここからツールを選択したり、パレットに関するいくつかの機能にアクセスできます。</P>
+        <DIV class="Section1" align="left">
+          <DIV class="Section1" align="left">
+            <DIV class="Section1" align="left">
+              <DIV class="Section1" align="left">
+                <P>パレットに、新しい互換コンポーネントをドロップしてインストールできます。確認ダイアログが表示されたのち、エイリアスあるいはコピーが &quot;Components&quot; フォルダに作成され、データベースが再起動されます。</P>
+                <P><IMG src="../Common/dropComponent.png" alt="" width="439" height="91" border="0"></P>
+              </DIV>
+            </DIV>
+          </DIV>
+        </DIV>
+        <P>コンポーネントはアルファベット順に並べられます。コンポーネントの並び順を指定するためには、ファイルに &quot;01&quot; を追加するなどします。</P>
+        <DIV class="Section1" align="left">
+          <H2>互換コンポーネント</H2>
+          <P>インタプリタやコンパイル済みのコンポーネントを4DPopのツールとして追加できます。ツールはコンポーネントの開発ルールに従っていなければなりません (ドキュメント参照)。<BR>
+          </P>
+          <P>4DPopパレットへのコンポーネントの統合は、コンポーネントデータベースの &quot;Extras&quot; に &quot;4DPop.xml&quot; ファイルがあるかどうかで判断されます。このファイルには、キーや属性を使用して、コンポーネントの定義を記述します。</P>
+          <TABLE width="100%" border="1" cellspacing="2" cellpadding="8">
+            <TR>
+              <TD><DIV class="Section1" align="left">
+                  <DIV class="Section1" align="left">
+                    <P><SAMP><FONT color="#8a8a8a">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;<BR>
+                      </FONT></SAMP><SAMP><FONT color="#8a8a8a">&lt;tools name=&quot;:xliff:Ruler&quot; picture=&quot;Ruler.png&quot; helptip=&quot;:xliff:ToolHelpTip&quot; initProc=&quot;Init&quot;&gt;</FONT></SAMP><BR>
+                      <SAMP><FONT color="#8a8a8a">&lt;tool name=&quot;Rulers&quot; method=&quot;4DPop_ScreenRuler&quot;/&gt;</FONT></SAMP><BR>
+                      <SAMP><FONT color="#8a8a8a">&lt;/tools&gt;</FONT></SAMP><BR>
+                    </P>
+                  </DIV>
+                </DIV></TD>
+            </TR>
+          </TABLE>
+          <P></P>
+          <TABLE width="100%" border="1" cellspacing="0" cellpadding="2">
+            <TR>
+              <TD align="center"><B>タグ</B></TD>
+              <TD align="center"><B>説明</B></TD>
+            </TR>
+            <TR>
+              <TD valign="top">&lt;tools&gt;&lt;/tools&gt;</TD>
+              <TD>ファイルの開始と終了 (必須タグ)
+                <P>属性:<BR>
+                  <B>&#x2022; <I>name</I></B>: * ボタンの下に表示される名前 (必須)。<BR>
+                  <B>&#x2022; <I>picture</I></B>: ボタンのピクチャファイルの名前。このファイルはコンポーネントの &quot;Resources&quot; フォルダのルートに置かなければなりません (オプション、省略した場合デフォルトピクチャが使用されます)。<BR>
+                  <B>&#x2022; <I>helptip</I></B>: * ボタンに割り当てるヘルプTipテキスト。<BR>
+                  <B>&#x2022; <I>initproc</I></B>: ** ロード時に実行するコンポーネントメソッドの名前。<BR>
+                  <B>&#x2022; <I>ondrop</I></B>: ** ボタンにドロップされたときに実行するコンポーネントメソッドの名前。<BR>
+                  <B>&#x2022; <I>default</I></B>: ** 2つ以上のコンポーネントがインストールされているとき、ボタンがクリックされた際に実行するコンポーネントメソッド名。<BR>
+                  <B>&#x2022; <I>popup</I></B>: ボタンにリンクするポップアップメニューマークの表示フラグ。値: &quot;True&quot; (1つしか&lt;tool&gt;タグがない場合でもマークを表示する、以下参照)。</P></TD>
+            </TR>
+            <TR>
+              <TD valign="top">&lt;tool&gt;&lt;/tool&gt;</TD>
+              <TD>ツールと属性定義の開始と終了
+                <P>このタグは複数記述できます。&lt;tool&gt;タグが一つしかない場合、メソッドはボタンがクリックされると即座に実行されます。複数の&lt;tool&gt;タグがある場合、ボタンにリンクされたメニューマークが表示され、利用可能なツールがメニューとして表示されます。<B><I>default</I></B> 属性が定義されていると、クリックでメソッドが実行され、長いクリックやマークのクリックでツールのメニューが表示されます。</P>
+                <P>属性:<BR>
+                  &#x2022; <B><I>name</I></B>: * ボタンに関連付けられたメニューに表示されるツールの名称 (複数の&lt;tool&gt;タグがある場合必須)<BR>
+                  &#x2022; <B><I>method</I></B>: ** 実行するツールに対応するコンポーネントメソッド名 (必須)<BR>
+                  &#x2022; <B><I>picture</I></B>: メニュー項目に関縁づけるピクチャ名。このファイルはコンポーネントの &quot;Resources&quot; フォルダになければなりません。</P>
+                <P>注: コンポーネントメソッドを使用してメニューを構築し表示することができます。この場合、1つの&lt;tool&gt;タグがコンポーネントメソッドを呼び出し、このメソッドでメニューの表示とユーザの選択を処理します。ボタンにメニューマークを表示させるために、&lt;tools&gt;タグの<B><I>popup</I></B>属性に &quot;True&quot; を渡します。</P></TD>
+            </TR>
+          </TABLE>
+          <P>* &quot;:xliff:resname&quot; シンタックスを受け入れます。文字列はコンポーネントのxliffファイルに定義されていなければなりません。表示される文字はローカライズされます。</P>
+          <P>** これらのメソッドは、コンポーネントデータベース内で、コンポーネントとホストデータベースで共有されるよう設定しなければなりません。<BR>
+            これらすべてのメソッドは引数として (パレットのボタンの) ポインタを受け取ります。このポインタはボタンの状態をテストしたり、ポップアップを正しく表示するために使用します。コンポーネントをコンパイルする場合は、4DPopから呼ばれるコンポーネントメソッドで、この引数を明示的に宣言しなければなりません [C_POINTER($1)] 。そうしないと、メソッドが呼び出されるたびにエラーが生成されます (-20008 - incorrect Parameters in a command EXECUTE). </P>
+          <H2>ソースコード</H2>
+          <P>このコンポーネントはコンパイル版で提供されますが、コンポーネントフォルダ内の&quot;Sources&quot; フォルダにはソースコードが含まれています。</P>
+          <P></P>
+        </DIV>
+      </DIV>
+    </DIV>
+  </DIV>
+</DIV>
+</BODY>
+</HTML>

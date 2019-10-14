@@ -1,0 +1,1 @@
+OBJECT SET FONT:C164(*;"@";OBJECT Get font:C1069(*;OBJECT Get name:C1087(Object current:K67:2)))

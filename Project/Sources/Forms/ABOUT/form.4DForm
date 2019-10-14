@@ -1,0 +1,163 @@
+﻿{
+	"destination": "detailScreen",
+	"windowTitle": ":xliff:about4DPop",
+	"windowSizingX": "fixed",
+	"width": 460,
+	"height": 505,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "842pt"
+	},
+	"pages": [
+		null,
+		{
+			"objects": {
+				"list": {
+					"type": "listbox",
+					"top": 1,
+					"left": 0,
+					"width": 460,
+					"height": 504,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"hideFocusRing": true,
+					"sortable": false,
+					"movableRows": false,
+					"rowHeight": "63px",
+					"rowHeightAutoMin": "20px",
+					"rowHeightAutoMax": "20px",
+					"showHeaders": false,
+					"headerHeight": "20px",
+					"selectionMode": "none",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"verticalAlign": "top",
+					"fontFamily": "Libian SC Regular",
+					"fontSize": 14,
+					"borderStyle": "none",
+					"method": "ObjectMethods/list.4dm",
+					"events": [
+						"onLoad",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"columns": [
+						{
+							"name": "pictures",
+							"dataSourceTypeHint": "picture",
+							"width": 60,
+							"minWidth": 60,
+							"maxWidth": 60,
+							"enterable": false,
+							"pictureFormat": "truncatedCenter",
+							"textAlign": "center",
+							"verticalAlign": "middle",
+							"fontFamily": "Libian SC Regular",
+							"fontSize": 14,
+							"header": {
+								"name": "Entête4",
+								"text": ".icon",
+								"verticalAlign": "top",
+								"fontFamily": "Libian SC Regular",
+								"fontSize": 14
+							},
+							"footer": {
+								"name": "Pied1",
+								"timeFormat": "hh_mm_ss",
+								"verticalAlign": "top",
+								"fontFamily": "Libian SC Regular",
+								"fontSize": 14
+							}
+						},
+						{
+							"name": "components",
+							"width": 230,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"textAlign": "left",
+							"verticalAlign": "middle",
+							"fontFamily": "Libian SC Regular",
+							"fontSize": 13,
+							"header": {
+								"name": "Entête1",
+								"text": ".Composants",
+								"verticalAlign": "top",
+								"fontFamily": "Libian SC Regular",
+								"fontSize": 14
+							},
+							"footer": {
+								"name": "Pied2",
+								"timeFormat": "hh_mm_ss",
+								"verticalAlign": "top",
+								"fontFamily": "Libian SC Regular",
+								"fontSize": 14
+							}
+						},
+						{
+							"name": "infos",
+							"width": 155,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"wordwrap": "normal",
+							"textAlign": "left",
+							"verticalAlign": "middle",
+							"fontFamily": "Libian SC Regular",
+							"fontSize": 10,
+							"header": {
+								"name": "Entête2",
+								"text": ".Informations",
+								"verticalAlign": "top",
+								"fontFamily": "Libian SC Regular",
+								"fontSize": 14
+							},
+							"footer": {
+								"name": "Pied3",
+								"timeFormat": "hh_mm_ss",
+								"verticalAlign": "top",
+								"fontFamily": "Libian SC Regular",
+								"fontSize": 14
+							}
+						}
+					]
+				},
+				"automatic_font": {
+					"type": "input",
+					"top": 594,
+					"left": 21,
+					"width": 150,
+					"height": 16,
+					"visibility": "hidden",
+					"stroke": "#FF6600",
+					"fill": "transparent",
+					"borderStyle": "dotted",
+					"enterable": false,
+					"hideFocusRing": true,
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/automatic_font.4dm",
+					"events": [
+						"onLoad"
+					]
+				}
+			}
+		}
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}

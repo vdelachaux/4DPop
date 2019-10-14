@@ -1,0 +1,96 @@
+﻿{
+	"(_WIP)": {},
+	"classes": {
+		"methods": [
+			"svg",
+			"xml",
+			"plist",
+			"database",
+			"COMPILER_classes",
+			"application"
+		]
+	},
+	"lib": {
+		"groups": [
+			"xml"
+		],
+		"methods": [
+			"doc_doPath",
+			"doc_gTxt_Resolve_Alias",
+			"str_gLon_Hex_To_Longint",
+			"obj_Txt_3DButton_Format",
+			"ui_darkMode",
+			"env_Txt_Localized_Folder_Path",
+			"update_tool",
+			"win_Lon_Get_Offsets",
+			"xliff_Txt_Get_String"
+		]
+	},
+	"Private": {
+		"methods": [
+			"Preferences_Get_Path",
+			"ABOUT",
+			"Button_OnDrop",
+			"Skin",
+			"noError",
+			"Tool_Execute_Method",
+			"CONTEXTUAL_MENU",
+			"4DPOP",
+			"COLLAPSE_EXPAND",
+			"Tools_Menu",
+			"ASSISTANT",
+			"err_NoERROR",
+			"INSTALL",
+			"_o_PREFERENCES",
+			"4DPop_INIT"
+		],
+		"forms": [
+			"ASSISTANT",
+			"ABOUT",
+			"4DPOP"
+		]
+	},
+	"Public": {
+		"methods": [
+			"4DPop_RECOVER_WINDOW",
+			"4DPop_applicationLanguage",
+			"4DPop_preferenceStore",
+			"4DPop_hostDatabaseFolder",
+			"4DPop_UPDATE_TOOL",
+			"4DPop_Palette",
+			"4DPop_hostDatabaseInformation",
+			"4DPop_preferenceDelete",
+			"4DPop_applicationFolder",
+			"4DPop_preferenceLoad",
+			"4DPop_preferencePath"
+		]
+	},
+	"xml": {
+		"methods": [
+			"xml_elementToObject",
+			"COMPILER_xml"
+		]
+	},
+	"(mnu)": {},
+	"(Tools)": {},
+	"_COMPONENT": {
+		"groups": [
+			"Private",
+			"Public"
+		],
+		"methods": [
+			"COMPILER_4DPOP"
+		]
+	},
+	"(doc)": {},
+	"(env)": {},
+	"trash": {
+		"groups": [
+			"(_WIP)",
+			"(mnu)",
+			"(Tools)",
+			"(doc)",
+			"(env)"
+		]
+	}
+}

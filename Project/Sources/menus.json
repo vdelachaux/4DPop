@@ -1,0 +1,42 @@
+﻿{
+	"bars": [
+		{
+			"id": 1,
+			"name": "Bar N°1",
+			"items": [
+				{
+					"link": 65537
+				}
+			]
+		}
+	],
+	"menus": [
+		{
+			"link": 65537,
+			"title": ":xliff:CommonMenuFile",
+			"items": [
+				{
+					"title": ":xliff:CommonMenuQuit",
+					"shortcutAccel": true,
+					"shortcutKey": "Q",
+					"action": "quit"
+				}
+			]
+		},
+		{
+			"link": 32000,
+			"title": "Menu test",
+			"items": [
+				{
+					"title": ":xliff:Collapse"
+				},
+				{
+					"title": ":xliff:TopLeft"
+				},
+				{
+					"title": ":xliff:Expand"
+				}
+			]
+		}
+	]
+}
