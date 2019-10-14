@@ -4,7 +4,7 @@
 
 All others component of the 4DPop family are independent tools that you can install or not.
 
-#4DPop family
+# 4DPop family
 
 * 4DPop **AppMaker**
 * 4DPop **Bookmarks**
@@ -20,7 +20,7 @@ All others component of the 4DPop family are independent tools that you can inst
 * 4DPop **Window**
 * 4DPop **XLIFF** - Edit XLIFF files to localize your database
 
-#Compatible Components
+# Compatible Components
 
 * **4D SVG**
 * **4D JSON Validator**
