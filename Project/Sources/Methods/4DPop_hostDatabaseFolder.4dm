@@ -43,20 +43,11 @@ If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
 			$Boo_create:=$2
 			
 		End if 
-		
 	End if 
 	
 	$Boo_remote:=(Application type:C494=4D Remote mode:K5:5)
 	
-	If ($Boo_remote)
-		
-		$Txt_Path:=Get 4D folder:C485(3;*)  //4D Client Database Folder (missing constante)
-		
-	Else 
-		
-		$Txt_Path:=Get 4D folder:C485(Database folder:K5:14;*)
-		
-	End if 
+	$Txt_Path:=Choose:C955($Boo_remote;Get 4D folder:C485(4D Client database folder:K5:13;*);Get 4D folder:C485(Database folder:K5:14;*))
 	
 	_O_PLATFORM PROPERTIES:C365($Lon_platform)
 	
@@ -68,10 +59,11 @@ End if
 
   // ----------------------------------------------------
 Case of 
+		
 		  //______________________________________________________
 	: ($Lon_folder=kRoot)
 		
-		  //Nothing more to do
+		  // Nothing more to do
 		
 		  //______________________________________________________
 	: ($Lon_folder=kComponents)
@@ -103,6 +95,7 @@ Case of
 		ARRAY TEXT:C222($tTxt_languages;0x0000)
 		ARRAY TEXT:C222($tTxt_folders;0x0000)
 		FOLDER LIST:C473($Txt_path;$tTxt_folders)
+		
 		For ($Lon_i;1;Size of array:C274($tTxt_folders);1)
 			
 			If ($tTxt_folders{$Lon_i}="@.lproj")
@@ -110,7 +103,6 @@ Case of
 				APPEND TO ARRAY:C911($tTxt_languages;$tTxt_folders{$Lon_i})
 				
 			End if 
-			
 		End for 
 		
 		If (Size of array:C274($tTxt_languages)=0)
@@ -128,19 +120,25 @@ Case of
 			$Txt_buffer:=Substring:C12(Get database localization:C1009(User system localization:K5:23);1;2)
 			$tTxt_languages:=Find in array:C230($tTxt_languages;$Txt_buffer+"@")
 			
-			If ($tTxt_languages<0)
-				  //perhaps an older norme
+			If ($tTxt_languages<0)  // Try an legacy names
 				
 				Case of 
+						
 						  //______________________
 					: ($Txt_buffer="us")
+						
 						$Txt_buffer:="English"
+						
 						  //______________________
 					: ($Txt_buffer="de")
+						
 						$Txt_buffer:="German"
+						
 						  //______________________
 					: ($Txt_buffer="es")
+						
 						$Txt_buffer:="Spanish"
+						
 						  //______________________
 				End case 
 				
@@ -171,7 +169,8 @@ Case of
 		  //______________________________________________________
 End case 
 
-If ($Boo_create) & (Length:C16($Txt_Path)>0)
+If ($Boo_create)\
+ & (Length:C16($Txt_Path)>0)
 	
 	CREATE FOLDER:C475($Txt_Path+"dummy";*)
 	

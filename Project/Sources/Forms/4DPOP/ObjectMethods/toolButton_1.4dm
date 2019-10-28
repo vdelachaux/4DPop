@@ -13,7 +13,7 @@ C_LONGINT:C283($0)
 C_BOOLEAN:C305($Boo_Default;$Boo_Help;$Boo_Run)
 C_LONGINT:C283($i;$l;$Lon_event)
 C_TEXT:C284($Mnu_tools;$t;$Txt_object)
-C_OBJECT:C1216($o;$Obj_widget)
+C_OBJECT:C1216($o;$o_widget)
 
 $0:=-1
 
@@ -24,7 +24,7 @@ $l:=Num:C11($Txt_object)
 
 SET ASSERT ENABLED:C1131(True:C214;*)
 
-$Obj_widget:=Form:C1466.widgets[$l-1]
+$o_widget:=Form:C1466.widgets[$l-1]
 
 Case of 
 		
@@ -36,7 +36,8 @@ Case of
 		  //OBJET FIXER MESSAGE AIDE(*;$Txt_object;$Txt_buffer)
 		
 		  //______________________________________________________
-	: ($Lon_event=On Mouse Move:K2:35) & (Macintosh option down:C545 | Windows Alt down:C563)
+	: ($Lon_event=On Mouse Move:K2:35)\
+		 & (Macintosh option down:C545 | Windows Alt down:C563)
 		
 		  //GET LIST ITEM PARAMETER(<>tools;$Lon_toolID;"helpfile";$t)
 		
@@ -53,7 +54,8 @@ Case of
 		SET TIMER:C645(-1)
 		
 		  //______________________________________________________
-	: ($Lon_event=On Alternative Click:K2:36) | ($Lon_event=On Long Click:K2:37)
+	: ($Lon_event=On Alternative Click:K2:36)\
+		 | ($Lon_event=On Long Click:K2:37)
 		
 		$Boo_Run:=True:C214
 		$Boo_Help:=(Macintosh option down:C545 | Windows Alt down:C563)
@@ -61,7 +63,7 @@ Case of
 		  //______________________________________________________
 	: ($Lon_event=On Clicked:K2:4)
 		
-		$t:=String:C10($Obj_widget.default)
+		$t:=String:C10($o_widget.default)
 		
 		$Boo_Default:=(Length:C16($t)>0)
 		$Boo_Run:=Not:C34($Boo_Default)
@@ -70,22 +72,14 @@ Case of
 		  //______________________________________________________
 	: ($Lon_event=On Drag Over:K2:13)
 		
-		$t:=String:C10($Obj_widget.ondrop)
+		$t:=String:C10($o_widget.ondrop)
 		
-		If (Length:C16($t)>0)
-			
-			$0:=0
-			
-		Else 
-			
-			$0:=Button_OnDrop 
-			
-		End if 
+		$0:=Choose:C955(Length:C16($t)>0;0;Button_OnDrop )
 		
 		  //______________________________________________________
 	: ($Lon_event=On Drop:K2:12)
 		
-		$t:=String:C10($Obj_widget.ondrop)
+		$t:=String:C10($o_widget.ondrop)
 		
 		If (Length:C16($t)>0)
 			
@@ -105,7 +99,7 @@ Case of
 		  //______________________________________________________
 	: ($Boo_Default)
 		
-		$t:=String:C10($Obj_widget.default)
+		$t:=String:C10($o_widget.default)
 		ASSERT:C1129(Tool_Execute_Method ($t);Replace string:C233(Get localized string:C991("ErrorOccuredDuringExecutionOfTheMethod");"{methodName}";$t))
 		
 		  //______________________________________________________
@@ -119,24 +113,22 @@ Case of
 			
 		Else 
 			
-			BEEP:C151  //No Help file
+			BEEP:C151  // No Help file
 			
 		End if 
 		
 		  //______________________________________________________
 	: ($Boo_Run)
 		
-		If ($Obj_widget.tool.length=1)
+		If ($o_widget.tool.length=1)
 			
-			$t:=$Obj_widget.tool[0].method
+			$t:=$o_widget.tool[0].method
 			
 		Else 
 			
 			$Mnu_tools:=Create menu:C408
 			
-			$i:=0
-			
-			For each ($o;$Obj_widget.tool)
+			For each ($o;$o_widget.tool)
 				
 				APPEND MENU ITEM:C411($Mnu_tools;$o.name)
 				SET MENU ITEM PARAMETER:C1004($Mnu_tools;-1;String:C10($i))
@@ -147,7 +139,6 @@ Case of
 					SET MENU ITEM ICON:C984($Mnu_tools;-1;String:C10($o.picture_path))
 					
 				End if 
-				
 			End for each 
 			
 			$l:=Num:C11(Dynamic pop up menu:C1006($Mnu_tools))
@@ -155,10 +146,9 @@ Case of
 			
 			If ($l#0)
 				
-				$t:=$Obj_widget.tool[$l].method
+				$t:=$o_widget.tool[$l].method
 				
 			End if 
-			
 		End if 
 		
 		If (Length:C16($t)>0)

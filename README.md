@@ -22,7 +22,8 @@ All others component of the 4DPop family are independent tools that you can inst
 
 # Compatible Components
 
-* **4D SVG**
-* **4D JSON Validator**
+* [**4D SVG**] (https://doc.4d.com/4Dv18/4D/18/4D-SVG-Component.100-4611717.en.html)
+* [**4D JSON Validator**] (https://blog.4d.com/a-new-tool-json-validator/)
+* [**chromo4D**] (https://forums.4d.com/Post/EN/1576084/1/1576085#1576085)
 
 

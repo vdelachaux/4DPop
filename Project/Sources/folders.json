@@ -1,4 +1,10 @@
 ﻿{
+	"_0_DEV": {
+		"methods": [
+			"00_RunPalette",
+			"00_test"
+		]
+	},
 	"_COMPONENT": {
 		"groups": [
 			"Private",
@@ -8,11 +14,6 @@
 			"COMPILER_4DPOP"
 		]
 	},
-	"(_WIP)": {},
-	"(doc)": {},
-	"(env)": {},
-	"(mnu)": {},
-	"(Tools)": {},
 	"classes": {
 		"methods": [
 			"application",
@@ -84,13 +85,5 @@
 			"xml_elementToObject"
 		]
 	},
-	"trash": {
-		"groups": [
-			"(_WIP)",
-			"(doc)",
-			"(env)",
-			"(mnu)",
-			"(Tools)"
-		]
-	}
+	"trash": {}
 }

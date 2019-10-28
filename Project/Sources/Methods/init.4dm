@@ -23,12 +23,12 @@
   // ----------------------------------------------------
 C_OBJECT:C1216($0)
 
-C_LONGINT:C283($Lon_bottom;$Lon_height;$Lon_left;$Lon_right;$Lon_top;$Lon_version)
-C_LONGINT:C283($Lon_width)
+C_LONGINT:C283($bottom;$height;$left;$Lon_version;$right;$top)
+C_LONGINT:C283($width)
 C_PICTURE:C286($p;$pp)
 C_TEXT:C284($t;$Txt_buffer;$Txt_key;$Txt_tool)
-C_OBJECT:C1216($file;$Dir_localized;$o;$Obj_database;$Obj_form;$Obj_manifest)
-C_OBJECT:C1216($Obj_tool;$Obj_widget;$oo)
+C_OBJECT:C1216($file;$folder;$o;$o_database;$o_localized;$o_manifest)
+C_OBJECT:C1216($o_result;$o_tool;$o_widget;$oo)
 C_COLLECTION:C1488($c)
 
 If (False:C215)
@@ -61,7 +61,7 @@ Case of
 		  //______________________________________________________
 End case   //}
 
-$Obj_form:=New object:C1471(\
+$o_result:=New object:C1471(\
 "leftOffset";20;\
 "rightOffset";10;\
 "offset";10+20;\
@@ -74,24 +74,45 @@ $Obj_form:=New object:C1471(\
 "process";Current process:C322;\
 "hidden";True:C214;\
 "widgets";New collection:C1472;\
-"window";Open window:C153($Lon_left;$Lon_top;$Lon_right;$Lon_bottom;-(Plain dialog box:K34:4+Texture appearance:K34:17+_o_Compositing mode:K34:18)))
+"window";Open window:C153($left;$top;$right;$bottom;-(Plain dialog box:K34:4+Texture appearance:K34:17+_o_Compositing mode:K34:18)))
 
 $c:=New collection:C1472
 
-$Obj_database:=database 
+$o_database:=database 
 
-If ($Obj_database.components.length>0)
+  // Add current database in dev mode
+If ($o_database.name#"4DPop")
+	
+	If ($o_database.isInterpreted)
+		
+		If ($o_database.structure.parent.name="Project")
+			
+			  // Up one level
+			$c.push($o_database.structure.parent.parent)
+			
+		Else 
+			
+			  // Old hierarchy
+			$c.push($o_database.structure.parent)
+			
+		End if 
+	End if 
+End if 
+
+If ($o_database.components.length>0)
 	
 	  // Get the application Components
-	$c:=loadComponents (Folder:C1567(4DPop_applicationFolder (kComponents);fk platform path:K87:2)).combine($c)
+	$folder:=Folder:C1567(Application file:C491;fk platform path:K87:2)
+	$folder:=Choose:C955(Is Windows:C1573;$folder.parent;$folder.folder("Contents")).folder("Components")
+	$c:=loadComponents ($folder).combine($c)
 	
 	  // Get the database Components
-	$c:=loadComponents (Folder:C1567(4DPop_hostDatabaseFolder (kComponents);fk platform path:K87:2)).combine($c)
+	$c:=loadComponents (Folder:C1567("/PACKAGE/Components")).combine($c)
 	
 	If (Application type:C494=4D Remote mode:K5:5)
 		
 		  // Get the 4D Server components distributed to the client
-		$c:=loadComponents (Folder:C1567(4DPop_hostDatabaseFolder +"4D"+Folder separator:K24:12+"Components"+Folder separator:K24:12;fk platform path:K87:2)).combine($c)
+		$c:=loadComponents (Folder:C1567(fk remote database folder:K87:9).folder("4D/Components")).combine($c)
 		
 	End if 
 End if 
@@ -100,7 +121,7 @@ If ($c.length>0)
 	
 	For each ($o;$c)
 		
-		If ($o.name#$Obj_database.name)  // Not me ;-)
+		If ($o.name#"4DPop")
 			
 			  // Always resolve alias
 			$o:=$o.original
@@ -124,9 +145,9 @@ If ($c.length>0)
 			If ($file.exists)
 				
 				  // Load the definition
-				$Obj_manifest:=xml ("load";$file).toObject()
+				$o_manifest:=xml ("load";$file).toObject()
 				
-				$Obj_widget:=New object:C1471(\
+				$o_widget:=New object:C1471(\
 					"file";$o;\
 					"name";"";\
 					"icon";Null:C1517;\
@@ -135,46 +156,43 @@ If ($c.length>0)
 					"popup";False:C215;\
 					"tool";New collection:C1472;\
 					"help";$o.file($o.name+".html");\
-					"manifest";$Obj_manifest)
+					"manifest";$o_manifest)
 				
-				  // Localization folder
-				$Dir_localized:=$o.folder("Resources/"+$Obj_form.language+".lproj")
+				  // database localization folder
+				$o_localized:=$o.folder("Resources/"+$o_result.language+".lproj")
 				
-				For each ($Txt_key;$Obj_manifest.tools)
+				For each ($Txt_key;$o_manifest.tools)
 					
 					Case of 
 							
 							  //______________________________________________________
 						: ($Txt_key="popup")
 							
-							$Obj_widget.popup:=Bool:C1537($Obj_manifest.tools.popup)
+							$o_widget.popup:=Bool:C1537($o_manifest.tools.popup)
 							
 							  //______________________________________________________
 						: ($Txt_key="name")
 							
-							$t:=String:C10($Obj_manifest.tools.name)
+							$t:=String:C10($o_manifest.tools.name)
 							
 							If (Length:C16($t)>0)
 								
 								If (Position:C15(":xliff:";$t)=1)  // Localised
 									
-									If ($Dir_localized.exists)
+									If ($o_localized.exists)
 										
-										$Obj_widget.name:=xliff_getString (Delete string:C232($t;1;7);$Dir_localized.platformPath)
+										$t:=xliff_getString (Delete string:C232($t;1;7);$o_localized.platformPath)
 										
 									End if 
-									
-								Else 
-									
-									$Obj_widget.name:=$t
-									
 								End if 
 							End if 
+							
+							$o_widget.name:=$t
 							
 							  //______________________________________________________
 						: ($Txt_key="picture")
 							
-							$t:=String:C10($Obj_manifest.tools.picture)
+							$t:=String:C10($o_manifest.tools.picture)
 							
 							If (Length:C16($t)>0)
 								
@@ -186,19 +204,19 @@ If ($c.length>0)
 									
 									If (OK=1)
 										
-										PICTURE PROPERTIES:C457($p;$Lon_width;$Lon_height)
+										PICTURE PROPERTIES:C457($p;$width;$height)
 										
-										If ($Lon_height<($Lon_width*4))
+										If ($height<($width*4))
 											
-											CREATE THUMBNAIL:C679($p;$pp;$Obj_form.iconSize;$Obj_form.iconSize)
-											COMBINE PICTURES:C987($p;$pp;Vertical concatenation:K61:9;$pp;0;$Obj_form.iconSize)
-											COMBINE PICTURES:C987($p;$p;Vertical concatenation:K61:9;$pp;0;$Obj_form.iconSize*2)
+											CREATE THUMBNAIL:C679($p;$pp;$o_result.iconSize;$o_result.iconSize)
+											COMBINE PICTURES:C987($p;$pp;Vertical concatenation:K61:9;$pp;0;$o_result.iconSize)
+											COMBINE PICTURES:C987($p;$p;Vertical concatenation:K61:9;$pp;0;$o_result.iconSize*2)
 											TRANSFORM PICTURE:C988($pp;Fade to grey scale:K61:6)
-											COMBINE PICTURES:C987($p;$p;Vertical concatenation:K61:9;$pp;0;$Obj_form.iconSize*3)
+											COMBINE PICTURES:C987($p;$p;Vertical concatenation:K61:9;$pp;0;$o_result.iconSize*3)
 											
 										End if 
 										
-										$Obj_widget.icon:=$p
+										$o_widget.icon:=$p
 										
 									End if 
 								End if 
@@ -207,21 +225,21 @@ If ($c.length>0)
 							  //______________________________________________________
 						: ($Txt_key="helptip")
 							
-							$t:=String:C10($Obj_manifest.tools.helptip)
+							$t:=String:C10($o_manifest.tools.helptip)
 							
 							If (Length:C16($t)>0)
 								
 								If (Position:C15(":xliff:";$t)=1)  // Localised
 									
-									If ($Dir_localized.exists)
+									If ($o_localized.exists)
 										
-										$Obj_widget.helptip:=xliff_getString (Delete string:C232($t;1;7);$Dir_localized.platformPath)
+										$o_widget.helptip:=xliff_getString (Delete string:C232($t;1;7);$o_localized.platformPath)
 										
 									End if 
 									
 								Else 
 									
-									$Obj_widget.helptip:=$t
+									$o_widget.helptip:=$t
 									
 								End if 
 							End if 
@@ -229,39 +247,39 @@ If ($c.length>0)
 							  //______________________________________________________
 						: ($Txt_key="initproc")
 							
-							Formula from string:C1601($Obj_manifest.tools[$Txt_key]).call()
+							Formula from string:C1601($o_manifest.tools[$Txt_key]).call()
 							
 							  //______________________________________________________
 						: ($Txt_key="tool")
 							
-							If (Value type:C1509($Obj_manifest.tools.tool)=Is object:K8:27)
+							If (Value type:C1509($o_manifest.tools.tool)=Is object:K8:27)
 								
-								$Obj_widget.default:=$Obj_manifest.tools.tool.method
+								$o_widget.default:=$o_manifest.tools.tool.method
 								
 							Else 
 								
-								If ($Obj_manifest.tools.tool.length>0)
+								If ($o_manifest.tools.tool.length>0)
 									
-									$Obj_widget.popup:=True:C214
+									$o_widget.popup:=True:C214
 									
-									For each ($Obj_tool;$Obj_manifest.tools.tool)
+									For each ($o_tool;$o_manifest.tools.tool)
 										
-										For each ($Txt_tool;$Obj_tool)
+										For each ($Txt_tool;$o_tool)
 											
 											Case of 
 													
 													  //………………………………………………………………………………
 												: ($Txt_tool="name")
 													
-													$t:=String:C10($Obj_tool.name)
+													$t:=String:C10($o_tool.name)
 													
 													If (Length:C16($t)>0)
 														
 														If (Position:C15(":xliff:";$t)=1)  // Localised
 															
-															If ($Dir_localized.exists)
+															If ($o_localized.exists)
 																
-																$Obj_tool.name:=xliff_getString (Delete string:C232($t;1;7);$Dir_localized.platformPath)
+																$o_tool.name:=xliff_getString (Delete string:C232($t;1;7);$o_localized.platformPath)
 																
 															End if 
 														End if 
@@ -274,7 +292,7 @@ If ($c.length>0)
 													
 													If ($file.exists)
 														
-														$Obj_tool.picture_path:=$file.platformPath
+														$o_tool.picture_path:=$file.platformPath
 														
 													End if 
 													
@@ -282,7 +300,7 @@ If ($c.length>0)
 											End case 
 										End for each 
 										
-										$Obj_widget.tool.push($Obj_tool)
+										$o_widget.tool.push($o_tool)
 										
 									End for each 
 								End if 
@@ -291,7 +309,7 @@ If ($c.length>0)
 							  //______________________________________________________
 						Else 
 							
-							$Obj_widget[$Txt_key]:=$Obj_manifest.tools[$Txt_key]
+							$o_widget[$Txt_key]:=$o_manifest.tools[$Txt_key]
 							
 							  //______________________________________________________
 					End case 
@@ -302,42 +320,32 @@ If ($c.length>0)
 				
 				If ($oo.success)
 					
-					$Obj_widget.plist:=$oo.toObject()
+					$o_widget.plist:=$oo.toObject()
 					
 				End if 
 				
-				$Obj_form.widgets.push($Obj_widget)
+				If ($o_result.widgets.query("name = :1";$o_widget.name).length=0)
+					
+					$o_result.widgets.push($o_widget)
+					
+				End if 
 				
 			Else 
 				
-				  // NOT A 4DPop COMPONENT
+				  // Not a 4dpop component
 				
 			End if 
+			
+		Else 
+			
+			  // Not me ;-)
+			
 		End if 
 	End for each 
 	
 	  // Sort tools by name
-	$Obj_form.widgets:=$Obj_form.widgets.orderBy("name")
+	$o_result.widgets:=$o_result.widgets.orderBy("name")
 	
 End if 
 
-  //$t:="\t\t\t\t<td  class=\"styleSmall\"><H4><a href=\"{href}\"target=\"_blank\">{linkname}</a></h4></td>\r"
-  //$Txt_buffer:="<html>\r\r"+"\t<head>\r"+"\t\t<style type=\"text/css\">\r<!--\r.styleSmall {font-size: small}\r-->\r</style>\r"+"\t</head>\r\r"+"\t<body leftmargin=\"0\" marginwidth=\"0\" topmargin=\"0\" marginheight=\"0\">\r"
-  //If (Size of array($tTxt_helpFiles)>0)
-  //$Txt_buffer:=$Txt_buffer+"\t\t<table border=\"0\" cellpadding=\"4\" cellspacing=\"0\" height=\"50\">\r"+"\t\t\t<tr valign=\"bottom\" align=\"center\">\r"
-  //For ($i;1;Size of array($tTxt_helpFiles);1)
-  //$Txt_cell:=Replace string($t;"{href}";$tTxt_helpFiles{$i})
-  //$Txt_cell:=Replace string($Txt_cell;"{linkname}";$tTxt_structurefiles{$i})
-  //$Txt_buffer:=$Txt_buffer+$Txt_cell
-  // End for
-  //$Txt_buffer:=$Txt_buffer+"\t\t\t</tr>\r"+"\t\t</table>\r"
-  // End if
-  //$Txt_buffer:=$Txt_buffer+"\t</body>\r\r"+"</html>"
-  //TEXT TO BLOB($Txt_buffer;$Blb_html;Mac text without length)
-  //$Txt_path:=Get 4D folder(Current resources folder)+"Components.html"
-  //If (Test path name($Txt_path)=Is a document)
-  //DELETE DOCUMENT($Txt_path)
-  // End if
-  //BLOB TO DOCUMENT($Txt_path;$Blb_html)
-
-$0:=$Obj_form
+$0:=$o_result
