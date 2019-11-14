@@ -1,4 +1,5 @@
 //%attributes = {"invisible":true}
+  //%attributes = {"invisible":true}
 C_OBJECT:C1216($0)
 C_TEXT:C284($1)
 C_OBJECT:C1216($2)
@@ -18,14 +19,15 @@ If (False:C215)
 	C_OBJECT:C1216(database ;$2)
 End if 
 
-If (This:C1470._is=Null:C1517)
+If (This:C1470[""]=Null:C1517)
 	
 	$o:=New object:C1471(\
-		"_is";"database";\
-		"structure";File:C1566(Structure file:C489(*);fk platform path:K87:2);\
+		"";"database";\
+		"structure";Null:C1517;\
+		"root";Null:C1517;\
 		"isCompiled";Is compiled mode:C492(*);\
 		"isInterpreted";Not:C34(Is compiled mode:C492(*));\
-		"data";File:C1566(Data file:C490;fk platform path:K87:2);\
+		"data";Null:C1517;\
 		"locked";Is data file locked:C716;\
 		"isDatabase";False:C215;\
 		"isProject";False:C215;\
@@ -42,7 +44,45 @@ If (This:C1470._is=Null:C1517)
 		"pluginAvailable";Formula:C1597(This:C1470.plugins.indexOf($1)#-1)\
 		)
 	
-	$o.name:=$o.structure.name
+	If ($o.isRemote)
+		
+		$o.name:=Structure file:C489(*)
+		
+	Else 
+		
+		$o.structure:=File:C1566(Structure file:C489(*);fk platform path:K87:2)
+		$o.data:=File:C1566(Data file:C490;fk platform path:K87:2)
+		$o.name:=$o.structure.name
+		
+		If ($o.isProject)
+			
+			If ($o.structure.parent.name="Project")
+				
+				  // Up two levels
+				$o.root:=$o.structure.parent.parent
+				
+			Else 
+				
+				  // Old hierarchy
+				If (Application type:C494#4D Server:K5:6)
+					
+					  // Up one level
+					$o.root:=$o.structure.parent
+					
+				Else 
+					
+					$o.root:=$o.structure
+					
+				End if 
+			End if 
+			
+		Else 
+			
+			$o.root:=$o.structure.parent.parent.parent
+			
+		End if 
+	End if 
+	
 	$o.isProject:=Bool:C1537(Get database parameter:C643(113))
 	$o.isDatabase:=Not:C34($o.isProject)
 	
@@ -77,30 +117,6 @@ If (This:C1470._is=Null:C1517)
 	
 	PLUGIN LIST:C847($tLon_number;$tTxt_plugins)
 	ARRAY TO COLLECTION:C1563($o.plugins;$tTxt_plugins)
-	
-	If ($o.isProject)
-		
-		If ($o.structure.parent.name="Project")
-			
-			  // Up one level
-			$o.root:=$o.structure.parent.parent
-			
-		Else 
-			
-			  // Old hierarchy
-			$o.root:=$o.structure.parent
-			
-		End if 
-		
-	Else 
-		
-		If (Application type:C494#4D Remote mode:K5:5)
-			
-			$o.root:=$o.structure.parent.parent.parent
-			
-		End if 
-	End if 
-	
 	
 Else 
 	
