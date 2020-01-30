@@ -57,4 +57,4 @@ End if
 $0:=Replace string:C233($tTxt_languages{Choose:C955($tTxt_languages>0;$tTxt_languages;1)};".lproj";"")
 
   // ----------------------------------------------------
-  // End
+  // End 
