@@ -7,7 +7,7 @@ All others component of the 4DPop family are independent tools that you can inst
 # 4DPop family
 
 * [4DPop **AppMaker**](https://github.com/vdelachaux/4DPop-AppMaker)
-* 4DPop **Bookmarks**
+* [4DPop **Bookmarks**](https://github.com/vdelachaux/4DPop-Bookmarks)
 * 4DPop **Color Chart**
 * 4DPop **Commands**
 * 4DPop **Constants Editor**
