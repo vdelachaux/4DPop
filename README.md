@@ -23,6 +23,7 @@ All others component of the 4DPop family are independent tools that you can inst
 * 4DPop **sqlSchemas**
 * 4DPop **Window**
 * 4DPop **XLIFF** - Edit XLIFF files to localize your database
+* [4DPop **XLIFF Prp**](https://vdelachaux.github.io/4DPop-XLIFF-Pro/°
 
 # Compatible Components
 
