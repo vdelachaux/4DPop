@@ -6,6 +6,8 @@
 
 4DPop is the container component that handles loading and provides an interface to compatible components.
 
+<img src="./assets/4DPop.png">
+
 All others component of the 4DPop family are independent tools that you can install or not.
 
 # 4DPop family
