@@ -343,7 +343,7 @@
 					"left": 0,
 					"width": 13,
 					"height": 68,
-					"style": "custom",
+					"style": "regular",
 					"dropping": "custom",
 					"method": "ObjectMethods/2.Handle.Button.4dm",
 					"events": [
@@ -352,7 +352,8 @@
 						"onDragOver",
 						"onMouseLeave",
 						"onMouseMove"
-					]
+					],
+					"display": false
 				},
 				"2.title.text.Movable": {
 					"type": "input",
