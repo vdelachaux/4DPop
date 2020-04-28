@@ -33,7 +33,7 @@ All others component of the 4DPop family are independent tools that you can inst
 # Compatible Components
 
 * [**4D SVG**](https://doc.4d.com/4Dv18/4D/18/4D-SVG-Component.100-4611717.en.html)
-* [**4D JSON Validator**](xhttps://github.com/vdelachaux/4DPop-JSON-Validator)
+* [**4D JSON Validator**](https://github.com/AdrienCagniant/4DPop-JSON-Validator)
 * [**chromo4D**](https://forums.4d.com/Post/EN/1576084/1/1576085#1576085)
 * [**RegexLab**](https://github.com/AJARProject/AJ_Tools_Regex)
 * [**Math4D**](https://forums.4d.com/Post/EN/31847250/1/31847251#31847251)
