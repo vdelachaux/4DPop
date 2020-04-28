@@ -30,6 +30,10 @@ All others component of the 4DPop family are independent tools that you can inst
 * [4DPop **XLIFF**](https://github.com/vdelachaux/4DPop-XLIFF)
 * [4DPop **XLIFF Pro**](https://vdelachaux.github.io/4DPop-XLIFF-Pro/)
 
+Latest version [Download](https://github.com/vdelachaux/4DPop/releases/latest) of the family
+
+<img src="assets/latestQR.jpg" alt="QR code" title="QR code" width="200"/>
+
 # Compatible Components
 
 * [**4D SVG**](https://doc.4d.com/4Dv18/4D/18/4D-SVG-Component.100-4611717.en.html)
