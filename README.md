@@ -46,5 +46,5 @@ Not found? Go on and <a href="https://github.com/milke/4DPop/issues/new">create 
 * [**chromo4D**](https://forums.4d.com/Post/EN/1576084/1/1576085#1576085)
 * [**RegexLab**](https://github.com/AJARProject/AJ_Tools_Regex)
 * [**Math4D**](https://forums.4d.com/Post/EN/31847250/1/31847251#31847251)
+* [**ogResources Buddy**](https://www.protee.org/index.php/en/download-en/4d-free-bonus)
 * [**QS_Toolbox**](https://association-qualisoft.eu/qs_toolbox-description/)
-* [**ogPop Resources Buddy**](https://www.protee.org/index.php/en/download-en/4d-free-bonus)
