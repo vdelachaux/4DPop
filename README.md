@@ -34,6 +34,11 @@ All others component of the 4DPop family are independent tools that you can inst
 |:----------------:|
 |<img src="assets/latestQR.jpg" alt="QR code" title="QR code" width="200"/>|
 
+***Note***: If you encountered a bug or have a feature request, feel free to create an issue.
+However, it is highly appreciated if you <a href="https://github.com/milke/4DPop/issues">browse and search current issues</a> first.
+Found the issue? Go on and join its discussion thread.
+Not found? Go on and <a href="https://github.com/milke/4DPop/issues/new">create one</a>.
+
 # Compatible Components
 
 * [**4D SVG**](https://doc.4d.com/4Dv18/4D/18/4D-SVG-Component.100-4611717.en.html)
@@ -42,9 +47,4 @@ All others component of the 4DPop family are independent tools that you can inst
 * [**RegexLab**](https://github.com/AJARProject/AJ_Tools_Regex)
 * [**Math4D**](https://forums.4d.com/Post/EN/31847250/1/31847251#31847251)
 * [**QS_Toolbox**](https://association-qualisoft.eu/qs_toolbox-description/)
-
-
-***Note***: If you encountered a bug or have a feature request, feel free to create an issue.
-However, it is highly appreciated if you <a href="https://github.com/milke/4DPop/issues">browse and search current issues</a> first.
-Found the issue? Go on and join its discussion thread.
-Not found? Go on and <a href="https://github.com/milke/4DPop/issues/new">create one</a>.
+* [**ogPop Resources Buddy**](https://www.protee.org/index.php/en/download-en/4d-free-bonus)
