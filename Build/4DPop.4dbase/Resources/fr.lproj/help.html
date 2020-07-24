@@ -1,0 +1,187 @@
+<HTML>
+<HEAD>
+<TITLE>4DPop Lisez-moi</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<LINK href="../../Common/style.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY leftmargin="20" marginheight="20" marginwidth="20" topmargin="20">
+<DIV class="Section1"> </DIV>
+<DIV class="Section1" align="left">
+  <HR>
+  <TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+    <TR>
+      <TD width="100"><IMG src="../Common/4d.png" border="0"></TD>
+      <TD valign="middle"><TABLE width="100%" border="0" cellspacing="0" cellpadding="4" height="100%">
+          <TR>
+            <TD width="97"><H1>4DPop</H1></TD>
+            <TD><IFRAME src="../Components.html" frameborder="0" scrolling="no" align="middle" height="40" width="100%" NORESIZE="true"></IFRAME></TD>
+          </TR>
+          <TR>
+            <TD colspan="2"><IFRAME src="../Common/Localisation.html" frameborder="0" scrolling="no" align="middle" height="40" width="100%" NORESIZE="true"></IFRAME></TD>
+          </TR>
+        </TABLE></TD>
+    </TR>
+  </TABLE>
+  <HR>
+  <P>4DPop installe une palette dans le mode d&eacute;veloppement. Cette palette s'enrichit d'outils au fur et &agrave;&nbsp;mesure de l'installation de composants compatibles.</P>
+  <HR>
+  <H2>Installation</H2>
+  <DIV class="Section1" align="left">
+    <TABLE width="100%" border="0" cellspacing="4" cellpadding="2">
+      <TR>
+        <TD align="right" valign="top">1.</TD>
+        <TD>Cr&eacute;ez un dossier &quot;<I>Components</I>&quot; &agrave; c&ocirc;t&eacute; du fichier de structure de votre base (&quot;.4db&quot;)</TD>
+      </TR>
+      <TR>
+        <TD align="right" valign="top">2.</TD>
+        <TD>Placer le dossier &quot;<I>4DPop.4dbase</I>&quot;* ou un alias de ce dernier dans le dossier &quot;<I>Components</I>&quot;</TD>
+      </TR>
+      <TR>
+        <TD align="right" valign="top">3.</TD>
+        <TD>Ouvrez votre base.</TD>
+      </TR>
+      <TR>
+        <TD align="right" valign="top">4.</TD>
+        <TD>Dans la m&eacute;thode base &quot;Sur ouverture&quot;, tapez &quot;Install 4DPop&quot; puis la touche tabulation. Le code ci-essous est ins&eacute;r&eacute; dans la m&eacute;thode.
+          <P>        `Run 4DPop<BR>
+                    `This code is available even if the component is not present like in the final application.<BR>
+            <B>Si</B> (<B>Non</B>(<B>Mode compile)</B>)<BR>
+                    <B>TABLEAU TEXTE</B>($tTxt_Components;0)<BR>
+                    <B>LISTE COMPOSANTS</B>($tTxt_Components)<BR>
+                    <B> Si</B> (<B>Chercher dans tableau</B>($tTxt_Components;&quot;4DPop&quot;)&gt;0)<BR>
+                            <B>EXECUTER METHODE</B>(&quot;4DPop_Palette&quot;)<BR>
+                    <B>Fin de si</B><BR>
+            <B>Fin de si </B></P></TD>
+      </TR>
+      <TR>
+        <TD align="right" valign="top">5.</TD>
+        <TD>Red&eacute;marrez votre base, la palette s'affiche lorsque vous &ecirc;tes en mode d&eacute;veloppement en bas &agrave; gauche de l'&eacute;cran.</TD>
+      </TR>
+    </TABLE>
+    <P>*Sur Macintosh le composant est un package dont l'extension &quot;.4dbase&quot; n'est pas obligatoirement visible en fonction des r&eacute;glages de vos pr&eacute;f&eacute;rences d'affichage.</P>
+    <P>&nbsp;</P>
+    <HR>
+    <H2>Utilisation</H2>
+    <P>L'aide de 4DPop est disponible dans le menu &quot;Aide&quot; ou en cliquant sur l'ic&ocirc;ne &quot;<I>i</I>&quot; de la palette.</P>
+    <P>Si la palette est pr&eacute;sent&eacute;e ferm&eacute;e, vous pouvez l'ouvrir en tirant sur la poign&eacute;e.</P>
+    <P align="left"><IMG src="../Common/close.png" width="32"></P>
+    <DIV class="Section1" align="left">
+      <P>Si vous double-cliquez sur la poign&eacute;e de la palette ferm&eacute;e, celle-ci se d&eacute;ploie en ajustant sa taille au nombres d'outils pr&eacute;sent. Un double clic sur la poign&eacute;e de la palette ouverte la referme. La position de la palette et son état contracté ou déployé sont mémorisés entre chaque cession.</P>
+      <P>Si aucun composant compatible n&rsquo;est install&eacute;, la palette d&eacute;ploy&eacute;e affiche une image</P>
+      <P align="left"><IMG src="../Common/none.png" height="68" width="98"></P>
+      <DIV class="Section1" align="left">
+        <P>Si un ou plusieurs composants compatibles sont install&eacute;s, ils apparaissent sous la forme de boutons. </P>
+        <UL>
+          <LI>Un clic sur l'un de ces bouton peut soit lancer l&rsquo;outil soit d&eacute;ployer un menu permettant de s&eacute;lectionner un outil dans une collection.
+          <LI>Un clic associ&eacute; &agrave; la touche option sur Macintosh ou Alt sur PC ouvre le fichier d'aide associ&eacute; au composant (fichier &quot;MonComposant.htm&quot; plac&eacute; &agrave; c&ocirc;t&eacute; de la structure du composant)
+        </UL>
+        <DIV align="left"><IMG src="../Common/Palette.png" alt="" height="68" width="428" border="0"> </DIV>
+        <P>Vous pouvez d&eacute;placer la palette par sa barre de titre, la placer &agrave; droite ou &agrave; gauche de l'&eacute;cran. La position de la palette est m&eacute;moris&eacute;e.</P>
+        <P>Un menu contextuel est accessible sur la barre de titre de la palette. Il reprend l'ensemble des outils charg&eacute;s et des options d'affichage de la palette.</P>
+        <P>Vous pouvez installer un nouveau composant compatible dans la palette en le déposant sur cette dernière. Après confirmation un alias de la base est créé dans le dossier &quot;Components&quot; et la base redémarrée.</P>
+        <P align="left"><IMG src="../Common/dropComponent.png" alt="" width="439" height="91" border="0"></P>
+        <P align="left">Si un ou plusieurs composants compatibles sont déposé sur la palette de 4DPop, cela provoque l'affichage d'un assistant d'installation qui permet de choisir entre une copie du composant dans le dossier &quot;Components&quot; ou la simple création d'un alias. </P>
+        <P align="center"><IMG src="Images/Assistant_1.png" alt="assistant"></P>
+        <P align="left">L'assistant permet en outre de redémarrer automatiquement la base lorsque l'installation est terminée afin que les nouveaux composants  soient chargés.</P>
+        <P><STRONG>Note</STRONG> : Les composants sont chargés par ordre alphabétique : Pour forcer un composant à être chargé en premier (le plus à gauche) vous pouvez préfixer le nom du dossier avec &quot;01&quot; par exemple.</P>
+        <P>Un clic contextuel sur la barre de titre de la palette déploie un menu reprenant :</P>
+        <UL>
+          <UL>
+            <LI>La liste des composants	installés avec un éventuel sous-menu reprenant les fonctions associées au composant. La sélection d'une ligne est équivalente au clic sur un bouton de la palette.</LI>
+            <LI>Les items &quot;Contracter&quot; et &quot;Déployer&quot; qui permettent de replier ou de dﾎplier la palette. (Équivalent au double-clic sur la poignée de la palette)</LI>
+            <LI>Un menu &quot;Apparence&quot; associé à un sous menu reprenant les différentes apparences disponibles pour 4DPop. La sélection d'une apparence charge cette dernière et modifie l'aspect de la palette 4DPop. L'apparence courante est mémorisée et sera restituée lors de la prochaine cession. Les apparences sont paramétrées, chacune dans un dossier situé dans le dossier &quot;Skins&quot; lui même placé dans le dossier &quot;Resources&quot; du composant. Le paramétrage repose sur un fichier &quot;skin.xml&quot; et des éventuels fichier images. Une documentation de se fonctionnement est à venir.</LI>
+          </UL>
+        </UL>
+        <P><IMG src="Images/skin.jpg" alt="skin" /></P>
+        <UL>
+          <UL>
+            <LI>Un menu &quot;Position&quot; qui par ses items permet de re positionner rapidement la palette de 4DPop à l'un des 4 coins de l'écran principal.</LI>
+            <LI>Un item à propos qui doit ouvrir cette page.</LI>
+          </UL>
+        </UL>
+        <P>&nbsp;</P>
+        <DIV class="Section1" align="left">
+          <HR>
+          <H2>Composants compatibles</H2>
+          <P>Les outils que vous pouvez int&eacute;grer &agrave; 4DPop sont des composants interpr&eacute;t&eacute;s ou compil&eacute;s, ils r&eacute;pondent donc aux r&egrave;gles de d&eacute;veloppement des composants (cf. documentation).</P>
+          <P>L'int&eacute;gration d'un composant dans la palette 4DPop est bas&eacute;e sur la pr&eacute;sence d'un fichier &laquo; 4DPop.xml &raquo; dans le dossier &laquo; Resources &raquo; de la base du composant. Ce fichier d&eacute;crit les &eacute;l&eacute;ments du composant qui seront disponibles &agrave; l'aide de clefs et de leurs attributs.</P>
+          <DIV align="center">
+            <TABLE border="1" cellspacing="2" cellpadding="8">
+              <TR>
+                <TD><DIV class="Section1" align="left">
+                    <DIV class="Section1" align="left">
+                      <P><SAMP><FONT color="#8a8a8a">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;<BR>
+                        </FONT></SAMP><SAMP><FONT color="#8a8a8a">&lt;tools name=&quot;:xliff:Ruler&quot; picture=&quot;Ruler.png&quot; helptip=&quot;:xliff:ToolHelpTip&quot; initProc=&quot;Init&quot;&gt;</FONT></SAMP><BR>
+                        <SAMP><FONT color="#8a8a8a">&lt;tool name=&quot;Rulers&quot; method=&quot;4DPop_ScreenRuler&quot;/&gt;</FONT></SAMP><BR>
+                        <SAMP><FONT color="#8a8a8a">&lt;/tools&gt;</FONT></SAMP><BR>
+                      </P>
+                    </DIV>
+                  </DIV></TD>
+              </TR>
+            </TABLE>
+          </DIV>
+          <DIV align="center"></DIV>
+          <P></P>
+          <TABLE width="100%" border="1" cellspacing="0" cellpadding="2">
+            <TR>
+              <TD align="center"><B>Balise</B></TD>
+              <TD align="center"><B>Description</B></TD>
+            </TR>
+            <TR>
+              <TD valign="top">&lt;tools&gt;&lt;/tools&gt;</TD>
+              <TD>D&eacute;but et fin du fichier (balises obligatoires)
+                <P>Attributs :<BR>
+                  <B>&#x2022; <I>name</I></B> : Nom* tel qu&rsquo;il sera affich&eacute; sous le bouton (obligatoire)<BR>
+                  <B>&#x2022; <I>picture</I></B> : Nom du fichier image du bouton. Ce fichier doit se trouver &agrave; la racine du dossier &laquo; Resources &raquo; du composant. (facultatif, si omis une image par d&eacute;faut est<BR>
+                  <B>&#x2022; <I>helptip</I></B> : Texte* de la bulle d&rsquo;aide associ&eacute;e au bouton.<BR>
+                  <B>&#x2022; <I>initproc</I></B> : Nom de la m&eacute;thode** du composant &agrave; ex&eacute;cuter au chargement.<BR>
+                  <B>&#x2022; <I>ondrop</I></B> : Nom de la m&eacute;thode** du composant &agrave; ex&eacute;cuter lors d'un d&eacute;poser sur le bouton.<BR>
+                  <B>&#x2022; <I>default</I></B> : Nom de la m&eacute;thode** du composant &agrave; ex&eacute;cuter lors d'un clic simple sur le bouton lorsque plusieurs outils sont d&eacute;finis.<BR>
+                  <B>&#x2022; <I>popup</I></B> : Flag d&rsquo;affichage de la fl&egrave;che de popup li&eacute; au bouton. Valeurs : &quot;true&quot; (pour un affichage de la fl&egrave;che m&ecirc;me si il n'y a qu'une seule balise &lt;tool&gt; <EM>cf. infra</EM>)</P></TD>
+            </TR>
+            <TR>
+              <TD valign="top">&lt;tool&gt;&lt;/tool&gt;</TD>
+              <TD>D&eacute;but et fin d&rsquo;une d&eacute;finition d&rsquo;un outil et de ses attributs.
+                <P>Cette balise peut &ecirc;tre r&eacute;p&eacute;t&eacute;e : s&rsquo;il n&rsquo;y a qu&rsquo;une balise &lt;tool&gt; la m&eacute;thode est ex&eacute;cut&eacute;e d&egrave;s le clic sur le bouton, s&rsquo;il y a plusieurs balises &lt;tool&gt; une fl&egrave;che de menu li&eacute;e au bouton est affich&eacute;e et un menu listant les outils est propos&eacute; &agrave; l&rsquo;utilisateur. Dans le cas o&ugrave; la balise <I><B>default</B></I> ci-dessus est d&eacute;finie, un clic simple lance la m&eacute;thode d&eacute;finie par d&eacute;faut et un clic long ou sur la fl&egrave;che affiche le menu des outils.</P>
+                <P>Attributs :<BR>
+                  &#x2022; <B><I>name</I></B> : Nom* de l&rsquo;outil telle qu&rsquo;elle appara&icirc;tra dans le menu associ&eacute; au bouton. (obligatoire si plusieurs balises &lt;tool&gt;)<BR>
+                  &#x2022; <B><I>method</I></B> : Nom de la m&eacute;thode** du composant correspondant &agrave; l&rsquo;outil &agrave; ex&eacute;cuter. (obligatoire)<BR>
+                  &#x2022; <B><I>picture</I></B> : Nom du fichier image associ&eacute; &agrave; la ligne de menu. Ce fichier doit se trouver &agrave; la racine du dossier &laquo; Resources &raquo; du composant.</P>
+                <P>Note : La m&eacute;thode du composant peut se charger de construire et d'afficher le menu. Dans ce cas une seule balise &lt;tool&gt; appelle la m&eacute;thode du composant dont le code affiche le menu et traite le choix de l'utilisateur. Pour que la fl&egrave;che du menu li&eacute; soit affich&eacute;e sur le bouton de votre outil, vous devez passer &quot;true&quot; dans l'attribut <B><I>popup</I></B> de la balise &lt;tools&gt;</P></TD>
+            </TR>
+          </TABLE>
+          <P>* Accepte la syntaxe &laquo; :xliff :resname &raquo; les cha&icirc;nes doivent alors se trouver dans les fichiers xliff du composant. Cette syntaxe permet d'afficher une chaîne localisée.</P>
+          <P>** Les méthodes doivent avoir été déclarées comme partagées dans la base du composant. <BR>
+          </P>
+          <P><STRONG>Note</STRONG> : Toutes ces méthodes reçoivent en paramètre un pointeur (sur le bouton de la palette qui peut servir à tester l'état du bouton ou à positionner correctement un popup). Pour pouvoir faire fonctionner le composant en compilé, ce paramètre doit être déclaré explicitement [<STRONG>C_POINTEUR</STRONG>($1)] dans toutes les méthodes du composant appelées par 4DPop (initproc, ondrop, default, et method) sinon une erreur (-20008 - Paramètres incorrects dans une commande <STRONG>EXECUTER</STRONG>) sera générée à chaque fois que la méthode est appelée.</P>
+          <P>&nbsp;</P>
+          <HR>
+          <H2>Quoi de neuf</H2>
+          <BLOCKQUOTE>
+            <H4>version 1.2 :</H4>
+            <UL>
+              <LI>La version du composant est affichée dans le coin supérieur gauche de la palette.</LI>
+              <LI>La palette de 4DPop se souvient de son état déployé/contracté entre deux sessions.</LI>
+              <LI>Implémentation d'un assistant d'installation.</LI>
+              <LI>Possibilité d'installer plusieurs composants simultanément. </LI>
+              <LI>Il est maintenant possible de changer l'aspect de la palette.</LI>
+              <LI>Ajout de la balise <EM>ondrop</EM>.<BR>
+              </LI>
+            </UL>
+          </BLOCKQUOTE>
+          <P>&nbsp;</P>
+          <HR>
+          <H2>Code source fourni</H2>
+          <P>Ce composant est fourni en version compil&eacute;e, mais vous trouverez le code source dans le dossier &quot;Sources&quot; &agrave; l'int&eacute;rieur du dossier du composant.</P>
+          <P>&nbsp;</P>
+          <HR>
+          <H2>Forum</H2>
+          <P>Un forum  pour 4DPop est disponible à cette adresse : <A href="http://forums.4d.fr/Forum/FR/1467485/0/0" title="4DPop Forum" target="_blank">Forum 4DPop</A></P>
+          <P> </P>
+        </DIV>
+      </DIV>
+    </DIV>
+  </DIV>
+</DIV>
+</BODY>
+</HTML>

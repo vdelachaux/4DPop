@@ -54,6 +54,9 @@ If (This:C1470[""]=Null:C1517)
 		$o.data:=File:C1566(Data file:C490;fk platform path:K87:2)
 		$o.name:=$o.structure.name
 		
+		$o.isProject:=Bool:C1537(Get database parameter:C643(Is current database a project:K37:98))
+		$o.isDatabase:=Not:C34($o.isProject)
+		
 		If ($o.isProject)
 			
 			If ($o.structure.parent.name="Project")
@@ -82,9 +85,6 @@ If (This:C1470[""]=Null:C1517)
 			
 		End if 
 	End if 
-	
-	$o.isProject:=Bool:C1537(Get database parameter:C643(113))
-	$o.isDatabase:=Not:C34($o.isProject)
 	
 	$l:=Get database parameter:C643(User param value:K37:94;$t)
 	

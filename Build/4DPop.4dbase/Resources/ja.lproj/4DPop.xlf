@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--                     
+Translation file for 4D products.
+Copyright(C)2006-2012 4D SA.
+This file is distributed under the same license as the 4D product package.
+-->
+
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="ja">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="Tips">
+            <trans-unit id="1" resname="TipsTitleBar">
+               <source>Clic to move the Tools Strip</source>
+               <target>クリックしてツールパレットを移動</target>
+            </trans-unit>
+         </group>
+         <group resname="Messages">
+            <trans-unit id="2" resname="AlertExecute">
+               <source>The component method cannot be found ({method}).
+
+Have you thought of checking the "Shared by components and host database" attribute in the method properties?</source>
+               <target>コンポーネントメソッドが見つかりません。 ({method})
+
+メソッドプロパティ中、"コンポーネントとホストデータベースで共有する" 属性がチェックされているか確認してください。</target>
+            </trans-unit>
+            <trans-unit id="14" resname="WouldYouInstallTheComponent">
+               <source>Would you install the component "{Component}"?
+
+The database will be restarted.</source>
+               <target>コンポーネント "{Component}" をインストールしますか?
+
+データベースは再起動されます。</target>
+            </trans-unit>
+         </group>
+         <group resname="STR# 42">
+            <trans-unit id="2" resname="xliff_If">
+               <source>If</source>
+               <target>If</target>
+            </trans-unit>
+            <trans-unit id="3" resname="xliff_Else">
+               <source>Else</source>
+               <target>Else</target>
+            </trans-unit>
+            <trans-unit id="4" resname="xliff_EndIf">
+               <source>End if</source>
+               <target>End if</target>
+            </trans-unit>
+            <trans-unit id="5" resname="xliff_CaseOf">
+               <source>Case of</source>
+               <target>Case of</target>
+            </trans-unit>
+            <trans-unit id="7" resname="xliff_EndCase">
+               <source>End case</source>
+               <target>End case</target>
+            </trans-unit>
+            <trans-unit id="8" resname="xliff_While">
+               <source>While</source>
+               <target>While</target>
+            </trans-unit>
+            <trans-unit id="9" resname="xliff_EndWhile">
+               <source>End while</source>
+               <target>End while</target>
+            </trans-unit>
+            <trans-unit id="10" resname="xliff_For">
+               <source>For</source>
+               <target>For</target>
+            </trans-unit>
+            <trans-unit id="11" resname="xliff_EndFor">
+               <source>End for</source>
+               <target>End for</target>
+            </trans-unit>
+            <trans-unit id="12" resname="xliff_Repeat">
+               <source>Repeat</source>
+               <target>Repeat</target>
+            </trans-unit>
+            <trans-unit id="13" resname="xliff_Until">
+               <source>Until</source>
+               <target>Until</target>
+            </trans-unit>
+         </group>
+         <group resname="Menus">
+            <trans-unit id="15" resname="Collapse">
+               <source>Collapse</source>
+               <target>折り畳む</target>
+            </trans-unit>
+            <trans-unit id="16" resname="Expand">
+               <source>Expand</source>
+               <target>拡げる</target>
+            </trans-unit>
+            <trans-unit id="17" resname="TopLeft">
+               <source>Top left</source>
+               <target>左上</target>
+            </trans-unit>
+            <trans-unit id="18" resname="BottomLeft">
+               <source>Bottom Left</source>
+               <target>左下</target>
+            </trans-unit>
+            <trans-unit id="19" resname="TopRight">
+               <source>Top Right</source>
+               <target>右上</target>
+            </trans-unit>
+            <trans-unit id="20" resname="BottomRight">
+               <source>Bottom Right</source>
+               <target>右下</target>
+            </trans-unit>
+            <trans-unit id="38" resname="About">
+               <source>About</source>
+               <target>About</target>
+            </trans-unit>
+            <trans-unit id="39" resname="Position">
+               <source>Position</source>
+               <target>位置</target>
+            </trans-unit>
+            <trans-unit id="40" resname="Appearance">
+               <source>Skin</source>
+               <target>スキン</target>
+            </trans-unit>
+         </group>
+         <group resname="InstallComponent">
+            <trans-unit id="21" resname="Title_1">
+               <source>4DPop -New Component Installation</source>
+               <target>4DPop - 新規コンポーネントのインストール</target>
+            </trans-unit>
+            <trans-unit id="22" resname="Comment_1">
+               <source>You have just drop one or more component on the toolbar.
+
+To install this component you may, either create an alias/shortcut for the component or make a copy of it.
+
+Do you want?</source>
+               <target>ツールバーにコンポーネントがドロップされました。
+
+コンポーネントのインストールには、コンポーネントのエイリアスを作成するか、コピーを行うかを選択できます。
+
+どちらを選択しますか?</target>
+            </trans-unit>
+            <trans-unit id="23" resname="Button_1">
+               <source>Create an alias.</source>
+               <target>エイリアスを作成</target>
+            </trans-unit>
+            <trans-unit id="25" resname="Buton_2">
+               <source>Make a copy.</source>
+               <target>コピーを作成</target>
+            </trans-unit>
+            <trans-unit id="26" resname="Title_3">
+               <source>Last Step</source>
+               <target>最後のステップ</target>
+            </trans-unit>
+            <trans-unit id="22" resname="Comment_3_One">
+               <source>Component was installed successfully.
+
+This component will not be available before the next starting of the database.</source>
+               <target>コンポーネントは正しくインストールされました。
+
+このコンポーネントを使用するためには、データベースを再起動しなければなりません。</target>
+            </trans-unit>
+            <trans-unit id="30" resname="Comment_3_2">
+               <source>Do you want to restart the data base now?</source>
+               <target>データベースを今再起動しますか?</target>
+            </trans-unit>
+            <trans-unit id="31" resname="yes">
+               <source>Yes</source>
+               <target>はい</target>
+            </trans-unit>
+            <trans-unit id="32" resname="no">
+               <source>No</source>
+               <target>いいえ</target>
+            </trans-unit>
+            <trans-unit id="30" resname="Escape">
+               <source>Escape</source>
+               <target>中断</target>
+            </trans-unit>
+            <trans-unit id="31" resname="Continue">
+               <source>Continue</source>
+               <target>続行</target>
+            </trans-unit>
+            <trans-unit id="32" resname="Return">
+               <source>Return</source>
+               <target>戻る</target>
+            </trans-unit>
+            <trans-unit id="33" resname="Finish">
+               <source>Finish</source>
+               <target>終了</target>
+            </trans-unit>
+            <trans-unit id="34" resname="Close">
+               <source>Close</source>
+               <target>閉じる</target>
+            </trans-unit>
+            <trans-unit id="35" resname="TheComponentIsAlreadyInstalled">
+               <source>The component "&lt; Txt_Name &gt;" is already installed!</source>
+               <target>コンポーネント "&lt; Txt_Name &gt;" は既にインストールされています!</target>
+            </trans-unit>
+            <trans-unit id="36" resname="Error_1">
+               <source>An error occurred during the component installation.
+
+Error Nº {Error}</source>
+               <target>コンポーネントをインストール中にエラーが発生しました。
+
+エラーNo. {Error}</target>
+            </trans-unit>
+            <trans-unit id="37" resname="Title">
+               <source>Assistant</source>
+               <target>アシスタント</target>
+            </trans-unit>
+            <trans-unit id="41" resname="Title_2">
+               <source>Opération list</source>
+               <target>操作リスト</target>
+            </trans-unit>
+            <trans-unit id="41" resname="Comment_2">
+               <source>Components to be installed:</source>
+               <target>インストールされるコンポーネント:</target>
+            </trans-unit>
+            <trans-unit id="22" resname="Comment_3_1">
+               <source>The component "&lt; Txt_Name &gt;" was installed successfully.
+
+The component will not be available before the next starting of the database.</source>
+               <target>コンポーネント "&lt; Txt_Name &gt;" は正しくインストールされました。
+
+このコンポーネントを使用するためには、データベースを再起動しなければなりません。</target>
+            </trans-unit>
+            <trans-unit id="22" resname="Comment_3_More">
+               <source>{number} components was installed successfully.
+
+These components will not be available before the next starting of the database.</source>
+               <target>{number} 個のコンポーネントが正しくインストールされました。
+
+これらのコンポーネントを使用するためには、データベースを再起動しなければなりません。</target>
+            </trans-unit>
+            <trans-unit id="45" resname="Error_2">
+               <source>Not again component to be installed</source>
+               <target>Not again component to be installed</target>
+            </trans-unit>
+            <trans-unit id="46" resname="Error_3">
+               <source>Not compatible component to install</source>
+               <target>Not compatible component to install</target>
+            </trans-unit>
+            <trans-unit id="52" resname="button_4_1">
+               <source>For all databases</source>
+               <target>For all databases</target>
+            </trans-unit>
+            <trans-unit id="53" resname="button_4_2">
+               <source>Only for this database</source>
+               <target>Only for this database</target>
+            </trans-unit>
+            <trans-unit id="54" resname="Comment_4">
+               <source>Install:</source>
+               <target>Install:</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

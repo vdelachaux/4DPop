@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<skin>
+	<font name="Futura" size="11" color="0x00ffff00" styles="2"/>
+	<buttons titleVisible="0"/>
+	<back mode="7"/>
+</skin>

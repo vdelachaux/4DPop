@@ -1,50 +1,28 @@
-[![language](https://img.shields.io/static/v1?label=language&message=4d&color=blue)](https://developer.4d.com/)
-[![language](https://img.shields.io/github/languages/top/vdelachaux/4DPop.svg)](https://developer.4d.com/)
-![code-size](https://img.shields.io/github/languages/code-size/vdelachaux/4DPop.svg)
-[![license](https://img.shields.io/github/license/vdelachaux/4DPop)](LICENSE)
-[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop?include_prereleases)](https://github.com/vdelachaux/4DPop/releases/latest)
-
 # 4DPop
 
 4DPop is the container component that handles loading and provides an interface to compatible components.
-
-<img src="./assets/4DPop.png">
 
 All others component of the 4DPop family are independent tools that you can install or not.
 
 # 4DPop family
 
 * [4DPop **AppMaker**](https://github.com/vdelachaux/4DPop-AppMaker)
-* [4DPop **Bookmarks**](https://github.com/vdelachaux/4DPop-Bookmarks)
-* [4DPop **Color Chart**](https://github.com/vdelachaux/4DPop-ColorChart)
-* [4DPop **Commands**](https://github.com/vdelachaux/4DPop-Commands)
-* [4DPop **Constants Editor**](https://github.com/vdelachaux/4DPop-Constants-Editor)
-* [4DPop **Git**](https://vdelachaux.github.io/4DPop-Git/)
-* [4DPop **Image buddy**](https://github.com/vdelachaux/4DPop-Image-Buddy)
-* [4DPop **KeepIt**](https://github.com/vdelachaux/4DPop-KeepIt)
+* 4DPop **Bookmarks**
+* 4DPop **Color Chart**
+* 4DPop **Commands**
+* 4DPop **Constants Editor**
+* 4DPop **Image buddy**
+* 4DPop **KeepIt**
 * [4DPop **Macros**](https://github.com/vdelachaux/4DPop-Macros)
-* [4DPop **Pasteboard**](https://github.com/vdelachaux/4DPop-Pasteboard)
-* [4DPop **Rulers**](https://github.com/vdelachaux/4DPop-Rulers)
-* [4DPop **sqlSchemas**](https://github.com/vdelachaux/4DPop-sqlSchemas)
-* [4DPop **Window**](https://github.com/vdelachaux/4DPop-Window)
-* [4DPop **XLIFF**](https://github.com/vdelachaux/4DPop-XLIFF)
-* [4DPop **XLIFF Pro**](https://vdelachaux.github.io/4DPop-XLIFF-Pro/)
-
-|[Latest version of the family](https://github.com/vdelachaux/4DPop/releases/latest)|
-|:----------------:|
-|<img src="assets/latestQR.jpg" alt="QR code" title="QR code" width="200"/>|
-
-***Note***: If you encountered a bug or have a feature request, feel free to create an issue.
-However, it is highly appreciated if you <a href="https://github.com/milke/4DPop/issues">browse and search current issues</a> first.
-Found the issue? Go on and join its discussion thread.
-Not found? Go on and <a href="https://github.com/milke/4DPop/issues/new">create one</a>.
+* 4DPop **Pasteboard**
+* 4DPop **Rulers**
+* 4DPop **sqlSchemas**
+* 4DPop **Window**
+* 4DPop **XLIFF** - Edit XLIFF files to localize your database
 
 # Compatible Components
 
 * [**4D SVG**](https://doc.4d.com/4Dv18/4D/18/4D-SVG-Component.100-4611717.en.html)
-* [**4D JSON Validator**](https://github.com/AdrienCagniant/4DPop-JSON-Validator)
+* [**4D JSON Validator**](https://blog.4d.com/a-new-tool-json-validator/)
 * [**chromo4D**](https://forums.4d.com/Post/EN/1576084/1/1576085#1576085)
-* [**RegexLab**](https://github.com/AJARProject/AJ_Tools_Regex)
-* [**Math4D**](https://forums.4d.com/Post/EN/31847250/1/31847251#31847251)
-* [**ogResources Buddy**](https://www.protee.org/index.php/en/download-en/4d-free-bonus)
-* [**QS_Toolbox**](https://association-qualisoft.eu/qs_toolbox-description/)
+* [**4D Pop Resources Buddy**](https://github.com/protee/4D-Pop-Resources-Buddy)
