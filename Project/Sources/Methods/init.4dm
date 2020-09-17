@@ -80,23 +80,11 @@ $c:=New collection:C1472
 
 $o_database:=database 
 
-  // Add current database in dev mode
+  // Add current database in dev mode, if it's not me ;-)
 If ($o_database.name#"4DPop")
 	
-	If ($o_database.isInterpreted)
-		
-		If ($o_database.structure.parent.name="Project")
-			
-			  // Up one level
-			$c.push($o_database.structure.parent.parent)
-			
-		Else 
-			
-			  // Old hierarchy
-			$c.push($o_database.structure.parent)
-			
-		End if 
-	End if 
+	$c.push($o_database.root)
+	
 End if 
 
 If ($o_database.components.length>0)
@@ -107,7 +95,12 @@ If ($o_database.components.length>0)
 	$c:=loadComponents ($folder).combine($c)
 	
 	  // Get the database Components
-	$c:=loadComponents (Folder:C1567("/PACKAGE/Components")).combine($c)
+	$folder:=Folder:C1567(Get 4D folder:C485(Database folder:K5:14;*);fk platform path:K87:2).folder("Components")
+	If ($folder.exists)
+		
+		$c:=loadComponents ($folder).combine($c)
+		
+	End if 
 	
 	If (Application type:C494=4D Remote mode:K5:5)
 		

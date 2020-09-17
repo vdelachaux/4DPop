@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Translation file for 4D products.
+Copyright (c) 2006-2012 4D SAS
+This file is distributed under the same license as the 4D product package.
+-->
+
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="en">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="Tips">
+            <trans-unit id="1" resname="TipsTitleBar">
+               <source>Clic to move the Tools Strip</source>
+               <target>Clic to move the Tools Strip</target>
+            </trans-unit>
+         </group>
+         <group resname="Messages">
+            <trans-unit id="2" resname="AlertExecute">
+               <source>The component method cannot be found ({method}).
+
+Have you thought of checking the &quot;Shared by components and host database&quot; attribute in the method properties?</source>
+               <target>The component method cannot be found ({method}).
+
+Have you thought of checking the &quot;Shared by components and host database&quot; attribute in the method properties?</target>
+            </trans-unit>
+            <trans-unit id="14" resname="WouldYouInstallTheComponent">
+               <source>Would you install the component &quot;{Component}&quot;?
+
+The database will be restarted.</source>
+               <target>Would you install the component &quot;{Component}&quot;?
+
+The database will be restarted.</target>
+            </trans-unit>
+            <trans-unit id="50" resname="ErrorOccuredDuringExecutionOfTheMethod">
+               <source>An error occured during execution of the method: {methodName}</source>
+               <target>An error occured during execution of the method: {methodName}</target>
+            </trans-unit>
+         </group>
+         <group resname="STR# 42">
+            <trans-unit id="2" resname="xliff_If">
+               <source>If</source>
+               <target>If</target>
+            </trans-unit>
+            <trans-unit id="3" resname="xliff_Else">
+               <source>Else</source>
+               <target>Else</target>
+            </trans-unit>
+            <trans-unit id="4" resname="xliff_EndIf">
+               <source>End if</source>
+               <target>End if</target>
+            </trans-unit>
+            <trans-unit id="5" resname="xliff_CaseOf">
+               <source>Case of</source>
+               <target>Case of</target>
+            </trans-unit>
+            <trans-unit id="7" resname="xliff_EndCase">
+               <source>End case</source>
+               <target>End case</target>
+            </trans-unit>
+            <trans-unit id="8" resname="xliff_While">
+               <source>While</source>
+               <target>While</target>
+            </trans-unit>
+            <trans-unit id="9" resname="xliff_EndWhile">
+               <source>End while</source>
+               <target>End while</target>
+            </trans-unit>
+            <trans-unit id="10" resname="xliff_For">
+               <source>For</source>
+               <target>For</target>
+            </trans-unit>
+            <trans-unit id="11" resname="xliff_EndFor">
+               <source>End for</source>
+               <target>End for</target>
+            </trans-unit>
+            <trans-unit id="12" resname="xliff_Repeat">
+               <source>Repeat</source>
+               <target>Repeat</target>
+            </trans-unit>
+            <trans-unit id="13" resname="xliff_Until">
+               <source>Until</source>
+               <target>Until</target>
+            </trans-unit>
+         </group>
+         <group resname="Menus">
+            <trans-unit id="15" resname="Collapse">
+               <source>Collapse</source>
+               <target>Collapse</target>
+            </trans-unit>
+            <trans-unit id="16" resname="Expand">
+               <source>Expand</source>
+               <target>Expand</target>
+            </trans-unit>
+            <trans-unit id="17" resname="TopLeft">
+               <source>Top left</source>
+               <target>Top left</target>
+            </trans-unit>
+            <trans-unit id="18" resname="BottomLeft">
+               <source>Bottom Left</source>
+               <target>Bottom Left</target>
+            </trans-unit>
+            <trans-unit id="19" resname="TopRight">
+               <source>Top Right</source>
+               <target>Top Right</target>
+            </trans-unit>
+            <trans-unit id="20" resname="BottomRight">
+               <source>Bottom Right</source>
+               <target>Bottom Right</target>
+            </trans-unit>
+            <trans-unit id="38" resname="About">
+               <source>About 4DPop…</source>
+               <target>About 4DPop…</target>
+            </trans-unit>
+            <trans-unit id="39" resname="Position">
+               <source>Position</source>
+               <target>Position</target>
+            </trans-unit>
+            <trans-unit id="40" resname="Appearance">
+               <source>Skin</source>
+               <target>Skin</target>
+            </trans-unit>
+            <trans-unit id="49" resname="automaticMode">
+               <source>Automatic mode</source>
+               <target>Automatic mode</target>
+            </trans-unit>
+            <trans-unit id="51" resname="closePalette">
+               <source>Close</source>
+               <target>Close</target>
+            </trans-unit>
+         </group>
+         <group resname="InstallComponent">
+            <trans-unit id="21" resname="Title_1">
+               <source>4DPop -New Component Installation</source>
+               <target>4DPop -New Component Installation</target>
+            </trans-unit>
+            <trans-unit id="22" resname="Comment_1">
+               <source>You have just drop one or more component on the toolbar.
+
+To install this component you may, either create an alias/shortcut for the component or make a copy of it.
+
+Do you want?</source>
+               <target>You have just drop one or more component on the toolbar.
+
+To install this component you may, either create an alias/shortcut for the component or make a copy of it.
+
+Do you want?</target>
+            </trans-unit>
+            <trans-unit id="23" resname="Button_1">
+               <source>Create an alias.</source>
+               <target>Create an alias.</target>
+            </trans-unit>
+            <trans-unit id="25" resname="Buton_2">
+               <source>Make a copy.</source>
+               <target>Make a copy.</target>
+            </trans-unit>
+            <trans-unit id="26" resname="Title_3">
+               <source>Last Step</source>
+               <target>Last Step</target>
+            </trans-unit>
+            <trans-unit id="22" resname="Comment_3_One">
+               <source>Component was installed successfully.
+
+This component will not be available before the next starting of the database.</source>
+               <target>Component was installed successfully.
+
+This component will not be available before the next starting of the database.</target>
+            </trans-unit>
+            <trans-unit id="30" resname="Comment_3_2">
+               <source>Do you want to restart the data base now?</source>
+               <target>Do you want to restart the data base now?</target>
+            </trans-unit>
+            <trans-unit id="31" resname="yes">
+               <source>Yes</source>
+               <target>Yes</target>
+            </trans-unit>
+            <trans-unit id="32" resname="no">
+               <source>No</source>
+               <target>No</target>
+            </trans-unit>
+            <trans-unit id="30" resname="Escape">
+               <source>Escape</source>
+               <target>Escape</target>
+            </trans-unit>
+            <trans-unit id="31" resname="Continue">
+               <source>Continue</source>
+               <target>Continue</target>
+            </trans-unit>
+            <trans-unit id="32" resname="Return">
+               <source>Return</source>
+               <target>Return</target>
+            </trans-unit>
+            <trans-unit id="33" resname="Finish">
+               <source>Finish</source>
+               <target>Finish</target>
+            </trans-unit>
+            <trans-unit id="34" resname="Close">
+               <source>Close</source>
+               <target>Close</target>
+            </trans-unit>
+            <trans-unit id="35" resname="TheComponentIsAlreadyInstalled">
+               <source>The component &quot;&lt; Txt_Name &gt;&quot; is already installed!</source>
+               <target>The component &quot;&lt; Txt_Name &gt;&quot; is already installed!</target>
+            </trans-unit>
+            <trans-unit id="36" resname="Error_1">
+               <source>An error occurred during the component installation.
+
+Error Nº {Error}</source>
+               <target>An error occurred during the component installation.
+
+Error Nº {Error}</target>
+            </trans-unit>
+            <trans-unit id="37" resname="Title">
+               <source>Assistant</source>
+               <target>Assistant</target>
+            </trans-unit>
+            <trans-unit id="41" resname="Title_2">
+               <source>Opération list</source>
+               <target>Opération list</target>
+            </trans-unit>
+            <trans-unit id="41" resname="Comment_2">
+               <source>Components to be installed:</source>
+               <target>Components to be installed:</target>
+            </trans-unit>
+            <trans-unit id="22" resname="Comment_3_1">
+               <source>The component &quot;&lt; Txt_Name &gt;&quot; was installed successfully.
+
+The component will not be available before the next starting of the database.</source>
+               <target>The component &quot;&lt; Txt_Name &gt;&quot; was installed successfully.
+
+The component will not be available before the next starting of the database.</target>
+            </trans-unit>
+            <trans-unit id="22" resname="Comment_3_More">
+               <source>{number} components was installed successfully.
+
+These components will not be available before the next starting of the database.</source>
+               <target>{number} components was installed successfully.
+
+These components will not be available before the next starting of the database.</target>
+            </trans-unit>
+            <trans-unit id="45" resname="Error_2">
+               <source>Not again component to be installed</source>
+               <target>Not again component to be installed</target>
+            </trans-unit>
+            <trans-unit id="46" resname="Error_3">
+               <source>Not compatible component to install</source>
+               <target>Not compatible component to install</target>
+            </trans-unit>
+            <trans-unit id="52" resname="button_4_1">
+               <source>For all databases</source>
+               <target>For all databases</target>
+            </trans-unit>
+            <trans-unit id="53" resname="button_4_2">
+               <source>Only for this database</source>
+               <target>Only for this database</target>
+            </trans-unit>
+            <trans-unit id="54" resname="Comment_4">
+               <source>Install:</source>
+               <target>Install:</target>
+            </trans-unit>
+         </group>
+         <group resname="about">
+            <trans-unit id="47" resname="4DPopURL">
+               <source>http://www.4d.com/products/4dpop.html</source>
+               <target>http://www.4d.com/products/4dpop.html</target>
+            </trans-unit>
+            <trans-unit id="48" resname="about4DPop">
+               <source>About 4DPop</source>
+               <target>About 4DPop</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>
