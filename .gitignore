@@ -20,3 +20,5 @@ Settings/
 Project/Trash/
 Resources/php.ini
 Components
+Build/Components/.DS_Store
+Build/.DS_Store
