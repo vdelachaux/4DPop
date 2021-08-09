@@ -1,4 +1,4 @@
-﻿{
+{
 	"destination": "detailScreen",
 	"windowTitle": "4DPop",
 	"windowSizingX": "fixed",
@@ -110,8 +110,8 @@
 					"visibility": "hidden",
 					"fontFamily": ".Lucida Grande UI",
 					"fontSize": 12,
-					"text": "Bouton",
-					"icon": "/RESOURCES/Images/library/Default_Button.png",
+					"text": " xxxxx ",
+					"icon": "/RESOURCES/Images/Default_Button.png",
 					"iconFrames": 4,
 					"popupPlacement": "separated",
 					"style": "custom",
@@ -394,5 +394,6 @@
 	"$4d": {
 		"version": "1",
 		"kind": "form"
-	}
+	},
+	"geometryStamp": 15
 }
