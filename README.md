@@ -48,3 +48,6 @@ Not found? Go on and <a href="https://github.com/milke/4DPop/issues/new">create 
 * [**Math4D**](https://forums.4d.com/Post/EN/31847250/1/31847251#31847251)
 * [**ogResources Buddy**](https://www.protee.org/index.php/en/download-en/4d-free-bonus)
 * [**QS_Toolbox**](https://association-qualisoft.eu/qs_toolbox-description/)
+
+# Topic 4DPop
+If one or of your components is compatible with 4DPop, ypou can add the topic "4DPop" to be referenced [here](https://github.com/topics/4dpop)
