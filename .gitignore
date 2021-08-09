@@ -1,4 +1,4 @@
-# Ignore invisible files/folders except .gitignore
+﻿# Ignore invisible files/folders except .gitignore
 .*
 !.gitignore
 
@@ -20,3 +20,5 @@ Settings/
 /Project/Trash/
 /Resources/php.ini
 /Components/
+
+Versions/
