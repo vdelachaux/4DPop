@@ -1,4 +1,4 @@
-﻿# Ignore invisible files/folders except .gitignore
+# Ignore invisible files/folders except .gitignore
 .*
 !.gitignore
 
@@ -17,5 +17,6 @@ Settings/
 !buildApp.4DSettings
 
 # Ignore Trash
-Project/Trash/
-Resources/php.ini
+/Project/Trash/
+/Resources/php.ini
+/Components/
