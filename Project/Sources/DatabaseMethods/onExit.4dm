@@ -1,1 +1,1 @@
-4DPOP ("deinit")
+EXECUTE METHOD:C1007("4DPOP"; *; "deinit")

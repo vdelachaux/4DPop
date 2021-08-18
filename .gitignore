@@ -1,4 +1,4 @@
-﻿# Ignore invisible files/folders except .gitignore
+# Ignore invisible files/folders except .gitignore
 .*
 !.gitignore
 
@@ -22,3 +22,4 @@ Settings/
 /Components/
 
 Versions/
+Libraries/lib4d-arm64.dylib

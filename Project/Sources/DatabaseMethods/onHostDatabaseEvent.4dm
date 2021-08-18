@@ -1,45 +1,36 @@
-  // ----------------------------------------------------
-  // Database Method - On Host Database Event
-  // Database: 4DPop
-  // ID[D453BF9A8D4B40BCB95F778613DC853F]
-  // Created #16-7-2013 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  // If the host database accepts
-  // we can launch the palette automatically
-  // ----------------------------------------------------
-  // Declarations
-C_LONGINT:C283($1)
+// ----------------------------------------------------
+// Database Method - On Host Database Event
+// Database: 4DPop
+// ID[D453BF9A8D4B40BCB95F778613DC853F]
+// Created #16-7-2013 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+// If the host database accepts
+// We can launch the palette automatically
+// ----------------------------------------------------
+// Declarations
+#DECLARE($eventCode : Integer)
 
-C_LONGINT:C283($Lon_hostDatabaseEvent)
-
-  // ----------------------------------------------------
-  // Initialisations
-$Lon_hostDatabaseEvent:=$1
-
-  // ----------------------------------------------------
+// ----------------------------------------------------
 Case of 
 		
-		  //______________________________________________________
-	: ($Lon_hostDatabaseEvent=On after host database startup:K74:4)
+		//________________________________________
+	: ($eventCode=On after host database startup:K74:4)
 		
-		  //Launch the process of the palette
-		4DPop_Palette   // (True)
+		// Launch the process of the palette
+		EXECUTE METHOD:C1007("4DPop_Palette")  // (True)
 		
-		  //______________________________________________________
-	: ($Lon_hostDatabaseEvent=On before host database exit:K74:5)
+		//________________________________________
+	: ($eventCode=On before host database exit:K74:5)
 		
-		  //Kill the process
-		4DPOP ("deinit")
+		// Kill the process
+		EXECUTE METHOD:C1007("4DPOP"; *; "deinit")
 		
-		  //______________________________________________________
-	: ($Lon_hostDatabaseEvent=On after host database exit:K74:6)
+		//________________________________________
+	: ($eventCode=On after host database exit:K74:6)
 		
-		  //Cleanup the memory
-		  //CLEAR LIST(<>tools;*)
+		// Cleanup the memory
+		// CLEAR LIST(<>tools;*)
 		
-		  //______________________________________________________
+		//________________________________________
 End case 
-
-  // ----------------------------------------------------
-  // End

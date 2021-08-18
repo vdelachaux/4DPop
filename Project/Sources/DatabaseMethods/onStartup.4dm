@@ -1,5 +1,5 @@
 If (Not:C34(Shift down:C543))
 	
-	4DPop_Palette 
+	EXECUTE METHOD:C1007("4DPop_Palette")
 	
 End if 
