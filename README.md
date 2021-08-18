@@ -12,7 +12,7 @@
 
 All others component of the 4DPop family are independent tools that you can install or not.
 
-You can add the components you want in the list below or [get the latest version of the all-in-one family](https://github.com/vdelachaux/4DPop-Family/releases/latest)
+You can [get the latest compiled version of the all-in-one family](https://github.com/vdelachaux/4DPop-Family/releases/latest) or add the components you want in the list below (Each component is available with its source code and a compiled version ready to be used)
 
 * [4DPop **AppMaker**](https://github.com/vdelachaux/4DPop-AppMaker)
 * [4DPop **Bookmarks**](https://github.com/vdelachaux/4DPop-Bookmarks)
@@ -30,16 +30,17 @@ You can add the components you want in the list below or [get the latest version
 * [4DPop **XLIFF**](https://github.com/vdelachaux/4DPop-XLIFF)
 * [4DPop **XLIFF Pro**](https://vdelachaux.github.io/4DPop-XLIFF-Pro/)
 
--------
-📥 [Get the latest version of the all-in-one family ](https://github.com/vdelachaux/4DPop-Family/releases/latest)
-
--------
-
 
 ***Note***: If you encountered a bug or have a feature request, feel free to create an issue.
 However, it is highly appreciated if you <a href="https://github.com/milke/4DPop/issues">browse and search current issues</a> first.
 Found the issue? Go on and join its discussion thread.
 Not found? Go on and <a href="https://github.com/milke/4DPop/issues/new">create one</a>.
+
+# 4DPop family
+📥 [Get the latest version of the all-in-one family ](https://github.com/vdelachaux/4DPop-Family/releases/latest)
+
+
+
 
 # Compatible Components
 
