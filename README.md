@@ -56,4 +56,4 @@ Compatible components provide access to other tools. Here are the ones I know:
 * [**QS_Toolbox**](https://association-qualisoft.eu/qs_toolbox-description/)
 
 # Topic 4DPop
-If one or of your components is compatible with 4DPop, ypou can add the topic "4DPop" to be referenced [here](https://github.com/topics/4dpop)
+If one or of your components is compatible with 4DPop, you can add the topic "4DPop" to be referenced [here](https://github.com/topics/4dpop)
