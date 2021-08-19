@@ -28,7 +28,8 @@ You can [get the latest compiled version of the all-in-one family](https://githu
 * [4DPop **sqlSchemas**](https://github.com/vdelachaux/4DPop-sqlSchemas)
 * [4DPop **Window**](https://github.com/vdelachaux/4DPop-Window)
 * [4DPop **XLIFF**](https://github.com/vdelachaux/4DPop-XLIFF)
-* [4DPop **XLIFF Pro**](https://vdelachaux.github.io/4DPop-XLIFF-Pro/)
+* [4DPop **XLIFF Pro**](https://vdelachaux.github.io/4DPop-XLIFF-Pro)
+* [4DPop **QuickOpen**](https://github.com/vdelachaux/4DPop-QuickOpen)
 
 
 ***Note***: If you encountered a bug or have a feature request, feel free to create an issue.
