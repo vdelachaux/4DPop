@@ -25,21 +25,20 @@ This component manages a palette, displayed in design mode, in which new icons w
 
 # <a name="installation">Installation</a>
 
-1. Create a `Components` folder next to the `Project` folder of your database[^binary].
-2. Place the `4DPop.4dbase` component [^macos] in the `Components` folder.
+1. Create a `Components` folder next to the `Project` folder of your database ①.
+2. Place the `4DPop.4dbase` component ② in the `Components` folder.
 3. Place one or more `4DPop components` you want to use in the same folder. 
 3. Open your database.
-4. Open the structure settings dialog and go to the `Security` page to activate, if any, the option `Execute "On Host Database Event" Method of the component`[^manual]
+4. Open the structure settings dialog and go to the `Security` page to activate, if any, the option `Execute "On Host Database Event" Method of the component`③
 5. Reopen the database, the palette is displayed in the lower left corner of the screen in Design mode.
 
-	>📍It is always preferable to use an alias file (macOS) or shortcut file (Windows) instead of the component and thus store the originals in a single copy. Updates will be simplified especially if you maintain several projects. 
+①: For a binary database, the `Components` folder must be located next to the structure file of your database (".4db").
 
-[^binary]: For a binary database, the `Components` folder must be located next to the structure file of your database (".4db").
+②: On `macOS`, the component is a package whose ".4dbase" extension is not necessarily visible depending on your display preference settings.
 
-[^macos]: On `macOS`, the component is a package whose ".4dbase" extension is not necessarily visible depending on your display preference settings.
+③: If you dont't want to use the automatic launch of the palette see [Launch the palette with code](#launch-with-code)
 
-[^manual]: If you dont't want to use the automatic launch of the palette see [Launch the palette with code](#launch-with-code)
-
+>📍It is always preferable to use an alias file (macOS) or shortcut file (Windows) instead of the component and thus store the originals in a single copy. Updates will be simplified especially if you maintain several projects. 
 
 # <a name="compatible-components">Compatible Components</a>
 
@@ -60,7 +59,7 @@ This XMLfile describes the elements of the component that will be available with
 
 Something like:
 
-```
+```XML
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>    
 <tools name=":xliff:Ruler" picture="Ruler.png" helptip=":xliff:ToolHelpTip" initProc="Init">
     <tool name="Rulers" method="4DPop_ScreenRuler"/>
@@ -73,12 +72,12 @@ Something like:
 Start and end of file. Mandatory
 
 #### Attributes
-* **name**: Name as it will be displayed below the button (mandatory).
+* **name**: Name as it will be displayed below the button ① (mandatory).
 * **picture**: Name of the picture file of the button. This file must be located at the root of the "Resources" folder of the component (optionally, if omitted a default picture is used).
-* **helptip**: Text of help tip associated with button.
-* **initproc**: Name of the component method to be executed on loading. 
-* **ondrop**: Name of the component method to be executed at the time of a drop on the button. 
-* **default**: Name of the component method to be executed for a simple clic on the button when more than one tool is available.
+* **helptip**: Text of help tip associated with button ①
+* **initproc**: Name of the component method ② to be executed on loading. 
+* **ondrop**: Name of the component method ② to be executed at the time of a drop on the button. 
+* **default**: Name of the component method ② to be executed for a simple clic on the button when more than one tool is available.
 * **popup**: Display flag of the pop-up arrow linked with the button . Values: "True" (to display the arrow even when there is only one <tool> key, see below)
 
 ### \<tool>
@@ -92,13 +91,12 @@ This key can be repeated:
 In case of the default attribute above is defined, a simple clic launches the method referenced and a long click or an on arrow click display the tools' menu.
 
 #### Attributes
-* **name**: Name of the tool as it will appear in the menu associated with the button (mandatory if there are several <tool> keys)
-* **method**: Name of the component method corresponding to the tool to be executed (mandatory) 
-* **picture**: Name of the picture file associated with the menu item. This file must be located in the "Resources" folder of the component.
+* **name**: Name of the tool as it will appear in the menu associated with the button ① (mandatory if there are several <tool> keys)
+* **method**: Name of the component method ② corresponding to the tool to be executed (mandatory) 
 
-> 📍Attributes `name` & `helptip` accepts the syntax ":xliff :resname", so the strings must be located in the component xliff files. The displayed string will be localized.
+① These attributes accept the syntax ":xliff :resname", so the strings must be located in the xliff files of the components and the displayed string will be localized.
 
-> 📍The called methods must have been declared as shared in the component database. All the methods receive a pointer as parameter (on the button of the palette. this pointer can be used to test the state of the button or to correctly display a popup). If you plan to compile the component, this parameter must be declared explicitly [var $1 : Pointer] in all the methods of the component called by 4DPop (initproc, ondrop, default, and method) if not, an error will be generated each time the method is called (-20008 - incorrect Parameters in a command EXECUTER).
+② The called methods must have been declared as shared in the component database. All the methods receive a pointer as parameter (on the button of the palette. this pointer can be used to test the state of the button or to correctly display a popup). If you plan to compile the component, this parameter must be declared explicitly [var $1 : Pointer] in all the methods of the component called by 4DPop (initproc, ondrop, default, and method) if not, an error will be generated each time the method is called (-20008 - incorrect Parameters in a command EXECUTER).
 
 > 📍The component method can be responsible for building and displaying the menu. In this case, a single <tool> tag calls the component method whose code displays the menu and processes the choice of the user. In order for the related menu arrow to be displayed on the button of your tool, you must pass "True" in the popup attribute of the <tools> key.
 
