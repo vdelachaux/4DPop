@@ -103,7 +103,7 @@ In case of the default attribute above is defined, a simple clic launches the me
 **It will be very appreciated if you publish your component on Github and don't forget to [link your project with the 4DPop topic](#topic).**
 
 # <a name="topic">Topic 4DPop</a>
-If you develop a [component compatible with 4DPop](#how-to), it is strongly recommended to add the "4DPop" [topic](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/classifying-your-repository-with-topics) to be referenced in the [list of 4DPop compatible components] (https://github.com/topics/4dpop).
+If you develop a [component compatible with 4DPop](#how-to), it is strongly recommended to add the "4DPop" [topic](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/classifying-your-repository-with-topics) to be referenced in the [list of 4DPop compatible components](https://github.com/topics/4dpop).
 
 
 # <a name="launch-with-code">Launch the palette with code</a> 
