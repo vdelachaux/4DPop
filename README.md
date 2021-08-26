@@ -6,13 +6,33 @@
 
 # <a name="overview">Overview</a>
 
-4DPop is the container component that handles loading and provides an interface to compatible components.
-
-This component manages a palette, displayed in design mode, in which new icons will be displayed as compatible components are installed. 
+`4DPop` is a series of productivity components grouped into a toolbar that integrates perfectly with the 4D development environment. 
 
 <img src="./assets/4DPop.png">
 
-📥 [Get the latest version of the all-in-one family ](https://github.com/vdelachaux/4DPop-Family/releases/latest) or explore and add only the components you want from the list below or the referenced [compatible components](#compatible-components).
+`4DPop.4dbase` is the container component that handles loading and provides an interface to compatible components.
+
+Filled with clever tools and immediately useful for developers, `4DPop` has many advantages:
+
+#### _A Mind for Productivity_
+Every `4DPop` component is a handy little nugget you’ll wonder how you ever did without. Created by 4D developers for 4D developers, they’ll help you save precious time on repetitive operations, be the little helpers you always dreamt of having, and put an even friendlier face on your development environment.
+
+#### _Easy to Use_
+Installing a new component is easy: Just drag and drop on to the 4DPop toolbar! Each comes with its own online help.
+
+#### _Modular_
+You can compose your `4DPop` palette à la carte with the tools you prefer, without overloading your screen. 
+
+#### _Free_
+`4DPop` and its components are free to use and distribute in all 4D development environments.
+
+#### _Source Code Provided_
+Like all 4D components, `4DPop` tools are miniature 4D projects delivered to you compiled for your immediate use, but also in interpreted mode, so that you can explore the source code. You may wonder how rules are created in `4DPop Rulers`, for example, or how `4DPop Commands` manages predictive typing, or how to manage a palette, a help file or to create a component. It’s all there in the code. 4DPop’s code is also a very good example of the art of programming efficiently in 4D... even if we do say so ourselves!
+
+#### _Open_
+You can enhance `4DPop` with [your own components](#how-to), and you are also able to share them, and [find others in the 4D developer community](https://github.com/topics/4dpop).
+
+📥 [Get the latest version of the all-in-one family ](https://github.com/vdelachaux/4DPop-Family/releases/latest) or explore the family and add only the components you want from the list below.
 
 | | | | | |
 |:----:|:----:|:----:|:----:|:----:|
@@ -21,7 +41,7 @@ This component manages a palette, displayed in design mode, in which new icons w
 |🆕 [4DPop **QuickOpen**](https://github.com/vdelachaux/4DPop-QuickOpen)|[4DPop **Rulers**](https://github.com/vdelachaux/4DPop-Rulers)|[4DPop **sqlSchemas**](https://github.com/vdelachaux/4DPop-sqlSchemas)|[4DPop **Window**](https://github.com/vdelachaux/4DPop-Window)|[4DPop **XLIFF**](https://github.com/vdelachaux/4DPop-XLIFF)|
 |[4DPop **XLIFF Pro**](https://vdelachaux.github.io/4DPop-XLIFF-Pro)|||||
 
-> 📍All 4DPop components are designed for development mode only and should not be included in the final application.
+And when you’re ready to deploy, you can eliminate all the `4DPop` elements from your app to ensure its light weight.
 
 # <a name="installation">Installation</a>
 
@@ -123,6 +143,6 @@ End if
 
 # Note
 If you encountered a bug or have a feature request, feel free to create an issue.
-However, it is highly appreciated if you <a href="https://github.com/milke/4DPop/issues">browse and search current issues</a> first.
+However, it is highly appreciated if you <a href="https://github.com/vdelachaux/4DPop/issues" target="_blank">browse and search current issues</a> first.
 Found the issue? Go on and join its discussion thread.
-Not found? Go on and <a href="https://github.com/milke/4DPop/issues/new">create one</a>.
+Not found? Go on and <a href="https://github.com/vdelachaux/4DPop/issues/new" target="_blank">create one</a>.
