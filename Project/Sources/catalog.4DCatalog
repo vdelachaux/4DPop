@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
 <base name="4DPop" uuid="3DD9E74D3FAC4D31ADF131FA614D1047" collation_locale="fr">
 	<schema name="DEFAULT_SCHEMA"/>
-	<base_extra data_file_path=":4DPop.4DD" package_name="4DPop" structure_file_name="4DPop" __stringCompHash="icu:63.1.0" __keywordBuildingHash="icu:63.1.0">
+	<base_extra data_file_path=":4DPop.4DD" package_name="4DPop" structure_file_name="4DPop" __stringCompHash="icu:68.1.0" __keywordBuildingHash="icu:68.1.0">
 		<temp_folder folder_selector="system"/>
 	</base_extra>
 </base>
