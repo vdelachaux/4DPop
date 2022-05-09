@@ -134,9 +134,10 @@ If you dont't want to use the automatic launch of the palette, you can do it wit
 // Run 4DPop
 // This code is available even if the component is not present like in the final application.
 If (Not(Is compiled mode))
-	ARRAY TEXT($tTxtComponents;0) COMPONENT LIST($tTxtComponents)
+	ARRAY TEXT($tTxtComponents;0) 
+	COMPONENT LIST($tTxtComponents)
 	If (Find in array($tTxtComponents;"4DPop")>0)
-		EXECUTE METHOD("4DPopPalette")
+		EXECUTE METHOD("4DPop_Palette")
 	End if
 End if
 ```
