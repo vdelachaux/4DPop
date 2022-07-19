@@ -1,42 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="30">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="31">
 	<com.4d>
 		<database>
 			<cache size_fixed="32" size_maximum="100" size_minimum="16" size_reserved="128"/>
 			<cpu_priority/>
 			<misc/>
-			<data_storage allow_data_read_only="false"/></database>
+			<data_storage allow_data_read_only="false"/>
+		</database>
 		<compiler>
 			<options compilation_path="3" fat_binary="true" symbol_file="true" target="all"/>
 			<typage default_for_button="2"/>
-			<method_suffix arrays="" interprocess_arrays="" interprocess_variables="" methods="" variables=""/></compiler>
+			<method_suffix arrays="" interprocess_arrays="" interprocess_variables="" methods="" variables=""/>
+		</compiler>
 		<general execute_host_database_event="true">
-			<mover always_display_dialog="2" forms="1"/></general>
+			<mover always_display_dialog="2" forms="1"/>
+		</general>
 		<interface>
 			<developper allow_read_only_structure="false"/>
 			<user print_progress="false"/>
 			<shortcuts>
 				<accept_input_form alt="false" command="false" ctrl="false" key_code="0" shift="false"/>
 				<cancel_input_form alt="false" command="false" ctrl="false" key_code="0" shift="false"/>
-				<add_subform alt="false" command="false" ctrl="false" key_code="0" shift="false"/></shortcuts>
-			<misc/></interface>
+				<add_subform alt="false" command="false" ctrl="false" key_code="0" shift="false"/>
+			</shortcuts>
+			<misc/>
+		</interface>
 		<sql>
-			<publication port_number="1919"/></sql>
+			<publication port_number="1919"/>
+		</sql>
 		<server>
 			<network>
-				<options publication_name="4DPop" use_legacy_network_layer="false"/></network>
-			<misc/></server>
+				<options publication_name="4DPop" use_legacy_network_layer="false"/>
+			</network>
+			<misc/>
+		</server>
 		<web>
 			<standalone_server>
 				<options>
-					<web_passwords generic_web_user="2"/></options>
+					<web_passwords generic_web_user="2"/>
+				</options>
 				<configuration automatic_session_management="false">
 					<hosts>
-						<host home_page="index.html" html_root="./DossierWeb/" id="0" name="Default"/></hosts></configuration>
+						<host home_page="index.html" html_root="./DossierWeb/" id="0" name="Default"/>
+					</hosts>
+				</configuration>
 				<log>
-					<backup daily="" hourly="" monthly="" size="0" weekly=""/></log>
-				<misc/></standalone_server>
+					<backup daily="" hourly="" monthly="" size="0" weekly=""/>
+				</log>
+				<misc/>
+			</standalone_server>
 			<remote>
 				<configuration allow_ssl="false" automatic_session_management="false"/>
-				<misc/></remote></web>
+				<misc/>
+			</remote>
+		</web>
 		<deployment>
-			<options/></deployment></com.4d></preferences>
+			<options/>
+		</deployment>
+	</com.4d>
+</preferences>
