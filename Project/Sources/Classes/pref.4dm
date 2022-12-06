@@ -10,20 +10,23 @@ Class constructor
 		
 		This:C1470.root:=DOM Create XML Ref:C861("preference")
 		DOM SET XML DECLARATION:C859(This:C1470.root; "UTF-8"; False:C215)
-		XML SET OPTIONS:C1090(This:C1470.root; XML indentation:K45:34; XML with indentation:K45:35)
 		
 	End if 
 	
-	If (OK=0)
+	If (Bool:C1537(OK))
+		
+		XML SET OPTIONS:C1090(This:C1470.root; XML indentation:K45:34; XML with indentation:K45:35)
+		
+	Else 
 		
 		This:C1470.root:=Null:C1517
 		
 	End if 
 	
 	//======================================================================
-Function path()->$file : 4D:C1709.File
+Function path() : 4D:C1709.File
 	
-	$file:=File:C1566(4DPop_preferencePath; fk platform path:K87:2)
+	return File:C1566(4DPop_preferencePath; fk platform path:K87:2)
 	
 	//======================================================================
 Function close()
@@ -32,9 +35,11 @@ Function close()
 	This:C1470.root:=Null:C1517
 	
 	//======================================================================
-Function get($key : Text)->$value
+Function get($key : Text) : Variant
 	
 	var $node : Text
+	var $value
+	
 	If ($key="version")
 		
 		$node:=This:C1470.root
@@ -47,4 +52,4 @@ Function get($key : Text)->$value
 	
 	DOM GET XML ATTRIBUTE BY NAME:C728($node; $key; $value)
 	
-	
+	return $value
