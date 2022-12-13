@@ -2,28 +2,61 @@
 .*
 !.gitignore
 
-# Ignore data files
-Data/
+#--------------------------------
+# Ignore data file
+#--------------------------------
+[dD][aA][tT][aA]/
+*.4DD
+*.4DIndx
+*.4DIndy
+*.Match
+*.journal
 
-# Ignore derived data except the Documentation
-DerivedData/
-#!DerivedData/Documentation/
+#--------------------------------
+# Ignore derived data
+#--------------------------------
+Project/DerivedData/
 
-# Ignore user preferences
-userPreferences.*
+#--------------------------------
+# Ignore logs
+#--------------------------------
+Logs/
+
+#--------------------------------
+# Ignore settings & preferences
+#--------------------------------
 Preferences/
-!4DPop AppMaker.xml
+!4DPop AppMaker.*
+
 Settings/
-!buildApp.4DSettings
+#!buildApp.4DSettings
 
+userPreferences.*/
+
+#--------------------------------
 # Ignore Trash
-/Project/Trash/
-/Resources/php.ini
-/Components/
+#--------------------------------
+Project/Trash/
 
-Versions/
+Resources/php.ini
+
+#--------------------------------
+# Miscellaneous
+#--------------------------------
+*__Orphan__*
+*symbols.txt
+ehthumbs.db
+Thumbs.db
+
+#--------------------------------
+# Added by user
+#--------------------------------
+Components/
+!Build/Components
+
+_gsdata_
+
+Project/Sources/Methods/Method*.4dm
+Project/Sources/Methods/00_*.4dm
+
 Libraries/lib4d-arm64.dylib
-Build/Components/4DPop.4dbase/_gsdata_
-Project/Sources/Methods/Method*.4dm
-Build/Components/4DPop.dmg
-Project/Sources/Methods/Method*.4dm
