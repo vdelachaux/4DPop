@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"shared":true}
+//%attributes = {"invisible":true}
 #DECLARE($name : Text)->$class : 4D:C1709.Class
 
 If (False:C215)

@@ -19,24 +19,62 @@ Class constructor($module : Text)
 			"bottom"; Screen height:C188)
 		
 	End if 
+	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function get($key : Text) : Variant
 	
-	return This:C1470.module#Null:C1517\
-		 ? This:C1470.data[This:C1470.module][$key]\
-		 : This:C1470.data[$key]
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
-Function set($key : Text; $value) : cs:C1710.Preferences
-	
-	If (This:C1470.module#Null:C1517)
+	If (Count parameters:C259>=1)
 		
-		This:C1470.data[This:C1470.module][$key]:=$value
+		return This:C1470.module#Null:C1517\
+			 ? This:C1470.data[This:C1470.module][$key] || This:C1470._factory[$key]\
+			 : This:C1470.data[$key] || This:C1470._factory[$key]
 		
 	Else 
 		
-		This:C1470.data[$key]:=$value
+		var $o : Object
+		$o:=This:C1470.module#Null:C1517\
+			 ? This:C1470.data[This:C1470.module]\
+			 : This:C1470.data
 		
+		If (This:C1470._factory#Null:C1517)
+			
+			For each ($key; This:C1470._factory)
+				
+				$o[$key]:=$o[$key] || This:C1470._factory[$key]
+				
+			End for each 
+		End if 
+		
+		return $o
+		
+	End if 
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+Function set($key; $value) : cs:C1710.Preferences
+	
+	If (Value type:C1509($key)=Is object:K8:27)
+		
+		If (This:C1470.module#Null:C1517)
+			
+			This:C1470.data[This:C1470.module]:=$key
+			
+		Else 
+			
+			This:C1470.data:=$key
+			
+		End if 
+		
+	Else 
+		
+		If (This:C1470.module#Null:C1517)
+			
+			This:C1470.data[This:C1470.module][$key]:=$value
+			
+		Else 
+			
+			This:C1470.data[$key]:=$value
+			
+		End if 
 	End if 
 	
 	This:C1470.save()

@@ -30,6 +30,7 @@
 	"(📦 Current)": {},
 	"(Classes_1)": {},
 	"(classes)": {},
+	"(hidden)": {},
 	"(lib)": {},
 	"(PRIVATE_1)": {},
 	"(Private)": {},
@@ -45,13 +46,13 @@
 		"groups": [
 			"👩‍💻 UI",
 			"database",
-			"env",
-			"hidden"
+			"env"
 		],
 		"methods": [
 			"noError"
 		],
 		"classes": [
+			"_singleton",
 			"menu",
 			"menuBar",
 			"motor",
@@ -83,11 +84,6 @@
 			"env"
 		]
 	},
-	"hidden": {
-		"classes": [
-			"_singleton"
-		]
-	},
 	"trash": {
 		"groups": [
 			"(# CLASSES)",
@@ -95,6 +91,7 @@
 			"(📦 Current)",
 			"(Classes_1)",
 			"(classes)",
+			"(hidden)",
 			"(lib)",
 			"(PRIVATE_1)",
 			"(Private)",
