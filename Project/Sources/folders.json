@@ -1,89 +1,105 @@
 {
-	"_0_DEV": {
+	"- #️⃣ API": {
+		"methods": [
+			"COMPILER_api",
+			"pop",
+			"recoverWindow"
+		]
+	},
+	"- 📦 MAIN": {
+		"methods": [
+			"_STRIP_Controller",
+			"COMPILER_MAIN",
+			"displayStrip"
+		],
+		"forms": [
+			"ABOUT",
+			"STRIP"
+		],
+		"classes": [
+			"_component"
+		]
+	},
+	"-👥 NAMESPACE": {
+		"classes": [
+			"Preferences"
+		]
+	},
+	"(# CLASSES)": {},
+	"(♻️ Common)": {},
+	"(📦 Current)": {},
+	"(Classes_1)": {},
+	"(classes)": {},
+	"(lib)": {},
+	"(PRIVATE_1)": {},
+	"(Private)": {},
+	"(Public)": {},
+	"(xml)": {},
+	"# 🚧 DEV": {
 		"methods": [
 			"00_RunPalette",
 			"00_test"
 		]
 	},
-	"_COMPONENT": {
+	"♻️ LIBRAIRIES": {
 		"groups": [
-			"Private",
-			"Public"
-		],
-		"methods": [
-			"COMPILER_4DPOP"
-		]
-	},
-	"classes": {
-		"methods": [
-			"application",
-			"COMPILER_classes",
+			"👩‍💻 UI",
 			"database",
-			"plist",
-			"svg",
+			"env",
+			"hidden"
+		],
+		"methods": [
+			"noError"
+		],
+		"classes": [
+			"menu",
+			"menuBar",
+			"motor",
 			"xml"
 		]
 	},
-	"lib": {
+	"⚙️ MACROS": {},
+	"👩‍💻 UI": {},
+	"🛠️ Tools": {
+		"methods": [
+			"getWindowOffsets"
+		]
+	},
+	"database": {
+		"methods": [
+			"COMPILER_database",
+			"databaseNonThreadSafe"
+		],
+		"classes": [
+			"database"
+		]
+	},
+	"env": {
+		"methods": [
+			"COMPILER_env",
+			"envScreens"
+		],
+		"classes": [
+			"env"
+		]
+	},
+	"hidden": {
+		"classes": [
+			"_singleton"
+		]
+	},
+	"trash": {
 		"groups": [
-			"xml"
-		],
-		"methods": [
-			"doc_doPath",
-			"env_Txt_Localized_Folder_Path",
-			"obj_Txt_3DButton_Format",
-			"str_gLon_Hex_To_Longint",
-			"ui_darkMode",
-			"update_tool",
-			"win_Lon_Get_Offsets",
-			"xliff_getString"
+			"(# CLASSES)",
+			"(♻️ Common)",
+			"(📦 Current)",
+			"(Classes_1)",
+			"(classes)",
+			"(lib)",
+			"(PRIVATE_1)",
+			"(Private)",
+			"(Public)",
+			"(xml)"
 		]
-	},
-	"Private": {
-		"methods": [
-			"_o_PREFERENCES",
-			"4DPOP",
-			"ABOUT",
-			"ASSISTANT",
-			"Button_OnDrop",
-			"COLLAPSE_EXPAND",
-			"CONTEXTUAL_MENU",
-			"err_NoERROR",
-			"init",
-			"INSTALL",
-			"loadComponents",
-			"noError",
-			"Preferences_Get_Path",
-			"Skin",
-			"Tool_Execute_Method",
-			"Tools_Menu"
-		],
-		"forms": [
-			"4DPOP",
-			"ABOUT",
-			"ASSISTANT"
-		]
-	},
-	"Public": {
-		"methods": [
-			"4DPop_applicationFolder",
-			"4DPop_applicationLanguage",
-			"4DPop_hostDatabaseFolder",
-			"4DPop_hostDatabaseInformation",
-			"4DPop_Palette",
-			"4DPop_preferenceDelete",
-			"4DPop_preferenceLoad",
-			"4DPop_preferencePath",
-			"4DPop_preferenceStore",
-			"4DPop_RECOVER_WINDOW",
-			"4DPop_UPDATE_TOOL"
-		]
-	},
-	"xml": {
-		"methods": [
-			"COMPILER_xml",
-			"xml_elementToObject"
-		]
-	},
-	"trash": {}
+	}
 }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="31">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="33">
 	<com.4d>
 		<database>
 			<cache size_fixed="32" size_maximum="100" size_minimum="16" size_reserved="128"/>
@@ -7,11 +7,11 @@
 			<data_storage allow_data_read_only="false"/>
 		</database>
 		<compiler>
-			<options compilation_path="3" fat_binary="true" symbol_file="true" target="all"/>
+			<options compilation_path="3" fat_binary="true" symbol_file="true" syntax_file="true" target="all"/>
 			<typage default_for_button="2"/>
 			<method_suffix arrays="" interprocess_arrays="" interprocess_variables="" methods="" variables=""/>
 		</compiler>
-		<general execute_host_database_event="true">
+		<general component_classStore_name="pop" execute_host_database_event="true">
 			<mover always_display_dialog="2" forms="1"/>
 		</general>
 		<interface>

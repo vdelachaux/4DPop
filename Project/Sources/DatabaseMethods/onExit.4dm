@@ -1,1 +1,6 @@
-EXECUTE METHOD:C1007("4DPOP"; *; "deinit")
+If (Not:C34(Undefined:C82(component)))
+	
+	component.abort()
+	
+End if 
+

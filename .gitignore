@@ -1,6 +1,15 @@
 # Ignore invisible files/folders except .gitignore
 .*
 !.gitignore
+!.gitattributes
+
+#--------------------------------
+# Don't ignore .github workflow
+#--------------------------------
+
+!.github/
+!.github/**/.*
+.github/.DS_Store
 
 #--------------------------------
 # Ignore data file

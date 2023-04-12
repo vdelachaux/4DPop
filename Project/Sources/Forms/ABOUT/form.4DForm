@@ -9,7 +9,8 @@
 	"markerBreak": 220,
 	"markerFooter": 240,
 	"events": [
-		"onLoad"
+		"onLoad",
+		"onCloseBox"
 	],
 	"method": "method.4dm",
 	"pageFormat": {
@@ -21,18 +22,7 @@
 		null,
 		{
 			"objects": {
-				"Rectangle": {
-					"type": "rectangle",
-					"top": 0,
-					"left": 0,
-					"width": 460,
-					"height": 505,
-					"stroke": "transparent",
-					"fill": "automatic",
-					"sizingX": "grow",
-					"sizingY": "grow"
-				},
-				"about": {
+				"list": {
 					"type": "listbox",
 					"left": 0,
 					"top": 65,
@@ -45,19 +35,15 @@
 					],
 					"listboxType": "collection",
 					"showHeaders": false,
-					"dataSource": "Form:C1466.widgets",
-					"selectionMode": "none",
+					"dataSource": "Form:C1466.properties.widgets",
 					"focusable": false,
-					"scrollbarHorizontal": "hidden",
 					"borderStyle": "none",
-					"verticalAlign": "middle",
-					"horizontalLineStroke": "transparent",
 					"verticalLineStroke": "transparent",
 					"sizingX": "grow",
 					"sizingY": "grow",
-					"resizingMode": "legacy",
-					"scrollbarVertical": "hidden",
-					"fill": "transparent",
+					"rowHeight": "64px",
+					"selectionMode": "none",
+					"alternateFill": "automatic",
 					"columns": [
 						{
 							"header": {
@@ -88,7 +74,6 @@
 							"resizable": false,
 							"enterable": false,
 							"truncateMode": "none",
-							"wordwrap": "normal",
 							"width": 230
 						},
 						{
@@ -106,48 +91,48 @@
 						}
 					]
 				},
-				"Input": {
+				"4DPop_icon": {
 					"type": "input",
 					"left": 3,
 					"top": 1,
 					"width": 64,
 					"height": 64,
-					"dataSource": "Form:C1466.me.picture",
+					"dataSource": "Form:C1466.properties.icon",
 					"dataSourceTypeHint": "picture",
-					"pictureFormat": "proportionalCenter",
 					"borderStyle": "none",
-					"contextMenu": "none",
 					"enterable": false,
 					"focusable": false,
-					"fill": "transparent"
+					"fill": "transparent",
+					"contextMenu": "none",
+					"pictureFormat": "proportionalCenter"
 				},
-				"Input1": {
+				"4DPop_infos": {
 					"type": "input",
 					"left": 71,
 					"top": 17,
 					"width": 227,
 					"height": 33,
-					"dataSource": "Form:C1466.me.infos",
+					"dataSource": "Form:C1466.properties.infos",
 					"dataSourceTypeHint": "text",
-					"borderStyle": "none",
-					"enterable": false,
-					"contextMenu": "none",
-					"focusable": false,
-					"fill": "transparent"
+					"class": "infos"
 				},
-				"Input2": {
+				"4DPop_copyright": {
 					"type": "input",
 					"left": 302,
 					"top": 25,
 					"width": 155,
 					"height": 17,
-					"dataSource": "Form:C1466.me.copyright",
+					"dataSource": "Form:C1466.properties.copyright",
 					"dataSourceTypeHint": "text",
-					"borderStyle": "none",
-					"enterable": false,
-					"focusable": false,
-					"contextMenu": "none",
-					"fill": "transparent"
+					"fontTheme": "normal",
+					"class": "infos"
+				},
+				"Line": {
+					"type": "line",
+					"top": 64,
+					"left": 0,
+					"width": 460,
+					"height": 1
 				}
 			}
 		}
@@ -155,5 +140,13 @@
 	"$4d": {
 		"version": "1",
 		"kind": "form"
-	}
+	},
+	"editor": {
+		"activeView": "main",
+		"defaultView": "main",
+		"views": {
+			"main": {}
+		}
+	},
+	"geometryStamp": 26
 }
