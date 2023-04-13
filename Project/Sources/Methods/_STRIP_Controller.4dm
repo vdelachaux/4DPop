@@ -571,7 +571,8 @@ Else
 						
 						$e.method:="onDrop"
 						$e.success:=component.execute($e)
-						ASSERT:C1129($e.success; Replace string:C233(Get localized string:C991("ErrorOccuredDuringExecutionOfTheMethod"); "{methodName}"; $e.widget.ondrop))
+						
+						//ASSERT($e.success; Replace string(Get localized string("ErrorOccuredDuringExecutionOfTheMethod"); "{methodName}"; $e.widget.ondrop))
 						
 						//Else
 						//Button_OnDrop
@@ -597,7 +598,8 @@ Else
 					
 					$e.method:="default"
 					$e.success:=component.execute($e)
-					ASSERT:C1129($e.success; Replace string:C233(Get localized string:C991("ErrorOccuredDuringExecutionOfTheMethod"); "{methodName}"; $e.widget.default))
+					
+					//ASSERT($e.success; Replace string(Get localized string("ErrorOccuredDuringExecutionOfTheMethod"); "{methodName}"; $e.widget.default))
 					
 					//…………………………………………………………………………………………………………………………
 				: ($e.run)
@@ -651,7 +653,8 @@ Else
 					If ($e.method#Null:C1517)
 						
 						$e.success:=component.execute($e)
-						ASSERT:C1129($e.success; Replace string:C233(Get localized string:C991("ErrorOccuredDuringExecutionOfTheMethod"); "{methodName}"; $e.method))
+						
+						//ASSERT($e.success; Replace string(Get localized string("ErrorOccuredDuringExecutionOfTheMethod"); "{methodName}"; $e.method))
 						
 					End if 
 					

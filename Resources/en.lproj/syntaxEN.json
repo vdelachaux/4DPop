@@ -1,21 +1,5 @@
 {
 	"_method_": {
-		"instantiate": {
-			"Syntax": "**instantiate**( *name* : Text )->class : 4D.Class",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				],
-				[
-					"class",
-					"4D.Class",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
 		"pop": {
 			"Syntax": "**pop**() : 4D.Class",
 			"Params": [
@@ -86,26 +70,6 @@
 				"Summary": ""
 			}
 		},
-		"menu": {
-			"new()": {
-				"Syntax": "**.new**( *options* : Variant )",
-				"Params": [
-					[
-						"options",
-						"Variant",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
-		"_component": {
-			"new()": {
-				"Syntax": "**.new**()",
-				"Params": [],
-				"Summary": ""
-			}
-		},
 		"xml": {
 			"new()": {
 				"Syntax": "**.new**( *variable* : Variant )",
@@ -142,6 +106,44 @@
 						"->"
 					]
 				],
+				"Summary": ""
+			}
+		},
+		"_widget": {
+			"new()": {
+				"Syntax": "**.new**( *component* : Object; *manifest* : Object )",
+				"Params": [
+					[
+						"component",
+						"Object",
+						"->"
+					],
+					[
+						"manifest",
+						"Object",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"menu": {
+			"new()": {
+				"Syntax": "**.new**( *options* : Variant )",
+				"Params": [
+					[
+						"options",
+						"Variant",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"_component": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
 				"Summary": ""
 			}
 		}
@@ -822,741 +824,6 @@
 			"Summary": ""
 		},
 		"_inheritedFrom_": "menu"
-	},
-	"menu": {
-		"fonts()": {
-			"Syntax": "**.fonts**( *withStyle* : Variant; *callback* : Text ) : cs.pop.menu",
-			"Params": [
-				[
-					"withStyle",
-					"Variant",
-					"->"
-				],
-				[
-					"callback",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"isSeparatorItem()": {
-			"Syntax": "**.isSeparatorItem**( *item* : Integer )->isSeparator : Boolean",
-			"Params": [
-				[
-					"item",
-					"Integer",
-					"->"
-				],
-				[
-					"isSeparator",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"file()": {
-			"Syntax": "**.file**() : cs.pop.menu",
-			"Params": [
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"itemSubMenuRef()": {
-			"Syntax": "**.itemSubMenuRef**( *withTitle* : Text )->reference : Text",
-			"Params": [
-				[
-					"withTitle",
-					"Text",
-					"->"
-				],
-				[
-					"reference",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"items()": {
-			"Syntax": "**.items**()->items : Collection",
-			"Params": [
-				[
-					"items",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"item()": {
-			"Syntax": "**.item**( *item* : Variant; *ref* : Text )->menuItem : Object",
-			"Params": [
-				[
-					"item",
-					"Variant",
-					"->"
-				],
-				[
-					"ref",
-					"Text",
-					"->"
-				],
-				[
-					"menuItem",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"menuSelected()": {
-			"Syntax": "**.menuSelected**()->selected : Object",
-			"Params": [
-				[
-					"selected",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"popup()": {
-			"Syntax": "**.popup**( *where* : Variant; *x* : Variant; *y* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"where",
-					"Variant",
-					"->"
-				],
-				[
-					"x",
-					"Variant",
-					"->"
-				],
-				[
-					"y",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"itemCount()": {
-			"Syntax": "**.itemCount**()->number : Integer",
-			"Params": [
-				[
-					"number",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"icon()": {
-			"Syntax": "**.icon**( *icon* : Text; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"icon",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getData()": {
-			"Syntax": "**.getData**( *name* : Text; *ref* : Text )->value : Variant",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				],
-				[
-					"ref",
-					"Text",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"setStyle()": {
-			"Syntax": "**.setStyle**( *tyle* : Integer; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"tyle",
-					"Integer",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getProperty()": {
-			"Syntax": "**.getProperty**( *property* : Text; *index* : Integer )->value : Variant",
-			"Params": [
-				[
-					"property",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"shortcut()": {
-			"Syntax": "**.shortcut**( *key* : Variant; *modifier* : Integer; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"key",
-					"Variant",
-					"->"
-				],
-				[
-					"modifier",
-					"Integer",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"action()": {
-			"Syntax": "**.action**( *action* : Variant; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"action",
-					"Variant",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"mark()": {
-			"Syntax": "**.mark**( *checked* : Boolean; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"checked",
-					"Boolean",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"property()": {
-			"Syntax": "**.property**( *property* : Text; *value* : Variant; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"property",
-					"Text",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"release()": {
-			"Syntax": "**.release**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"disable()": {
-			"Syntax": "**.disable**( *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"indent()": {
-			"Syntax": "**.indent**( *index* : Integer; *number* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"number",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"add()": {
-			"Syntax": "**.add**( *ref* : Text; *text* : Text; *param* : Variant; *mark* : Boolean )",
-			"Params": [
-				[
-					"ref",
-					"Text",
-					"->"
-				],
-				[
-					"text",
-					"Text",
-					"->"
-				],
-				[
-					"param",
-					"Variant",
-					"->"
-				],
-				[
-					"mark",
-					"Boolean",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"delete()": {
-			"Syntax": "**.delete**( *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"windows()": {
-			"Syntax": "**.windows**( *callback* : Text ) : cs.pop.menu",
-			"Params": [
-				[
-					"callback",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"edit()": {
-			"Syntax": "**.edit**() : cs.pop.menu",
-			"Params": [
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"setData()": {
-			"Syntax": "**.setData**( *name* : Text; *value* : Variant; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"enable()": {
-			"Syntax": "**.enable**( *enabled* : Boolean; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"enabled",
-					"Boolean",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"line()": {
-			"Syntax": "**.line**( *afterItem* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"afterItem",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"parameter()": {
-			"Syntax": "**.parameter**( *param* : Text; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"param",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"method()": {
-			"Syntax": "**.method**( *method* : Text; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"method",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"append()": {
-			"Syntax": "**.append**( *item* : Variant; *param* : Variant; *mark* : Variant; *afterItem* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"item",
-					"Variant",
-					"->"
-				],
-				[
-					"param",
-					"Variant",
-					"->"
-				],
-				[
-					"mark",
-					"Variant",
-					"->"
-				],
-				[
-					"afterItem",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		}
-	},
-	"_component": {
-		"execute()": {
-			"Syntax": "**.execute**( *e* : Object ) : Boolean",
-			"Params": [
-				[
-					"e",
-					"Object",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"doMenu()": {
-			"Syntax": "**.doMenu**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"getComponents()": {
-			"Syntax": "**.getComponents**( *folder* : 4D.Folder ) : Collection",
-			"Params": [
-				[
-					"folder",
-					"4D.Folder",
-					"->"
-				],
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"close()": {
-			"Syntax": "**.close**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"init()": {
-			"Syntax": "**.init**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"doDrop()": {
-			"Syntax": "**.doDrop**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"display()": {
-			"Syntax": "**.display**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"getLocalizedString()": {
-			"Syntax": "**.getLocalizedString**( *string* : Text; *lproj* : 4D.Folder ) : Text",
-			"Params": [
-				[
-					"string",
-					"Text",
-					"->"
-				],
-				[
-					"lproj",
-					"4D.Folder",
-					"->"
-				],
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"doAbout()": {
-			"Syntax": "**.doAbout**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"abort()": {
-			"Syntax": "**.abort**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"collapseExpand()": {
-			"Syntax": "**.collapseExpand**( *displayed* : Integer )",
-			"Params": [
-				[
-					"displayed",
-					"Integer",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"getTools()": {
-			"Syntax": "**.getTools**() : Collection",
-			"Params": [
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getIcon()": {
-			"Syntax": "**.getIcon**( *file* : 4D.File; *iconSize* : Integer; *crop* : Boolean ) : Picture",
-			"Params": [
-				[
-					"file",
-					"4D.File",
-					"->"
-				],
-				[
-					"iconSize",
-					"Integer",
-					"->"
-				],
-				[
-					"crop",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Picture",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getDefinition()": {
-			"Syntax": "**.getDefinition**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"preferences": {
-			"Syntax": "preferences : cs.pop.Preferences"
-		},
-		"database": {
-			"Syntax": "database : cs.pop.database"
-		},
-		"motor": {
-			"Syntax": "motor : cs.pop.motor"
-		}
 	},
 	"xml": {
 		"firstChild()": {
@@ -2505,11 +1772,11 @@
 			"Summary": ""
 		},
 		"set()": {
-			"Syntax": "**.set**( *key* : Text; *value* : Variant ) : cs.pop.Preferences",
+			"Syntax": "**.set**( *key* : Variant; *value* : Variant ) : cs.pop.Preferences",
 			"Params": [
 				[
 					"key",
-					"Text",
+					"Variant",
 					"->"
 				],
 				[
@@ -2546,6 +1813,742 @@
 		},
 		"file": {
 			"Syntax": "file : 4D.File"
+		}
+	},
+	"_widget": {},
+	"menu": {
+		"fonts()": {
+			"Syntax": "**.fonts**( *withStyle* : Variant; *callback* : Text ) : cs.pop.menu",
+			"Params": [
+				[
+					"withStyle",
+					"Variant",
+					"->"
+				],
+				[
+					"callback",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isSeparatorItem()": {
+			"Syntax": "**.isSeparatorItem**( *item* : Integer )->isSeparator : Boolean",
+			"Params": [
+				[
+					"item",
+					"Integer",
+					"->"
+				],
+				[
+					"isSeparator",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"file()": {
+			"Syntax": "**.file**() : cs.pop.menu",
+			"Params": [
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"itemSubMenuRef()": {
+			"Syntax": "**.itemSubMenuRef**( *withTitle* : Text )->reference : Text",
+			"Params": [
+				[
+					"withTitle",
+					"Text",
+					"->"
+				],
+				[
+					"reference",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"items()": {
+			"Syntax": "**.items**()->items : Collection",
+			"Params": [
+				[
+					"items",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"item()": {
+			"Syntax": "**.item**( *item* : Variant; *ref* : Text )->menuItem : Object",
+			"Params": [
+				[
+					"item",
+					"Variant",
+					"->"
+				],
+				[
+					"ref",
+					"Text",
+					"->"
+				],
+				[
+					"menuItem",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"menuSelected()": {
+			"Syntax": "**.menuSelected**()->selected : Object",
+			"Params": [
+				[
+					"selected",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"popup()": {
+			"Syntax": "**.popup**( *where* : Variant; *x* : Variant; *y* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"where",
+					"Variant",
+					"->"
+				],
+				[
+					"x",
+					"Variant",
+					"->"
+				],
+				[
+					"y",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"itemCount()": {
+			"Syntax": "**.itemCount**()->number : Integer",
+			"Params": [
+				[
+					"number",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"icon()": {
+			"Syntax": "**.icon**( *icon* : Text; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"icon",
+					"Text",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getData()": {
+			"Syntax": "**.getData**( *name* : Text; *ref* : Text )->value : Variant",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"ref",
+					"Text",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"setStyle()": {
+			"Syntax": "**.setStyle**( *tyle* : Integer; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"tyle",
+					"Integer",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getProperty()": {
+			"Syntax": "**.getProperty**( *property* : Text; *index* : Integer )->value : Variant",
+			"Params": [
+				[
+					"property",
+					"Text",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"shortcut()": {
+			"Syntax": "**.shortcut**( *key* : Variant; *modifier* : Integer; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"key",
+					"Variant",
+					"->"
+				],
+				[
+					"modifier",
+					"Integer",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"action()": {
+			"Syntax": "**.action**( *action* : Variant; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"action",
+					"Variant",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"mark()": {
+			"Syntax": "**.mark**( *checked* : Boolean; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"checked",
+					"Boolean",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"property()": {
+			"Syntax": "**.property**( *property* : Text; *value* : Variant; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"property",
+					"Text",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"release()": {
+			"Syntax": "**.release**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"disable()": {
+			"Syntax": "**.disable**( *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"indent()": {
+			"Syntax": "**.indent**( *index* : Integer; *number* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"number",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"add()": {
+			"Syntax": "**.add**( *ref* : Text; *text* : Text; *param* : Variant; *mark* : Boolean )",
+			"Params": [
+				[
+					"ref",
+					"Text",
+					"->"
+				],
+				[
+					"text",
+					"Text",
+					"->"
+				],
+				[
+					"param",
+					"Variant",
+					"->"
+				],
+				[
+					"mark",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"delete()": {
+			"Syntax": "**.delete**( *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"windows()": {
+			"Syntax": "**.windows**( *callback* : Text ) : cs.pop.menu",
+			"Params": [
+				[
+					"callback",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"edit()": {
+			"Syntax": "**.edit**() : cs.pop.menu",
+			"Params": [
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"setData()": {
+			"Syntax": "**.setData**( *name* : Text; *value* : Variant; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"enable()": {
+			"Syntax": "**.enable**( *enabled* : Boolean; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"enabled",
+					"Boolean",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"line()": {
+			"Syntax": "**.line**( *afterItem* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"afterItem",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"parameter()": {
+			"Syntax": "**.parameter**( *param* : Text; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"param",
+					"Text",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"method()": {
+			"Syntax": "**.method**( *method* : Text; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"method",
+					"Text",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"append()": {
+			"Syntax": "**.append**( *item* : Variant; *param* : Variant; *mark* : Variant; *afterItem* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"item",
+					"Variant",
+					"->"
+				],
+				[
+					"param",
+					"Variant",
+					"->"
+				],
+				[
+					"mark",
+					"Variant",
+					"->"
+				],
+				[
+					"afterItem",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"_component": {
+		"execute()": {
+			"Syntax": "**.execute**( *e* : Object ) : Boolean",
+			"Params": [
+				[
+					"e",
+					"Object",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"doMenu()": {
+			"Syntax": "**.doMenu**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"getComponents()": {
+			"Syntax": "**.getComponents**( *folder* : 4D.Folder ) : Collection",
+			"Params": [
+				[
+					"folder",
+					"4D.Folder",
+					"->"
+				],
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"close()": {
+			"Syntax": "**.close**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"init()": {
+			"Syntax": "**.init**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"doDrop()": {
+			"Syntax": "**.doDrop**() : Integer",
+			"Params": [
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"display()": {
+			"Syntax": "**.display**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"getLocalizedString()": {
+			"Syntax": "**.getLocalizedString**( *string* : Text; *lproj* : 4D.Folder ) : Text",
+			"Params": [
+				[
+					"string",
+					"Text",
+					"->"
+				],
+				[
+					"lproj",
+					"4D.Folder",
+					"->"
+				],
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"doAbout()": {
+			"Syntax": "**.doAbout**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"abort()": {
+			"Syntax": "**.abort**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"collapseExpand()": {
+			"Syntax": "**.collapseExpand**( *displayed* : Integer )",
+			"Params": [
+				[
+					"displayed",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"getTools()": {
+			"Syntax": "**.getTools**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getIcon()": {
+			"Syntax": "**.getIcon**( *file* : 4D.File; *iconSize* : Integer; *crop* : Boolean ) : Picture",
+			"Params": [
+				[
+					"file",
+					"4D.File",
+					"->"
+				],
+				[
+					"iconSize",
+					"Integer",
+					"->"
+				],
+				[
+					"crop",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Picture",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getDefinition()": {
+			"Syntax": "**.getDefinition**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"preferences": {
+			"Syntax": "preferences : cs.pop.Preferences"
+		},
+		"database": {
+			"Syntax": "database : cs.pop.database"
+		},
+		"motor": {
+			"Syntax": "motor : cs.pop.motor"
 		}
 	}
 }

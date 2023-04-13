@@ -17,7 +17,8 @@
 			"STRIP"
 		],
 		"classes": [
-			"_component"
+			"_component",
+			"_widget"
 		]
 	},
 	"-👥 NAMESPACE": {

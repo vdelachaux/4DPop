@@ -23,9 +23,10 @@ Class constructor
 Function getDefinition() : Object
 	
 	var $item; $key : Text
-	var $component; $manifest; $plist; $result; $tool; $widget : Object
+	var $component; $manifest; $plist; $result; $tool : Object
 	var $components : Collection
 	var $file : 4D:C1709.File
+	var $widget : cs:C1710._widget
 	
 	$result:=New object:C1471(\
 		"leftOffset"; 20; \
@@ -83,7 +84,7 @@ Function getDefinition() : Object
 			
 		Else 
 			
-			//MARK:#### TEMPO ####
+			// MARK:###### TEMPO #######
 			$file:=$component.file("Resources/4DPop.xml")
 			
 			If (Not:C34($file.exists))
@@ -98,6 +99,13 @@ Function getDefinition() : Object
 			
 		End if 
 		
+		// MARK:###### TEMPO #######
+		If ($manifest.tool#Null:C1517)
+			
+			$manifest.tools:=$manifest.tool
+			
+		End if 
+		
 		If (Not:C34($file.exists))
 			
 			// No 4dPop definition
@@ -105,32 +113,59 @@ Function getDefinition() : Object
 			
 		End if 
 		
-		$widget:=New object:C1471(\
-			"file"; $component; \
-			"name"; ""; \
-			"icon"; Null:C1517; \
-			"helptip"; ""; \
-			"default"; ""; \
-			"ondrop"; ""; \
-			"popup"; False:C215; \
-			"tool"; New collection:C1472; \
-			"help"; $component.file($component.name+".htm"); \
-			"manifest"; $manifest; \
-			"lproj"; This:C1470._lproj($component; $result.language))
+		$widget:=cs:C1710._widget.new($component; $manifest)
+		
+		// MARK:###### TEMPO #######
+		$widget.lproj:=This:C1470._lproj($component; $result.language)
+		
+		$widget.handler:=$widget.handler#Null:C1517 ? Formula from string:C1601($widget.handler).call() : Null:C1517
+		
+		If ($manifest.initproc#Null:C1517)
+			
+			If ($widget.handler#Null:C1517)
+				
+				$widget.handler.call(Null:C1517; $manifest.initproc).call()
+				
+			Else 
+				
+				// MARK:###### TEMPO #######
+				Formula from string:C1601($manifest.initproc).call()
+				
+			End if 
+		End if 
 		
 		For each ($key; $manifest)
+			
+			If ($key="handler")
+				
+				// Already handled
+				continue
+				
+			End if 
 			
 			Case of 
 					
 					//______________________________________________________
-				: ($key="popup")
+				: ($key="name")\
+					 | ($key="helptip")
 					
-					$widget.popup:=Bool:C1537($manifest.popup)
+					$widget[$key]:=$manifest[$key]
 					
-					//______________________________________________________
-				: (($key="name") | ($key="helptip")) & ($widget.lproj#Null:C1517)
+					If (Position:C15(":xliff:"; $manifest[$key])#1)
+						
+						continue
+						
+					End if 
 					
-					$widget[$key]:=This:C1470.getLocalizedString(String:C10($manifest[$key]); $widget.lproj)
+					If ($widget.handler#Null:C1517)
+						
+						$widget[$key]:=$widget.handler.call(Null:C1517; ":C991($1)").call(Null:C1517; Delete string:C232($manifest[$key]; 1; 7))
+						continue
+						
+					End if 
+					
+					// MARK:###### TEMPO #######
+					$widget[$key]:=$widget.lproj#Null:C1517 ? This:C1470.getLocalizedString(String:C10($manifest[$key]); $widget.lproj) : $widget[$key]
 					
 					//______________________________________________________
 				: ($key="picture")
@@ -139,26 +174,16 @@ Function getDefinition() : Object
 					$widget.picture:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48; True:C214)
 					
 					//______________________________________________________
-				: ($key="default")
+				: ($key="tools")
 					
-					$widget.default:=String:C10($manifest[$key])
-					
-					//______________________________________________________
-				: ($key="initproc")
-					
-					Formula from string:C1601($manifest[$key]).call()
-					
-					//______________________________________________________
-				: ($key="tool")
-					
-					If (Value type:C1509($manifest.tool)=Is object:K8:27)
+					If (Value type:C1509($manifest.tools)=Is object:K8:27)
 						
-						$widget.default:=$widget.default || $manifest.tool.method
-						$widget.tool.push(New object:C1471("method"; $manifest.tool.method))
+						$widget.default:=$widget.default || $manifest.tools.method
+						$widget.tools.push(New object:C1471("method"; $manifest.tools.method))
 						
 					Else 
 						
-						If ($manifest.tool#Null:C1517) && ($manifest.tool.length>0)
+						If (($manifest.tools#Null:C1517) && ($manifest.tools.length>0))
 							
 							$widget.popup:=True:C214
 							
@@ -171,7 +196,21 @@ Function getDefinition() : Object
 											//………………………………………………………………………………
 										: ($item="name")
 											
-											$tool.name:=($widget.lproj#Null:C1517) ? This:C1470.getLocalizedString(String:C10($tool.name); $widget.lproj) : String:C10($tool.name)
+											If (Position:C15(":xliff:"; $tool.name)#1)
+												
+												continue
+												
+											End if 
+											
+											If ($widget.handler#Null:C1517)
+												
+												$tool.name:=$widget.handler.call(Null:C1517; ":C991($1)").call(Null:C1517; Delete string:C232($tool.name; 1; 7))
+												continue
+												
+											End if 
+											
+											// MARK:###### TEMPO #######
+											$tool.name:=$widget.lproj#Null:C1517 ? This:C1470.getLocalizedString(String:C10($tool.name); $widget.lproj) : $tool.name
 											
 											//………………………………………………………………………………
 										: ($item="picture")
@@ -188,7 +227,7 @@ Function getDefinition() : Object
 									End case 
 								End for each 
 								
-								$widget.tool.push($tool)
+								$widget.tools.push($tool)
 								
 							End for each 
 						End if 
@@ -206,7 +245,7 @@ Function getDefinition() : Object
 		// Do not add twice
 		If ($result.widgets.query("name = :1"; $widget.name).pop()=Null:C1517)
 			
-			// Get informations for dialog About
+			// Get informations for the About dialog
 			$widget.plist:=$component.file("Info.plist")
 			
 			If ($widget.plist.exists)
@@ -733,7 +772,7 @@ Function doMenu()
 	
 	For each ($widget; $form.widgets)
 		
-		If ($widget.tool.length=0)
+		If ($widget.tools.length=0)
 			
 			$menu.append($widget.name; $widget.default).icon("Images/tool.png")
 			
@@ -741,7 +780,13 @@ Function doMenu()
 			
 			$sub:=cs:C1710.menu.new()
 			
-			For each ($item; $widget.tool)
+			For each ($item; $widget.tools)
+				
+				If (Length:C16(String:C10($item.name))=0)
+					
+					continue
+					
+				End if 
 				
 				If ($item.name="-")
 					
@@ -878,18 +923,21 @@ Function execute($e : Object) : Boolean
 	
 	var $method : Text
 	var $nil; $ptr : Pointer
+	var $widget : Object
+	
+	$widget:=$e.widget
 	
 	Case of 
 			
 			//______________________________________________________
 		: ($e.method="default")
 			
-			$method:=$e.widget.default
+			$method:=$widget.default
 			
 			//______________________________________________________
 		: ($e.method="onDrop")
 			
-			$method:=$e.widget.ondrop
+			$method:=$widget.ondrop
 			
 			//______________________________________________________
 		Else 
@@ -909,26 +957,25 @@ Function execute($e : Object) : Boolean
 	
 	CLEAR VARIABLE:C89(ERROR)
 	
+	If ($widget.handler#Null:C1517)
+		
+		$widget.handler.call(Null:C1517; $method).call(Null:C1517; $widget)
+		return True:C214
+		
+	End if 
+	
+	// MARK:###### TEMPO #######
 	If (Position:C15("("; $method)=0)
 		
 		$ptr:=OBJECT Get pointer:C1124(Object named:K67:5; String:C10($e.objectName))
 		
-		If (True:C214)
+		If (Not:C34(Is nil pointer:C315($ptr)))
 			
-			If (Not:C34(Is nil pointer:C315($ptr)))
-				
-				EXECUTE METHOD:C1007($method; *; $ptr)
-				
-			Else 
-				
-				EXECUTE METHOD:C1007($method; *; $nil)
-				
-			End if 
+			EXECUTE METHOD:C1007($method; *; $ptr)
 			
 		Else 
 			
-			// FIXME:Use formula
-			Formula:C1597($e.widget.handler).call(Null:C1517; $ptr)
+			EXECUTE METHOD:C1007($method; *; $nil)
 			
 		End if 
 		
