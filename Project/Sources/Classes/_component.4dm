@@ -16,11 +16,11 @@ Class constructor
 	This:C1470.formName:="STRIP"
 	
 	// Loading compatible components
-	This:C1470.properties:=This:C1470.getDefinition()
+	This:C1470.properties:=This:C1470.load()
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Loading compatible components
-Function getDefinition() : Object
+Function load() : Object
 	
 	var $item; $key : Text
 	var $component; $manifest; $plist; $result; $tool : Object
@@ -48,11 +48,11 @@ Function getDefinition() : Object
 	$result.infos:=$plist.CFBundleDisplayName+"\rv"+$plist.CFBundleShortVersionString
 	$result.infos+=" build "+$plist.CFBundleVersion
 	$result.copyright:=$plist.NSHumanReadableCopyright
-	$result.icon:=This:C1470.getIcon(File:C1566("/RESOURCES/Images/4DPop.png"); 48; True:C214)
+	$result.icon:=cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/Images/4DPop.png"); 48; True:C214)
 	
 	$components:=This:C1470.getTools()
 	
-	If ($components.length=0)
+	If ($components.length=0)  // No components
 		
 		return $result
 		
@@ -87,28 +87,17 @@ Function getDefinition() : Object
 			// MARK:###### TEMPO #######
 			$file:=$component.file("Resources/4DPop.xml")
 			
-			If (Not:C34($file.exists))
+			If ($file.exists)
 				
-				// No 4dPop definition
-				continue
+				// Load the manifest
+				$manifest:=cs:C1710.xml.new($file).toObject()
 				
 			End if 
-			
-			// Load the manifest
-			$manifest:=cs:C1710.xml.new($file).toObject()
-			
-		End if 
-		
-		// MARK:###### TEMPO #######
-		If ($manifest.tool#Null:C1517)
-			
-			$manifest.tools:=$manifest.tool
-			
 		End if 
 		
 		If (Not:C34($file.exists))
 			
-			// No 4dPop definition
+			// No 4DPop
 			continue
 			
 		End if 
@@ -116,32 +105,9 @@ Function getDefinition() : Object
 		$widget:=cs:C1710._widget.new($component; $manifest)
 		
 		// MARK:###### TEMPO #######
-		$widget.lproj:=This:C1470._lproj($component; $result.language)
-		
-		$widget.handler:=$widget.handler#Null:C1517 ? Formula from string:C1601($widget.handler).call() : Null:C1517
-		
-		If ($manifest.initproc#Null:C1517)
-			
-			If ($widget.handler#Null:C1517)
-				
-				$widget.handler.call(Null:C1517; $manifest.initproc).call()
-				
-			Else 
-				
-				// MARK:###### TEMPO #######
-				Formula from string:C1601($manifest.initproc).call()
-				
-			End if 
-		End if 
+		$widget.lproj:=This:C1470._o_lproj($component; $result.language)
 		
 		For each ($key; $manifest)
-			
-			If ($key="handler")
-				
-				// Already handled
-				continue
-				
-			End if 
 			
 			Case of 
 					
@@ -157,21 +123,7 @@ Function getDefinition() : Object
 						
 					End if 
 					
-					If ($widget.handler#Null:C1517)
-						
-						$widget[$key]:=$widget.handler.call(Null:C1517; ":C991($1)").call(Null:C1517; Delete string:C232($manifest[$key]; 1; 7))
-						continue
-						
-					End if 
-					
-					// MARK:###### TEMPO #######
-					$widget[$key]:=$widget.lproj#Null:C1517 ? This:C1470.getLocalizedString(String:C10($manifest[$key]); $widget.lproj) : $widget[$key]
-					
-					//______________________________________________________
-				: ($key="picture")
-					
-					$widget.icon:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); $result.iconSize)
-					$widget.picture:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48; True:C214)
+					$widget[$key]:=$widget.lproj#Null:C1517 ? This:C1470._o_getLocalizedString(String:C10($manifest[$key]); $widget.lproj) : $widget[$key]
 					
 					//______________________________________________________
 				: ($key="tools")
@@ -202,15 +154,7 @@ Function getDefinition() : Object
 												
 											End if 
 											
-											If ($widget.handler#Null:C1517)
-												
-												$tool.name:=$widget.handler.call(Null:C1517; ":C991($1)").call(Null:C1517; Delete string:C232($tool.name; 1; 7))
-												continue
-												
-											End if 
-											
-											// MARK:###### TEMPO #######
-											$tool.name:=$widget.lproj#Null:C1517 ? This:C1470.getLocalizedString(String:C10($tool.name); $widget.lproj) : $tool.name
+											$tool.name:=$widget.lproj#Null:C1517 ? This:C1470._o_getLocalizedString(String:C10($tool.name); $widget.lproj) : $tool.name
 											
 											//………………………………………………………………………………
 										: ($item="picture")
@@ -232,11 +176,6 @@ Function getDefinition() : Object
 							End for each 
 						End if 
 					End if 
-					
-					//______________________________________________________
-				Else 
-					
-					$widget[$key]:=$manifest[$key]
 					
 					//______________________________________________________
 			End case 
@@ -265,13 +204,13 @@ Function getDefinition() : Object
 					End if 
 				End if 
 				
+				$widget.copyright:=String:C10($plist.NSHumanReadableCopyright)
+				
 			Else 
 				
 				$widget.infos:=$widget.file.name
 				
 			End if 
-			
-			$widget.copyright:=String:C10($plist.NSHumanReadableCopyright)
 			
 			$result.widgets.push($widget)
 			
@@ -280,50 +219,6 @@ Function getDefinition() : Object
 	End for each 
 	
 	return $result
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Component localization folder
-Function _lproj($component : Object; $language : Text) : 4D:C1709.Folder
-	
-	var $folder : 4D:C1709.Folder
-	
-	$folder:=$component.folder("Resources/"+$language+".lproj")
-	
-	If ($folder.exists)
-		
-		return $folder
-		
-	End if 
-	
-	// Try en
-	$folder:=$component.folder("Resources/en.lproj")
-	
-	If ($folder.exists)
-		
-		return $folder
-		
-	End if 
-	
-	// Try en-us
-	$folder:=$component.folder("Resources/en-us.lproj")
-	
-	If ($folder.exists)
-		
-		return $folder
-		
-	End if 
-	
-	// Try English
-	$folder:=$component.folder("Resources/English.lproj")
-	
-	If ($folder.exists)
-		
-		return $folder
-		
-	End if 
-	
-	// Take the first
-	return $component.folder("Resources").folders().query("extension = .lproj").pop()
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Returns the found components
@@ -355,116 +250,6 @@ Function getComponents($folder : 4D:C1709.Folder) : Collection
 	$c.combine($folder.files().query("extension = :1 & original.extension =:1"; ".4DProject"))
 	
 	return $c.orderBy("name")
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Create an icon from a media
-Function getIcon($file : 4D:C1709.File; $iconSize : Integer; $crop : Boolean) : Picture
-	
-	var $image; $mask; $rect; $svg : Text
-	var $icon; $pict : Picture
-	var $height; $width : Integer
-	
-	If (Not:C34($file.exists))
-		
-		$file:=File:C1566("/RESOURCES/missing.png")
-		
-	End if 
-	
-	If ($file.exists)
-		
-		READ PICTURE FILE:C678($file.platformPath; $icon)
-		
-		If (Bool:C1537(OK))
-			
-			PICTURE PROPERTIES:C457($icon; $width; $height)
-			
-			If ($height<($width*4))
-				
-				// Create a 4-state button
-				CREATE THUMBNAIL:C679($icon; $pict; $iconSize; $iconSize)
-				COMBINE PICTURES:C987($icon; $pict; Vertical concatenation:K61:9; $pict; 0; $iconSize)
-				COMBINE PICTURES:C987($icon; $icon; Vertical concatenation:K61:9; $pict; 0; $iconSize*2)
-				TRANSFORM PICTURE:C988($pict; Fade to grey scale:K61:6)
-				COMBINE PICTURES:C987($icon; $icon; Vertical concatenation:K61:9; $pict; 0; $iconSize*3)
-				
-			End if 
-			
-			TRANSFORM PICTURE:C988($icon; Crop:K61:7; 0; 0; $iconSize; $iconSize)
-			
-			$svg:=SVG_New
-			$mask:=SVG_Define_clip_Path($svg; "mask")
-			SVG_SET_CLIP_PATH($svg; "mask")
-			$rect:=SVG_New_rect($mask; 0; 0; $iconSize; $iconSize; 10; 10; "none"; "none")
-			$image:=SVG_New_embedded_image($svg; $icon; 0; 0; ".png")
-			$icon:=SVG_Export_to_picture($svg; Get XML data source:K45:16)
-			
-			CONVERT PICTURE:C1002($icon; ".png")
-			
-			CREATE THUMBNAIL:C679($icon; $pict; $iconSize; $iconSize)
-			COMBINE PICTURES:C987($icon; $pict; Vertical concatenation:K61:9; $pict; 0; $iconSize)
-			COMBINE PICTURES:C987($icon; $icon; Vertical concatenation:K61:9; $pict; 0; $iconSize*2)
-			TRANSFORM PICTURE:C988($pict; Fade to grey scale:K61:6)
-			COMBINE PICTURES:C987($icon; $icon; Vertical concatenation:K61:9; $pict; 0; $iconSize*3)
-			
-			If ($crop)
-				
-				// Keep only the first state
-				TRANSFORM PICTURE:C988($icon; Crop:K61:7; 0; 0; $iconSize; $iconSize)
-				
-			End if 
-			
-			return $icon
-			
-		End if 
-	End if 
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Returns a localized string from the component
-Function getLocalizedString($string : Text; $lproj : 4D:C1709.Folder) : Text
-	
-	var $localized; $node : Text
-	var $c : Collection
-	var $file : 4D:C1709.File
-	var $xml : cs:C1710.xml
-	
-	If ($lproj#Null:C1517)\
-		 && ($lproj.exists)\
-		 && (Length:C16($string)>0)\
-		 && (Position:C15(":xliff:"; $string)=1)
-		
-		$xml:=cs:C1710.xml.new()
-		
-		For each ($file; $lproj.files().query("extension = .xlf"))
-			
-			$c:=$xml.load($file)\
-				.findByAttribute($xml.root; "resname"; Delete string:C232($string; 1; 7))
-			
-			If ($c.length>0)
-				
-				$node:=$xml.findByXPath("target"; $c[0])
-				
-				If (Not:C34($xml.success))
-					
-					$node:=$xml.findByXPath("source"; $c[0])
-					
-				End if 
-				
-				If ($xml.success)
-					
-					$string:=$xml.getValue($node)
-					$xml.close()
-					
-					break
-					
-				End if 
-			End if 
-			
-			$xml.close()
-			
-		End for each 
-	End if 
-	
-	return $string
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Display the palett
@@ -1063,3 +848,96 @@ Function doDrop() : Integer
 	SET TIMER:C645(20)
 	
 	return $accept ? 0 : -1
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Component localization folder
+Function _o_lproj($component : Object; $language : Text) : 4D:C1709.Folder
+	
+	var $folder : 4D:C1709.Folder
+	
+	$folder:=$component.folder("Resources/"+$language+".lproj")
+	
+	If ($folder.exists)
+		
+		return $folder
+		
+	End if 
+	
+	// Try en
+	$folder:=$component.folder("Resources/en.lproj")
+	
+	If ($folder.exists)
+		
+		return $folder
+		
+	End if 
+	
+	// Try en-us
+	$folder:=$component.folder("Resources/en-us.lproj")
+	
+	If ($folder.exists)
+		
+		return $folder
+		
+	End if 
+	
+	// Try English
+	$folder:=$component.folder("Resources/English.lproj")
+	
+	If ($folder.exists)
+		
+		return $folder
+		
+	End if 
+	
+	// Take the first
+	return $component.folder("Resources").folders().query("extension = .lproj").pop()
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Returns a localized string from the component
+Function _o_getLocalizedString($string : Text; $lproj : 4D:C1709.Folder) : Text
+	
+	var $localized; $node : Text
+	var $c : Collection
+	var $file : 4D:C1709.File
+	var $xml : cs:C1710.xml
+	
+	If ($lproj#Null:C1517)\
+		 && ($lproj.exists)\
+		 && (Length:C16($string)>0)\
+		 && (Position:C15(":xliff:"; $string)=1)
+		
+		$xml:=cs:C1710.xml.new()
+		
+		For each ($file; $lproj.files().query("extension = .xlf"))
+			
+			$c:=$xml.load($file)\
+				.findByAttribute($xml.root; "resname"; Delete string:C232($string; 1; 7))
+			
+			If ($c.length>0)
+				
+				$node:=$xml.findByXPath("target"; $c[0])
+				
+				If (Not:C34($xml.success))
+					
+					$node:=$xml.findByXPath("source"; $c[0])
+					
+				End if 
+				
+				If ($xml.success)
+					
+					$string:=$xml.getValue($node)
+					$xml.close()
+					
+					break
+					
+				End if 
+			End if 
+			
+			$xml.close()
+			
+		End for each 
+	End if 
+	
+	return $string
+	
