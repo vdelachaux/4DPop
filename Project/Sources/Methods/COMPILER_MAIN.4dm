@@ -3,13 +3,8 @@
 // Method : COMPILER_MAIN
 // Created 05/06/07 by Vincent de Lachaux
 // ----------------------------------------------------
-// Modified by Vincent de Lachaux (05/01/12)
-// V13 refactoring
-// A lot of variables was removed.
-// The cleanup must be continued
-// ----------------------------------------------------
 
-var component : cs:C1710._component
+var strip : cs:C1710._strip
 
 If (False:C215)
 	

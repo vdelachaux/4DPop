@@ -5,6 +5,14 @@ Case of
 		//______________________________________________________
 	: (True:C214)
 		
+		var $env : cs:C1710.env
+		$env:=cs:C1710.env.new(True:C214)
+		
+		
+		
+		//______________________________________________________
+	: (True:C214)
+		
 		var $data : Object
 		var $pref : cs:C1710.Preferences
 		

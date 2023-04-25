@@ -15,10 +15,10 @@
 		"onOutsideCall",
 		"onDoubleClick",
 		"onDragOver",
-		"onUnload",
 		"onTimer",
 		"onMouseLeave",
-		"onMouseMove"
+		"onMouseMove",
+		"onPageChange"
 	],
 	"pageFormat": {
 		"paperName": "US Letter",
@@ -35,16 +35,15 @@
 					"left": 0,
 					"width": 92,
 					"height": 80,
-					"sizingX": "grow",
 					"visibility": "visible",
 					"class": "background"
 				},
-				"toolIcon.1": {
+				"icon_1": {
 					"type": "input",
 					"top": 98,
 					"left": 0,
-					"width": 105,
-					"height": 16,
+					"width": 74,
+					"height": 17,
 					"dataSourceTypeHint": "picture",
 					"stroke": "#FF6600",
 					"enterable": false,
@@ -81,24 +80,22 @@
 					],
 					"visibility": "hidden"
 				},
-				"Animated": {
+				"cartoons": {
 					"type": "picture",
-					"top": -4,
+					"top": 6,
 					"left": 23,
 					"width": 66,
 					"height": 68,
 					"pictureFormat": "scaled",
 					"picture": "/RESOURCES/Images/cartoons.gif"
 				},
-				"toolButton_1": {
+				"tool_1": {
 					"type": "button",
 					"top": 6,
 					"left": 23,
 					"width": 66,
 					"height": 68,
 					"visibility": "hidden",
-					"text": " xxxxx ",
-					"icon": "/RESOURCES/Images/Default_Button.png",
 					"popupPlacement": "separated",
 					"style": "toolbar",
 					"dropping": "custom",
@@ -107,39 +104,31 @@
 						"onDoubleClick",
 						"onDrop",
 						"onDragOver",
-						"onMouseLeave",
-						"onMouseMove",
 						"onAlternateClick",
 						"onLongClick",
 						"onBeginDragOver"
 					],
-					"customBackgroundPicture": "!0"
+					"customBackgroundPicture": "!0",
+					"text": "🚧"
 				}
 			}
 		},
 		{
 			"objects": {
-				"Animated.1": {
-					"type": "picture",
-					"top": 0,
-					"left": 23,
-					"width": 66,
-					"height": 66,
-					"pictureFormat": "scaled",
-					"picture": "/RESOURCES/Images/cartoons.gif"
-				},
 				"1.Handle.background.Movable": {
 					"type": "rectangle",
 					"top": 0,
 					"left": 24,
 					"width": 12,
-					"height": 80
+					"height": 80,
+					"fill": "automatic",
+					"stroke": "transparent"
 				},
 				"1.Line.Movable": {
 					"type": "line",
 					"top": 0,
 					"left": 23,
-					"height": 68,
+					"height": 80,
 					"stroke": "#C0C0C0",
 					"width": 0,
 					"startPoint": "topLeft"
@@ -148,7 +137,7 @@
 					"type": "line",
 					"top": 0,
 					"left": 23,
-					"height": 68,
+					"height": 80,
 					"stroke": "#C0C0C0",
 					"width": 0,
 					"startPoint": "topLeft"
@@ -159,7 +148,8 @@
 					"left": 0,
 					"width": 23,
 					"height": 80,
-					"strokeWidth": 0.1
+					"strokeWidth": 0.1,
+					"stroke": "transparent"
 				},
 				"1.title.text": {
 					"type": "input",
@@ -171,7 +161,6 @@
 					"textAngle": 270,
 					"hideFocusRing": true,
 					"contextMenu": "none",
-					"dragging": "none",
 					"textAlign": "center",
 					"stroke": "#1e90ff",
 					"class": "title infos tiny",
@@ -202,6 +191,18 @@
 						"onMouseMove"
 					]
 				},
+				"1.Button.plus": {
+					"type": "button",
+					"top": 2,
+					"left": 0,
+					"width": 23,
+					"height": 21,
+					"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_604.png",
+					"style": "custom",
+					"events": [
+						"onClick"
+					]
+				},
 				"1.Handle.Button.Movable": {
 					"type": "button",
 					"top": 0,
@@ -216,18 +217,6 @@
 						"onMouseLeave",
 						"onMouseMove"
 					]
-				},
-				"1.Button.plus": {
-					"type": "button",
-					"top": 4,
-					"left": 4,
-					"width": 14,
-					"height": 14,
-					"icon": "/RESOURCES/Images/action.png",
-					"style": "custom",
-					"events": [
-						"onClick"
-					]
 				}
 			}
 		},
@@ -239,20 +228,24 @@
 					"left": 13,
 					"width": 23,
 					"height": 80,
-					"strokeWidth": 0.1
+					"strokeWidth": 0.1,
+					"stroke": "transparent",
+					"fill": "automatic"
 				},
 				"2.Handle.background": {
 					"type": "rectangle",
 					"top": 0,
 					"left": 1,
 					"width": 12,
-					"height": 80
+					"height": 80,
+					"fill": "automatic",
+					"stroke": "transparent"
 				},
 				"2.Ligne": {
 					"type": "line",
 					"top": 0,
 					"left": 13,
-					"height": 68,
+					"height": 80,
 					"stroke": "#AAAAAA",
 					"width": 0,
 					"startPoint": "topLeft"
@@ -261,7 +254,7 @@
 					"type": "line",
 					"top": 0,
 					"left": 13,
-					"height": 68,
+					"height": 80,
 					"stroke": "#CCCCCC",
 					"width": 0,
 					"startPoint": "topLeft"
@@ -274,22 +267,6 @@
 					"height": 18,
 					"pictureFormat": "scaled",
 					"picture": "/RESOURCES/Images/verticalHandle.png"
-				},
-				"2.Handle.Button": {
-					"type": "button",
-					"top": 0,
-					"left": 0,
-					"width": 13,
-					"height": 80,
-					"style": "custom",
-					"dropping": "custom",
-					"events": [
-						"onClick",
-						"onDoubleClick",
-						"onDragOver",
-						"onMouseLeave",
-						"onMouseMove"
-					]
 				},
 				"2.title.text.Movable": {
 					"type": "input",
@@ -323,15 +300,32 @@
 				},
 				"2.Button.plus.Movable": {
 					"type": "button",
-					"top": 4,
-					"left": 18,
-					"width": 14,
-					"height": 14,
-					"icon": "/RESOURCES/Images/action.png",
+					"top": 2,
+					"left": 14,
+					"width": 22,
+					"height": 21,
+					"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_604.png",
 					"style": "custom",
 					"events": [
 						"onClick"
 					]
+				},
+				"2.Handle.Button": {
+					"type": "button",
+					"top": 0,
+					"left": 0,
+					"width": 13,
+					"height": 80,
+					"style": "regular",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onDragOver",
+						"onMouseLeave",
+						"onMouseMove"
+					],
+					"display": false
 				}
 			}
 		}
@@ -340,7 +334,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 359,
+	"geometryStamp": 483,
 	"editor": {
 		"activeView": "main",
 		"defaultView": "main",
@@ -348,8 +342,8 @@
 			"main": {},
 			"Buttons": {
 				"objects": [
-					"Animated",
-					"toolButton_1"
+					"cartoons",
+					"tool_1"
 				]
 			},
 			"ondrop": {

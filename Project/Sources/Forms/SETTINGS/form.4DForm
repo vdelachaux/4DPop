@@ -1,0 +1,295 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onClick",
+		"onCloseBox"
+	],
+	"windowTitle": ":xliff:settingsWindowTitle",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"orderBox": {
+					"type": "groupBox",
+					"text": ":xliff:orderOfTheComponents",
+					"top": 20,
+					"left": 352,
+					"width": 367,
+					"height": 257,
+					"sizingY": "grow"
+				},
+				"list": {
+					"type": "listbox",
+					"left": 365,
+					"top": 44,
+					"width": 343,
+					"height": 224,
+					"events": [
+						"onDrop",
+						"onDragOver",
+						"onBeginDragOver"
+					],
+					"dataSource": "Form:C1466.properties.widgets",
+					"listboxType": "collection",
+					"dragging": "custom",
+					"dropping": "custom",
+					"showHeaders": false,
+					"alternateFill": "automatic",
+					"method": "ObjectMethods/list.4dm",
+					"currentItemSource": "Form:C1466.current",
+					"currentItemPositionSource": "Form:C1466.itemPosition",
+					"rowHeight": "32px",
+					"fontSize": 14,
+					"verticalLineStroke": "transparent",
+					"sizingY": "grow",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"columns": [
+						{
+							"header": {
+								"name": "Header2",
+								"text": ".Show"
+							},
+							"name": "visible",
+							"dataSource": "This:C1470.visible",
+							"dataSourceTypeHint": "boolean",
+							"footer": {
+								"name": "Footer2"
+							},
+							"width": 32,
+							"textAlign": "center",
+							"maxWidth": 32,
+							"resizable": false,
+							"visibility": "hidden"
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Header3"
+							},
+							"name": "icon",
+							"dataSource": "This:C1470.picture",
+							"dataSourceTypeHint": "picture",
+							"pictureFormat": "proportionalTopLeft",
+							"footer": {
+								"name": "Footer3"
+							},
+							"width": 32,
+							"maxWidth": 32,
+							"resizable": false,
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": ".name",
+								"name": "Header1"
+							},
+							"name": "name",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.name",
+							"enterable": false
+						}
+					]
+				},
+				"positionBox": {
+					"type": "groupBox",
+					"text": ":xliff:positionOfTheStrip",
+					"top": 20,
+					"left": 20,
+					"width": 312,
+					"height": 194
+				},
+				"sortByName": {
+					"type": "button",
+					"text": ":xliff:sortByName",
+					"top": 283,
+					"left": 352,
+					"width": 106,
+					"height": 19,
+					"events": [
+						"onClick"
+					],
+					"sizingX": "move",
+					"sizingY": "move",
+					"method": "ObjectMethods/sortByName.4dm"
+				},
+				"reverseOrder": {
+					"type": "button",
+					"text": ":xliff:reverseOrder",
+					"top": 283,
+					"left": 478,
+					"width": 106,
+					"height": 19,
+					"events": [
+						"onClick"
+					],
+					"sizingX": "move",
+					"sizingY": "move",
+					"method": "ObjectMethods/reverseOrder.4dm"
+				},
+				"ok": {
+					"type": "button",
+					"top": 334,
+					"left": 636,
+					"width": 83,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"sizingY": "move",
+					"text": ":xliff:save"
+				},
+				"screen": {
+					"type": "rectangle",
+					"top": 44,
+					"left": 32,
+					"width": 288,
+					"height": 156,
+					"fill": "automatic",
+					"borderRadius": 8
+				},
+				"TopLeft": {
+					"type": "radio",
+					"text": ":xliff:TopLeft",
+					"top": 51,
+					"left": 46,
+					"width": 91,
+					"height": 33,
+					"events": [
+						"onClick"
+					],
+					"style": "toolbar",
+					"radioGroup": "positions",
+					"imageHugsTitle": false,
+					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/TopLeft.png",
+					"iconFrames": 1,
+					"textPlacement": "right",
+					"dataSourceTypeHint": "boolean"
+				},
+				"TopRight": {
+					"type": "radio",
+					"text": ":xliff:TopRight",
+					"top": 51,
+					"left": 203,
+					"width": 104,
+					"height": 33,
+					"events": [
+						"onClick"
+					],
+					"style": "toolbar",
+					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/TopRight.png",
+					"iconFrames": 1,
+					"textPlacement": "left",
+					"radioGroup": "positions",
+					"imageHugsTitle": false,
+					"dataSourceTypeHint": "boolean"
+				},
+				"BottomLeft": {
+					"type": "radio",
+					"text": ":xliff:BottomLeft",
+					"top": 160,
+					"left": 46,
+					"width": 91,
+					"height": 33,
+					"events": [
+						"onClick"
+					],
+					"style": "toolbar",
+					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/BtmLeft.png",
+					"iconFrames": 1,
+					"textPlacement": "right",
+					"radioGroup": "positions",
+					"imageHugsTitle": false,
+					"dataSourceTypeHint": "boolean"
+				},
+				"BottomRight": {
+					"type": "radio",
+					"text": ":xliff:BottomRight",
+					"top": 160,
+					"left": 203,
+					"width": 104,
+					"height": 33,
+					"events": [
+						"onClick"
+					],
+					"style": "toolbar",
+					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/BtmRight.png",
+					"iconFrames": 1,
+					"textPlacement": "left",
+					"radioGroup": "positions",
+					"imageHugsTitle": false,
+					"dataSourceTypeHint": "boolean"
+				},
+				"expandCollapseBox": {
+					"type": "groupBox",
+					"text": ":xliff:expandCollapse",
+					"top": 234,
+					"left": 20,
+					"width": 312,
+					"height": 68
+				},
+				"automatic": {
+					"type": "checkbox",
+					"text": ":xliff:automaticMode",
+					"top": 261,
+					"left": 46,
+					"width": 144,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.properties.autoClose"
+				},
+				"cancel": {
+					"type": "button",
+					"text": ":xliff:cancel",
+					"top": 334,
+					"left": 528,
+					"width": 88,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"sizingY": "move",
+					"action": "cancel"
+				},
+				"bottomLine": {
+					"type": "line",
+					"top": 318,
+					"left": 20,
+					"width": 699,
+					"height": 5,
+					"startPoint": "bottomLeft",
+					"sizingY": "move"
+				}
+			}
+		}
+	],
+	"geometryStamp": 250,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

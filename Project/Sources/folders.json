@@ -8,16 +8,17 @@
 	},
 	"- 📦 MAIN": {
 		"methods": [
+			"_strip",
 			"_STRIP_Controller",
-			"COMPILER_MAIN",
-			"displayStrip"
+			"COMPILER_MAIN"
 		],
 		"forms": [
 			"ABOUT",
+			"SETTINGS",
 			"STRIP"
 		],
 		"classes": [
-			"_component",
+			"_strip",
 			"_widget"
 		]
 	},
@@ -39,7 +40,7 @@
 	"(xml)": {},
 	"# 🚧 DEV": {
 		"methods": [
-			"00_RunPalette",
+			"00 DISPLAY STRIP",
 			"00_test"
 		]
 	},
@@ -54,6 +55,7 @@
 		],
 		"classes": [
 			"_singleton",
+			"coord",
 			"menu",
 			"menuBar",
 			"motor",

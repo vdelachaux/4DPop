@@ -1,3 +1,3 @@
 C_LONGINT:C283($0)
 
-$0:=component.doDrop()
+$0:=strip.doDrop()

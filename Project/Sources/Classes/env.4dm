@@ -127,7 +127,10 @@ Function getScreenInfos()
 	// Non-thread-safe screen commands are delegated to the application process
 	var $signal : 4D:C1709.Signal
 	$signal:=New signal:C1641("env")
-	CALL WORKER:C1389("$nonThreadSafe"; "envScreens"; $signal)
+	//CALL WORKER("$nonThreadSafe"; "envScreens"; $signal)
+	//%T-
+	CALL WORKER:C1389("$nonThreadSafe"; Formula:C1597(envScreens).source; $signal)
+	//%T+
 	$signal.wait()
 	
 	Use (This:C1470)

@@ -225,6 +225,48 @@ Ces composants ne seront pas disponibles avant le prochain démarrage de la base
                <target>À propos de 4DPop</target>
             </trans-unit>
          </group>
-      </body>
+      <group resname="Settings">
+        <trans-unit id="yzgh+emiI1ipAaqqJCl47A" resname="settings">
+          <source>Settings…</source>
+          <target>Paramètres…</target>
+        </trans-unit>
+        <trans-unit id="kOzE+kE4fi73ETU13o9SVw" resname="settingsWindowTitle">
+          <source>4DPop Settings</source>
+          <target>Paramètres de 4DPop</target>
+        </trans-unit>
+        <trans-unit id="aeS5QG2PTUzhtPQ9nHZs8w" resname="positionOfTheStrip">
+          <source>Position of the strip</source>
+          <target>Position de la barre</target>
+        </trans-unit>
+        <trans-unit id="KlA5E_xzz9U8iK2OVR6D9Q" resname="expandCollapse">
+          <source>Expand / Collapse</source>
+          <target>Développer / Replier</target>
+        </trans-unit>
+        <trans-unit id="3GDahzgo9XBw4oiP4+F0dg" resname="orderOfTheComponents">
+          <source>Order of the components (Drag &amp; drop to reorder)</source>
+          <target>Ordre des composants (Glisser-déposer pour réorganiser)</target>
+        </trans-unit>
+        <trans-unit id="g9siklsL+Z8SlxUQh92ZgQ" resname="sortByName">
+          <source>Sort by name</source>
+          <target>Trier par nom</target>
+        </trans-unit>
+        <trans-unit id="WzHo2BGGH0jouYG9M63Zvw" resname="reverseOrder">
+          <source>Reverse order</source>
+          <target>Ordre inverse</target>
+        </trans-unit>
+      </group>
+      <group resname="Common">
+        <trans-unit id="NSPNObwBmYtJ7v8s5YssxQ" resname="save">
+          <source>OK</source>
+          <target>OK</target>
+        </trans-unit>
+        <trans-unit id="KVLCIQPpZowK4uafVbB5Xw" resname="cancel">
+          <source>Cancel</source>
+          <target>Annuler</target>
+        </trans-unit>
+      </group>
+    </body>
    </file>
+
+
 </xliff>

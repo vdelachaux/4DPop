@@ -12,7 +12,7 @@ var $bottom; $i; $left; $right; $top : Integer
 var $screen : Object
 var $screens : Collection
 
-$screens:=New collection:C1472
+$screens:=[]
 
 For ($i; 1; Count screens:C437; 1)
 	

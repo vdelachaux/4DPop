@@ -11,32 +11,32 @@ If ($name#("$4DPop"))  // Create a new process
 	
 	If (Structure file:C489=Structure file:C489(*))
 		
-		$process:=New process:C317(Formula:C1597(displayStrip).source; 0; "$4DPop"; *)
+		$process:=New process:C317(Formula:C1597(_strip).source; 0; "$4DPop"; *)
 		
 	Else 
 		
-		HIDE PROCESS:C324(New process:C317(Formula:C1597(displayStrip).source; 0; "$4DPop"; *))
+		HIDE PROCESS:C324(New process:C317(Formula:C1597(_strip).source; 0; "$4DPop"; *))
 		
 	End if 
 	
 Else 
 	
-	var component : cs:C1710._component
+	var strip : cs:C1710._strip
 	
 	If (Structure file:C489=Structure file:C489(*))
 		
-		CLEAR VARIABLE:C89(component)
+		CLEAR VARIABLE:C89(strip)
 		
 		ON ERR CALL:C155(""; ek global:K92:2)
 		SET ASSERT ENABLED:C1131(True:C214; *)
 		
 	Else 
 		
-		ON ERR CALL:C155("noError"; ek global:K92:2)
+		ON ERR CALL:C155(Formula:C1597(noError).source; ek global:K92:2)
 		
 	End if 
 	
-	component:=component || cs:C1710._component.new()
-	component.display()
+	strip:=strip || cs:C1710._strip.new()
+	strip.display()
 	
 End if 

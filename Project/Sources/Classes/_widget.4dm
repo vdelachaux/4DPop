@@ -20,12 +20,14 @@ Class constructor($component : Object; $manifest : Object)
 	This:C1470.ondrop:=String:C10($manifest.ondrop)
 	This:C1470.popup:=Bool:C1537($manifest.popup)
 	This:C1470.handler:=Null:C1517
-	This:C1470.tools:=New collection:C1472
+	This:C1470.tools:=[]
+	This:C1470.order:=0
+	This:C1470.button:=""
+	This:C1470.index:=0
 	
 	If ($manifest.handler#Null:C1517)
 		
 		This:C1470.handler:=Formula from string:C1601($manifest.handler).call()
-		
 		OB REMOVE:C1226($manifest; "handler")
 		
 	End if 
@@ -96,7 +98,7 @@ Class constructor($component : Object; $manifest : Object)
 				If (Value type:C1509($manifest.tools)=Is object:K8:27)
 					
 					This:C1470.default:=This:C1470.default || $manifest.tools.method
-					This:C1470.tools.push(New object:C1471("method"; $manifest.tools.method))
+					This:C1470.tools.push({method: $manifest.tools.method})
 					
 					OB REMOVE:C1226($manifest; "tools")
 					
@@ -174,7 +176,7 @@ Function getIcon($file : 4D:C1709.File; $iconSize : Integer; $crop : Boolean) : 
 	
 	If (Not:C34($file.exists))
 		
-		$file:=File:C1566("/RESOURCES/missing.png")
+		$file:=File:C1566("/.PRODUCT_RESOURCES/Images/Plugin.png")
 		
 	End if 
 	

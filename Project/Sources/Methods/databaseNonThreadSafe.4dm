@@ -18,13 +18,13 @@ Case of
 		
 		Use ($signal)
 			
-			$c:=New collection:C1472
+			$c:=[]
 			ARRAY TEXT:C222($textArray; 0x0000)
 			COMPONENT LIST:C1001($textArray)
 			ARRAY TO COLLECTION:C1563($c; $textArray)
 			$signal.components:=$c.copy(ck shared:K85:29; $signal)
 			
-			$c:=New collection:C1472
+			$c:=[]
 			ARRAY LONGINT:C221($IntegerArray; 0x0000)
 			PLUGIN LIST:C847($IntegerArray; $textArray)
 			ARRAY TO COLLECTION:C1563($c; $textArray)

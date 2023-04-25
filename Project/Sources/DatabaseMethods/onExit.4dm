@@ -1,6 +1,6 @@
-If (Not:C34(Undefined:C82(component)))
+If (Not:C34(Undefined:C82(strip)))
 	
-	component.abort()
+	strip.abort()
 	
 End if 
 

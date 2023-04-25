@@ -2,7 +2,7 @@
 // Database Method - On Host Database Event
 // Database: 4DPop
 // ID[D453BF9A8D4B40BCB95F778613DC853F]
-// Created #16-7-2013 by Vincent de Lachaux
+// Created 16-7-2013 by Vincent de Lachaux
 // ----------------------------------------------------
 // Description:
 // Automatic management of the 4DPop palette
@@ -17,23 +17,22 @@ Case of
 		If (Is compiled mode:C492)
 			
 			// Define the global error handler
-			ON ERR CALL:C155("noError"; ek global:K92:2)
+			ON ERR CALL:C155(Formula:C1597(noError).source; ek global:K92:2)
 			
 		End if 
 		
 		//________________________________________
 	: ($eventCode=On after host database startup:K74:4)
 		
-		// Launch
-		displayStrip
+		// Display the 4DPop strip
+		_strip
 		
 		//________________________________________
 	: ($eventCode=On before host database exit:K74:5)
 		
-		If (Not:C34(Undefined:C82(component)))
+		If (Not:C34(Undefined:C82(strip)))
 			
-			// Kill the process
-			component.abort()
+			strip.abort()
 			
 		End if 
 		
@@ -44,4 +43,3 @@ Case of
 		
 		//________________________________________
 End case 
-

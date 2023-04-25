@@ -14,6 +14,6 @@ End if
 
 If (Not:C34(Shift down:C543))
 	
-	displayStrip
+	_strip
 	
 End if 

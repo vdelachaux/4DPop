@@ -8,7 +8,7 @@ Class constructor($menus : Collection)
 	Super:C1705()
 	
 	// Build a collection item references, if any
-	This:C1470.parameters:=New collection:C1472
+	This:C1470.parameters:=[]
 	
 	For ($i; 0; $menus.length-1; 2)
 		
@@ -24,10 +24,11 @@ Class constructor($menus : Collection)
 			
 			If (Length:C16($parameter)>0)
 				
-				This:C1470.parameters.push(New object:C1471(\
-					"ref"; $parameter; \
-					"menu"; $menuIndex; \
-					"item"; $itemIndex))
+				This:C1470.parameters.push({\
+					ref: $parameter; \
+					menu: $menuIndex; \
+					item: $itemIndex\
+					})
 				
 			End if 
 		End for 

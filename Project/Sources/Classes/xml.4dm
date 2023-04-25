@@ -7,7 +7,7 @@ Class constructor($variable)
 	This:C1470.success:=False:C215
 	This:C1470.autoClose:=True:C214
 	
-	This:C1470.errors:=New collection:C1472
+	This:C1470.errors:=[]
 	
 	If (Count parameters:C259>=1)
 		
@@ -689,7 +689,7 @@ Function find($node : Text; $xpath : Text) : Collection
 	
 	var $references : Collection
 	
-	$references:=New collection:C1472
+	$references:=[]
 	ARRAY TEXT:C222($nodes; 0x0000)
 	
 	If (This:C1470._requiredParams(Count parameters:C259; 1))
@@ -757,7 +757,7 @@ Function findByName($target : Text; $name : Text)->$references : Collection
 		
 		If (This:C1470.success)
 			
-			$references:=New collection:C1472
+			$references:=[]
 			ARRAY TO COLLECTION:C1563($references; $nodes)
 			
 		End if 
@@ -836,7 +836,7 @@ Function findByAttribute($target : Text; $name : Text; $value : Text; $valor)->$
 		
 		If (This:C1470.success)
 			
-			$references:=New collection:C1472
+			$references:=[]
 			ARRAY TO COLLECTION:C1563($references; $nodes)
 			
 		End if 
@@ -1028,7 +1028,7 @@ Function childrens($node : Text)->$childs : Collection
 	
 	$nodes{0}:=DOM Find XML element:C864($nodes{0}; "*"; $nodes)
 	
-	$childs:=New collection:C1472
+	$childs:=[]
 	ARRAY TO COLLECTION:C1563($childs; $nodes)
 	
 	// —————————————————————————————————————————————————————————————————————————————————
@@ -1036,7 +1036,7 @@ Function childrens($node : Text)->$childs : Collection
 Function descendants($node : Text)->$descendants : Collection
 	var $i : Integer
 	
-	$descendants:=New collection:C1472
+	$descendants:=[]
 	
 	ARRAY LONGINT:C221($types; 0x0000)
 	ARRAY TEXT:C222($nodes; 0x0000)
@@ -1599,7 +1599,7 @@ Function _reset
 	
 	This:C1470.autoClose:=True:C214
 	
-	This:C1470.errors:=New collection:C1472
+	This:C1470.errors:=[]
 	
 	// —————————————————————————————————————————————————————————————————————————————————
 Function _elementToObject($ref : Text; $withAdresses : Boolean)->$object : Object
@@ -1673,7 +1673,7 @@ Function _elementToObject($ref : Text; $withAdresses : Boolean)->$object : Objec
 		
 		If ($count>1)
 			
-			$object[$name]:=New collection:C1472
+			$object[$name]:=[]
 			
 			For ($i; 1; $count; 1)
 				
@@ -1700,7 +1700,7 @@ Function _elementToObject($ref : Text; $withAdresses : Boolean)->$object : Objec
 				
 				If ($count>1)
 					
-					$object[$name]:=New collection:C1472
+					$object[$name]:=[]
 					
 					For ($i; 1; $count; 1)
 						

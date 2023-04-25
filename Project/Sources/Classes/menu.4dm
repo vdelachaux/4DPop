@@ -10,8 +10,8 @@ Class constructor($options)
 	This:C1470.metacharacters:=False:C215
 	This:C1470.selected:=False:C215
 	This:C1470.choice:=""
-	This:C1470.submenus:=New collection:C1472
-	This:C1470.data:=New collection:C1472
+	This:C1470.submenus:=[]
+	This:C1470.data:=[]
 	
 	If (Count parameters:C259>=1)
 		
@@ -680,13 +680,24 @@ Function icon($icon : Text; $index : Integer) : cs:C1710.menu
 	var $path : Text
 	
 	Case of 
+			
 			//______________________________________________________
 		: ($icon="path:@")
 			
 			$path:=$icon
 			
 			//______________________________________________________
-		: ($icon="/RESOURCES/@")
+		: ($icon="#@")
+			
+			$path:="path:/RESOURCES/"+Delete string:C232($icon; 1; 1)
+			
+			//______________________________________________________
+		: ($icon="|@")
+			
+			$path:="path:/.PRODUCT_RESOURCES/"+Delete string:C232($icon; 1; 1)
+			
+			//______________________________________________________
+		: ($icon="/@")
 			
 			$path:="path:"+$icon
 			
@@ -886,7 +897,7 @@ Function items()->$items : Collection
 	
 	var $i : Integer
 	
-	$items:=New collection:C1472
+	$items:=[]
 	
 	For ($i; 1; This:C1470.itemCount(); 1)
 		
@@ -975,7 +986,7 @@ Function windows($callback : Text) : cs:C1710.menu
 	ARRAY LONGINT:C221($windows; 0x0000)
 	WINDOW LIST:C442($windows)
 	
-	$c:=New collection:C1472
+	$c:=[]
 	
 	For ($i; 1; Size of array:C274($windows); 1)
 		
@@ -988,8 +999,9 @@ Function windows($callback : Text) : cs:C1710.menu
 	
 	$c:=$c.orderBy(New collection:C1472(\
 		New object:C1471("propertyPath"; "process"; "descending"; True:C214); \
-		New object:C1471(\
-		"propertyPath"; "name")))
+		New object:C1471("propertyPath"; "name")))
+	
+	//$c:=$c.orderBy([{"propertyPath" : "process"; "descending" : "true"}; {"propertyPath" : "name"}])
 	
 	If ($c.length>0)
 		

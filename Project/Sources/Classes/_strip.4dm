@@ -4,6 +4,8 @@
 property motor : cs:C1710.motor
 property database : cs:C1710.database
 property preferences : cs:C1710.Preferences
+property env : cs:C1710.env
+property properties : Object
 
 // Mark:-
 Class constructor
@@ -11,6 +13,7 @@ Class constructor
 	// Mark:Delegates 📦
 	This:C1470.motor:=cs:C1710.motor.new()
 	This:C1470.database:=cs:C1710.database.new()
+	This:C1470.env:=cs:C1710.env.new(True:C214)
 	This:C1470.preferences:=cs:C1710.Preferences.new()
 	
 	This:C1470.formName:="STRIP"
@@ -23,32 +26,31 @@ Class constructor
 Function load() : Object
 	
 	var $item; $key : Text
-	var $component; $manifest; $plist; $result; $tool : Object
+	var $component; $manifest; $order; $plist; $result; $tool : Object
 	var $components : Collection
 	var $file : 4D:C1709.File
 	var $widget : cs:C1710._widget
 	
-	$result:=New object:C1471(\
-		"leftOffset"; 20; \
-		"rightOffset"; 20; \
-		"offset"; 30; \
-		"cellWidth"; 70; \
-		"iconSize"; 48; \
-		"event"; 0; \
-		"default"; New object:C1471("title"; 1; "icon"; 1; "style"; 3); \
-		"language"; Get database localization:C1009(*); \
-		"mdi"; Is Windows:C1573; \
-		"process"; Current process:C322; \
-		"hidden"; True:C214; \
-		"widgets"; New collection:C1472)
-	
 	$plist:=Folder:C1567(fk database folder:K87:14).file("Info.plist").getAppInfo()
 	
-	$result.plist:=$plist
-	$result.infos:=$plist.CFBundleDisplayName+"\rv"+$plist.CFBundleShortVersionString
-	$result.infos+=" build "+$plist.CFBundleVersion
-	$result.copyright:=$plist.NSHumanReadableCopyright
-	$result.icon:=cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/Images/4DPop.png"); 48; True:C214)
+	$result:={\
+		/* ?? */leftOffset: 25; \
+		/* ?? */rightOffset: 25; \
+		offset: 31; \
+		cellWidth: 70; \
+		iconSize: 48; \
+		event: 0; \
+		default: {titleVisible: 1; iconVisible: 1; style: 3}; \
+		language: Get database localization:C1009(*); \
+		mdi: Is Windows:C1573; \
+		process: Current process:C322; \
+		hidden: True:C214; \
+		plist: $plist; \
+		infos: $plist.CFBundleDisplayName+"\rv"+$plist.CFBundleShortVersionString+" build "+$plist.CFBundleVersion; \
+		copyright: $plist.NSHumanReadableCopyright; \
+		icon: cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/Images/4DPop.png"); 48; True:C214); \
+		widgets: []\
+		}
 	
 	$components:=This:C1470.getTools()
 	
@@ -57,6 +59,8 @@ Function load() : Object
 		return $result
 		
 	End if 
+	
+	$order:=This:C1470.preferences.get("order")
 	
 	For each ($component; $components)
 		
@@ -131,7 +135,7 @@ Function load() : Object
 					If (Value type:C1509($manifest.tools)=Is object:K8:27)
 						
 						$widget.default:=$widget.default || $manifest.tools.method
-						$widget.tools.push(New object:C1471("method"; $manifest.tools.method))
+						$widget.tools.push({method: $manifest.tools.method})
 						
 					Else 
 						
@@ -212,11 +216,23 @@ Function load() : Object
 				
 			End if 
 			
+			$widget.order:=$order[$widget.name] || ($result.widgets.length+1)*10
+			
+			// TODO:Allow to set visibility
+			$widget.visible:=True:C214
+			
 			$result.widgets.push($widget)
 			
 		End if 
-		
 	End for each 
+	
+	$result.widgets:=$result.widgets.orderBy("order")
+	
+	$result.maxWidth:=$result.widgets.length>0\
+		 ? $result.cellWidth*$result.widgets.length\
+		 : $result.cellWidth
+	
+	$result.maxWidth+=$result.offset
 	
 	return $result
 	
@@ -249,14 +265,14 @@ Function getComponents($folder : 4D:C1709.Folder) : Collection
 	$c.combine($folder.files().query("extension = :1 & original.extension =:1"; ".4dbase"))
 	$c.combine($folder.files().query("extension = :1 & original.extension =:1"; ".4DProject"))
 	
-	return $c.orderBy("name")
+	return $c
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Display the palett
 Function display()
 	
 	var $height; $width : Integer
-	var $coordinates; $form : Object
+	var $coord : cs:C1710.coord
 	
 	If (This:C1470.motor.infos.headless)
 		
@@ -264,112 +280,130 @@ Function display()
 		
 	End if 
 	
-	$form:=This:C1470.properties
-	
-	$form.autoClose:=Bool:C1537(This:C1470.preferences.get("auto_hide"))
+	This:C1470.properties.autoClose:=Bool:C1537(This:C1470.preferences.get("auto_hide"))
 	
 	FORM GET PROPERTIES:C674(String:C10(This:C1470.formName); $width; $height)
 	
-	$coordinates:=(Shift down:C543 ? /* Reset */Null:C1517 : This:C1470.preferences.get("palette"))\
-		 || /* Default */New object:C1471("left"; 0; "bottom"; Screen height:C188)
+	$coord:=(Shift down:C543 ? /* Reset */Null:C1517 : This:C1470.preferences.get("palette"))\
+		 || /* Default */({left: 0; bottom: Screen height:C188})
 	
-	$coordinates.top:=$coordinates.bottom-$height
+	$coord.top:=$coord.bottom-$height
 	
-	If ($coordinates.left=0)
+	If ($coord.left=0)
 		
-		$coordinates.right:=$width
+		$coord.right:=$width
 		
 	Else 
 		
-		$coordinates.left:=Screen width:C187-$width
-		$coordinates.right:=Screen width:C187
+		$coord.left:=Screen width:C187-$width
+		$coord.right:=Screen width:C187
 		
 	End if 
 	
-	If ($coordinates.bottom>Screen height:C188)
+	If ($coord.bottom>Screen height:C188)
 		
-		$height:=$coordinates.bottom-$coordinates.top
-		$coordinates.bottom:=Screen height:C188
-		$coordinates.top:=$coordinates.bottom-$height
+		$coord.bottom:=Screen height:C188
+		$height:=$coord.bottom-$coord.top
+		$coord.top:=$coord.bottom-$height
 		
 	End if 
 	
 	If (Count screens:C437=1)
 		
-		If ($coordinates.left<0)
+		If ($coord.left<0)
 			
-			$coordinates.left:=0
-			$coordinates.right:=$width
+			$coord.left:=0
+			$coord.right:=$width
 			
 		End if 
 		
-		If ($coordinates.right>Screen width:C187)
+		If ($coord.right>Screen width:C187)
 			
-			$coordinates.right:=Screen width:C187
+			$coord.right:=Screen width:C187
 			
 		End if 
 	End if 
 	
-	$form.window:=Open window:C153($coordinates.left; $coordinates.top; $coordinates.right; $coordinates.bottom; -(Plain dialog box:K34:4+Texture appearance:K34:17+_o_Compositing mode:K34:18))
-	DIALOG:C40(This:C1470.formName; $form; *)
+	This:C1470.properties.window:=Open window:C153($coord.left; $coord.top; $coord.right; $coord.bottom; -(Plain dialog box:K34:4+Texture appearance:K34:17+_o_Compositing mode:K34:18))
+	DIALOG:C40(This:C1470.formName; This:C1470.properties; *)
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Initialization of the palett
 Function init()
 	
-	var $format; $template; $toolButton; $toolPicture; $varName : Text
-	var $dummy; $i : Integer
+	var $button; $format; $icon; $key; $varName : Text
+	var $dummy; $indx : Integer
 	var $nilPtr; $ptr : Pointer
-	var $form; $widget : Object
+	var $o; $widget : Object
 	
-	OBJECT SET VISIBLE:C603(*; "toolButton_@"; False:C215)
+	$o:={\
+		title: ""; \
+		picture: ""; \
+		background: "?0"; \
+		titlePos: 0; \
+		titleVisible: 1; \
+		iconVisible: 1; \
+		style: 3; \
+		horMargin: 8; \
+		vertMargin: 0; \
+		iconOffset: 0; \
+		popupMenu: 0; \
+		underline: 0\
+		}
 	
-	$template:="{title};{picture};{background};{titlePos};{titleVisible};{iconVisible};{style};{horMargin};{vertMargin};{iconOffset};{popupMenu};{underline}"
-	
-	$form:=This:C1470.properties
-	
-	For each ($widget; $form.widgets)
+	For each ($widget; This:C1470.properties.widgets)
 		
-		$i+=1
+		$indx+=1
+		$button:="tool_"+String:C10($indx)
+		$icon:="icon_"+String:C10($indx)
 		
-		$toolButton:="toolButton_"+String:C10($i)
-		$toolPicture:="toolIcon."+String:C10($i)
-		
-		If ($i>1)
+		If ($indx>1)
 			
-			OBJECT DUPLICATE:C1111(*; "toolButton_"+String:C10($i-1); $toolButton; $nilPtr; ""; $form.cellWidth)
-			OBJECT DUPLICATE:C1111(*; "toolIcon."+String:C10($i-1); $toolPicture; $nilPtr; ""; $form.cellWidth)
+			OBJECT DUPLICATE:C1111(*; "tool_"+String:C10($indx-1); $button; $nilPtr; ""; This:C1470.properties.cellWidth)
+			OBJECT DUPLICATE:C1111(*; "icon_"+String:C10($indx-1); $icon; $nilPtr; ""; This:C1470.properties.cellWidth)
 			
 		End if 
 		
-		$ptr:=OBJECT Get pointer:C1124(Object named:K67:5; $toolPicture)
-		RESOLVE POINTER:C394($ptr; $varName; $dummy; $dummy)
+		$widget.index:=$indx
+		$widget.button:=$button
 		
+		// Set the icon
+		$ptr:=OBJECT Get pointer:C1124(Object named:K67:5; $icon)
+		RESOLVE POINTER:C394($ptr; $varName; $dummy; $dummy)
 		$ptr->:=$widget.icon
 		
-		$format:=Replace string:C233($template; "{title}"; $widget.name)
-		$format:=Replace string:C233($format; "{picture}"; $varName)
-		$format:=Replace string:C233($format; "{background}"; "?0")
-		$format:=Replace string:C233($format; "{titlePos}"; "0")
-		$format:=Replace string:C233($format; "{titleVisible}"; String:C10($form.default.title))
-		$format:=Replace string:C233($format; "{iconVisible}"; String:C10($form.default.icon))
-		$format:=Replace string:C233($format; "{style}"; String:C10($form.default.style))
-		$format:=Replace string:C233($format; "{horMargin}"; "8")
-		$format:=Replace string:C233($format; "{vertMargin}"; "0")
-		$format:=Replace string:C233($format; "{iconOffset}"; "0")
-		$format:=Replace string:C233($format; "{popupMenu}"; String:C10(Bool:C1537($widget.popup) ? 1+Num:C11($widget.default#Null:C1517) : 0))
-		$format:=Replace string:C233($format; "{underline}"; "0")
-		OBJECT SET FORMAT:C236(*; $toolButton; $format)
+		// Set the format
+		$o.title:=$widget.name
+		$o.picture:=$varName
+		$o.titleVisible:=This:C1470.properties.default.titleVisible
+		$o.iconVisible:=This:C1470.properties.default.iconVisible
+		$o.style:=This:C1470.properties.default.style
+		$o.popupMenu:=Bool:C1537($widget.popup) ? 1+Num:C11($widget.default#Null:C1517) : 0
 		
-		OBJECT SET HELP TIP:C1181(*; $toolButton; Length:C16($widget.helptip)>0 ? $widget.helptip : $widget.name)
+		$format:=""
+		
+		For each ($key; $o)
+			
+			$format+=String:C10($o[$key])+";"
+			
+		End for each 
+		
+		OBJECT SET FORMAT:C236(*; $button; $format)
+		
+		// Set the help tip, if any
+		OBJECT SET HELP TIP:C1181(*; $button; Length:C16($widget.helptip)>0 ? $widget.helptip : Bool:C1537($o.titleVisible) ? "" : $widget.name)
+		
+		//OBJECT SET VISIBLE(*; $button; True)
 		
 	End for each 
 	
-	If (Not:C34(Bool:C1537($form.autoClose)))
-		
-		$form.viewing:=Num:C11(This:C1470.preferences.data.viewingNumber)
-		
-	End if 
+	This:C1470.properties.displayedTools:=Num:C11(This:C1470.preferences.data.viewingNumber)
+	
+	//If (Not(This.properties.autoClose))
+	
+	//This.collapseExpand(This.properties.displayedTools)
+	
+	//End if 
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Sends an abort message to the pallet
@@ -398,6 +432,14 @@ Function close()
 	CANCEL:C270
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Reload the palett
+Function reload()
+	
+	This:C1470.close()
+	This:C1470.properties:=This:C1470.load()
+	This:C1470.display()
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Displays the About dialog box
 Function doAbout()
 	
@@ -414,82 +456,135 @@ Function doAbout()
 	CLOSE WINDOW:C154
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Displays the Preferences dialog box
+Function doSettings()
+	
+	var $i; $winRfef : Integer
+	var $o; $order : Object
+	
+	If (This:C1470.motor.infos.headless)
+		
+		return 
+		
+	End if 
+	
+	$winRfef:=Open form window:C675("SETTINGS"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
+	DIALOG:C40("SETTINGS"; This:C1470)
+	CLOSE WINDOW:C154
+	
+	If (Bool:C1537(OK))
+		
+		This:C1470.preferences.set("auto_hide"; Bool:C1537(This:C1470.properties.autoClose))
+		
+		If (This:C1470.properties.autoClose)
+			
+			This:C1470.properties.event:=This:C1470.properties.AUTO
+			SET TIMER:C645(-1)
+			
+		End if 
+		
+		If (This:C1470.$setPosition#Null:C1517)
+			
+			This:C1470.position(This:C1470.$setPosition)
+			
+		End if 
+		
+		If (Bool:C1537(This:C1470.$modifiedOrder))
+			
+			$order:={}
+			
+			For each ($o; This:C1470.properties.widgets)
+				
+				$order[$o.name]:=$i
+				$i+=1
+				
+			End for each 
+			
+			This:C1470.preferences.set("order"; $order)
+			
+			This:C1470.reload()
+			
+		End if 
+	End if 
+	
+	OB REMOVE:C1226(This:C1470; "$modifiedOrder")
+	OB REMOVE:C1226(This:C1470; "$setPosition")
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Pallet state management
 Function collapseExpand($displayed : Integer)
 	
-	var $bottom; $height; $i; $offset; $left; $offset : Integer
-	var $right; $top; $width : Integer
+	var $bottom; $left; $offset; $right; $top : Integer
 	var $form : Object
+	var $widget : cs:C1710._widget
+	var $coord : cs:C1710.coord
 	
 	$form:=This:C1470.properties
 	
 	GET WINDOW RECT:C443($left; $top; $right; $bottom; $form.window)
-	OBJECT GET SUBFORM CONTAINER SIZE:C1148($width; $height)
+	$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
 	
 	$offset:=$form.offset+5
+	
+	$form.maxWidth:=$form.widgets.length>0\
+		 ? $form.cellWidth*$form.widgets.length\
+		 : $form.cellWidth
+	
+	$form.maxWidth+=$form.offset
 	
 	If (Count parameters:C259=0)
 		
 		If ($form.page=1)
 			
-			$width:=$right+$left
-			
-			If ($width<$form.maxWidth)
+			If ($coord.width<$form.maxWidth)
 				
-				$offset:=$form.maxWidth-$width
-				$right:=$right+$offset
-				SET WINDOW RECT:C444($left; $top; $right; $bottom; $form.window)
+				// Expand
+				$offset:=$form.maxWidth-$coord.width
+				$coord.right+=$offset
+				
 				OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
-				
-				For ($i; 1; $form.widgets.length; 1)
-					
-					OBJECT SET VISIBLE:C603(*; "toolButton_"+String:C10($i); True:C214)
-					
-				End for 
+				OBJECT SET VISIBLE:C603(*; "tool_@"; True:C214)
 				
 			Else 
 				
-				SET WINDOW RECT:C444(0; $top; $left+$offset; $bottom; $form.window)
-				OBJECT MOVE:C664(*; "@.Movable"; -$width+$offset; 0)
-				OBJECT MOVE:C664(*; "fix_@"; -$width+$offset; 0)
-				OBJECT SET VISIBLE:C603(*; "toolButton_@"; False:C215)
+				// Collapse
+				OBJECT MOVE:C664(*; "@.Movable"; -$coord.width+$offset; 0)
+				OBJECT SET VISIBLE:C603(*; "tool_@"; False:C215)
+				
+				$coord.right:=$coord.left+$offset
+				$coord.left:=0
 				
 			End if 
 			
 		Else 
 			
-			$width:=$right-$left
-			
-			If ($width<$form.maxWidth)
+			If ($coord.width<$form.maxWidth)
 				
-				$offset:=$form.maxWidth-$width
-				$left:=$left-$offset
+				// Expand
+				$offset:=$form.maxWidth-$coord.width
 				OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
-				SET WINDOW RECT:C444($left; $top; $right; $bottom; $form.window)
-				OBJECT SET VISIBLE:C603(*; "Fleche.@"; False:C215)
+				OBJECT SET VISIBLE:C603(*; "tool_@"; True:C214)
 				
-				For ($i; 1; $form.widgets.length; 1)
-					
-					OBJECT SET VISIBLE:C603(*; "toolButton_"+String:C10($i); True:C214)
-					
-				End for 
+				$coord.left-=$offset
 				
 			Else 
 				
-				$offset:=($right-$left)-$offset
-				SET WINDOW RECT:C444($left+$offset; $top; $right; $bottom; $form.window)
+				// Collapse
+				$offset:=$coord.width-$offset
 				OBJECT MOVE:C664(*; "@.Movable"; -$offset; 0)
-				OBJECT SET VISIBLE:C603(*; "Fleche.@"; True:C214)
-				OBJECT SET VISIBLE:C603(*; "toolButton_@"; False:C215)
+				
+				$coord.left+=$offset
+				OBJECT SET VISIBLE:C603(*; "tool_@"; False:C215)
 				
 			End if 
 		End if 
 		
 	Else 
 		
-		If ($displayed>$form.widgets.length) | ($form.widgets.length=0)
+		If ($displayed>$form.widgets.length)\
+			 | ($form.widgets.length=0)
 			
-			$displayed:=Choose:C955($form.widgets.length>0; $form.widgets.length; 1)
+			$displayed:=$form.widgets.length>0 ? $form.widgets.length : 1
 			
 		End if 
 		
@@ -497,69 +592,54 @@ Function collapseExpand($displayed : Integer)
 		
 		If ($form.page=1)
 			
-			$width:=$right+$left
-			
-			$offset:=$form.maxWidth-$width
-			$right:=$right+$offset
-			OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
+			$offset:=$form.maxWidth-$coord.width
+			$coord.right+=$offset
 			
 		Else 
 			
-			$width:=$right-$left
-			
-			$offset:=$form.maxWidth-$width
-			$left:=$left-$offset
-			OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
+			$offset:=$form.maxWidth-$coord.width
+			$coord.left-=$offset
 			
 		End if 
 		
-		SET WINDOW RECT:C444($left; $top; $right; $bottom; $form.window)
+		OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
 		
-		For ($i; 1; $form.widgets.length; 1)
+		For each ($widget; $form.widgets)
 			
-			OBJECT SET VISIBLE:C603(*; "toolButton_"+String:C10($i); $displayed>0)
+			OBJECT SET VISIBLE:C603(*; $widget.button; $widget.index<=$displayed)
 			
-		End for 
-		
-		OBJECT MOVE:C664(*; "_background"; 0; 0; $form.maxWidth; $height; *)
-		
-		REDRAW WINDOW:C456
-		
+		End for each 
 	End if 
+	
+	// Fix the window rect
+	$coord.applyToWindow($form.window)
+	
+	// Adjust the background position
+	$coord.left:=0
+	$coord.top:=0
+	$coord.applyToWidget("_background")
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Palett menu
 Function doMenu()
 	
-	var $height; $width : Integer
-	var $coordinates; $form; $item; $widget : Object
+	var $item; $widget : Object
 	var $menu; $sub : cs:C1710.menu
-	
-	$form:=This:C1470.properties
 	
 	$menu:=cs:C1710.menu.new()
 	
 	$menu.append(":xliff:About"; "about")\
+		.line()\
+		.append(":xliff:settings"; "settings")\
+		.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_924.png")\
 		.line()
-	
-	$menu.append(":xliff:Position"; cs:C1710.menu.new()\
-		.append(":xliff:TopLeft"; "Pos_TopLeft")\
-		.append(":xliff:BottomLeft"; "Pos_BottomLeft")\
-		.append(":xliff:TopRight"; "Pos_TopRight")\
-		.append(":xliff:BottomRight"; "Pos_BottomRight"))
-	
-	$menu.line()\
-		.append(":xliff:Collapse"; "Collapse").enable(Not:C34($form.autoClose))\
-		.append(":xliff:Expand"; "Expand").enable(Not:C34($form.autoClose))\
-		.append(":xliff:automaticMode"; "automatic").mark($form.autoClose)
-	
-	$menu.line()
-	
-	For each ($widget; $form.widgets)
+	For each ($widget; This:C1470.properties.widgets)
 		
-		If ($widget.tools.length=0)
+		If ($widget.tools.length<=1)
 			
-			$menu.append($widget.name; $widget.default).icon("Images/tool.png")
+			$menu.append($widget.name; $widget.default)\
+				.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_606.png")\
+				.setData($widget.name; $widget)
 			
 		Else 
 			
@@ -583,124 +663,117 @@ Function doMenu()
 					
 				End if 
 				
-				$sub.setData("widget"; $widget)
+				$sub.setData($widget.name; $widget)
 				
 			End for each 
 			
-			$menu.append($widget.name; $sub).icon("Images/tool.png")
+			$menu.append($widget.name; $sub)\
+				.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_606.png")
 			
 		End if 
 	End for each 
 	
-	$menu.append($widget.name; $sub)
-	
 	$menu.line()\
-		.append(":xliff:closePalette"; "close")
+		.append(":xliff:closePalette"; "close")\
+		.icon("/.PRODUCT_RESOURCES/Images/WatchIcons/Watch_851.png")
 	
-	$menu.popup()
+	If ($menu.popup().selected)
+		
+		Case of 
+				
+				//______________________________________________________
+			: ($menu.choice="about")
+				
+				This:C1470.doAbout(Form:C1466)
+				
+				//______________________________________________________
+			: ($menu.choice="settings")
+				
+				This:C1470.doSettings(Form:C1466)
+				
+				//______________________________________________________
+			: ($menu.choice="close")
+				
+				This:C1470.close()
+				
+				//______________________________________________________
+			Else 
+				
+				// Calling the component
+				$item:={\
+					method: $menu.choice; \
+					widget: $menu.getData($widget.name)\
+					}
+				
+				$item.success:=This:C1470.execute($item)
+				
+				//______________________________________________________
+		End case 
+	End if 
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+Function position($position : Text)
+	
+	var $bottom; $height; $left; $right; $top; $width : Integer
+	var $screen : Object
+	var $coord : cs:C1710.coord
+	
+	GET WINDOW RECT:C443($left; $top; $right; $bottom; Form:C1466.window)
+	$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
+	$width:=$coord.width
+	$height:=$coord.height
+	
+	// Get current screen
+	For each ($screen; strip.env.screens)
+		
+		If ($coord.left>=$screen.coordinates.left)\
+			 & ($coord.left<=$screen.coordinates.right)
+			
+			break
+			
+		End if 
+	End for each 
 	
 	Case of 
 			
-			//______________________________________________________
-		: (Not:C34($menu.selected))
+			//……………………………………………………………………………………………
+		: ($position="Top@")
 			
-			return 
+			$coord.top:=$screen.workArea.top+Tool bar height:C1016
+			$coord.bottom:=$coord.top+$height
 			
-			//______________________________________________________
-		: ($menu.choice="about")
+			//……………………………………………………………………………………………
+		: ($position="Bottom@")
 			
-			This:C1470.doAbout(Form:C1466)
+			$coord.bottom:=$screen.workArea.bottom
+			$coord.top:=$coord.bottom-$height
 			
-			//______________________________________________________
-		: ($menu.choice="close")
-			
-			This:C1470.close()
-			
-			//______________________________________________________
-		: ($menu.choice="Pos_@")
-			
-			$menu.choice:=Replace string:C233($menu.choice; "Pos_"; "")
-			
-			OBJECT GET SUBFORM CONTAINER SIZE:C1148($width; $height)
-			
-			$coordinates:=New object:C1471(\
-				"left"; 0; \
-				"top"; 0; \
-				"right"; 0; \
-				"bottom"; 0)
-			
-			Case of 
-					
-					//……………………………………………………………………………………………
-				: ($menu.choice="Top@")
-					
-					$coordinates.top:=Menu bar height:C440+Tool bar height:C1016
-					$coordinates.bottom:=$coordinates.top+$height
-					
-					//……………………………………………………………………………………………
-				: ($menu.choice="Bottom@")
-					
-					$coordinates.bottom:=Screen height:C188(*)
-					$coordinates.top:=$coordinates.bottom-$height
-					
-					//……………………………………………………………………………………………
-			End case 
-			
-			Case of 
-					
-					//……………………………………………………………………………………………
-				: ($menu.choice="@Left")
-					
-					$coordinates.left:=0
-					$coordinates.right:=$width
-					$form.page:=1
-					
-					//……………………………………………………………………………………………
-				: ($menu.choice="@Right")
-					
-					$coordinates.right:=Screen width:C187(*)
-					$coordinates.left:=$coordinates.right-$width
-					$form.page:=2
-					
-					//……………………………………………………………………………………………
-			End case 
-			
-			This:C1470.preferences.set("palette"; $coordinates)
-			
-			SET WINDOW RECT:C444($coordinates.left; $coordinates.top; $coordinates.right; $coordinates.bottom; $form.window)
-			FORM GOTO PAGE:C247($form.page)
-			
-			//______________________________________________________
-		: ($menu.choice="Collapse")\
-			 | ($menu.choice="Expand")
-			
-			This:C1470.collapseExpand()
-			
-			//______________________________________________________
-		: ($menu.choice="automatic")
-			
-			$form.autoClose:=Not:C34($form.autoClose)
-			This:C1470.preferences.set("auto_hide"; $form.autoClose)
-			
-			If ($form.autoClose)
-				
-				$form.event:=999
-				SET TIMER:C645(-1)
-				
-			End if 
-			
-			//______________________________________________________
-		Else 
-			
-			// Calling the component
-			$item:=New object:C1471
-			$item.method:=$menu.choice
-			$item.widget:=$menu.getData("widget")
-			$item.success:=This:C1470.execute($item)
-			ASSERT:C1129($item.success; Replace string:C233(Get localized string:C991("ErrorOccuredDuringExecutionOfTheMethod"); "{methodName}"; $menu.choice))
-			
-			//______________________________________________________
+			//……………………………………………………………………………………………
 	End case 
+	
+	Case of 
+			
+			//……………………………………………………………………………………………
+		: ($position="@Left")
+			
+			$coord.left:=$screen.workArea.left
+			$coord.right:=$coord.left+$width
+			This:C1470.properties.page:=1
+			
+			//……………………………………………………………………………………………
+		: ($position="@Right")
+			
+			$coord.right:=$screen.workArea.right
+			$coord.left:=$coord.right-$width
+			This:C1470.properties.page:=2
+			
+			//……………………………………………………………………………………………
+	End case 
+	
+	This:C1470.preferences.set("palette"; $coord)
+	
+	SET WINDOW RECT:C444($coord.left; $coord.top; $coord.right; $coord.bottom; This:C1470.properties.window)
+	FORM GOTO PAGE:C247(This:C1470.properties.page)
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Calling a component
@@ -835,7 +908,7 @@ Function doDrop() : Integer
 			// Display the installation wizard
 			//$winRef:=Open form window("ASSISTANT"; Movable form dialog box; Horizontally centered; Vertically centered)
 			//DIALOG("ASSISTANT")
-			//CLOSE WINDOW
+			// CLOSE WINDOW
 			
 			//______________________________________________________
 	End case 
@@ -844,11 +917,12 @@ Function doDrop() : Integer
 	OBJECT SET VISIBLE:C603(*; "hightlight"; $accept)
 	
 	// Set the timer for hide the visual effect if user chooses to don't drop the dragged elements
-	Form:C1466.event:=99
+	Form:C1466.event:=This:C1470.properties.DROP
 	SET TIMER:C645(20)
 	
 	return $accept ? 0 : -1
 	
+	// MARK:-OBSOLETE
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Component localization folder
 Function _o_lproj($component : Object; $language : Text) : 4D:C1709.Folder
@@ -940,4 +1014,3 @@ Function _o_getLocalizedString($string : Text; $lproj : 4D:C1709.Folder) : Text
 	End if 
 	
 	return $string
-	

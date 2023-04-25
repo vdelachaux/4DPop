@@ -4,7 +4,6 @@ property data; _factory : Object
 Class constructor($module : Text)
 	
 	This:C1470.version:=Num:C11(Substring:C12(Application version:C493; 1; 2))
-	This:C1470._factory:=New object:C1471
 	This:C1470.module:=$module || Null:C1517
 	This:C1470.file:=This:C1470._getFile()
 	This:C1470.data:=JSON Parse:C1218(This:C1470.file.getText())
@@ -12,38 +11,49 @@ Class constructor($module : Text)
 	If (This:C1470.module=Null:C1517)
 		
 		// Default for 4DPop
-		This:C1470._factory.skin:="default"
-		This:C1470._factory.auto_hide:=True:C214
-		This:C1470._factory.palette:=New object:C1471(\
-			"left"; 0; \
-			"bottom"; Screen height:C188)
+		This:C1470._factory:={\
+			skin: "default"; \
+			auto_hide: True:C214; \
+			palette: {left: 0; bottom: Screen height:C188}\
+			}
+		
+	Else 
+		
+		This:C1470._factory:={}
 		
 	End if 
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function get($key : Text) : Variant
 	
+	var $o : Object
+	
 	If (Count parameters:C259>=1)
 		
 		return This:C1470.module#Null:C1517\
-			 ? This:C1470.data[This:C1470.module][$key] || This:C1470._factory[$key]\
-			 : This:C1470.data[$key] || This:C1470._factory[$key]
+			 ? This:C1470.data[This:C1470.module][$key]#Null:C1517 ? This:C1470.data[This:C1470.module][$key] : This:C1470._factory[$key]\
+			 : This:C1470.data[$key]#Null:C1517 ? This:C1470.data[$key] : This:C1470._factory[$key]
 		
 	Else 
 		
-		var $o : Object
 		$o:=This:C1470.module#Null:C1517\
 			 ? This:C1470.data[This:C1470.module]\
 			 : This:C1470.data
 		
-		If (This:C1470._factory#Null:C1517)
+		If (This:C1470._factory=Null:C1517)
 			
-			For each ($key; This:C1470._factory)
-				
-				$o[$key]:=$o[$key] || This:C1470._factory[$key]
-				
-			End for each 
+			return $o
+			
 		End if 
+		
+		For each ($key; This:C1470._factory)
+			
+			If ($o[$key]=Null:C1517)
+				
+				$o[$key]:=This:C1470._factory[$key]
+				
+			End if 
+		End for each 
 		
 		return $o
 		
@@ -86,7 +96,7 @@ Function default($default : Object)
 	
 	var $key : Text
 	
-	This:C1470._factory:=New object:C1471
+	This:C1470._factory:={}
 	
 	For each ($key; $default)
 		
@@ -136,7 +146,7 @@ Function _getFile() : 4D:C1709.File
 			Until ($version=11)  // The first version
 		End if 
 		
-		$data:=New object:C1471
+		$data:={}
 		
 		If ($previous.exists)
 			
@@ -169,7 +179,7 @@ Function _getFile() : 4D:C1709.File
 							//______________________________________________________
 						: ($name="PopWindows")  // 4DPop Windows
 							
-							$data[$name]:=New object:C1471
+							$data[$name]:={}
 							
 							For each ($node; $xml.childrens($child))
 								
@@ -200,13 +210,12 @@ Function _getFile() : 4D:C1709.File
 							//______________________________________________________
 						: ($name="Commands")  // 4DPop Commands
 							
-							$data[$name]:=New object:C1471(\
-								"language"; $xml.getAttributes($xml.childrens($child)[0]).value)
+							$data[$name]:={language: $xml.getAttributes($xml.childrens($child)[0]).value}
 							
 							//______________________________________________________
 						: ($name="Color_Chart")  // 4DPop Color Chart
 							
-							$data[$name]:=New object:C1471
+							$data[$name]:={}
 							
 							For each ($node; $xml.childrens($child))
 								
@@ -222,7 +231,7 @@ Function _getFile() : 4D:C1709.File
 										//________________________________
 									: ($key="colors")
 										
-										$data[$name][$key]:=New collection:C1472
+										$data[$name][$key]:=[]
 										
 										$node:=$xml.firstChild($node)
 										
@@ -236,7 +245,7 @@ Function _getFile() : 4D:C1709.File
 										//________________________________
 									: ($key="samplenames")
 										
-										$data[$name][$key]:=New collection:C1472
+										$data[$name][$key]:=[]
 										
 										$node:=$xml.firstChild($node)
 										

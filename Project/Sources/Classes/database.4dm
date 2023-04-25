@@ -152,8 +152,8 @@ Class constructor($full : Boolean)
 		
 	Else 
 		
-		This:C1470.components:=New collection:C1472
-		This:C1470.plugins:=New collection:C1472
+		This:C1470.components:=[]
+		This:C1470.plugins:=[]
 		
 	End if 
 	//%W+550.2
@@ -229,7 +229,7 @@ Function isWritable()->$writable : Boolean
 	var $file : 4D:C1709.File
 	
 	$methodCalledOnError:=Method called on error:C704
-	ON ERR CALL:C155("noError")
+	ON ERR CALL:C155(Formula:C1597(noError).source)
 	$file:=This:C1470.databaseFolder.file("._")
 	$writable:=$file.create()
 	$file.delete()
