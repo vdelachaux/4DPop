@@ -14,8 +14,8 @@ This file is distributed under the same license as the 4D product package.
       <body>
          <group resname="Tips">
             <trans-unit id="Voz16Tlo47QMAFN4vjeV7A" resname="TipsTitleBar">
-               <source>Clic to move the Tools Strip</source>
-               <target>クリックしてツールパレットを移動</target>
+               <source>Click and drag to move the strip</source>
+               <target>クリック＆ドラッグでストリップを移動</target>
             </trans-unit>
          </group>
          <group resname="Messages">

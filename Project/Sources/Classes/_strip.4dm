@@ -393,17 +393,9 @@ Function init()
 		// Set the help tip, if any
 		OBJECT SET HELP TIP:C1181(*; $button; Length:C16($widget.helptip)>0 ? $widget.helptip : Bool:C1537($o.titleVisible) ? "" : $widget.name)
 		
-		//OBJECT SET VISIBLE(*; $button; True)
-		
 	End for each 
 	
 	This:C1470.properties.displayedTools:=Num:C11(This:C1470.preferences.data.viewingNumber)
-	
-	//If (Not(This.properties.autoClose))
-	
-	//This.collapseExpand(This.properties.displayedTools)
-	
-	//End if 
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Sends an abort message to the pallet
