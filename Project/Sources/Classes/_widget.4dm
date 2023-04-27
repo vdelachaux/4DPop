@@ -84,13 +84,10 @@ Class constructor($component : Object; $manifest : Object)
 				End if 
 				
 				//______________________________________________________
-			: ($key="picture")
+			: ($key="media")
 				
 				This:C1470.icon:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48)
 				This:C1470.picture:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48; True:C214)
-				
-				// MARK:###### TEMPO #######
-				OB REMOVE:C1226($manifest; $key)
 				
 				//______________________________________________________
 			: ($key="tools")
