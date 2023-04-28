@@ -616,6 +616,7 @@ Function collapseExpand($displayed : Integer)
 Function doMenu()
 	
 	var $item; $widget : Object
+	var $c : Collection
 	var $menu; $sub : cs:C1710.menu
 	
 	$menu:=cs:C1710.menu.new()
@@ -625,6 +626,7 @@ Function doMenu()
 		.append(":xliff:settings"; "settings")\
 		.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_924.png")\
 		.line()
+	
 	For each ($widget; This:C1470.properties.widgets)
 		
 		If ($widget.tools.length<=1)
@@ -651,12 +653,9 @@ Function doMenu()
 					
 				Else 
 					
-					$sub.append($item.name; $item.method)
+					$sub.append($item.name; $widget.name+"/"+$item.method)
 					
 				End if 
-				
-				$sub.setData($widget.name; $widget)
-				
 			End for each 
 			
 			$menu.append($widget.name; $sub)\
@@ -670,6 +669,8 @@ Function doMenu()
 		.icon("/.PRODUCT_RESOURCES/Images/WatchIcons/Watch_851.png")
 	
 	If ($menu.popup().selected)
+		
+		$c:=Split string:C1554($menu.choice; "/")
 		
 		Case of 
 				
@@ -689,12 +690,23 @@ Function doMenu()
 				This:C1470.close()
 				
 				//______________________________________________________
+			: ($c.length>1)
+				
+				// Calling a component item
+				$item:={\
+					method: $c[1]; \
+					widget: This:C1470.properties.widgets.query("name= :1"; $c[0]).pop()\
+					}
+				
+				$item.success:=This:C1470.execute($item)
+				
+				//______________________________________________________
 			Else 
 				
 				// Calling the component
 				$item:={\
 					method: $menu.choice; \
-					widget: $menu.getData($widget.name)\
+					widget: $menu.getData($menu.choice)\
 					}
 				
 				$item.success:=This:C1470.execute($item)

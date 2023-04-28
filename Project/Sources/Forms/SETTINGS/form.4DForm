@@ -14,7 +14,8 @@
 	"events": [
 		"onLoad",
 		"onClick",
-		"onCloseBox"
+		"onCloseBox",
+		"onUnload"
 	],
 	"windowTitle": ":xliff:settingsWindowTitle",
 	"destination": "detailScreen",
@@ -40,8 +41,12 @@
 					"width": 343,
 					"height": 224,
 					"events": [
+						"onLoad",
 						"onDrop",
 						"onDragOver",
+						"onUnload",
+						"onMouseLeave",
+						"onMouseMove",
 						"onBeginDragOver"
 					],
 					"dataSource": "Form:C1466.properties.widgets",
@@ -59,6 +64,7 @@
 					"sizingY": "grow",
 					"fill": "transparent",
 					"borderStyle": "none",
+					"hideSystemHighlight": true,
 					"columns": [
 						{
 							"header": {
@@ -104,7 +110,28 @@
 								"name": "Footer1"
 							},
 							"dataSource": "This:C1470.name",
-							"enterable": false
+							"enterable": false,
+							"width": 200
+						},
+						{
+							"header": {
+								"name": "Header4",
+								"text": "Header4"
+							},
+							"name": "Column1",
+							"resizable": false,
+							"enterable": false,
+							"truncateMode": "none",
+							"textAlign": "right",
+							"width": 32,
+							"maxWidth": 64,
+							"fontSize": 24,
+							"dataSource": "This:C1470.$handle",
+							"footer": {
+								"name": "Footer4"
+							},
+							"verticalAlign": "top",
+							"stroke": "#c0c0c0"
 						}
 					]
 				},
@@ -165,78 +192,6 @@
 					"fill": "automatic",
 					"borderRadius": 8
 				},
-				"TopLeft": {
-					"type": "radio",
-					"text": ":xliff:TopLeft",
-					"top": 51,
-					"left": 46,
-					"width": 91,
-					"height": 33,
-					"events": [
-						"onClick"
-					],
-					"style": "toolbar",
-					"radioGroup": "positions",
-					"imageHugsTitle": false,
-					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/TopLeft.png",
-					"iconFrames": 1,
-					"textPlacement": "right",
-					"dataSourceTypeHint": "boolean"
-				},
-				"TopRight": {
-					"type": "radio",
-					"text": ":xliff:TopRight",
-					"top": 51,
-					"left": 203,
-					"width": 104,
-					"height": 33,
-					"events": [
-						"onClick"
-					],
-					"style": "toolbar",
-					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/TopRight.png",
-					"iconFrames": 1,
-					"textPlacement": "left",
-					"radioGroup": "positions",
-					"imageHugsTitle": false,
-					"dataSourceTypeHint": "boolean"
-				},
-				"BottomLeft": {
-					"type": "radio",
-					"text": ":xliff:BottomLeft",
-					"top": 160,
-					"left": 46,
-					"width": 91,
-					"height": 33,
-					"events": [
-						"onClick"
-					],
-					"style": "toolbar",
-					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/BtmLeft.png",
-					"iconFrames": 1,
-					"textPlacement": "right",
-					"radioGroup": "positions",
-					"imageHugsTitle": false,
-					"dataSourceTypeHint": "boolean"
-				},
-				"BottomRight": {
-					"type": "radio",
-					"text": ":xliff:BottomRight",
-					"top": 160,
-					"left": 203,
-					"width": 104,
-					"height": 33,
-					"events": [
-						"onClick"
-					],
-					"style": "toolbar",
-					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/BtmRight.png",
-					"iconFrames": 1,
-					"textPlacement": "left",
-					"radioGroup": "positions",
-					"imageHugsTitle": false,
-					"dataSourceTypeHint": "boolean"
-				},
 				"expandCollapseBox": {
 					"type": "groupBox",
 					"text": ":xliff:expandCollapse",
@@ -279,11 +234,83 @@
 					"height": 5,
 					"startPoint": "bottomLeft",
 					"sizingY": "move"
+				},
+				"TopLeft": {
+					"type": "radio",
+					"text": ":xliff:TopLeft",
+					"top": 50,
+					"left": 42,
+					"width": 95,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"style": "toolbar",
+					"radioGroup": "positions",
+					"imageHugsTitle": false,
+					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/TopLeft.png",
+					"iconFrames": 1,
+					"textPlacement": "right",
+					"dataSourceTypeHint": "boolean"
+				},
+				"TopRight": {
+					"type": "radio",
+					"text": ":xliff:TopRight",
+					"top": 50,
+					"left": 212,
+					"width": 95,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"style": "toolbar",
+					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/TopRight.png",
+					"iconFrames": 1,
+					"textPlacement": "left",
+					"radioGroup": "positions",
+					"imageHugsTitle": false,
+					"dataSourceTypeHint": "boolean"
+				},
+				"BottomLeft": {
+					"type": "radio",
+					"text": ":xliff:BottomLeft",
+					"top": 172,
+					"left": 42,
+					"width": 95,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"style": "toolbar",
+					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/BtmLeft.png",
+					"iconFrames": 1,
+					"textPlacement": "right",
+					"radioGroup": "positions",
+					"imageHugsTitle": false,
+					"dataSourceTypeHint": "boolean"
+				},
+				"BottomRight": {
+					"type": "radio",
+					"text": ":xliff:BottomRight",
+					"top": 172,
+					"left": 212,
+					"width": 95,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"style": "toolbar",
+					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/BtmRight.png",
+					"iconFrames": 1,
+					"textPlacement": "left",
+					"radioGroup": "positions",
+					"imageHugsTitle": false,
+					"dataSourceTypeHint": "boolean"
 				}
 			}
 		}
 	],
-	"geometryStamp": 250,
+	"geometryStamp": 334,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",
