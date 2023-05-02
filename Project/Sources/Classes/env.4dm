@@ -138,7 +138,7 @@ Function getScreenInfos()
 		//%W-550.2
 		This:C1470.screens:=$signal.screens.copy(ck shared:K85:29)
 		This:C1470.mainScreenID:=$signal.mainScreenID
-		This:C1470.mainScreen:=This:C1470.screens[This:C1470.mainScreenID-1]
+		This:C1470.mainScreen:=This:C1470.screens.query("id = :1"; This:C1470.mainScreenID).pop()
 		This:C1470.menuBarHeight:=$signal.menuBarHeight
 		This:C1470.toolBarHeight:=$signal.toolBarHeight
 		//%W+550.2

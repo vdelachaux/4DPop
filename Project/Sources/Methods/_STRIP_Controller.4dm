@@ -19,7 +19,10 @@
 // Management id
 // ----------------------------------------------------
 // Modified #06-02-2023 by Vincent de Lachaux
-// v20 refactoring
+// V20 refactoring
+// ----------------------------------------------------
+// Modified #02-06-2023 by Vincent de Lachaux
+// Management of widgets
 // ----------------------------------------------------
 var $t : Text
 var $visible : Boolean
@@ -126,7 +129,10 @@ Case of
 		
 		REDRAW WINDOW:C456(Form:C1466.window)
 		
-		If (Form:C1466.event=0)
+		$e.event:=Form:C1466.event
+		Form:C1466.event:=0
+		
+		If ($e.event=0)
 			
 /*
 Control whether the pallet should be visible or not
@@ -170,248 +176,246 @@ depending on the origin of the most upstream process
 					
 					If (Form:C1466.autoClose)
 						
-						strip.collapseExpand(0)
+						strip.collapseExpand(-1)
 						
 					End if 
 				End if 
 			End if 
 			
 			SET TIMER:C645(50)
+			return 
 			
-		Else 
-			
-			$e.event:=Form:C1466.event
-			Form:C1466.event:=0
-			
-			Case of 
+		End if 
+		
+		Case of 
+				
+				//………………………………………………………………………………………………………………
+			: ($e.event=Form:C1466.INIT)
+				
+				// MARK: ▶︎ Restore the visible tools
+				strip.collapseExpand(Form:C1466.displayedTools)
+				
+				SET TIMER:C645(-1)
+				return 
+				
+				//………………………………………………………………………………………………………………
+			: ($e.event=Form:C1466.RESIZE)
+				
+				// MARK: ▶︎ User resizes the window
+				SET CURSOR:C469(9010)
+				GET MOUSE:C468($x; $y; $mouseButton; *)
+				GET WINDOW RECT:C443($left; $top; $right; $bottom; Form:C1466.window)
+				
+				$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
+				
+				If (Bool:C1537($mouseButton))  // In progress
 					
-					//………………………………………………………………………………………………………………
-				: ($e.event=Form:C1466.INIT)
-					
-					// MARK: ▶︎ Restore the visible tools
-					strip.collapseExpand(Form:C1466.displayedTools)
-					
-					SET TIMER:C645(-1)
-					return 
-					
-					
-					//………………………………………………………………………………………………………………
-				: ($e.event=Form:C1466.RESIZE)
-					
-					// MARK: ▶︎ User resizes the window
-					SET CURSOR:C469(9010)
-					GET MOUSE:C468($x; $y; $mouseButton; *)
-					GET WINDOW RECT:C443($left; $top; $right; $bottom; Form:C1466.window)
-					
-					$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
-					
-					Form:C1466.maxWidth:=Form:C1466.widgets.length>0\
-						 ? Form:C1466.cellWidth*Form:C1466.widgets.length\
-						 : Form:C1466.cellWidth
-					
-					Form:C1466.maxWidth+=Form:C1466.offset
-					
-					If (Bool:C1537($mouseButton))  // In progress
+					If (Form:C1466.page=1)
 						
-						If (Form:C1466.page=1)
-							
-							$offset:=$x-$coord.right+5
-							$wantedWidth:=$coord.right+$offset
-							
-							Case of 
-									
-									//…………………………………………………………………………
-								: ($wantedWidth<Form:C1466.offset)
-									
-									//…………………………………………………………………………
-								: ($wantedWidth>Form:C1466.maxWidth)
-									
-									//…………………………………………………………………………
-								Else 
-									
-									$coord.right+=$offset
-									OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
-									
-									//…………………………………………………………………………
-							End case 
-							
-						Else 
-							
-							$wantedWidth:=$coord.width
-							$offset:=$coord.left-$x+5
-							$wantedWidth+=$offset
-							
-							Case of 
-									
-									//…………………………………………………………………………
-								: ($wantedWidth<Form:C1466.offset)
-									
-									//…………………………………………………………………………
-								: ($wantedWidth>Form:C1466.maxWidth)
-									
-									//…………………………………………………………………………
-								Else 
-									
-									$coord.left-=$offset
-									OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
-									
-									//…………………………………………………………………………
-							End case 
-						End if 
+						$offset:=$x-$coord.right+5
+						$wantedWidth:=$coord.right+$offset
 						
-						$visibleTools:=($wantedWidth\Form:C1466.cellWidth)+Num:C11(($wantedWidth%Form:C1466.cellWidth)>80)
-						Form:C1466.event:=Form:C1466.RESIZE  // Continue
-						
-					Else   // It's over
-						
-						$visibleTools:=($coord.width\Form:C1466.cellWidth)+Num:C11(($coord.width%Form:C1466.cellWidth)>80)
-						$wantedWidth:=(Form:C1466.cellWidth*$visibleTools)+Form:C1466.offset
-						$wantedWidth:=$wantedWidth>Form:C1466.maxWidth ? Form:C1466.maxWidth : $wantedWidth
-						
-						$offset:=$wantedWidth-$coord.width
-						
-						If (Form:C1466.page=1)
-							
-							$coord.right+=$offset
-							OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
-							
-						Else 
-							
-							$coord.left-=$offset
-							OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
-							
-						End if 
-						
-						// Store the number of tools to display when the palette will be next open
-						strip.preferences.set("viewingNumber"; $coord.width\Form:C1466.cellWidth)
-						
-					End if 
-					
-					// Keep visible only the tools included in the window
-					For each ($widget; Form:C1466.widgets)
-						
-						OBJECT SET VISIBLE:C603(*; $widget.button; $widget.index<=$visibleTools)
-						
-					End for each 
-					
-					// Fix the window rect
-					$coord.applyToWindow(Form:C1466.window)
-					
-					// Adjust the background positions
-					$coord.left:=0
-					$coord.top:=0
-					$coord.applyToWidget("_background")
-					$coord.applyToWidget("hightlight")
-					
-					//………………………………………………………………………………………………………………
-				: ($e.event=Form:C1466.AUTO)
-					
-					// MARK: ▶︎ Automatic collapse/expand
-					// #12-12-2013 GET WINDOW RECT returns bad coordinates, for this particular window, on Windows only.
-					// This causes a flickering effect.
-					GET MOUSE:C468($x; $y; $mouseButton)
-					OBJECT GET SUBFORM CONTAINER SIZE:C1148($width; $height)
-					
-					If ($x>=0) && ($x<=$width)\
-						 && ($y>=0) && ($y<=$height)
-						
-						Form:C1466.event:=Form:C1466.autoClose ? Form:C1466.AUTO : 0
+						Case of 
+								
+								//…………………………………………………………………………
+							: ($wantedWidth<Form:C1466.offset)
+								
+								//…………………………………………………………………………
+							: ($wantedWidth>Form:C1466.maxWidth)
+								
+								//…………………………………………………………………………
+							Else 
+								
+								$coord.right+=$offset
+								OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
+								
+								//…………………………………………………………………………
+						End case 
 						
 					Else 
 						
-						strip.collapseExpand(0)
+						$wantedWidth:=$coord.width
+						$offset:=$coord.left-$x+5
+						$wantedWidth+=$offset
 						
+						Case of 
+								
+								//…………………………………………………………………………
+							: ($wantedWidth<Form:C1466.offset)
+								
+								//…………………………………………………………………………
+							: ($wantedWidth>Form:C1466.maxWidth)
+								
+								//…………………………………………………………………………
+							Else 
+								
+								$coord.left-=$offset
+								OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
+								
+								//…………………………………………………………………………
+						End case 
 					End if 
 					
-					//………………………………………………………………………………………………………………
-				: ($e.event=Form:C1466.MOVED)
+					$visibleTools:=($wantedWidth\Form:C1466.cellWidth)+Num:C11(($wantedWidth%Form:C1466.cellWidth)>80)
+					Form:C1466.event:=Form:C1466.RESIZE  // Continue
 					
-					// MARK: ▶︎ User has moved the strip
-					GET WINDOW RECT:C443($left; $top; $right; $bottom; Form:C1466.window)
-					$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
+				Else   // It's over
 					
-					// Multi-screens management
-					For each ($screen; strip.env.screens)
+					For each ($widget; Form:C1466.widgets)
 						
-						If ($coord.left>=$screen.coordinates.left)\
-							 & ($coord.left<=$screen.coordinates.right)
+						$wantedWidth+=$widget.width
+						
+						If ($wantedWidth<=$coord.width)
 							
+							$visibleTools+=1
+							
+						Else 
+							
+							$wantedWidth-=$widget.width
 							break
 							
 						End if 
+						
 					End for each 
 					
-					Case of 
-							
-							//………………………………………………………
-						: ($coord.left=$screen.coordinates.left)
-							
-							//………………………………………………………
-						: ($coord.left>=(Abs:C99($screen.dimensions.width)/3))
-							
-							Form:C1466.page:=2
-							
-							$offset:=$screen.dimensions.width-$coord.right
-							$coord.left+=$offset
-							$coord.right+=$offset
-							SET WINDOW RECT:C444($coord.left; $coord.top; $coord.right; $coord.bottom; Form:C1466.window)
-							
-							//………………………………………………………
-						Else 
-							
-							Form:C1466.page:=1
-							
-							$width:=$coord.width
-							$coord.left:=$screen.coordinates.left
-							$coord.right:=$coord.left+$width
-							SET WINDOW RECT:C444($coord.left; $coord.top; $coord.right; $coord.bottom; Form:C1466.window)
-							
-							//………………………………………………………
-					End case 
+					$wantedWidth+=Form:C1466.offset
+					$wantedWidth:=$wantedWidth>Form:C1466.maxWidth ? Form:C1466.maxWidth : $wantedWidth
+					$wantedWidth:=$wantedWidth<36 ? 36 : $wantedWidth
 					
-					SET CURSOR:C469
-					FORM GOTO PAGE:C247(Form:C1466.page)
+					$offset:=$wantedWidth-$coord.width
 					
-					strip.preferences.set("palette"; $coord)
+					If (Form:C1466.page=1)
+						
+						$coord.right+=$offset
+						OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
+						
+					Else 
+						
+						$coord.left-=$offset
+						OBJECT MOVE:C664(*; "@.Movable"; $offset; 0)
+						
+					End if 
 					
-					//………………………………………………………………………………………………………………
-				: ($e.event=Form:C1466.DROP)
+					// Store the number of tools to display when the palette will be next open
+					strip.preferences.set("viewingNumber"; $visibleTools)
 					
-					// MARK: ▶︎ End of drag and drop on the strip
-					// TODO: Install component
+				End if 
+				
+				// Keep visible only the tools included in the window
+				For each ($widget; Form:C1466.widgets)
 					
-					//………………………………………………………………………………………………………………
-			End case 
+					OBJECT SET VISIBLE:C603(*; $widget.tool; $widget.index<=$visibleTools)
+					
+				End for each 
+				
+				// Fix the window rect
+				$coord.applyToWindow(Form:C1466.window)
+				
+				// Adjust the background positions
+				$coord.left:=0
+				$coord.top:=0
+				$coord.applyToWidget("_background")
+				$coord.applyToWidget("hightlight")
+				
+				//………………………………………………………………………………………………………………
+			: ($e.event=Form:C1466.AUTO)
+				
+				// MARK: ▶︎ Automatic collapse/expand
+				// #12-12-2013 GET WINDOW RECT returns bad coordinates, for this particular window, on Windows only.
+				// This causes a flickering effect.
+				GET MOUSE:C468($x; $y; $mouseButton)
+				OBJECT GET SUBFORM CONTAINER SIZE:C1148($width; $height)
+				
+				If ($x>=0) && ($x<=$width)\
+					 && ($y>=0) && ($y<=$height)
+					
+					Form:C1466.event:=Form:C1466.autoClose ? Form:C1466.AUTO : 0
+					
+				Else 
+					
+					strip.collapseExpand(-1)
+					
+				End if 
+				
+				//………………………………………………………………………………………………………………
+			: ($e.event=Form:C1466.MOVED)
+				
+				// MARK: ▶︎ User has moved the strip
+				GET WINDOW RECT:C443($left; $top; $right; $bottom; Form:C1466.window)
+				$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
+				
+				// Multi-screens management
+				For each ($screen; strip.env.screens)
+					
+					If ($coord.left>=$screen.coordinates.left)\
+						 & ($coord.left<=$screen.coordinates.right)
+						
+						break
+						
+					End if 
+				End for each 
+				
+				If ($coord.left>=(Abs:C99($screen.dimensions.width)/3))
+					
+					// Hang on the right
+					$offset:=$screen.dimensions.width-$coord.right
+					$coord.left+=$offset
+					$coord.right+=$offset
+					SET WINDOW RECT:C444($coord.left; $coord.top; $coord.right; $coord.bottom; Form:C1466.window)
+					Form:C1466.page:=2
+					
+				Else 
+					
+					// Hang on the left
+					$width:=$coord.width
+					$coord.left:=$screen.coordinates.left
+					$coord.right:=$coord.left+$width
+					SET WINDOW RECT:C444($coord.left; $coord.top; $coord.right; $coord.bottom; Form:C1466.window)
+					Form:C1466.page:=1
+					
+				End if 
+				
+				SET CURSOR:C469
+				FORM GOTO PAGE:C247(Form:C1466.page)
+				
+				strip.preferences.set("palette"; $coord)
+				
+				//………………………………………………………………………………………………………………
+			: ($e.event=Form:C1466.DROP)
+				
+				// MARK: ▶︎ End of drag and drop on the strip
+				// TODO: Install component
+				
+				//………………………………………………………………………………………………………………
+		End case 
+		
+		If (Form:C1466.event#0)
 			
-			If (Form:C1466.event#0)
-				
-				SET TIMER:C645(Form:C1466.event=Form:C1466.AUTO ? 50 : -1)
-				return 
-				
-			End if 
+			SET TIMER:C645(Form:C1466.event=Form:C1466.AUTO ? 50 : -1)
+			return 
 			
-			If (Form:C1466.mdi)
-				
-				SET TIMER:C645(10)  // We must track the redimensioning of window MDI
-				
-				return 
-				
-			End if 
+		End if 
+		
+		If (Form:C1466.mdi)
 			
-			If ($e.event=Form:C1466.DROP)  // End drag & drop
-				
-				SET TIMER:C645(20)
-				OBJECT SET VISIBLE:C603(*; "hightlight.@"; False:C215)
-				
-				return 
-				
-			End if 
-			
-			SET TIMER:C645(10+(290*Num:C11(Form:C1466.widgets.length=0)))  // Animation
+			SET TIMER:C645(10)  // We must track the redimensioning of window MDI
 			
 			return 
 			
 		End if 
+		
+		If ($e.event=Form:C1466.DROP)  // End drag & drop
+			
+			SET TIMER:C645(20)
+			OBJECT SET VISIBLE:C603(*; "hightlight.@"; False:C215)
+			
+			return 
+			
+		End if 
+		
+		SET TIMER:C645(10+(290*Num:C11(Form:C1466.widgets.length=0)))  // Animation
+		
+		return 
 		
 		//______________________________________________________
 End case 
@@ -541,7 +545,7 @@ Case of
 				 | ($e.code=On Long Click:K2:37)
 				
 				$e.run:=True:C214
-				$e.runDefault:=($e.widget.runDefault#Null:C1517) & ($e.widget.tool.length=0)
+				$e.runDefault:=($e.widget.runDefault#Null:C1517) & ($e.widget.tools.length=0)
 				$e.runHelp:=(Macintosh option down:C545 | Windows Alt down:C563)
 				
 				//…………………………………………………………………………………………………………………………
@@ -568,7 +572,7 @@ Case of
 				Else 
 					
 					// FIXME:On Drop
-					//Button_OnDrop
+					// Button_OnDrop
 					
 				End if 
 				
@@ -595,13 +599,13 @@ Case of
 				//…………………………………………………………………………………………………………………………
 			: ($e.run)
 				
-				If ($e.widget.tool.length=1)
+				If ($e.widget.tools.length=1)
 					
-					$e.method:=$e.widget.tool[0].method
+					$e.method:=$e.widget.tools[0].method
 					
 				Else 
 					
-					If ($e.widget.tool.length=0)
+					If ($e.widget.tools.length=0)
 						
 						$e.method:="default"
 						
@@ -610,7 +614,7 @@ Case of
 						$menu:=cs:C1710.menu.new()
 						$e.index:=0
 						
-						For each ($item; $e.widget.tool)
+						For each ($item; $e.widget.tools)
 							
 							If ($item.name="-") || ($item.name="(-")
 								
@@ -637,7 +641,7 @@ Case of
 							
 						End if 
 						
-						$e.method:=String:C10($e.widget.tool[Num:C11($menu.choice)].method)
+						$e.method:=String:C10($e.widget.tools[Num:C11($menu.choice)].method)
 						
 					End if 
 				End if 

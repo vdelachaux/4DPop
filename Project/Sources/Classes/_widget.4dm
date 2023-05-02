@@ -22,13 +22,14 @@ Class constructor($component : Object; $manifest : Object)
 	This:C1470.handler:=Null:C1517
 	This:C1470.tools:=[]
 	This:C1470.order:=0
-	This:C1470.button:=""
+	This:C1470.tool:=""
 	This:C1470.index:=0
+	This:C1470.form:=Null:C1517
+	This:C1470.width:=70
 	
 	If ($manifest.handler#Null:C1517)
 		
 		This:C1470.handler:=Formula from string:C1601($manifest.handler).call()
-		OB REMOVE:C1226($manifest; "handler")
 		
 	End if 
 	
@@ -38,29 +39,24 @@ Class constructor($component : Object; $manifest : Object)
 			
 			This:C1470.handler.call(Null:C1517; $manifest.initproc).call()
 			
-		Else 
-			
-			// MARK:###### TEMPO #######
-			Formula from string:C1601($manifest.initproc).call()
-			
 		End if 
-		
-		OB REMOVE:C1226($manifest; "initproc")
-		
 	End if 
-	
-	// MARK:###### TEMPO #######
-	If ($manifest.tool#Null:C1517)
-		
-		$manifest.tools:=$manifest.tool
-		
-	End if 
-	
-	This:C1470.tool:=This:C1470.tools
 	
 	For each ($key; $manifest)
 		
 		Case of 
+				
+				//______________________________________________________
+			: ($key="handler")\
+				 | ($key="initproc")
+				
+				// Already handled
+				
+				//______________________________________________________
+			: ($key="widget")
+				
+				This:C1470.form:=$manifest[$key].name
+				This:C1470.width:=$manifest[$key].width
 				
 				//______________________________________________________
 			: ($key="name")\
@@ -74,20 +70,20 @@ Class constructor($component : Object; $manifest : Object)
 					
 				End if 
 				
-				If (This:C1470.handler#Null:C1517)
+				If (This:C1470.handler=Null:C1517)
 					
-					This:C1470[$key]:=This:C1470.handler.call(Null:C1517; ":C991($1)").call(Null:C1517; Delete string:C232($manifest[$key]; 1; 7))
-					
-					// MARK:###### TEMPO #######
-					OB REMOVE:C1226($manifest; $key)
+					// FIXME:ERROR
+					continue
 					
 				End if 
+				
+				This:C1470[$key]:=This:C1470.handler.call(Null:C1517; ":C991($1)").call(Null:C1517; Delete string:C232($manifest[$key]; 1; 7))
 				
 				//______________________________________________________
 			: ($key="media")
 				
-				This:C1470.icon:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48)
 				This:C1470.picture:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48; True:C214)
+				This:C1470.icon:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48)
 				
 				//______________________________________________________
 			: ($key="tools")
@@ -107,7 +103,7 @@ Class constructor($component : Object; $manifest : Object)
 							
 							This:C1470.popup:=True:C214
 							
-							For each ($tool; $manifest.tool || $manifest.tools)
+							For each ($tool; $manifest.tools)
 								
 								For each ($item; $tool)
 									
@@ -116,7 +112,9 @@ Class constructor($component : Object; $manifest : Object)
 											//………………………………………………………………………………
 										: ($item="name")
 											
-											If (Position:C15(":xliff:"; $tool.name)#1)
+											If ($item="-")\
+												 || ($item="(-")\
+												 || (Position:C15(":xliff:"; $tool.name)#1)
 												
 												continue
 												
@@ -147,10 +145,6 @@ Class constructor($component : Object; $manifest : Object)
 								
 							End for each 
 						End if 
-						
-						// MARK:###### TEMPO #######
-						OB REMOVE:C1226($manifest; "tools")
-						
 					End if 
 				End if 
 				
@@ -164,11 +158,11 @@ Class constructor($component : Object; $manifest : Object)
 	End for each 
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Create an icon from a media
-Function getIcon($file : 4D:C1709.File; $iconSize : Integer; $crop : Boolean) : Picture
+	// Create an icon from the media
+Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Picture
 	
 	var $image; $mask; $rect; $svg : Text
-	var $icon; $pict : Picture
+	var $media; $pict : Picture
 	var $height; $width : Integer
 	
 	If (Not:C34($file.exists))
@@ -179,51 +173,42 @@ Function getIcon($file : 4D:C1709.File; $iconSize : Integer; $crop : Boolean) : 
 	
 	If ($file.exists)
 		
-		READ PICTURE FILE:C678($file.platformPath; $icon)
+		READ PICTURE FILE:C678($file.platformPath; $media)
 		
 		If (Bool:C1537(OK))
 			
-			PICTURE PROPERTIES:C457($icon; $width; $height)
+			// Create a 4-state button
+			CREATE THUMBNAIL:C679($media; $pict; $size; $size)
+			COMBINE PICTURES:C987($media; $pict; Vertical concatenation:K61:9; $pict; 0; $size)
+			COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*2)
+			TRANSFORM PICTURE:C988($pict; Fade to grey scale:K61:6)
+			COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*3)
 			
-			If ($height<($width*4))
-				
-				// Create a 4-state button
-				CREATE THUMBNAIL:C679($icon; $pict; $iconSize; $iconSize)
-				COMBINE PICTURES:C987($icon; $pict; Vertical concatenation:K61:9; $pict; 0; $iconSize)
-				COMBINE PICTURES:C987($icon; $icon; Vertical concatenation:K61:9; $pict; 0; $iconSize*2)
-				TRANSFORM PICTURE:C988($pict; Fade to grey scale:K61:6)
-				COMBINE PICTURES:C987($icon; $icon; Vertical concatenation:K61:9; $pict; 0; $iconSize*3)
-				
-			End if 
-			
-			TRANSFORM PICTURE:C988($icon; Crop:K61:7; 0; 0; $iconSize; $iconSize)
+			TRANSFORM PICTURE:C988($media; Crop:K61:7; 0; 0; $size; $size)
 			
 			$svg:=SVG_New
 			$mask:=SVG_Define_clip_Path($svg; "mask")
 			SVG_SET_CLIP_PATH($svg; "mask")
-			$rect:=SVG_New_rect($mask; 0; 0; $iconSize; $iconSize; 10; 10; "none"; "none")
-			$image:=SVG_New_embedded_image($svg; $icon; 0; 0; ".png")
-			$icon:=SVG_Export_to_picture($svg; Get XML data source:K45:16)
+			$rect:=SVG_New_rect($mask; 0; 0; $size; $size; 10; 10; "none"; "none")
+			$image:=SVG_New_embedded_image($svg; $media; 0; 0; ".png")
+			$media:=SVG_Export_to_picture($svg; Get XML data source:K45:16)
 			
-			CONVERT PICTURE:C1002($icon; ".png")
+			CONVERT PICTURE:C1002($media; ".png")
 			
-			CREATE THUMBNAIL:C679($icon; $pict; $iconSize; $iconSize)
-			COMBINE PICTURES:C987($icon; $pict; Vertical concatenation:K61:9; $pict; 0; $iconSize)
-			COMBINE PICTURES:C987($icon; $icon; Vertical concatenation:K61:9; $pict; 0; $iconSize*2)
+			CREATE THUMBNAIL:C679($media; $pict; $size; $size)
+			COMBINE PICTURES:C987($media; $pict; Vertical concatenation:K61:9; $pict; 0; $size)
+			COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*2)
 			TRANSFORM PICTURE:C988($pict; Fade to grey scale:K61:6)
-			COMBINE PICTURES:C987($icon; $icon; Vertical concatenation:K61:9; $pict; 0; $iconSize*3)
+			COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*3)
 			
 			If ($crop)
 				
 				// Keep only the first state
-				TRANSFORM PICTURE:C988($icon; Crop:K61:7; 0; 0; $iconSize; $iconSize)
+				TRANSFORM PICTURE:C988($media; Crop:K61:7; 0; 0; $size; $size)
 				
 			End if 
 			
-			return $icon
+			return $media
 			
 		End if 
 	End if 
-	
-	
-	

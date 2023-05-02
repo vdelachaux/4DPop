@@ -38,7 +38,7 @@
 					"visibility": "visible",
 					"class": "background"
 				},
-				"icon_1": {
+				"icon": {
 					"type": "input",
 					"top": 98,
 					"left": 0,
@@ -49,17 +49,6 @@
 					"enterable": false,
 					"dragging": "none",
 					"class": "dev"
-				},
-				"hightlight": {
-					"type": "picture",
-					"top": 0,
-					"left": 0,
-					"width": 36,
-					"height": 80,
-					"visibility": "hidden",
-					"sizingX": "grow",
-					"pictureFormat": "scaled",
-					"picture": "/RESOURCES/Images/black40.png"
 				},
 				"bOnDrop": {
 					"type": "button",
@@ -89,12 +78,23 @@
 					"pictureFormat": "scaled",
 					"picture": "/RESOURCES/Images/cartoons.gif"
 				},
-				"tool_1": {
-					"type": "button",
-					"top": 6,
+				"widget": {
+					"type": "subform",
 					"left": 23,
-					"width": 66,
-					"height": 68,
+					"top": 0,
+					"width": 160,
+					"height": 80,
+					"dataSourceTypeHint": "undefined",
+					"focusable": false,
+					"visibility": "hidden",
+					"borderStyle": "sunken"
+				},
+				"tool": {
+					"type": "button",
+					"top": 0,
+					"left": 23,
+					"width": 70,
+					"height": 80,
 					"visibility": "hidden",
 					"popupPlacement": "separated",
 					"style": "toolbar",
@@ -108,8 +108,18 @@
 						"onLongClick",
 						"onBeginDragOver"
 					],
-					"customBackgroundPicture": "!0",
-					"text": "🚧"
+					"customBackgroundPicture": "!0"
+				},
+				"hightlight": {
+					"type": "picture",
+					"top": 135,
+					"left": 7,
+					"width": 36,
+					"height": 80,
+					"visibility": "hidden",
+					"sizingX": "grow",
+					"pictureFormat": "tiled",
+					"picture": "/RESOURCES/Images/black40.png"
 				}
 			}
 		},
@@ -334,22 +344,32 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 483,
+	"geometryStamp": 553,
 	"editor": {
-		"activeView": "main",
+		"activeView": "button",
 		"defaultView": "main",
 		"views": {
 			"main": {},
-			"Buttons": {
+			"button": {
 				"objects": [
-					"cartoons",
-					"tool_1"
+					"tool"
 				]
 			},
 			"ondrop": {
 				"visible": false,
 				"objects": [
 					"bOnDrop"
+				]
+			},
+			"widget": {
+				"objects": [
+					"widget"
+				]
+			},
+			"empty": {
+				"visible": false,
+				"objects": [
+					"cartoons"
 				]
 			}
 		}

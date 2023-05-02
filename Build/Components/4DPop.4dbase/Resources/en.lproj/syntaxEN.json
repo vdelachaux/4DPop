@@ -2068,7 +2068,7 @@
 	},
 	"_widget": {
 		"getIcon()": {
-			"Syntax": "**.getIcon**( *file* : 4D.File; *iconSize* : Integer; *crop* : Boolean ) : Picture",
+			"Syntax": "**.getIcon**( *file* : 4D.File; *size* : Integer; *crop* : Boolean ) : Picture",
 			"Params": [
 				[
 					"file",
@@ -2076,7 +2076,7 @@
 					"->"
 				],
 				[
-					"iconSize",
+					"size",
 					"Integer",
 					"->"
 				],

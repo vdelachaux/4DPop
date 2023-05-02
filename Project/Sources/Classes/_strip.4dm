@@ -17,6 +17,7 @@ Class constructor
 	This:C1470.preferences:=cs:C1710.Preferences.new()
 	
 	This:C1470.formName:="STRIP"
+	This:C1470.windowType:=-(Plain dialog box:K34:4+Texture appearance:K34:17+_o_Compositing mode:K34:18)
 	
 	// Loading compatible components
 	This:C1470.properties:=This:C1470.load()
@@ -25,17 +26,18 @@ Class constructor
 	// Loading compatible components
 Function load() : Object
 	
-	var $item; $key : Text
-	var $component; $manifest; $order; $plist; $result; $tool : Object
+	var $component; $manifest; $order; $plist; $result : Object
 	var $components : Collection
 	var $file : 4D:C1709.File
 	var $widget : cs:C1710._widget
 	
+	// 4DPop plist
 	$plist:=Folder:C1567(fk database folder:K87:14).file("Info.plist").getAppInfo()
 	
 	$result:={\
-		/* ?? */leftOffset: 25; \
-		/* ?? */rightOffset: 25; \
+		expanded: False:C215; \
+		titleWidth: 23; \
+		handleWidth: 13; \
 		offset: 31; \
 		cellWidth: 70; \
 		iconSize: 48; \
@@ -49,13 +51,15 @@ Function load() : Object
 		infos: $plist.CFBundleDisplayName+"\rv"+$plist.CFBundleShortVersionString+" build "+$plist.CFBundleVersion; \
 		copyright: $plist.NSHumanReadableCopyright; \
 		icon: cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/Images/4DPop.png"); 48; True:C214); \
-		widgets: []\
+		widgets: []; \
+		maxWidth: 0\
 		}
 	
 	$components:=This:C1470.getTools()
 	
 	If ($components.length=0)  // No components
 		
+		$result.maxWidth:=$result.cellWidth
 		return $result
 		
 	End if 
@@ -88,9 +92,6 @@ Function load() : Object
 			
 		Else 
 			
-			// MARK:###### TEMPO #######
-			$file:=$component.file("Resources/4DPop.xml")
-			
 			If ($file.exists)
 				
 				// Load the manifest
@@ -107,83 +108,6 @@ Function load() : Object
 		End if 
 		
 		$widget:=cs:C1710._widget.new($component; $manifest)
-		
-		// MARK:###### TEMPO #######
-		$widget.lproj:=This:C1470._o_lproj($component; $result.language)
-		
-		For each ($key; $manifest)
-			
-			Case of 
-					
-					//______________________________________________________
-				: ($key="name")\
-					 | ($key="helptip")
-					
-					$widget[$key]:=$manifest[$key]
-					
-					If (Position:C15(":xliff:"; $manifest[$key])#1)
-						
-						continue
-						
-					End if 
-					
-					$widget[$key]:=$widget.lproj#Null:C1517 ? This:C1470._o_getLocalizedString(String:C10($manifest[$key]); $widget.lproj) : $widget[$key]
-					
-					//______________________________________________________
-				: ($key="tools")
-					
-					If (Value type:C1509($manifest.tools)=Is object:K8:27)
-						
-						$widget.default:=$widget.default || $manifest.tools.method
-						$widget.tools.push({method: $manifest.tools.method})
-						
-					Else 
-						
-						If (($manifest.tools#Null:C1517) && ($manifest.tools.length>0))
-							
-							$widget.popup:=True:C214
-							
-							For each ($tool; $manifest.tool || $manifest.tools)
-								
-								For each ($item; $tool)
-									
-									Case of 
-											
-											//………………………………………………………………………………
-										: ($item="name")
-											
-											If (Position:C15(":xliff:"; $tool.name)#1)
-												
-												continue
-												
-											End if 
-											
-											$tool.name:=$widget.lproj#Null:C1517 ? This:C1470._o_getLocalizedString(String:C10($tool.name); $widget.lproj) : $tool.name
-											
-											//………………………………………………………………………………
-										: ($item="picture")
-											
-											$file:=$component.file("Resources/"+$tool.picture)
-											
-											If ($file.exists)
-												
-												$tool.picture_path:=$file.platformPath
-												
-											End if 
-											
-											//………………………………………………………………………………
-									End case 
-								End for each 
-								
-								$widget.tools.push($tool)
-								
-							End for each 
-						End if 
-					End if 
-					
-					//______________________________________________________
-			End case 
-		End for each 
 		
 		// Do not add twice
 		If ($result.widgets.query("name = :1"; $widget.name).pop()=Null:C1517)
@@ -222,17 +146,12 @@ Function load() : Object
 			$widget.visible:=True:C214
 			
 			$result.widgets.push($widget)
+			$result.maxWidth+=$widget.width
 			
 		End if 
 	End for each 
 	
 	$result.widgets:=$result.widgets.orderBy("order")
-	
-	$result.maxWidth:=$result.widgets.length>0\
-		 ? $result.cellWidth*$result.widgets.length\
-		 : $result.cellWidth
-	
-	$result.maxWidth+=$result.offset
 	
 	return $result
 	
@@ -295,46 +214,50 @@ Function display()
 		
 	Else 
 		
-		$coord.left:=Screen width:C187-$width
+		$coord.left:=This:C1470.env.mainScreen.workArea.right-$width
 		$coord.right:=Screen width:C187
 		
 	End if 
 	
-	If ($coord.bottom>Screen height:C188)
-		
-		$coord.bottom:=Screen height:C188
-		$height:=$coord.bottom-$coord.top
-		$coord.top:=$coord.bottom-$height
-		
-	End if 
+	// TODO:Manage multi-screens
 	
 	If (Count screens:C437=1)
 		
-		If ($coord.left<0)
+		If ($coord.left#0)
 			
-			$coord.left:=0
+			$coord.left:=0  //C'est pas vrai si à droite
 			$coord.right:=$width
 			
 		End if 
 		
-		If ($coord.right>Screen width:C187)
+		If ($coord.bottom>This:C1470.env.mainScreen.workArea.bottom)
 			
-			$coord.right:=Screen width:C187
+			$coord.bottom:=This:C1470.env.mainScreen.workArea.bottom
+			$coord.top:=$coord.bottom-$height
+			
+		End if 
+		
+		If ($coord.right>This:C1470.env.mainScreen.workArea.right)
+			
+			$coord.right:=This:C1470.env.mainScreen.workArea.right
+			$coord.left:=$coord.right-$width
 			
 		End if 
 	End if 
 	
-	This:C1470.properties.window:=Open window:C153($coord.left; $coord.top; $coord.right; $coord.bottom; -(Plain dialog box:K34:4+Texture appearance:K34:17+_o_Compositing mode:K34:18))
+	This:C1470.properties.window:=Open window:C153($coord.left; $coord.top; $coord.right; $coord.bottom; This:C1470.windowType)
 	DIALOG:C40(This:C1470.formName; This:C1470.properties; *)
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Initialization of the palett
 Function init()
 	
-	var $button; $format; $icon; $key; $varName : Text
-	var $dummy; $indx : Integer
+	var $format; $icon; $key; $tool; $varName : Text
+	var $dummy; $indx; $left; $right : Integer
+	var $hOffset : Time
 	var $nilPtr; $ptr : Pointer
-	var $o; $widget : Object
+	var $default; $o; $properties : Object
+	var $widget : cs:C1710._widget
 	
 	$o:={\
 		title: ""; \
@@ -351,51 +274,70 @@ Function init()
 		underline: 0\
 		}
 	
-	For each ($widget; This:C1470.properties.widgets)
+	$properties:=This:C1470.properties
+	
+	$default:=$properties.default
+	$hOffset:=$properties.titleWidth
+	
+	For each ($widget; $properties.widgets)
 		
 		$indx+=1
-		$button:="tool_"+String:C10($indx)
-		$icon:="icon_"+String:C10($indx)
+		$tool:="tool_"+String:C10($indx)
 		
-		If ($indx>1)
+		$left:=$hOffset
+		$right:=$left+$widget.width
+		
+		If ($widget.form#Null:C1517)
 			
-			OBJECT DUPLICATE:C1111(*; "tool_"+String:C10($indx-1); $button; $nilPtr; ""; This:C1470.properties.cellWidth)
-			OBJECT DUPLICATE:C1111(*; "icon_"+String:C10($indx-1); $icon; $nilPtr; ""; This:C1470.properties.cellWidth)
+			// MARK:Widget
+			OBJECT DUPLICATE:C1111(*; "widget"; $tool; $nilPtr; ""; $left; 0; $right; 80; *)
+			OBJECT SET SUBFORM:C1138(*; $tool; $widget.form; "")
+			
+		Else 
+			
+			// MARK:Button
+			OBJECT DUPLICATE:C1111(*; "tool"; $tool; $nilPtr; ""; $left; 0; $right; 80; *)
+			
+			$icon:="icon_"+String:C10($indx)
+			OBJECT DUPLICATE:C1111(*; "icon"; $icon; $nilPtr; ""; $left)
+			
+			// Set the icon
+			$ptr:=OBJECT Get pointer:C1124(Object named:K67:5; $icon)
+			RESOLVE POINTER:C394($ptr; $varName; $dummy; $dummy)
+			$ptr->:=$widget.icon
+			
+			// Set the format
+			$o.title:=$widget.name
+			$o.picture:=$varName
+			$o.titleVisible:=$default.titleVisible
+			$o.iconVisible:=$default.iconVisible
+			$o.style:=$default.style
+			$o.popupMenu:=Bool:C1537($widget.popup) ? 1+Num:C11($widget.default#Null:C1517) : 0
+			
+			$format:=""
+			
+			For each ($key; $o)
+				
+				$format+=String:C10($o[$key])+";"
+				
+			End for each 
+			
+			OBJECT SET FORMAT:C236(*; $tool; $format)
+			
+			// Set the help tip, if any
+			OBJECT SET HELP TIP:C1181(*; $tool; Length:C16($widget.helptip)>0 ? $widget.helptip : Bool:C1537($o.titleVisible) ? "" : $widget.name)
 			
 		End if 
 		
 		$widget.index:=$indx
-		$widget.button:=$button
+		$widget.tool:=$tool
 		
-		// Set the icon
-		$ptr:=OBJECT Get pointer:C1124(Object named:K67:5; $icon)
-		RESOLVE POINTER:C394($ptr; $varName; $dummy; $dummy)
-		$ptr->:=$widget.icon
-		
-		// Set the format
-		$o.title:=$widget.name
-		$o.picture:=$varName
-		$o.titleVisible:=This:C1470.properties.default.titleVisible
-		$o.iconVisible:=This:C1470.properties.default.iconVisible
-		$o.style:=This:C1470.properties.default.style
-		$o.popupMenu:=Bool:C1537($widget.popup) ? 1+Num:C11($widget.default#Null:C1517) : 0
-		
-		$format:=""
-		
-		For each ($key; $o)
-			
-			$format+=String:C10($o[$key])+";"
-			
-		End for each 
-		
-		OBJECT SET FORMAT:C236(*; $button; $format)
-		
-		// Set the help tip, if any
-		OBJECT SET HELP TIP:C1181(*; $button; Length:C16($widget.helptip)>0 ? $widget.helptip : Bool:C1537($o.titleVisible) ? "" : $widget.name)
+		$hOffset+=$widget.width
 		
 	End for each 
 	
-	This:C1470.properties.displayedTools:=Num:C11(This:C1470.preferences.data.viewingNumber)
+	$properties.maxWidth:=$hOffset+$properties.handleWidth
+	$properties.displayedTools:=Num:C11(This:C1470.preferences.data.viewingNumber)
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Sends an abort message to the pallet
@@ -452,7 +394,7 @@ Function doAbout()
 Function doSettings()
 	
 	var $i; $winRfef : Integer
-	var $o; $order : Object
+	var $o; $order; $properties : Object
 	
 	If (This:C1470.motor.infos.headless)
 		
@@ -466,11 +408,12 @@ Function doSettings()
 	
 	If (Bool:C1537(OK))
 		
-		This:C1470.preferences.set("auto_hide"; Bool:C1537(This:C1470.properties.autoClose))
+		$properties:=This:C1470.properties
+		This:C1470.preferences.set("auto_hide"; Bool:C1537($properties.autoClose))
 		
-		If (This:C1470.properties.autoClose)
+		If ($properties.autoClose)
 			
-			This:C1470.properties.event:=This:C1470.properties.AUTO
+			$properties.event:=$properties.AUTO
 			SET TIMER:C645(-1)
 			
 		End if 
@@ -485,7 +428,7 @@ Function doSettings()
 			
 			$order:={}
 			
-			For each ($o; This:C1470.properties.widgets)
+			For each ($o; $properties.widgets)
 				
 				$order[$o.name]:=$i
 				$i+=1
@@ -506,7 +449,9 @@ Function doSettings()
 	// Pallet state management
 Function collapseExpand($displayed : Integer)
 	
-	var $bottom; $left; $offset; $right; $top : Integer
+	var $collapse : Boolean
+	var $bottom; $left; $offset; $right; $top; $visibleTools : Integer
+	var $wantedWidth : Integer
 	var $form : Object
 	var $widget : cs:C1710._widget
 	var $coord : cs:C1710.coord
@@ -518,19 +463,16 @@ Function collapseExpand($displayed : Integer)
 	
 	$offset:=$form.offset+5
 	
-	$form.maxWidth:=$form.widgets.length>0\
-		 ? $form.cellWidth*$form.widgets.length\
-		 : $form.cellWidth
+	$collapse:=$displayed=-1
 	
-	$form.maxWidth+=$form.offset
-	
-	If (Count parameters:C259=0)
+	If ($collapse) | (Count parameters:C259=0)
 		
 		If ($form.page=1)
 			
-			If ($coord.width<$form.maxWidth)
+			Form:C1466.expanded:=$collapse ? False:C215 : Not:C34(Form:C1466.expanded)
+			
+			If (Form:C1466.expanded)
 				
-				// Expand
 				$offset:=$form.maxWidth-$coord.width
 				$coord.right+=$offset
 				
@@ -539,7 +481,6 @@ Function collapseExpand($displayed : Integer)
 				
 			Else 
 				
-				// Collapse
 				OBJECT MOVE:C664(*; "@.Movable"; -$coord.width+$offset; 0)
 				OBJECT SET VISIBLE:C603(*; "tool_@"; False:C215)
 				
@@ -580,16 +521,36 @@ Function collapseExpand($displayed : Integer)
 			
 		End if 
 		
-		$form.maxWidth:=(($form.cellWidth*$displayed)+$offset)
+		$visibleTools:=0
+		$wantedWidth:=0
+		
+		For each ($widget; $form.widgets)
+			
+			$visibleTools+=1
+			
+			If ($visibleTools<=$displayed)
+				
+				$wantedWidth+=$widget.width
+				
+			Else 
+				
+				break
+				
+			End if 
+		End for each 
+		
+		$wantedWidth+=$form.offset
+		$wantedWidth:=$wantedWidth>$form.maxWidth ? $form.maxWidth : $wantedWidth
+		$wantedWidth:=$wantedWidth<36 ? 36 : $wantedWidth
 		
 		If ($form.page=1)
 			
-			$offset:=$form.maxWidth-$coord.width
+			$offset:=$wantedWidth-$coord.width
 			$coord.right+=$offset
 			
 		Else 
 			
-			$offset:=$form.maxWidth-$coord.width
+			$offset:=$wantedWidth-$coord.width
 			$coord.left-=$offset
 			
 		End if 
@@ -598,7 +559,7 @@ Function collapseExpand($displayed : Integer)
 		
 		For each ($widget; $form.widgets)
 			
-			OBJECT SET VISIBLE:C603(*; $widget.button; $widget.index<=$displayed)
+			OBJECT SET VISIBLE:C603(*; $widget.tool; $widget.index<=$displayed)
 			
 		End for each 
 	End if 
@@ -631,9 +592,8 @@ Function doMenu()
 		
 		If ($widget.tools.length<=1)
 			
-			$menu.append($widget.name; $widget.default)\
-				.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_606.png")\
-				.setData($widget.name; $widget)
+			$menu.append($widget.name; $widget.name+"/"+$widget.default)\
+				.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_606.png")
 			
 		Else 
 			
@@ -824,38 +784,10 @@ Function execute($e : Object) : Boolean
 		$widget.handler.call(Null:C1517; $method).call(Null:C1517; $widget)
 		return True:C214
 		
-	End if 
-	
-	// MARK:###### TEMPO #######
-	If (Position:C15("("; $method)=0)
-		
-		$ptr:=OBJECT Get pointer:C1124(Object named:K67:5; String:C10($e.objectName))
-		
-		If (Not:C34(Is nil pointer:C315($ptr)))
-			
-			EXECUTE METHOD:C1007($method; *; $ptr)
-			
-		Else 
-			
-			EXECUTE METHOD:C1007($method; *; $nil)
-			
-		End if 
-		
 	Else 
 		
-		If ($method="@()")
-			
-			$method:=Replace string:C233($method; "()"; "")
-			
-		End if 
-		
-		EXECUTE FORMULA:C63($method)
-		
-	End if 
-	
-	If (ERROR=-10508)
-		
-		ALERT:C41(Replace string:C233(Get localized string:C991("AlertExecute"); "{method}"; $method))
+		ERROR:=-15002
+		return False:C215
 		
 	End if 
 	
@@ -925,96 +857,3 @@ Function doDrop() : Integer
 	SET TIMER:C645(20)
 	
 	return $accept ? 0 : -1
-	
-	// MARK:-OBSOLETE
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Component localization folder
-Function _o_lproj($component : Object; $language : Text) : 4D:C1709.Folder
-	
-	var $folder : 4D:C1709.Folder
-	
-	$folder:=$component.folder("Resources/"+$language+".lproj")
-	
-	If ($folder.exists)
-		
-		return $folder
-		
-	End if 
-	
-	// Try en
-	$folder:=$component.folder("Resources/en.lproj")
-	
-	If ($folder.exists)
-		
-		return $folder
-		
-	End if 
-	
-	// Try en-us
-	$folder:=$component.folder("Resources/en-us.lproj")
-	
-	If ($folder.exists)
-		
-		return $folder
-		
-	End if 
-	
-	// Try English
-	$folder:=$component.folder("Resources/English.lproj")
-	
-	If ($folder.exists)
-		
-		return $folder
-		
-	End if 
-	
-	// Take the first
-	return $component.folder("Resources").folders().query("extension = .lproj").pop()
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Returns a localized string from the component
-Function _o_getLocalizedString($string : Text; $lproj : 4D:C1709.Folder) : Text
-	
-	var $localized; $node : Text
-	var $c : Collection
-	var $file : 4D:C1709.File
-	var $xml : cs:C1710.xml
-	
-	If ($lproj#Null:C1517)\
-		 && ($lproj.exists)\
-		 && (Length:C16($string)>0)\
-		 && (Position:C15(":xliff:"; $string)=1)
-		
-		$xml:=cs:C1710.xml.new()
-		
-		For each ($file; $lproj.files().query("extension = .xlf"))
-			
-			$c:=$xml.load($file)\
-				.findByAttribute($xml.root; "resname"; Delete string:C232($string; 1; 7))
-			
-			If ($c.length>0)
-				
-				$node:=$xml.findByXPath("target"; $c[0])
-				
-				If (Not:C34($xml.success))
-					
-					$node:=$xml.findByXPath("source"; $c[0])
-					
-				End if 
-				
-				If ($xml.success)
-					
-					$string:=$xml.getValue($node)
-					$xml.close()
-					
-					break
-					
-				End if 
-			End if 
-			
-			$xml.close()
-			
-		End for each 
-	End if 
-	
-	return $string
