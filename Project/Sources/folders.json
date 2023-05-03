@@ -1,32 +1,4 @@
 {
-	"- #️⃣ API": {
-		"methods": [
-			"COMPILER_api",
-			"pop",
-			"recoverWindow"
-		]
-	},
-	"- 📦 MAIN": {
-		"methods": [
-			"_strip",
-			"_STRIP_Controller",
-			"COMPILER_MAIN"
-		],
-		"forms": [
-			"ABOUT",
-			"SETTINGS",
-			"STRIP"
-		],
-		"classes": [
-			"_strip",
-			"_widget"
-		]
-	},
-	"-👥 NAMESPACE": {
-		"classes": [
-			"Preferences"
-		]
-	},
 	"(# CLASSES)": {},
 	"(♻️ Common)": {},
 	"(📦 Current)": {},
@@ -42,6 +14,13 @@
 		"methods": [
 			"00 DISPLAY STRIP",
 			"00_test"
+		]
+	},
+	"#️⃣ API": {
+		"methods": [
+			"COMPILER_api",
+			"pop",
+			"recoverWindow"
 		]
 	},
 	"♻️ LIBRAIRIES": {
@@ -63,7 +42,28 @@
 		]
 	},
 	"⚙️ MACROS": {},
+	"👥 NAMESPACE": {
+		"classes": [
+			"Preferences"
+		]
+	},
 	"👩‍💻 UI": {},
+	"📦 MAIN": {
+		"methods": [
+			"_strip",
+			"_STRIP_Controller",
+			"COMPILER_MAIN"
+		],
+		"forms": [
+			"ABOUT",
+			"SETTINGS",
+			"STRIP"
+		],
+		"classes": [
+			"_strip",
+			"_widget"
+		]
+	},
 	"🛠️ Tools": {
 		"methods": [
 			"getWindowOffsets"

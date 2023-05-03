@@ -38,7 +38,7 @@ Function load() : Object
 		expanded: False:C215; \
 		titleWidth: 23; \
 		handleWidth: 13; \
-		offset: 31; \
+		offset: 35; \
 		cellWidth: 70; \
 		iconSize: 48; \
 		event: 0; \
