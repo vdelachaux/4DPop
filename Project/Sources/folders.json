@@ -33,7 +33,7 @@
 			"noError"
 		],
 		"classes": [
-			"_singleton",
+			"_classCore",
 			"coord",
 			"menu",
 			"menuBar",

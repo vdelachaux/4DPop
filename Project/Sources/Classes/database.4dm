@@ -1,6 +1,8 @@
 //USE: databaseNonThreadSafe
 //USE: noERROR
 
+Class extends _classCore
+
 Class constructor($full : Boolean)
 	
 	var $pathname : Text
@@ -119,6 +121,7 @@ Class constructor($full : Boolean)
 	
 	$full:=Count parameters:C259>=1 ? $full : False:C215
 	
+	//%W-550.2
 	If ($full)
 		
 		// Non-thread-safe commands are delegated to the application process
@@ -126,7 +129,8 @@ Class constructor($full : Boolean)
 		CALL WORKER:C1389("$nonThreadSafe"; "databaseNonThreadSafe"; $signal)
 		$signal.wait()
 		
-		//%W-550.2
+		KILL WORKER:C1390("$nonThreadSafe")
+		
 		This:C1470.components:=$signal.components.copy()
 		This:C1470.plugins:=$signal.plugins.copy()
 		
@@ -159,15 +163,15 @@ Class constructor($full : Boolean)
 	//%W+550.2
 	
 	// Make a _singleton
-	cs:C1710._singleton.new(This:C1470)
+	This:C1470.singletonize(This:C1470)
 	
-	// <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> 
+	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
 Function get mode() : Text
 	
 	return Bool:C1537(This:C1470.isCompiled) ? "compiled" : "interpreted"
 	
 	//MARK:-
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 	// ⚠️ Only test tables that are available via REST.
 Function isDataEmpty() : Boolean
 	
@@ -190,7 +194,7 @@ Function isDataEmpty() : Boolean
 	
 	return $empty
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function isMethodAvailable($name : Text) : Boolean
 	
 	var $signal : 4D:C1709.Signal
@@ -211,20 +215,21 @@ Function isMethodAvailable($name : Text) : Boolean
 	return $signal.available
 	//%W+550.2
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function isComponentAvailable($name : Text) : Boolean
 	
 	return This:C1470.components.indexOf($name)#-1
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function isPluginAvailable($name : Text) : Boolean
 	
 	return This:C1470.plugins.indexOf($name)#-1
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Check if the database folder is writable
-Function isWritable()->$writable : Boolean
+Function isWritable() : Boolean
 	
+	var $writable : Boolean
 	var $methodCalledOnError : Text
 	var $file : 4D:C1709.File
 	
@@ -235,7 +240,9 @@ Function isWritable()->$writable : Boolean
 	$file.delete()
 	ON ERR CALL:C155($methodCalledOnError)
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	return $writable
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function deleteGeometry()
 	
 	var $folder : 4D:C1709.Folder
@@ -255,7 +262,7 @@ Function deleteGeometry()
 		End if 
 	End if 
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function compile($options : Object) : Boolean
 	
 	var $compile; $error : Object
@@ -274,7 +281,7 @@ Function compile($options : Object) : Boolean
 	
 	return $compile.success
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function clearCompiledCode()
 	
 	var $folder : 4D:C1709.Folder
@@ -311,7 +318,7 @@ Function clearCompiledCode()
 		End for each 
 	End if 
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function methods($filter : Text) : Collection
 	
 	var $signal : 4D:C1709.Signal
@@ -333,7 +340,7 @@ Function methods($filter : Text) : Collection
 	return $signal.methods.copy()
 	//%W+550.2
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function setUserParam($userParam)
 	
 	var $signal : 4D:C1709.Signal
@@ -378,7 +385,7 @@ Function setUserParam($userParam)
 	CALL WORKER:C1389("$nonThreadSafe"; "databaseNonThreadSafe"; $signal)
 	$signal.wait()
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function restart($options; $message : Text)
 	
 	var $signal : 4D:C1709.Signal
@@ -409,17 +416,17 @@ Function restart($options; $message : Text)
 	CALL WORKER:C1389("$nonThreadSafe"; "databaseNonThreadSafe"; $signal)
 	$signal.wait()
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function restartCompiled($userParam) : Object
 	
 	return This:C1470._restart(True:C214; $userParam)
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function restartInterpreted($userParam) : Object
 	
 	return This:C1470._restart(False:C215; $userParam)
 	
-	// === === === === === === === === === === === === === === === === === === ===
+	// *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
 Function _restart($compiled : Boolean; $userParam) : Object
 	
 	var $signal : 4D:C1709.Signal

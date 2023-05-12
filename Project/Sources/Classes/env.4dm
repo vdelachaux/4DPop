@@ -1,12 +1,21 @@
 //USE: envScreens
 
+Class extends _classCore
+
+property homeFolder; desktopFolder; documentsFolder; systemFolder; applicationsFolder : 4D:C1709.Folder
+property mainScreen; systemInfos : Object
+property screens : Collection
+
+
 Class constructor($full : Boolean)
+	
+	Super:C1705()
 	
 	This:C1470.machineName:=Current machine:C483
 	This:C1470.userName:=Current system user:C484
 	This:C1470.systemInfos:=Get system info:C1571
 	
-	This:C1470.homeFolder:=Folder:C1567(fk desktop folder:K87:19).parent  //Folder(‘k87;24‘)
+	This:C1470.homeFolder:=Folder:C1567(fk home folder:K87:24)
 	This:C1470.desktopFolder:=Folder:C1567(fk desktop folder:K87:19)
 	This:C1470.documentsFolder:=Folder:C1567(fk documents folder:K87:21)
 	This:C1470.systemFolder:=Folder:C1567(fk system folder:K87:13)
@@ -29,26 +38,25 @@ Class constructor($full : Boolean)
 	This:C1470.updateEnvironmentValues(True:C214)
 	
 	// Make a _singleton
-	cs:C1710._singleton.new(This:C1470)
+	This:C1470.singletonize(This:C1470)
 	
-	// <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==>
+	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
 Function get macos() : Boolean
 	
 	return Is macOS:C1572
 	
-	// <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==>
+	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
 Function get windows() : Boolean
 	
 	return Is Windows:C1573
 	
-	// <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==> <==>
+	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
 Function get linux() : Boolean
 	
 	return Not:C34(Is Windows:C1573) & Not:C34(Is macOS:C1572)
 	
 	//MARK:-
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function startupDisk($path : Text; $create : Boolean) : Object
 	
 	var $folder : 4D:C1709.Folder
@@ -56,7 +64,7 @@ Function startupDisk($path : Text; $create : Boolean) : Object
 	
 	return Count parameters:C259>=1 ? This:C1470._postProcessing($folder; $path; $create) : $folder
 	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Update user & system values that may have been modified
 Function updateEnvironmentValues($system : Boolean)
 	
@@ -67,7 +75,7 @@ Function updateEnvironmentValues($system : Boolean)
 		If ($system)  // To update the  volumes
 			
 			// ⚠️ time-consuming
-			This:C1470.systemInfos:=Get system info:C1571
+			This:C1470.systemInfos:=OB Copy:C1225(Get system info:C1571; ck shared:K85:29; This:C1470)
 			
 		End if 
 		
@@ -121,31 +129,31 @@ Function updateEnvironmentValues($system : Boolean)
 		
 	End use 
 	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function getScreenInfos()
 	
-	// Non-thread-safe screen commands are delegated to the application process
 	var $signal : 4D:C1709.Signal
+	
+	// Non-thread-safe screen commands are delegated to the application process
 	$signal:=New signal:C1641("env")
-	//CALL WORKER("$nonThreadSafe"; "envScreens"; $signal)
-	//%T-
-	CALL WORKER:C1389("$nonThreadSafe"; Formula:C1597(envScreens).source; $signal)
-	//%T+
+	CALL WORKER:C1389("$nonThreadSafe"; "envScreens"; $signal)
 	$signal.wait()
+	
+	KILL WORKER:C1390("$nonThreadSafe")
 	
 	Use (This:C1470)
 		
 		//%W-550.2
-		This:C1470.screens:=$signal.screens.copy(ck shared:K85:29)
+		This:C1470.screens:=$signal.screens.copy(ck shared:K85:29; This:C1470)
 		This:C1470.mainScreenID:=$signal.mainScreenID
-		This:C1470.mainScreen:=This:C1470.screens.query("id = :1"; This:C1470.mainScreenID).pop()
+		This:C1470.mainScreen:=This:C1470.screens[This:C1470.mainScreenID-1]
 		This:C1470.menuBarHeight:=$signal.menuBarHeight
 		This:C1470.toolBarHeight:=$signal.toolBarHeight
 		//%W+550.2
 		
 	End use 
 	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function library($path : Text; $create : Boolean) : Object
 	
 	var $folder : 4D:C1709.Folder
@@ -153,7 +161,7 @@ Function library($path : Text; $create : Boolean) : Object
 	
 	return Count parameters:C259>=1 ? This:C1470._postProcessing($folder; $path; $create) : $folder
 	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function preferences($path : Text; $create : Boolean) : Object
 	
 	var $folder : 4D:C1709.Folder
@@ -161,7 +169,7 @@ Function preferences($path : Text; $create : Boolean) : Object
 	
 	return Count parameters:C259>=1 ? This:C1470._postProcessing($folder; $path; $create) : $folder
 	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function caches($path; $create : Boolean) : Object
 	
 	var $folder : 4D:C1709.Folder
@@ -169,7 +177,7 @@ Function caches($path; $create : Boolean) : Object
 	
 	return Count parameters:C259>=1 ? This:C1470._postProcessing($folder; $path; $create) : $folder
 	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function logs($path : Text; $create : Boolean) : Object
 	
 	var $folder : 4D:C1709.Folder
@@ -177,7 +185,7 @@ Function logs($path : Text; $create : Boolean) : Object
 	
 	return Count parameters:C259>=1 ? This:C1470._postProcessing($folder; $path; $create) : $folder
 	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function applicationSupport($path : Text; $create : Boolean) : Object
 	
 	var $folder : 4D:C1709.Folder
@@ -186,8 +194,7 @@ Function applicationSupport($path : Text; $create : Boolean) : Object
 	return Count parameters:C259>=1 ? This:C1470._postProcessing($folder; $path; $create) : $folder
 	
 	//MARK:-
-	
-	// *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+	// *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
 Function _postProcessing($target : Object; $pathOrCreate; $create : Boolean) : Object
 	
 	If (Count parameters:C259>=2)

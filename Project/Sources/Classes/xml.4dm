@@ -540,11 +540,11 @@ Function toObject($withAdresses : Boolean) : Object
 	
 	If (Count parameters:C259>=1)
 		
-		return (This:C1470._elementToObject(This:C1470.root; $withAdresses))
+		return This:C1470._elementToObject(This:C1470.root; $withAdresses)
 		
 	Else 
 		
-		return (This:C1470._elementToObject(This:C1470.root))
+		return This:C1470._elementToObject(This:C1470.root)
 		
 	End if 
 	
@@ -652,7 +652,7 @@ Function toList($refPtr : Pointer; $xpath : Text; $root : Text) : Integer
 			//______________________________________________________
 	End case 
 	
-	return ($list)
+	return $list
 	
 	// —————————————————————————————————————————————————————————————————————————————————
 	// Search for an element by its id
