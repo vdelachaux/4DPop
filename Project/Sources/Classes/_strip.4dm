@@ -34,6 +34,30 @@ Function load() : Object
 	// 4DPop plist
 	$plist:=Folder:C1567(fk database folder:K87:14).file("Info.plist").getAppInfo()
 	
+	//fixme:bug in v20
+	//$result:={\
+		expanded: False; \
+		titleWidth: 23; \
+		handleWidth: 13; \
+		offset: 35; \
+		cellWidth: 70; \
+		iconSize: 48; \
+		event: 0; \
+		default: {titleVisible: 1; iconVisible: 1; style: 3}; \
+		language: Get database localization(*); \
+		mdi: Is Windows; \
+		process: Current process; \
+		hidden: True; \
+		plist: $plist; \
+		infos: $plist.CFBundleDisplayName+"\rv"+$plist.CFBundleShortVersionString+" build "+$plist.CFBundleVersion; \
+		copyright: $plist.NSHumanReadableCopyright; \
+		icon: cs._widget.new().getIcon(File("/RESOURCES/Images/4DPop.png"); 48; True:C214); \
+		widgets: []; \
+		maxWidth: 0\
+		}
+	
+	var $icon : Picture
+	$icon:=cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/Images/4DPop.png"); 48; True:C214)
 	$result:={\
 		expanded: False:C215; \
 		titleWidth: 23; \
@@ -50,7 +74,7 @@ Function load() : Object
 		plist: $plist; \
 		infos: $plist.CFBundleDisplayName+"\rv"+$plist.CFBundleShortVersionString+" build "+$plist.CFBundleVersion; \
 		copyright: $plist.NSHumanReadableCopyright; \
-		icon: cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/Images/4DPop.png"); 48; True:C214); \
+		icon: $icon; \
 		widgets: []; \
 		maxWidth: 0\
 		}
@@ -653,9 +677,18 @@ Function doMenu()
 			: ($c.length>1)
 				
 				// Calling a component item
+				
+				//fixme:bug in v20
+				//$item:={\
+					method: $c[1]; \
+					widget: This.properties.widgets.query("name= :1"; $c[0]).pop()\
+					}
+				
+				var $o : Object
+				$o:=This:C1470.properties.widgets.query("name= :1"; $c[0]).pop()
 				$item:={\
 					method: $c[1]; \
-					widget: This:C1470.properties.widgets.query("name= :1"; $c[0]).pop()\
+					widget: $o\
 					}
 				
 				$item.success:=This:C1470.execute($item)
