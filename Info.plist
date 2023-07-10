@@ -4,9 +4,9 @@
 
   <dict>
     <key>NSHumanReadableCopyright</key>
-    <string>©vdl 2009-2023</string>
+    <string>©vdl 2007-2023</string>
     <key>CFBundleVersion</key>
-    <string>243</string>
+    <string>244</string>
     <key>CFBundleDisplayName</key>
     <string>4DPop</string>
     <key>CFBundleShortVersionString</key>
@@ -14,7 +14,7 @@
     <key>CFBundleGetInfoString</key>
     <string>20</string>
     <key>CFBundleLongVersionString</key>
-    <string>20 (242)</string>
+    <string>20 (243)</string>
     <key>CFBundleName</key>
     <string>4DPop</string>
   </dict>
