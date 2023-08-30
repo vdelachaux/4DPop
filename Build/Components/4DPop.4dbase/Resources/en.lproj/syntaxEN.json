@@ -399,22 +399,6 @@
 			],
 			"Summary": ""
 		},
-		"isNum()": {
-			"Syntax": "**.isNum**( *value* : Variant ) : Boolean",
-			"Params": [
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
 		"isFile()": {
 			"Syntax": "**.isFile**( *value* : Variant ) : Boolean",
 			"Params": [
@@ -431,19 +415,8 @@
 			],
 			"Summary": ""
 		},
-		"get singleton()": {
-			"Syntax": "**.get singleton**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"isJsonArray()": {
-			"Syntax": "**.isJsonArray**( *value* : Variant ) : Boolean",
+		"isNum()": {
+			"Syntax": "**.isNum**( *value* : Variant ) : Boolean",
 			"Params": [
 				[
 					"value",
@@ -454,6 +427,22 @@
 					"",
 					"Boolean",
 					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Obfuscate()": {
+			"Syntax": "**.Obfuscate**( *key* : Text; *value* : Variant )",
+			"Params": [
+				[
+					"key",
+					"Text",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
 				]
 			],
 			"Summary": ""
@@ -501,51 +490,29 @@
 			],
 			"Summary": ""
 		},
-		"singletonize()": {
-			"Syntax": "**.singletonize**( *instance* : Object )",
+		"Digest()": {
+			"Syntax": "**.Digest**( *tgt* : Variant ) : Text",
+			"Params": [
+				[
+					"tgt",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Singletonize()": {
+			"Syntax": "**.Singletonize**( *instance* : Object )",
 			"Params": [
 				[
 					"instance",
 					"Object",
 					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"failure()": {
-			"Syntax": "**.failure**( *failure* : Boolean ) : cs.pop._classCore",
-			"Params": [
-				[
-					"failure",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"cs.pop._classCore",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get fail()": {
-			"Syntax": "**.get fail**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get matrix()": {
-			"Syntax": "**.get matrix**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
 				]
 			],
 			"Summary": ""
@@ -556,6 +523,22 @@
 				[
 					"",
 					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Failure()": {
+			"Syntax": "**.Failure**( *value* : Boolean ) : cs.pop._classCore",
+			"Params": [
+				[
+					"value",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"cs.pop._classCore",
 					"<-"
 				]
 			],
@@ -572,19 +555,24 @@
 			],
 			"Summary": ""
 		},
-		"get lastError()": {
-			"Syntax": "**.get lastError**() : Text",
+		"isJsonArray()": {
+			"Syntax": "**.isJsonArray**( *value* : Variant ) : Boolean",
 			"Params": [
 				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
 					"",
-					"Text",
+					"Boolean",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"get notReady()": {
-			"Syntax": "**.get notReady**() : Boolean",
+		"get singleton()": {
+			"Syntax": "**.get singleton**() : Boolean",
 			"Params": [
 				[
 					"",
@@ -610,22 +598,60 @@
 			],
 			"Summary": ""
 		},
-		"set success()": {
-			"Syntax": "**.set success**( *success* : Boolean )",
+		"get notReady()": {
+			"Syntax": "**.get notReady**() : Boolean",
 			"Params": [
 				[
-					"success",
+					"",
 					"Boolean",
-					"->"
+					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"succeed()": {
-			"Syntax": "**.succeed**( *success* : Boolean ) : cs.pop._classCore",
+		"get lastError()": {
+			"Syntax": "**.get lastError**() : Text",
 			"Params": [
 				[
-					"success",
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set ready()": {
+			"Syntax": "**.set ready**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"get matrix()": {
+			"Syntax": "**.get matrix**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get fail()": {
+			"Syntax": "**.get fail**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Succeed()": {
+			"Syntax": "**.Succeed**( *value* : Boolean ) : cs.pop._classCore",
+			"Params": [
+				[
+					"value",
 					"Boolean",
 					"->"
 				],
@@ -637,9 +663,15 @@
 			],
 			"Summary": ""
 		},
-		"set ready()": {
-			"Syntax": "**.set ready**()",
-			"Params": [],
+		"set success()": {
+			"Syntax": "**.set success**( *value* : Boolean )",
+			"Params": [
+				[
+					"value",
+					"Boolean",
+					"->"
+				]
+			],
 			"Summary": ""
 		},
 		"get success()": {
@@ -1406,37 +1438,16 @@
 		}
 	},
 	"xml": {
-		"firstChild()": {
-			"Syntax": "**.firstChild**( *node* : Text; *name* : Text )->reference : Text",
-			"Params": [
-				[
-					"node",
-					"Text",
-					"->"
-				],
-				[
-					"name",
-					"Text",
-					"->"
-				],
-				[
-					"reference",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
 		"isReference()": {
-			"Syntax": "**.isReference**( *reference* : Text ) : Boolean",
+			"Syntax": "**.isReference**( *text* : Text )->response : Boolean",
 			"Params": [
 				[
-					"reference",
+					"text",
 					"Text",
 					"->"
 				],
 				[
-					"",
+					"response",
 					"Boolean",
 					"<-"
 				]
@@ -1444,7 +1455,7 @@
 			"Summary": ""
 		},
 		"setValue()": {
-			"Syntax": "**.setValue**( *node* : Text; *value* : Variant; *inCDATA* : Boolean ) : cs.pop.xml",
+			"Syntax": "**.setValue**( *node* : Text; *value* : Variant; *inCDATA* : Boolean )->this : cs.pop.xml",
 			"Params": [
 				[
 					"node",
@@ -1462,7 +1473,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1539,7 +1550,7 @@
 			"Summary": ""
 		},
 		"getValue()": {
-			"Syntax": "**.getValue**( *node* : Text ) : Variant",
+			"Syntax": "**.getValue**( *node* : Text )->value : Variant",
 			"Params": [
 				[
 					"node",
@@ -1547,7 +1558,7 @@
 					"->"
 				],
 				[
-					"",
+					"value",
 					"Variant",
 					"<-"
 				]
@@ -1555,7 +1566,7 @@
 			"Summary": ""
 		},
 		"remove()": {
-			"Syntax": "**.remove**( *node* : Text ) : cs.pop.xml",
+			"Syntax": "**.remove**( *node* : Text )->this : cs.pop.xml",
 			"Params": [
 				[
 					"node",
@@ -1563,7 +1574,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1608,7 +1619,7 @@
 			"Summary": ""
 		},
 		"parse()": {
-			"Syntax": "**.parse**( *source* : Variant; *validate* : Boolean; *schema* : Text ) : cs.pop.xml",
+			"Syntax": "**.parse**( *source* : Variant; *validate* : Boolean; *schema* : Text )->this : cs.pop.xml",
 			"Params": [
 				[
 					"source",
@@ -1626,7 +1637,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1675,8 +1686,8 @@
 			],
 			"Summary": ""
 		},
-		"setName()": {
-			"Syntax": "**.setName**( *node* : Text; *name* : Text ) : cs.pop.xml",
+		"firstChild()": {
+			"Syntax": "**.firstChild**( *node* : Text; *name* : Text )->reference : Text",
 			"Params": [
 				[
 					"node",
@@ -1689,7 +1700,49 @@
 					"->"
 				],
 				[
+					"reference",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"comment()": {
+			"Syntax": "**.comment**( *target* : Text; *comment* : Text ) : Text",
+			"Params": [
+				[
+					"target",
+					"Text",
+					"->"
+				],
+				[
+					"comment",
+					"Text",
+					"->"
+				],
+				[
 					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"setName()": {
+			"Syntax": "**.setName**( *node* : Text; *name* : Text )->this : cs.pop.xml",
+			"Params": [
+				[
+					"node",
+					"Text",
+					"->"
+				],
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1706,6 +1759,27 @@
 				],
 				[
 					"name",
+					"Text",
+					"->"
+				],
+				[
+					"reference",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"findOrCreate()": {
+			"Syntax": "**.findOrCreate**( *target* : Text; *value* : Text )->reference : Text",
+			"Params": [
+				[
+					"target",
+					"Text",
+					"->"
+				],
+				[
+					"value",
 					"Text",
 					"->"
 				],
@@ -1792,7 +1866,7 @@
 			"Summary": ""
 		},
 		"find()": {
-			"Syntax": "**.find**( *node* : Text; *xpath* : Text ) : Collection",
+			"Syntax": "**.find**( *node* : Text; *xpath* : Text )->references : Collection",
 			"Params": [
 				[
 					"node",
@@ -1805,7 +1879,7 @@
 					"->"
 				],
 				[
-					"",
+					"references",
 					"Collection",
 					"<-"
 				]
@@ -1829,7 +1903,7 @@
 			"Summary": ""
 		},
 		"findByXPath()": {
-			"Syntax": "**.findByXPath**( *xpath* : Text; *node* : Text ) : Text",
+			"Syntax": "**.findByXPath**( *xpath* : Text; *node* : Text )->reference : Text",
 			"Params": [
 				[
 					"xpath",
@@ -1842,7 +1916,7 @@
 					"->"
 				],
 				[
-					"",
+					"reference",
 					"Text",
 					"<-"
 				]
@@ -1850,7 +1924,7 @@
 			"Summary": ""
 		},
 		"setOptions()": {
-			"Syntax": "**.setOptions**( *selector* : Integer; *value* : Integer ) : cs.pop.xml",
+			"Syntax": "**.setOptions**( *selector* : Integer; *value* : Integer )->this : cs.pop.xml",
 			"Params": [
 				[
 					"selector",
@@ -1863,7 +1937,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1871,10 +1945,10 @@
 			"Summary": ""
 		},
 		"close()": {
-			"Syntax": "**.close**() : cs.pop.xml",
+			"Syntax": "**.close**()->this : cs.pop.xml",
 			"Params": [
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1882,7 +1956,7 @@
 			"Summary": ""
 		},
 		"setOption()": {
-			"Syntax": "**.setOption**( *selector* : Integer; *value* : Integer ) : cs.pop.xml",
+			"Syntax": "**.setOption**( *selector* : Integer; *value* : Integer )->this : cs.pop.xml",
 			"Params": [
 				[
 					"selector",
@@ -1895,7 +1969,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1966,7 +2040,7 @@
 			"Summary": ""
 		},
 		"setAttribute()": {
-			"Syntax": "**.setAttribute**( *node* : Text; *name* : Text; *value* : Variant ) : cs.pop.xml",
+			"Syntax": "**.setAttribute**( *node* : Text; *name* : Text; *value* : Variant )->this : cs.pop.xml",
 			"Params": [
 				[
 					"node",
@@ -1984,7 +2058,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -2003,17 +2077,6 @@
 					"reference",
 					"Text",
 					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"removeAllAttributes()": {
-			"Syntax": "**.removeAllAttributes**( *node* : Text )",
-			"Params": [
-				[
-					"node",
-					"Text",
-					"->"
 				]
 			],
 			"Summary": ""
@@ -2118,7 +2181,7 @@
 			"Summary": ""
 		},
 		"newRef()": {
-			"Syntax": "**.newRef**( *root* : Text; *nameSpace* : Text ) : cs.pop.xml",
+			"Syntax": "**.newRef**( *root* : Text; *nameSpace* : Text )->this : cs.pop.xml",
 			"Params": [
 				[
 					"root",
@@ -2131,7 +2194,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -2139,7 +2202,7 @@
 			"Summary": ""
 		},
 		"open()": {
-			"Syntax": "**.open**( *file* : 4D.File; *validate* : Boolean; *schema* : Text ) : cs.pop.xml",
+			"Syntax": "**.open**( *file* : 4D.File; *validate* : Boolean; *schema* : Text )->this : cs.pop.xml",
 			"Params": [
 				[
 					"file",
@@ -2157,7 +2220,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -2165,7 +2228,7 @@
 			"Summary": ""
 		},
 		"create()": {
-			"Syntax": "**.create**( *target* : Text; *XPath* : Variant; *attributes* : Variant ) : Text",
+			"Syntax": "**.create**( *target* : Text; *XPath* : Variant; *attributes* : Variant )->node : Text",
 			"Params": [
 				[
 					"target",
@@ -2183,28 +2246,7 @@
 					"->"
 				],
 				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"findOrCreate()": {
-			"Syntax": "**.findOrCreate**( *target* : Text; *value* : Text )->reference : Text",
-			"Params": [
-				[
-					"target",
-					"Text",
-					"->"
-				],
-				[
-					"value",
-					"Text",
-					"->"
-				],
-				[
-					"reference",
+					"node",
 					"Text",
 					"<-"
 				]
@@ -2212,7 +2254,7 @@
 			"Summary": ""
 		},
 		"load()": {
-			"Syntax": "**.load**( *source* : Variant; *validate* : Boolean; *schema* : Text ) : cs.pop.xml",
+			"Syntax": "**.load**( *source* : Variant; *validate* : Boolean; *schema* : Text )->this : cs.pop.xml",
 			"Params": [
 				[
 					"source",
@@ -2230,7 +2272,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -2275,7 +2317,7 @@
 			"Summary": ""
 		},
 		"removeAttribute()": {
-			"Syntax": "**.removeAttribute**( *node* : Text; *attribute* : Text ) : cs.pop.xml",
+			"Syntax": "**.removeAttribute**( *node* : Text; *attribute* : Text )->this : cs.pop.xml",
 			"Params": [
 				[
 					"node",
@@ -2288,7 +2330,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -2312,7 +2354,7 @@
 			"Summary": ""
 		},
 		"save()": {
-			"Syntax": "**.save**( *file* : Variant; *keepStructure* : Boolean ) : cs.pop.xml",
+			"Syntax": "**.save**( *file* : Variant; *keepStructure* : Boolean )->this : cs.pop.xml",
 			"Params": [
 				[
 					"file",
@@ -2325,7 +2367,7 @@
 					"->"
 				],
 				[
-					"",
+					"this",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -2991,6 +3033,30 @@
 				]
 			],
 			"Summary": ""
+		},
+		"selected": {
+			"Syntax": "selected : Boolean"
+		},
+		"metacharacters": {
+			"Syntax": "metacharacters : Boolean"
+		},
+		"localize": {
+			"Syntax": "localize : Boolean"
+		},
+		"ref": {
+			"Syntax": "ref : Text"
+		},
+		"autoRelease": {
+			"Syntax": "autoRelease : Boolean"
+		},
+		"choice": {
+			"Syntax": "choice : Text"
+		},
+		"submenus": {
+			"Syntax": "submenus : Collection"
+		},
+		"data": {
+			"Syntax": "data : Collection"
 		}
 	}
 }

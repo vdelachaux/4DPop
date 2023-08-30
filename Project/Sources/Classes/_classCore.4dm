@@ -1,3 +1,5 @@
+property __CLASS__ : 4D:C1709.Class
+
 Class constructor
 	
 	This:C1470[""]:=New shared object:C1526(\
@@ -14,13 +16,24 @@ Function get success() : Boolean
 	return This:C1470._.success
 	
 	// ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==>
-Function set success($success : Boolean)
+Function set success($value : Boolean)
 	
 	Use (This:C1470._)
 		
-		This:C1470._.success:=Count parameters:C259=0 ? True:C214 : $success
+		This:C1470._.success:=Count parameters:C259=0 ? True:C214 : $value
 		
 	End use 
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+Function Succeed($value : Boolean) : cs:C1710._classCore
+	
+	Use (This:C1470._)
+		
+		This:C1470._.success:=Count parameters:C259=0 ? True:C214 : $value
+		
+	End use 
+	
+	return This:C1470
 	
 	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
 Function get ready() : Boolean
@@ -40,6 +53,17 @@ Function set ready()
 Function get fail() : Boolean
 	
 	return Not:C34(This:C1470._.success)
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+Function Failure($value : Boolean) : cs:C1710._classCore
+	
+	Use (This:C1470._)
+		
+		This:C1470._.success:=Count parameters:C259=0 ? False:C215 : Not:C34($value)
+		
+	End use 
+	
+	return This:C1470
 	
 	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
 Function get notReady() : Boolean
@@ -76,7 +100,7 @@ Function get matrix() : Boolean  // Return True if it's the fisrt inastance of t
 	
 	// Mark:-
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-Function singletonize($instance : Object)  // Make the class a singleton
+Function Singletonize($instance : Object)  // Make the class a singleton
 	
 	// Get the class of the object passed in parameter
 	This:C1470.__CLASS__:=OB Class:C1730($instance)
@@ -99,26 +123,60 @@ Function singletonize($instance : Object)  // Make the class a singleton
 	End if 
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-Function succeed($success : Boolean) : cs:C1710._classCore
+Function Obfuscate($key : Text; $value)
 	
-	Use (This:C1470._)
-		
-		This:C1470._.success:=Count parameters:C259=0 ? True:C214 : $success
-		
-	End use 
-	
-	return This:C1470
+	This:C1470[""]:=This:C1470[""] || {}
+	This:C1470[""][$key]:=$value
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-Function failure($failure : Boolean) : cs:C1710._classCore
+Function Digest($tgt) : Text
 	
-	Use (This:C1470._)
-		
-		This:C1470._.success:=Count parameters:C259=0 ? False:C215 : Not:C34($failure)
-		
-	End use 
+	var $digest : Text
+	var $blb : 4D:C1709.Blob
+	var $file : 4D:C1709.File
 	
-	return This:C1470
+	Case of 
+			
+			//______________________________________________________
+		: (Value type:C1509($tgt)=Is object:K8:27)\
+			 && (OB Instance of:C1731($tgt; 4D:C1709.File))\
+			 && ($tgt.exists)
+			
+			$blb:=$tgt.getContent()
+			return Generate digest:C1147($blb; MD5 digest:K66:1)
+			
+			//______________________________________________________
+		: (Value type:C1509($tgt)=Is object:K8:27)\
+			 && (OB Instance of:C1731($tgt; 4D:C1709.Folder))\
+			 && ($tgt.exists)
+			
+			For each ($file; $tgt.files(fk ignore invisible:K87:22+fk recursive:K87:7))
+				
+				$blb:=$file.getContent()
+				$digest+=Generate digest:C1147($blb; MD5 digest:K66:1)
+				
+			End for each 
+			
+			return Generate digest:C1147($digest; MD5 digest:K66:1)
+			
+			//______________________________________________________
+		: (Value type:C1509($tgt)=Is text:K8:3)
+			
+			return Generate digest:C1147($tgt; MD5 digest:K66:1)
+			
+			//______________________________________________________
+		: (Value type:C1509($tgt)#Is text:K8:3)\
+			 & (Value type:C1509($tgt)#Is object:K8:27)
+			
+			ASSERT:C1129(False:C215; "The parameter must be a Text or 4D file/folder")
+			
+			//______________________________________________________
+		Else 
+			
+			ASSERT:C1129(False:C215; "The 4D file/folder does not exist")
+			
+			//______________________________________________________
+	End case 
 	
 	// Mark:-
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
@@ -174,11 +232,12 @@ Function _pushError($message : Text)
 	var $c : Collection
 	$c:=Get call chain:C1662
 	
-	For each ($o; $c) While ($current=Null:C1517)
+	For each ($o; $c)
 		
 		If (Position:C15("_classCore."; $o.name)#1)
 			
 			$current:=$o
+			break
 			
 		End if 
 	End for each 

@@ -25,7 +25,7 @@ Class constructor
 		}
 	
 	// Make a _singleton
-	This:C1470.singletonize(This:C1470)
+	This:C1470.Singletonize(This:C1470)
 	
 	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
 Function get root() : 4D:C1709.Folder

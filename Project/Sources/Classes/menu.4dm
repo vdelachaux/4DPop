@@ -1,3 +1,7 @@
+property data; submenus : Collection
+property choice; ref : Text
+property autoRelease; localize; metacharacters; selected : Boolean
+
 Class constructor($options)
 	
 	var $c : Collection
@@ -45,7 +49,7 @@ Class constructor($options)
 							: ($c.length>1)
 								
 								This:C1470.autoRelease:=($c.indexOf("keep-reference")=-1)
-								This:C1470.metacharacters:=($c.indexOf("display-metacharacters")#-1)
+								This:C1470.metacharacters:=($c.includes("display-metacharacters"))
 								This:C1470.localize:=($c.indexOf("no-localization")=-1)
 								
 								//-----------------

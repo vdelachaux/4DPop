@@ -38,7 +38,7 @@ Class constructor($full : Boolean)
 	This:C1470.updateEnvironmentValues(True:C214)
 	
 	// Make a _singleton
-	This:C1470.singletonize(This:C1470)
+	This:C1470.Singletonize(This:C1470)
 	
 	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
 Function get macos() : Boolean

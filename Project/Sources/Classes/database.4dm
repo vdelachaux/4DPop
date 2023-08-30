@@ -163,7 +163,7 @@ Class constructor($full : Boolean)
 	//%W+550.2
 	
 	// Make a _singleton
-	This:C1470.singletonize(This:C1470)
+	This:C1470.Singletonize(This:C1470)
 	
 	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
 Function get mode() : Text
