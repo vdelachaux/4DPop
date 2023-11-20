@@ -1924,7 +1924,7 @@
 			"Summary": ""
 		},
 		"setOptions()": {
-			"Syntax": "**.setOptions**( *selector* : Integer; *value* : Integer )->this : cs.pop.xml",
+			"Syntax": "**.setOptions**( *selector* : Integer; *value* : Integer; *...* : Integer )->this : cs.pop.xml",
 			"Params": [
 				[
 					"selector",
@@ -1933,6 +1933,11 @@
 				],
 				[
 					"value",
+					"Integer",
+					"->"
+				],
+				[
+					"",
 					"Integer",
 					"->"
 				],
@@ -2181,7 +2186,7 @@
 			"Summary": ""
 		},
 		"newRef()": {
-			"Syntax": "**.newRef**( *root* : Text; *nameSpace* : Text )->this : cs.pop.xml",
+			"Syntax": "**.newRef**( *root* : Text; *nameSpace* : Text; *...* : Text )->this : cs.pop.xml",
 			"Params": [
 				[
 					"root",
@@ -2190,6 +2195,11 @@
 				],
 				[
 					"nameSpace",
+					"Text",
+					"->"
+				],
+				[
+					"",
 					"Text",
 					"->"
 				],

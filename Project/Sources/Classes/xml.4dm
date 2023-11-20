@@ -21,9 +21,8 @@ Class constructor($variable)
 	
 	//———————————————————————————————————————————————————————————
 	// Creates a XML tree in memory
-Function newRef($root : Text; $nameSpace : Text)->$this : cs:C1710.xml
+Function newRef($root : Text; $nameSpace : Text;  ...  : Text)->$this : cs:C1710.xml
 	
-	var ${3} : Text
 	var $t : Text
 	var $countParam; $i : Integer
 	
@@ -131,8 +130,7 @@ Function setOption($selector : Integer; $value : Integer)->$this : cs:C1710.xml
 	
 	//———————————————————————————————————————————————————————————
 	// Set the value of one or more XML options for the structure
-Function setOptions($selector : Integer; $value : Integer)->$this : cs:C1710.xml
-	var ${3} : Integer
+Function setOptions($selector : Integer; $value : Integer;  ...  : Integer)->$this : cs:C1710.xml
 	
 	var $i : Integer
 	
