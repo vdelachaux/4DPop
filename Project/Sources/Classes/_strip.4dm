@@ -635,12 +635,12 @@ Function doMenu()
 				//______________________________________________________
 			: ($menu.choice="about")
 				
-				This:C1470.doAbout(Form:C1466)
+				This:C1470.doAbout()
 				
 				//______________________________________________________
 			: ($menu.choice="settings")
 				
-				This:C1470.doSettings(Form:C1466)
+				This:C1470.doSettings()
 				
 				//______________________________________________________
 			: ($menu.choice="close")
@@ -652,17 +652,9 @@ Function doMenu()
 				
 				// Calling a component item
 				
-				//fixme:bug in v20
-				//$item:={\
-																				method: $c[1]; \
-																				widget: This.properties.widgets.query("name= :1"; $c[0]).pop()\
-																				}
-				
-				var $o : Object
-				$o:=This:C1470.properties.widgets.query("name= :1"; $c[0]).pop()
 				$item:={\
 					method: $c[1]; \
-					widget: $o\
+					widget: This:C1470.properties.widgets.query("name= :1"; $c[0]).pop()\
 					}
 				
 				$item.success:=This:C1470.execute($item)
@@ -777,7 +769,8 @@ Function execute($e : Object) : Boolean
 			//______________________________________________________
 	End case 
 	
-	If (Length:C16($method)=0)
+	If (Length:C16($method)=0)\
+		 | ($widget.handler=Null:C1517)
 		
 		ERROR:=-15002
 		return False:C215
@@ -785,19 +778,7 @@ Function execute($e : Object) : Boolean
 	End if 
 	
 	CLEAR VARIABLE:C89(ERROR)
-	
-	If ($widget.handler#Null:C1517)
-		
-		$widget.handler.call(Null:C1517; $method).call(Null:C1517; $widget)
-		return True:C214
-		
-	Else 
-		
-		ERROR:=-15002
-		return False:C215
-		
-	End if 
-	
+	$widget.handler.call(Null:C1517; $method).call(Null:C1517; $widget)
 	return ERROR=0
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
