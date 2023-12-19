@@ -1236,28 +1236,6 @@
 			"Params": [],
 			"Summary": ""
 		},
-		"getTools()": {
-			"Syntax": "**.getTools**() : Collection",
-			"Params": [
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"collapseExpand()": {
-			"Syntax": "**.collapseExpand**( *displayed* : Integer )",
-			"Params": [
-				[
-					"displayed",
-					"Integer",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
 		"getComponents()": {
 			"Syntax": "**.getComponents**( *folder* : 4D.Folder ) : Collection",
 			"Params": [
@@ -1276,21 +1254,6 @@
 		},
 		"close()": {
 			"Syntax": "**.close**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"doAbout()": {
-			"Syntax": "**.doAbout**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"reload()": {
-			"Syntax": "**.reload**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"abort()": {
-			"Syntax": "**.abort**()",
 			"Params": [],
 			"Summary": ""
 		},
@@ -1313,6 +1276,76 @@
 		"display()": {
 			"Syntax": "**.display**()",
 			"Params": [],
+			"Summary": ""
+		},
+		"getPMEnvFile()": {
+			"Syntax": "**.getPMEnvFile**() : 4D.File",
+			"Params": [
+				[
+					"",
+					"4D.File",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getPMComponents()": {
+			"Syntax": "**.getPMComponents**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"abort()": {
+			"Syntax": "**.abort**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"reload()": {
+			"Syntax": "**.reload**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"collapseExpand()": {
+			"Syntax": "**.collapseExpand**( *displayed* : Integer )",
+			"Params": [
+				[
+					"displayed",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"getTools()": {
+			"Syntax": "**.getTools**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"doAbout()": {
+			"Syntax": "**.doAbout**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"getPMDependencieFile()": {
+			"Syntax": "**.getPMDependencieFile**() : 4D.File",
+			"Params": [
+				[
+					"",
+					"4D.File",
+					"<-"
+				]
+			],
 			"Summary": ""
 		},
 		"execute()": {

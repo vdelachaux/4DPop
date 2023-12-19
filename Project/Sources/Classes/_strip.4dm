@@ -158,17 +158,9 @@ Function load() : Object
 	// Returns the found components
 Function getTools() : Collection
 	
-	If (This:C1470.motor.remote)
-		
-		return This:C1470.getComponents(This:C1470.motor.root.folder("Components"))\
-			.combine(This:C1470.getComponents(This:C1470.database.databaseFolder.folder("Components")))
-		
-	Else 
-		
-		return This:C1470.getComponents(This:C1470.motor.root.folder("Components"))\
-			.combine(This:C1470.getComponents(This:C1470.database.databaseFolder.folder("Components")))
-		
-	End if 
+	return This:C1470.getComponents(This:C1470.motor.root.folder("Components"))\
+		.combine(This:C1470.getComponents(This:C1470.database.databaseFolder.folder("Components")))\
+		.combine(This:C1470.getPMComponents())
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Filtering and resolving aliases
@@ -184,6 +176,122 @@ Function getComponents($folder : 4D:C1709.Folder) : Collection
 	$c.combine($folder.files().query("extension = :1 & original.extension =:1"; ".4DProject"))
 	
 	return $c
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Return the package manager dependencies folders
+Function getPMComponents() : Collection
+	
+	var $name : Text
+	var $env : Object
+	var $dependencyCollection : Collection
+	var $dependenciesFile; $file : 4D:C1709.File
+	var $defaultFolder : 4D:C1709.Folder
+	var $dependencies : 4D:C1709.Object
+	
+	If (This:C1470.motor.remote/* and FIXME not in situ*/)
+		
+		return This:C1470.motor.root.folder("PackageManager").folder("Components").folders()
+		
+	End if 
+	
+	$dependenciesFile:=This:C1470.getPMDependencieFile()
+	
+	If (Not:C34($dependenciesFile.exists))
+		
+		return []
+		
+	End if 
+	
+	$dependencies:=JSON Parse:C1218($dependenciesFile.getText())
+	
+	If ($dependencies.dependencies=Null:C1517)
+		
+		return []  // Just empty, not yet defined
+		
+	End if 
+	
+	$dependencyCollection:=[]
+	
+	$file:=This:C1470.getPMEnvFile()
+	
+	If ($file.exists)
+		
+		$env:=JSON Parse:C1218($file.getText()).dependencies
+		
+	End if 
+	
+	$defaultFolder:=This:C1470.database.databaseFolder.parent
+	
+	For each ($name; $dependencies.dependencies)
+		
+		If (($env=Null:C1517)\
+			 || ($env[$name]=Null:C1517)\
+			 || (Length:C16(String:C10($env[$name]))=0))
+			
+			$dependencyCollection.push($defaultFolder.folder($name))
+			
+		Else 
+			
+			Case of 
+					
+					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+				: Position:C15("file://"; $env[$name])=1
+					
+					$dependencyCollection.push(DecodeFileURL($env[$name]))
+					
+					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+				: Position:C15("../"; $env[$name])=1
+					
+					If (Not:C34($file.parent.parent=Null:C1517))
+						
+						$dependencyCollection.push($file.parent.parent.folder(Substring:C12($env[$name]; 4)))
+						
+					End if 
+					
+					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+				: Position:C15("./"; $env[$name])=1
+					
+					$dependencyCollection.push($file.parent.folder(Substring:C12($env[$name]; 3)))
+					
+					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+			End case 
+		End if 
+	End for each 
+	
+	return $dependencyCollection
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Return the package manager dependencies files
+Function getPMDependencieFile() : 4D:C1709.File
+	
+	return This:C1470.database.databaseFolder.file("Project/Sources/dependencies.json")
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Return the package manager env file
+Function getPMEnvFile() : 4D:C1709.File
+	
+	var $file : 4D:C1709.File
+	var $folder : 4D:C1709.Folder
+	
+	$folder:=This:C1470.database.databaseFolder
+	$file:=$folder.file("environment4d.json")
+	
+	While (Not:C34($file.exists)\
+		 && Not:C34($folder=Null:C1517))
+		
+		$folder:=$folder.parent
+		
+		If ($folder=Null:C1517)
+			
+			break
+			
+		End if 
+		
+		$file:=$folder.file("environment4d.json")
+		
+	End while 
+	
+	return $file
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Display the palett

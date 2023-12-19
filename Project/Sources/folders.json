@@ -66,6 +66,7 @@
 	},
 	"🛠️ Tools": {
 		"methods": [
+			"DecodeFileURL",
 			"getWindowOffsets"
 		]
 	},
