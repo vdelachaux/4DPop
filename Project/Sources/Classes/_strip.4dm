@@ -67,6 +67,12 @@ Function load() : Object
 	
 	For each ($component; $components)
 		
+		If ($component=Null:C1517)
+			
+			continue
+			
+		End if 
+		
 		// Always resolve alias
 		$component:=$component.original
 		
@@ -264,7 +270,7 @@ Function getPMComponents() : Collection
 	// Return the package manager dependencies files
 Function getPMDependencieFile() : 4D:C1709.File
 	
-	return This:C1470.database.databaseFolder.file("Project/Sources/dependencies.json")
+	return This:C1470.database.databaseFolder.file("Project/Sources/dependencies.json").original
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Return the package manager env file
@@ -291,7 +297,7 @@ Function getPMEnvFile() : 4D:C1709.File
 		
 	End while 
 	
-	return $file
+	return $file.original
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Display the palett

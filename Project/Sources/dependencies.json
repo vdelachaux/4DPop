@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "4DPop-Family": {},
     "4DPop": {},
     "4DPop-AppMaker": {},
     "4DPop-Bookmarks": {},
+    "4DPop-Clipboard": {},
     "4DPop-ColorChart": {},
     "4DPop-Commands": {},
     "4DPop-Constants-Editor": {},
