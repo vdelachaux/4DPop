@@ -1045,6 +1045,22 @@
 			],
 			"Summary": ""
 		},
+		"decodePathURL()": {
+			"Syntax": "**.decodePathURL**( *url* : Text ) : Object",
+			"Params": [
+				[
+					"url",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
 		"library()": {
 			"Syntax": "**.library**( *path* : Text; *create* : Boolean ) : Object",
 			"Params": [
@@ -1278,15 +1294,14 @@
 			"Params": [],
 			"Summary": ""
 		},
-		"getPMEnvFile()": {
-			"Syntax": "**.getPMEnvFile**() : 4D.File",
-			"Params": [
-				[
-					"",
-					"4D.File",
-					"<-"
-				]
-			],
+		"doAbout()": {
+			"Syntax": "**.doAbout**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"abort()": {
+			"Syntax": "**.abort**()",
+			"Params": [],
 			"Summary": ""
 		},
 		"getPMComponents()": {
@@ -1298,11 +1313,6 @@
 					"<-"
 				]
 			],
-			"Summary": ""
-		},
-		"abort()": {
-			"Syntax": "**.abort**()",
-			"Params": [],
 			"Summary": ""
 		},
 		"reload()": {
@@ -1327,22 +1337,6 @@
 				[
 					"",
 					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"doAbout()": {
-			"Syntax": "**.doAbout**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"getPMDependencieFile()": {
-			"Syntax": "**.getPMDependencieFile**() : 4D.File",
-			"Params": [
-				[
-					"",
-					"4D.File",
 					"<-"
 				]
 			],

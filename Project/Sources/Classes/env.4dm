@@ -193,6 +193,28 @@ Function applicationSupport($path : Text; $create : Boolean) : Object
 	
 	return Count parameters:C259>=1 ? This:C1470._postProcessing($folder; $path; $create) : $folder
 	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+Function decodePathURL($url : Text) : Object
+	
+	var $posix : Text
+	
+	$posix:=Replace string:C233($url; (Is Windows:C1573 ? "file:///" : "file://"); "")
+	
+	If (Length:C16($posix)=0)
+		
+		return Is Windows:C1573 ? Folder:C1567("c:/"; fk posix path:K87:1) : Folder:C1567("/"; fk posix path:K87:1)
+		
+	End if 
+	
+	If (Not:C34($posix[[Length:C16($posix)]]="/"))  // Try file
+		
+		If (File:C1566($posix; fk posix path:K87:1).exists)
+			
+			return File:C1566($posix; fk posix path:K87:1)
+			
+		End if 
+	End if 
+	
 	//MARK:-
 	// *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
 Function _postProcessing($target : Object; $pathOrCreate; $create : Boolean) : Object

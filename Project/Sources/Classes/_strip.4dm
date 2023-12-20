@@ -189,10 +189,10 @@ Function getPMComponents() : Collection
 	
 	var $name : Text
 	var $env : Object
-	var $dependencyCollection : Collection
-	var $dependenciesFile; $file : 4D:C1709.File
-	var $defaultFolder : 4D:C1709.Folder
-	var $dependencies : 4D:C1709.Object
+	var $c : Collection
+	var $file : 4D:C1709.File
+	var $folder : 4D:C1709.Folder
+	var $o : 4D:C1709.Object
 	
 	If (This:C1470.motor.remote/* and FIXME not in situ*/)
 		
@@ -200,87 +200,28 @@ Function getPMComponents() : Collection
 		
 	End if 
 	
-	$dependenciesFile:=This:C1470.getPMDependencieFile()
+	// Get dependency files from the package manager
+	$file:=This:C1470.database.databaseFolder.file("Project/Sources/dependencies.json")
+	$file:=$file.original
 	
-	If (Not:C34($dependenciesFile.exists))
+	If (Not:C34($file.exists))
 		
 		return []
 		
 	End if 
 	
-	$dependencies:=JSON Parse:C1218($dependenciesFile.getText())
+	$o:=JSON Parse:C1218($file.getText())
 	
-	If ($dependencies.dependencies=Null:C1517)
+	If ($o.dependencies=Null:C1517)
 		
 		return []  // Just empty, not yet defined
 		
 	End if 
 	
-	$dependencyCollection:=[]
-	
-	$file:=This:C1470.getPMEnvFile()
-	
-	If ($file.exists)
-		
-		$env:=JSON Parse:C1218($file.getText()).dependencies
-		
-	End if 
-	
-	$defaultFolder:=This:C1470.database.databaseFolder.parent
-	
-	For each ($name; $dependencies.dependencies)
-		
-		If (($env=Null:C1517)\
-			 || ($env[$name]=Null:C1517)\
-			 || (Length:C16(String:C10($env[$name]))=0))
-			
-			$dependencyCollection.push($defaultFolder.folder($name))
-			
-		Else 
-			
-			Case of 
-					
-					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-				: Position:C15("file://"; $env[$name])=1
-					
-					$dependencyCollection.push(DecodeFileURL($env[$name]))
-					
-					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-				: Position:C15("../"; $env[$name])=1
-					
-					If (Not:C34($file.parent.parent=Null:C1517))
-						
-						$dependencyCollection.push($file.parent.parent.folder(Substring:C12($env[$name]; 4)))
-						
-					End if 
-					
-					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-				: Position:C15("./"; $env[$name])=1
-					
-					$dependencyCollection.push($file.parent.folder(Substring:C12($env[$name]; 3)))
-					
-					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-			End case 
-		End if 
-	End for each 
-	
-	return $dependencyCollection
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Return the package manager dependencies files
-Function getPMDependencieFile() : 4D:C1709.File
-	
-	return This:C1470.database.databaseFolder.file("Project/Sources/dependencies.json").original
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Return the package manager env file
-Function getPMEnvFile() : 4D:C1709.File
-	
-	var $file : 4D:C1709.File
-	var $folder : 4D:C1709.Folder
-	
+	// Get the package manager env file
 	$folder:=This:C1470.database.databaseFolder
 	$file:=$folder.file("environment4d.json")
+	$file:=$file.original
 	
 	While (Not:C34($file.exists)\
 		 && Not:C34($folder=Null:C1517))
@@ -294,10 +235,55 @@ Function getPMEnvFile() : 4D:C1709.File
 		End if 
 		
 		$file:=$folder.file("environment4d.json")
+		$file:=$file.original
 		
 	End while 
 	
-	return $file.original
+	If ($file.exists)
+		
+		$env:=JSON Parse:C1218($file.getText()).dependencies
+		
+	End if 
+	
+	$c:=[]
+	
+	For each ($name; $o.dependencies)
+		
+		If (($env=Null:C1517)\
+			 || ($env[$name]=Null:C1517)\
+			 || (Length:C16(String:C10($env[$name]))=0))
+			
+			$c.push(This:C1470.database.databaseFolder.parent.folder($name))
+			
+		Else 
+			
+			Case of 
+					
+					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+				: Position:C15("file://"; $env[$name])=1
+					
+					$c.push(This:C1470.env.decodePathURL($env[$name]))
+					
+					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+				: Position:C15("../"; $env[$name])=1
+					
+					If (Not:C34($file.parent.parent=Null:C1517))
+						
+						$c.push($file.parent.parent.folder(Substring:C12($env[$name]; 4)))
+						
+					End if 
+					
+					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+				: Position:C15("./"; $env[$name])=1
+					
+					$c.push($file.parent.folder(Substring:C12($env[$name]; 3)))
+					
+					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+			End case 
+		End if 
+	End for each 
+	
+	return $c
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Display the palett
