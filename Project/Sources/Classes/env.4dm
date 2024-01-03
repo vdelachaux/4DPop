@@ -206,13 +206,18 @@ Function decodePathURL($url : Text) : Object
 		
 	End if 
 	
-	If (Not:C34($posix[[Length:C16($posix)]]="/"))  // Try file
+	If ($posix[[Length:C16($posix)]]="/")\
+		 && (Folder:C1567($posix).exists)
 		
-		If (File:C1566($posix; fk posix path:K87:1).exists)
-			
-			return File:C1566($posix; fk posix path:K87:1)
-			
-		End if 
+		return Folder:C1567($posix)
+		
+	End if 
+	
+	// Try file
+	If (File:C1566($posix; fk posix path:K87:1).exists)
+		
+		return File:C1566($posix; fk posix path:K87:1)
+		
 	End if 
 	
 	//MARK:-

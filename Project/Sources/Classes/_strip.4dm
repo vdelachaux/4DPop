@@ -97,6 +97,8 @@ Function load() : Object
 			
 		Else 
 			
+			$file:=$component.file("Resources/4DPop.xml")
+			
 			If ($file.exists)
 				
 				// Load the manifest
@@ -218,6 +220,8 @@ Function getPMComponents() : Collection
 		
 	End if 
 	
+	//TRACE
+	
 	// Get the package manager env file
 	$folder:=This:C1470.database.databaseFolder
 	$file:=$folder.file("environment4d.json")
@@ -249,38 +253,35 @@ Function getPMComponents() : Collection
 	
 	For each ($name; $o.dependencies)
 		
-		If (($env=Null:C1517)\
-			 || ($env[$name]=Null:C1517)\
-			 || (Length:C16(String:C10($env[$name]))=0))
-			
-			$c.push(This:C1470.database.databaseFolder.parent.folder($name))
-			
-		Else 
-			
-			Case of 
-					
-					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-				: Position:C15("file://"; $env[$name])=1
-					
-					$c.push(This:C1470.env.decodePathURL($env[$name]))
-					
-					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-				: Position:C15("../"; $env[$name])=1
-					
-					If (Not:C34($file.parent.parent=Null:C1517))
-						
-						$c.push($file.parent.parent.folder(Substring:C12($env[$name]; 4)))
-						
-					End if 
-					
-					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-				: Position:C15("./"; $env[$name])=1
-					
-					$c.push($file.parent.folder(Substring:C12($env[$name]; 3)))
-					
-					//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-			End case 
-		End if 
+		Case of 
+				
+				//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+			: (($env=Null:C1517)\
+				 || ($env[$name]=Null:C1517)\
+				 || (Length:C16(String:C10($env[$name]))=0))
+				
+				$c.push(This:C1470.database.databaseFolder.parent.folder($name))
+				
+				continue
+				
+				//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+			: (Position:C15("file://"; $env[$name])=1)
+				
+				$c.push(This:C1470.env.decodePathURL($env[$name]))
+				
+				//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+			: (Position:C15("../"; $env[$name])=1)\
+				 && (Not:C34($file.parent.parent=Null:C1517))
+				
+				$c.push($file.parent.parent.folder(Substring:C12($env[$name]; 4)))
+				
+				//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+			: (Position:C15("./"; $env[$name])=1)
+				
+				$c.push($file.parent.folder(Substring:C12($env[$name]; 3)))
+				
+				//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+		End case 
 	End for each 
 	
 	return $c
