@@ -1,4 +1,5 @@
 {
 	"$comment": "The project file let you override the location for most folders",
-	"compatibilityVersion": 2000
+	"compatibilityVersion": 2000,
+	"$4DPopAppMakerToolVersion": "20R5"
 }

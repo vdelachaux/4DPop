@@ -220,8 +220,6 @@ Function getPMComponents() : Collection
 		
 	End if 
 	
-	//TRACE
-	
 	// Get the package manager env file
 	$folder:=This:C1470.database.databaseFolder
 	$file:=$folder.file("environment4d.json")
