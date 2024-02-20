@@ -24,7 +24,7 @@
 
 `4DPop` is a series of productivity components grouped into a toolbar that integrates perfectly with the 4D development environment. 
 
-<img src="./Assets/4DPop.png" width="900">
+<img src="./assets/4DPop.png" width="900">
 
 [4D TN Spotlight](https://vimeo.com/3750045)
 
