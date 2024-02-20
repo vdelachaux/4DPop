@@ -12,8 +12,6 @@
 [build-shield]: https://github.com/vdelachaux/4DPop/actions/workflows/build.yml/badge.svg
 [build-url]: https://github.com/vdelachaux/4DPop/actions/workflows/build.yml
 
-[4dpop]: ./assets/4DPop.png
-
 [![language][code-shield]][code-url]
 [![language-top][code-top]][code-url]
 ![code-size][code-size]
@@ -26,7 +24,7 @@
 
 `4DPop` is a series of productivity components grouped into a toolbar that integrates perfectly with the 4D development environment. 
 
-![4dpop]
+<img src="./Assets/4DPop.png" width="900">
 
 [4D TN Spotlight](https://vimeo.com/3750045)
 
@@ -74,7 +72,7 @@ You can enhance `4DPop` with [your own components](#how-to), and you are also ab
 |[**XLIFF-Pro**](https://vdelachaux.github.io/4DPop-XLIFF-Pro) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-XLIFF-Pro?include_prereleases)](https://github.com/vdelachaux/4DPop-XLIFF-Pro/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-XLIFF-Pro/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-XLIFF-Pro/actions/workflows/build.yml)|![notarized][notarized]
 
 >  📌 Click on a component name in the "Repository" column above to access its repository, where the source code is available.
-> 
+>     
 >  📌 Click on the `Release` tag of each component above to access its latest revision.
 
 And when you’re ready to deploy, you can eliminate all the `4DPop` elements from your app to ensure its light weight.
