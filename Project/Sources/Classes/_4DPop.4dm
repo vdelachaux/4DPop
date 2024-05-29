@@ -130,15 +130,6 @@ Function load() : Object
 				
 				If (Length:C16(String:C10($plist.CFBundleShortVersionString))>0)
 					
-/*
-$widget.infos+="\rv"+$plist.CFBundleShortVersionString
-					
-If (Length(String($plist.CFBundleVersion))>0)
-					
-$widget.infos+=" build "+$plist.CFBundleVersion
-					
-End if 
-*/
 					$widget.infos+="\r"+$plist.CFBundleShortVersionString
 					
 					If (Length:C16(String:C10($plist.CFBundleVersion))>0)
@@ -316,7 +307,7 @@ Function getDependencies() : Collection
 		
 	End if 
 	
-	$dependencies:=JSON Parse:C1218($file.getText()).dependencies
+	$dependencies:=Try(JSON Parse:C1218($file.getText()).dependencies)
 	
 	If ($dependencies=Null:C1517)
 		
