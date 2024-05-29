@@ -1231,17 +1231,6 @@
 		"_inheritedFrom_": "_classCore"
 	},
 	"_strip": {
-		"position()": {
-			"Syntax": "**.position**( *position* : Text )",
-			"Params": [
-				[
-					"position",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
 		"doMenu()": {
 			"Syntax": "**.doMenu**()",
 			"Params": [],
@@ -1294,16 +1283,6 @@
 			"Params": [],
 			"Summary": ""
 		},
-		"doAbout()": {
-			"Syntax": "**.doAbout**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"abort()": {
-			"Syntax": "**.abort**()",
-			"Params": [],
-			"Summary": ""
-		},
 		"getPMComponents()": {
 			"Syntax": "**.getPMComponents**() : Collection",
 			"Params": [
@@ -1313,6 +1292,11 @@
 					"<-"
 				]
 			],
+			"Summary": ""
+		},
+		"abort()": {
+			"Syntax": "**.abort**()",
+			"Params": [],
 			"Summary": ""
 		},
 		"reload()": {
@@ -1340,6 +1324,33 @@
 					"<-"
 				]
 			],
+			"Summary": ""
+		},
+		"position()": {
+			"Syntax": "**.position**( *position* : Text )",
+			"Params": [
+				[
+					"position",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"getDependencies()": {
+			"Syntax": "**.getDependencies**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"doAbout()": {
+			"Syntax": "**.doAbout**()",
+			"Params": [],
 			"Summary": ""
 		},
 		"execute()": {

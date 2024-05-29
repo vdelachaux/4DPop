@@ -189,6 +189,12 @@ Function getComponents($folder : 4D:C1709.Folder) : Collection
 	// Return the package manager dependencies folders
 Function getPMComponents() : Collection
 	
+	If (Num:C11(Application version:C493)>=2060)
+		
+		return This:C1470.getDependencies()
+		
+	End if 
+	
 	var $name : Text
 	var $env : Object
 	var $c : Collection
@@ -280,6 +286,47 @@ Function getPMComponents() : Collection
 				
 				//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 		End case 
+	End for each 
+	
+	return $c
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Return the loaded dependencies folders
+Function getDependencies() : Collection
+	
+	var $key : Text
+	var $dependencies : Object
+	var $c : Collection
+	var $file : 4D:C1709.File
+	
+	$file:=File:C1566("/PACKAGE/userPreferences."+Current system user:C484+"/dependencies-lock.json")
+	
+	If (Not:C34($file.exists))
+		
+		return []
+		
+	End if 
+	
+	$dependencies:=JSON Parse:C1218($file.getText()).dependencies
+	
+	If ($dependencies=Null:C1517)
+		
+		return []
+		
+	End if 
+	
+	$c:=[]
+	
+	For each ($key; $dependencies)
+		
+		If (Not:C34($dependencies[$key].loaded))
+			
+			continue
+			
+		End if 
+		
+		$c.push(Folder:C1567($dependencies[$key].path; fk platform path:K87:2))
+		
 	End for each 
 	
 	return $c
