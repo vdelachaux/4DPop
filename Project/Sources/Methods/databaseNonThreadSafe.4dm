@@ -4,10 +4,6 @@ Non-thread-safe commands to be called in a cooperative process
 */
 #DECLARE($signal : 4D:C1709.Signal)
 
-If (False:C215)
-	C_OBJECT:C1216(databaseNonThreadSafe; $1)
-End if 
-
 var $t : Text
 var $c : Collection
 

@@ -14,6 +14,6 @@ End if
 
 If (Not:C34(Shift down:C543))
 	
-	_strip
+	DISPLAY 4DPOP STRIP
 	
 End if 

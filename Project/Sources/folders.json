@@ -18,41 +18,39 @@
 	},
 	"#️⃣ API": {
 		"methods": [
-			"COMPILER_api",
 			"pop",
 			"recoverWindow"
 		]
 	},
 	"♻️ LIBRAIRIES": {
-		"groups": [
-			"👩‍💻 UI",
-			"database",
-			"env"
-		],
 		"methods": [
 			"noError"
 		],
 		"classes": [
-			"_classCore",
-			"coord",
-			"menu",
-			"menuBar",
-			"motor",
-			"xml"
+			"_classCore"
 		]
 	},
 	"⚙️ MACROS": {},
 	"👥 NAMESPACE": {
+		"groups": [
+			"database",
+			"env"
+		],
 		"classes": [
-			"Preferences"
+			"coord",
+			"menu",
+			"menuBar",
+			"motor",
+			"Preferences",
+			"xml"
 		]
 	},
 	"👩‍💻 UI": {},
 	"📦 MAIN": {
 		"methods": [
-			"_strip",
 			"_STRIP_Controller",
-			"COMPILER_MAIN"
+			"COMPILER_MAIN",
+			"DISPLAY 4DPOP STRIP"
 		],
 		"forms": [
 			"ABOUT",
@@ -60,7 +58,7 @@
 			"STRIP"
 		],
 		"classes": [
-			"_strip",
+			"_4DPop",
 			"_widget"
 		]
 	},
@@ -71,7 +69,6 @@
 	},
 	"database": {
 		"methods": [
-			"COMPILER_database",
 			"databaseNonThreadSafe"
 		],
 		"classes": [
@@ -80,7 +77,6 @@
 	},
 	"env": {
 		"methods": [
-			"COMPILER_env",
 			"envScreens"
 		],
 		"classes": [

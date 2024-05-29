@@ -8,10 +8,6 @@
 // ----------------------------------------------------
 #DECLARE($resize : Boolean)
 
-If (False:C215)
-	C_BOOLEAN:C305(recoverWindow; $1)
-End if 
-
 var $bottom; $buffer; $dH; $dV; $height; $i : Integer
 var $left; $mainScreen; $menuBarHeight; $offset; $right; $screen : Integer
 var $screenNumber; $top; $width; $winRef : Integer

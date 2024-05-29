@@ -24,8 +24,7 @@ Case of
 		//________________________________________
 	: ($eventCode=On after host database startup:K74:4)
 		
-		// Display the 4DPop strip
-		_strip
+		DISPLAY 4DPOP STRIP
 		
 		//________________________________________
 	: ($eventCode=On before host database exit:K74:5)

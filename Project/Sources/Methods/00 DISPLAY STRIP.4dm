@@ -21,4 +21,4 @@ For ($process; 1; Count user processes:C343; 1)
 	End if 
 End for 
 
-_strip
+DISPLAY 4DPOP STRIP

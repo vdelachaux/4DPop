@@ -1,6 +1,9 @@
 {
   "dependencies": {
-    "4DPop": {},
+    "4DPop": {
+      "github": "vdelachaux/4DPop",
+      "tag":"20.6.0"
+    },
     "4DPop AppMaker": {},
     "4DPop Bookmarks": {},
     "4DPop Clipboard": {},

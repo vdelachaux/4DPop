@@ -37,6 +37,13 @@
 				"Summary": ""
 			}
 		},
+		"_4DPop": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
 		"_classCore": {
 			"new()": {
 				"Syntax": "**.new**()",
@@ -58,54 +65,6 @@
 					[
 						"menus",
 						"Collection",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
-		"env": {
-			"new()": {
-				"Syntax": "**.new**( *full* : Boolean )",
-				"Params": [
-					[
-						"full",
-						"Boolean",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
-		"_strip": {
-			"new()": {
-				"Syntax": "**.new**()",
-				"Params": [],
-				"Summary": ""
-			}
-		},
-		"coord": {
-			"new()": {
-				"Syntax": "**.new**( *left* : Integer; *top* : Integer; *right* : Integer; *bottom* : Integer )",
-				"Params": [
-					[
-						"left",
-						"Integer",
-						"->"
-					],
-					[
-						"top",
-						"Integer",
-						"->"
-					],
-					[
-						"right",
-						"Integer",
-						"->"
-					],
-					[
-						"bottom",
-						"Integer",
 						"->"
 					]
 				],
@@ -150,6 +109,47 @@
 					[
 						"manifest",
 						"Object",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"env": {
+			"new()": {
+				"Syntax": "**.new**( *full* : Boolean )",
+				"Params": [
+					[
+						"full",
+						"Boolean",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"coord": {
+			"new()": {
+				"Syntax": "**.new**( *left* : Integer; *top* : Integer; *right* : Integer; *bottom* : Integer )",
+				"Params": [
+					[
+						"left",
+						"Integer",
+						"->"
+					],
+					[
+						"top",
+						"Integer",
+						"->"
+					],
+					[
+						"right",
+						"Integer",
+						"->"
+					],
+					[
+						"bottom",
+						"Integer",
 						"->"
 					]
 				],
@@ -354,6 +354,172 @@
 			"Summary": ""
 		},
 		"_inheritedFrom_": "_classCore"
+	},
+	"_4DPop": {
+		"doMenu()": {
+			"Syntax": "**.doMenu**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"doSettings()": {
+			"Syntax": "**.doSettings**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"getComponents()": {
+			"Syntax": "**.getComponents**( *folder* : 4D.Folder ) : Collection",
+			"Params": [
+				[
+					"folder",
+					"4D.Folder",
+					"->"
+				],
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"close()": {
+			"Syntax": "**.close**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"init()": {
+			"Syntax": "**.init**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"doDrop()": {
+			"Syntax": "**.doDrop**() : Integer",
+			"Params": [
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"display()": {
+			"Syntax": "**.display**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"getPMComponents()": {
+			"Syntax": "**.getPMComponents**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"abort()": {
+			"Syntax": "**.abort**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"reload()": {
+			"Syntax": "**.reload**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"collapseExpand()": {
+			"Syntax": "**.collapseExpand**( *displayed* : Integer )",
+			"Params": [
+				[
+					"displayed",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"getTools()": {
+			"Syntax": "**.getTools**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"position()": {
+			"Syntax": "**.position**( *position* : Text )",
+			"Params": [
+				[
+					"position",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"getDependencies()": {
+			"Syntax": "**.getDependencies**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"doAbout()": {
+			"Syntax": "**.doAbout**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"execute()": {
+			"Syntax": "**.execute**( *e* : Object ) : Boolean",
+			"Params": [
+				[
+					"e",
+					"Object",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"load()": {
+			"Syntax": "**.load**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"properties": {
+			"Syntax": "properties : Object"
+		},
+		"env": {
+			"Syntax": "env : cs.pop.env"
+		},
+		"preferences": {
+			"Syntax": "preferences : cs.pop.Preferences"
+		},
+		"database": {
+			"Syntax": "database : cs.pop.database"
+		},
+		"motor": {
+			"Syntax": "motor : cs.pop.motor"
+		}
 	},
 	"_classCore": {
 		"get _()": {
@@ -1011,469 +1177,6 @@
 			"Summary": ""
 		},
 		"_inheritedFrom_": "menu"
-	},
-	"env": {
-		"get linux()": {
-			"Syntax": "**.get linux**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"logs()": {
-			"Syntax": "**.logs**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"decodePathURL()": {
-			"Syntax": "**.decodePathURL**( *url* : Text ) : Object",
-			"Params": [
-				[
-					"url",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"library()": {
-			"Syntax": "**.library**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getScreenInfos()": {
-			"Syntax": "**.getScreenInfos**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"updateEnvironmentValues()": {
-			"Syntax": "**.updateEnvironmentValues**( *system* : Boolean )",
-			"Params": [
-				[
-					"system",
-					"Boolean",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"startupDisk()": {
-			"Syntax": "**.startupDisk**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"caches()": {
-			"Syntax": "**.caches**( *path* : Variant; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Variant",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"preferences()": {
-			"Syntax": "**.preferences**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get windows()": {
-			"Syntax": "**.get windows**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"applicationSupport()": {
-			"Syntax": "**.applicationSupport**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get macos()": {
-			"Syntax": "**.get macos**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"screens": {
-			"Syntax": "screens : Collection"
-		},
-		"mainScreen": {
-			"Syntax": "mainScreen : Object"
-		},
-		"applicationsFolder": {
-			"Syntax": "applicationsFolder : 4D.Folder"
-		},
-		"systemFolder": {
-			"Syntax": "systemFolder : 4D.Folder"
-		},
-		"desktopFolder": {
-			"Syntax": "desktopFolder : 4D.Folder"
-		},
-		"systemInfos": {
-			"Syntax": "systemInfos : Object"
-		},
-		"documentsFolder": {
-			"Syntax": "documentsFolder : 4D.Folder"
-		},
-		"homeFolder": {
-			"Syntax": "homeFolder : 4D.Folder"
-		},
-		"_inheritedFrom_": "_classCore"
-	},
-	"_strip": {
-		"doMenu()": {
-			"Syntax": "**.doMenu**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"doSettings()": {
-			"Syntax": "**.doSettings**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"getComponents()": {
-			"Syntax": "**.getComponents**( *folder* : 4D.Folder ) : Collection",
-			"Params": [
-				[
-					"folder",
-					"4D.Folder",
-					"->"
-				],
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"close()": {
-			"Syntax": "**.close**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"init()": {
-			"Syntax": "**.init**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"doDrop()": {
-			"Syntax": "**.doDrop**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"display()": {
-			"Syntax": "**.display**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"getPMComponents()": {
-			"Syntax": "**.getPMComponents**() : Collection",
-			"Params": [
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"abort()": {
-			"Syntax": "**.abort**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"reload()": {
-			"Syntax": "**.reload**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"collapseExpand()": {
-			"Syntax": "**.collapseExpand**( *displayed* : Integer )",
-			"Params": [
-				[
-					"displayed",
-					"Integer",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"getTools()": {
-			"Syntax": "**.getTools**() : Collection",
-			"Params": [
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"position()": {
-			"Syntax": "**.position**( *position* : Text )",
-			"Params": [
-				[
-					"position",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"getDependencies()": {
-			"Syntax": "**.getDependencies**() : Collection",
-			"Params": [
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"doAbout()": {
-			"Syntax": "**.doAbout**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"execute()": {
-			"Syntax": "**.execute**( *e* : Object ) : Boolean",
-			"Params": [
-				[
-					"e",
-					"Object",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"load()": {
-			"Syntax": "**.load**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"properties": {
-			"Syntax": "properties : Object"
-		},
-		"env": {
-			"Syntax": "env : cs.pop.env"
-		},
-		"preferences": {
-			"Syntax": "preferences : cs.pop.Preferences"
-		},
-		"database": {
-			"Syntax": "database : cs.pop.database"
-		},
-		"motor": {
-			"Syntax": "motor : cs.pop.motor"
-		}
-	},
-	"coord": {
-		"applyToWidget()": {
-			"Syntax": "**.applyToWidget**( *name* : Text )",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get dimensions()": {
-			"Syntax": "**.get dimensions**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"applyToWindow()": {
-			"Syntax": "**.applyToWindow**( *winRef* : Integer )",
-			"Params": [
-				[
-					"winRef",
-					"Integer",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get height()": {
-			"Syntax": "**.get height**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get windowCoordinates()": {
-			"Syntax": "**.get windowCoordinates**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get width()": {
-			"Syntax": "**.get width**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get screenCoordinates()": {
-			"Syntax": "**.get screenCoordinates**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		}
 	},
 	"xml": {
 		"isReference()": {
@@ -2506,6 +2209,303 @@
 				[
 					"",
 					"Picture",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"env": {
+		"get linux()": {
+			"Syntax": "**.get linux**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"logs()": {
+			"Syntax": "**.logs**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"decodePathURL()": {
+			"Syntax": "**.decodePathURL**( *url* : Text ) : Object",
+			"Params": [
+				[
+					"url",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"library()": {
+			"Syntax": "**.library**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getScreenInfos()": {
+			"Syntax": "**.getScreenInfos**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"updateEnvironmentValues()": {
+			"Syntax": "**.updateEnvironmentValues**( *system* : Boolean )",
+			"Params": [
+				[
+					"system",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"startupDisk()": {
+			"Syntax": "**.startupDisk**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"caches()": {
+			"Syntax": "**.caches**( *path* : Variant; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Variant",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"preferences()": {
+			"Syntax": "**.preferences**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get windows()": {
+			"Syntax": "**.get windows**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"applicationSupport()": {
+			"Syntax": "**.applicationSupport**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get macos()": {
+			"Syntax": "**.get macos**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"screens": {
+			"Syntax": "screens : Collection"
+		},
+		"mainScreen": {
+			"Syntax": "mainScreen : Object"
+		},
+		"applicationsFolder": {
+			"Syntax": "applicationsFolder : 4D.Folder"
+		},
+		"systemFolder": {
+			"Syntax": "systemFolder : 4D.Folder"
+		},
+		"desktopFolder": {
+			"Syntax": "desktopFolder : 4D.Folder"
+		},
+		"systemInfos": {
+			"Syntax": "systemInfos : Object"
+		},
+		"documentsFolder": {
+			"Syntax": "documentsFolder : 4D.Folder"
+		},
+		"homeFolder": {
+			"Syntax": "homeFolder : 4D.Folder"
+		},
+		"_inheritedFrom_": "_classCore"
+	},
+	"coord": {
+		"applyToWidget()": {
+			"Syntax": "**.applyToWidget**( *name* : Text )",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get dimensions()": {
+			"Syntax": "**.get dimensions**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"applyToWindow()": {
+			"Syntax": "**.applyToWindow**( *winRef* : Integer )",
+			"Params": [
+				[
+					"winRef",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get height()": {
+			"Syntax": "**.get height**() : Integer",
+			"Params": [
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get windowCoordinates()": {
+			"Syntax": "**.get windowCoordinates**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get width()": {
+			"Syntax": "**.get width**() : Integer",
+			"Params": [
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get screenCoordinates()": {
+			"Syntax": "**.get screenCoordinates**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
 					"<-"
 				]
 			],

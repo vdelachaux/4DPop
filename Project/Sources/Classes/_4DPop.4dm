@@ -47,7 +47,7 @@ Function load() : Object
 		process: Current process:C322; \
 		hidden: True:C214; \
 		plist: $plist; \
-		infos: $plist.CFBundleDisplayName+"\rv"+$plist.CFBundleShortVersionString+" build "+$plist.CFBundleVersion; \
+		infos: $plist.CFBundleDisplayName+"\r"+$plist.CFBundleShortVersionString+" ("+$plist.CFBundleVersion+")"; \
 		copyright: $plist.NSHumanReadableCopyright; \
 		icon: cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/Images/4DPop.png"); 48; True:C214); \
 		widgets: []; \
@@ -130,11 +130,20 @@ Function load() : Object
 				
 				If (Length:C16(String:C10($plist.CFBundleShortVersionString))>0)
 					
-					$widget.infos+="\rv"+$plist.CFBundleShortVersionString
+/*
+$widget.infos+="\rv"+$plist.CFBundleShortVersionString
+					
+If (Length(String($plist.CFBundleVersion))>0)
+					
+$widget.infos+=" build "+$plist.CFBundleVersion
+					
+End if 
+*/
+					$widget.infos+="\r"+$plist.CFBundleShortVersionString
 					
 					If (Length:C16(String:C10($plist.CFBundleVersion))>0)
 						
-						$widget.infos+=" build "+$plist.CFBundleVersion
+						$widget.infos+=" ("+$plist.CFBundleVersion+")"
 						
 					End if 
 				End if 

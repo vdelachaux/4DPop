@@ -9,12 +9,6 @@
 // ----------------------------------------------------
 #DECLARE($type : Integer; $onWindows : Boolean) : Integer
 
-If (False:C215)
-	C_LONGINT:C283(getWindowOffsets; $1)
-	C_BOOLEAN:C305(getWindowOffsets; $2)
-	C_LONGINT:C283(getWindowOffsets; $0)
-End if 
-
 var $dH; $dV : Integer
 
 // Absolute value of the window type, identical offsets for the palettes
