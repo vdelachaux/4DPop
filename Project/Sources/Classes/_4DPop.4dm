@@ -299,7 +299,7 @@ Function getDependencies() : Collection
 	var $c : Collection
 	var $file : 4D:C1709.File
 	
-	$file:=File:C1566("/PACKAGE/userPreferences."+Current system user:C484+"/dependencies-lock.json")
+	$file:=File:C1566("/PACKAGE/userPreferences."+Current system user:C484+"/dependencies-lock.json"; *)
 	
 	If (Not:C34($file.exists))
 		
