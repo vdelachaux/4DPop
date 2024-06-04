@@ -9,6 +9,8 @@ If (Not:C34(Is compiled mode:C492))
 		EXECUTE METHOD:C1007("quickOpenInit"; *; Formula:C1597(MODIFIERS); Formula:C1597(KEYCODE))
 		ON EVENT CALL:C190("quickOpenEventHandler"; "$quickOpenListener")
 		
+		INSTALL ACTIONS
+		
 	End if 
 End if 
 

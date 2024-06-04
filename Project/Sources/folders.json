@@ -50,7 +50,8 @@
 		"methods": [
 			"_STRIP_Controller",
 			"COMPILER_MAIN",
-			"DISPLAY 4DPOP STRIP"
+			"DISPLAY 4DPOP STRIP",
+			"INSTALL ACTIONS"
 		],
 		"forms": [
 			"ABOUT",
@@ -64,7 +65,8 @@
 	},
 	"🛠️ Tools": {
 		"methods": [
-			"getWindowOffsets"
+			"getWindowOffsets",
+			"makeSymbolicLink"
 		]
 	},
 	"database": {

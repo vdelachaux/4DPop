@@ -2,18 +2,27 @@
   "dependencies": {
     "4DPop": {
       "github": "vdelachaux/4DPop",
-      "tag":"20.6.0"
+      "tag": "20.6.2"
     },
-    "4DPop AppMaker": {},
+    "4DPop AppMaker": {
+      "github": "vdelachaux/4DPop-AppMaker",
+      "tag": "20.6.0"
+    },
+    "4DPop Git": {
+      "github": "vdelachaux/4DPop-Git",
+      "tag": "20.6.0"
+    },
+    "4DPop Macros": {
+      "github": "vdelachaux/4DPop-Macros",
+      "tag": "20.6.2"
+    },
     "4DPop Bookmarks": {},
     "4DPop Clipboard": {},
     "4DPop ColorChart": {},
     "4DPop Commands": {},
     "4DPop Constants Editor": {},
-    "4DPop Git": {},
     "4DPop Image Buddy": {},
     "4DPop KeepIt": {},
-    "4DPop Macros": {},
     "4DPop Pasteboard": {},
     "4DPop QuickOpen": {},
     "4DPop Rulers": {},

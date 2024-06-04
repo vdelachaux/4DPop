@@ -24,6 +24,18 @@ Case of
 		//________________________________________
 	: ($eventCode=On after host database startup:K74:4)
 		
+		If (Not:C34(Is compiled mode:C492))
+			
+			ARRAY TEXT:C222($componentsArray; 0)
+			COMPONENT LIST:C1001($componentsArray)
+			
+			If (Find in array:C230($componentsArray; "4DPop QuickOpen")>0)
+				
+				INSTALL ACTIONS
+				
+			End if 
+		End if 
+		
 		DISPLAY 4DPOP STRIP
 		
 		//________________________________________
