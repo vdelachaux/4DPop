@@ -161,7 +161,7 @@ Class constructor($component : Object; $manifest : Object)
 	// Create an icon from the media
 Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Picture
 	
-	var $image; $mask; $rect; $svg : Text
+	var $image; $mask; $rect : Text
 	var $media; $pict : Picture
 	var $height; $width : Integer
 	
@@ -186,12 +186,11 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 			
 			TRANSFORM PICTURE:C988($media; Crop:K61:7; 0; 0; $size; $size)
 			
-			$svg:=SVG_New
-			$mask:=SVG_Define_clip_Path($svg; "mask")
-			SVG_SET_CLIP_PATH($svg; "mask")
-			$rect:=SVG_New_rect($mask; 0; 0; $size; $size; 10; 10; "none"; "none")
-			$image:=SVG_New_embedded_image($svg; $media; 0; 0; ".png")
-			$media:=SVG_Export_to_picture($svg; Get XML data source:K45:16)
+			var $svg : cs:C1710.svg:=cs:C1710.svg.new()
+			$svg.square($size).radius(10)
+			$svg.clipPath("mask")
+			$svg.image($media)
+			$media:=$svg.picture()
 			
 			CONVERT PICTURE:C1002($media; ".png")
 			

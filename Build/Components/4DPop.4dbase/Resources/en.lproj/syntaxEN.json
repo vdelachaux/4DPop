@@ -1,8 +1,13 @@
 {
 	"_method_": {
 		"pop": {
-			"Syntax": "**pop**() : 4D.Class",
+			"Syntax": "**pop**( *class* : Text ) : 4D.Class",
 			"Params": [
+				[
+					"class",
+					"Text",
+					"->"
+				],
 				[
 					"",
 					"4D.Class",
@@ -44,87 +49,10 @@
 				"Summary": ""
 			}
 		},
-		"_classCore": {
-			"new()": {
-				"Syntax": "**.new**()",
-				"Params": [],
-				"Summary": ""
-			}
-		},
 		"motor": {
 			"new()": {
 				"Syntax": "**.new**()",
 				"Params": [],
-				"Summary": ""
-			}
-		},
-		"menuBar": {
-			"new()": {
-				"Syntax": "**.new**( *menus* : Collection )",
-				"Params": [
-					[
-						"menus",
-						"Collection",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
-		"xml": {
-			"new()": {
-				"Syntax": "**.new**( *variable* : Variant )",
-				"Params": [
-					[
-						"variable",
-						"Variant",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
-		"Preferences": {
-			"new()": {
-				"Syntax": "**.new**( *module* : Text )",
-				"Params": [
-					[
-						"module",
-						"Text",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
-		"_widget": {
-			"new()": {
-				"Syntax": "**.new**( *component* : Object; *manifest* : Object )",
-				"Params": [
-					[
-						"component",
-						"Object",
-						"->"
-					],
-					[
-						"manifest",
-						"Object",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
-		"env": {
-			"new()": {
-				"Syntax": "**.new**( *full* : Boolean )",
-				"Params": [
-					[
-						"full",
-						"Boolean",
-						"->"
-					]
-				],
 				"Summary": ""
 			}
 		},
@@ -150,6 +78,96 @@
 					[
 						"bottom",
 						"Integer",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"_widget": {
+			"new()": {
+				"Syntax": "**.new**( *component* : Object; *manifest* : Object )",
+				"Params": [
+					[
+						"component",
+						"Object",
+						"->"
+					],
+					[
+						"manifest",
+						"Object",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"menuBar": {
+			"new()": {
+				"Syntax": "**.new**( *menus* : Collection )",
+				"Params": [
+					[
+						"menus",
+						"Collection",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"svg": {
+			"new()": {
+				"Syntax": "**.new**( *content* : Variant )",
+				"Params": [
+					[
+						"content",
+						"Variant",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"_classCore": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"Preferences": {
+			"new()": {
+				"Syntax": "**.new**( *module* : Text )",
+				"Params": [
+					[
+						"module",
+						"Text",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"xml": {
+			"new()": {
+				"Syntax": "**.new**( *variable* : Variant )",
+				"Params": [
+					[
+						"variable",
+						"Variant",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"env": {
+			"new()": {
+				"Syntax": "**.new**( *full* : Boolean )",
+				"Params": [
+					[
+						"full",
+						"Boolean",
 						"->"
 					]
 				],
@@ -521,6 +539,3293 @@
 			"Syntax": "motor : cs.pop.motor"
 		}
 	},
+	"motor": {
+		"setUpdateFolder()": {
+			"Syntax": "**.setUpdateFolder**( *folder* : Variant; *silent* : Boolean )",
+			"Params": [
+				[
+					"folder",
+					"Variant",
+					"->"
+				],
+				[
+					"silent",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"quit()": {
+			"Syntax": "**.quit**( *delay* : Integer )",
+			"Params": [
+				[
+					"delay",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"restart()": {
+			"Syntax": "**.restart**( *delay* : Integer; *message* : Text )",
+			"Params": [
+				[
+					"delay",
+					"Integer",
+					"->"
+				],
+				[
+					"message",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get version()": {
+			"Syntax": "**.get version**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get machine()": {
+			"Syntax": "**.get machine**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get sdi()": {
+			"Syntax": "**.get sdi**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get branch()": {
+			"Syntax": "**.get branch**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get longVersion()": {
+			"Syntax": "**.get longVersion**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get merged()": {
+			"Syntax": "**.get merged**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get demo()": {
+			"Syntax": "**.get demo**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get server()": {
+			"Syntax": "**.get server**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get shortVersion()": {
+			"Syntax": "**.get shortVersion**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get debug()": {
+			"Syntax": "**.get debug**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get root()": {
+			"Syntax": "**.get root**() : 4D.Folder",
+			"Params": [
+				[
+					"",
+					"4D.Folder",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get service()": {
+			"Syntax": "**.get service**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get arm()": {
+			"Syntax": "**.get arm**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get headless()": {
+			"Syntax": "**.get headless**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"rejectNewConnections()": {
+			"Syntax": "**.rejectNewConnections**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"get ipv4()": {
+			"Syntax": "**.get ipv4**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get newConnectionsAllowed()": {
+			"Syntax": "**.get newConnectionsAllowed**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get buildNumber()": {
+			"Syntax": "**.get buildNumber**() : Integer",
+			"Params": [
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get remote()": {
+			"Syntax": "**.get remote**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get local()": {
+			"Syntax": "**.get local**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"acceptNewConnections()": {
+			"Syntax": "**.acceptNewConnections**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"languages": {
+			"Syntax": "languages : Object"
+		},
+		"os": {
+			"Syntax": "os : Object"
+		},
+		"infos": {
+			"Syntax": "infos : Object"
+		},
+		"_inheritedFrom_": "_classCore"
+	},
+	"coord": {
+		"applyToWidget()": {
+			"Syntax": "**.applyToWidget**( *name* : Text )",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get dimensions()": {
+			"Syntax": "**.get dimensions**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"applyToWindow()": {
+			"Syntax": "**.applyToWindow**( *winRef* : Integer )",
+			"Params": [
+				[
+					"winRef",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get height()": {
+			"Syntax": "**.get height**() : Integer",
+			"Params": [
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get windowCoordinates()": {
+			"Syntax": "**.get windowCoordinates**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get width()": {
+			"Syntax": "**.get width**() : Integer",
+			"Params": [
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get screenCoordinates()": {
+			"Syntax": "**.get screenCoordinates**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"_widget": {
+		"getIcon()": {
+			"Syntax": "**.getIcon**( *file* : 4D.File; *size* : Integer; *crop* : Boolean ) : Picture",
+			"Params": [
+				[
+					"file",
+					"4D.File",
+					"->"
+				],
+				[
+					"size",
+					"Integer",
+					"->"
+				],
+				[
+					"crop",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Picture",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"menuBar": {
+		"defaultMinimalMenuBar()": {
+			"Syntax": "**.defaultMinimalMenuBar**() : cs.pop.menuBar",
+			"Params": [
+				[
+					"",
+					"cs.pop.menuBar",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"disableItem()": {
+			"Syntax": "**.disableItem**( *item* : Text )",
+			"Params": [
+				[
+					"item",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"enableItem()": {
+			"Syntax": "**.enableItem**( *item* : Text; *enabled* : Boolean )",
+			"Params": [
+				[
+					"item",
+					"Text",
+					"->"
+				],
+				[
+					"enabled",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set()": {
+			"Syntax": "**.set**() : cs.pop.menuBar",
+			"Params": [
+				[
+					"",
+					"cs.pop.menuBar",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"_inheritedFrom_": "menu"
+	},
+	"svg": {
+		"polarToCartesian()": {
+			"Syntax": "**.polarToCartesian**( *point* : Collection; *r* : Real; *degree* : Integer ) : Collection",
+			"Params": [
+				[
+					"point",
+					"Collection",
+					"->"
+				],
+				[
+					"r",
+					"Real",
+					"->"
+				],
+				[
+					"degree",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"point()": {
+			"Syntax": "**.point**( *x* : Real; *y* : Real ) : Collection",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"TextToPicture()": {
+			"Syntax": "**.TextToPicture**( *text* : Text; *attributes* : Object ) : Picture",
+			"Params": [
+				[
+					"text",
+					"Text",
+					"->"
+				],
+				[
+					"attributes",
+					"Object",
+					"->"
+				],
+				[
+					"",
+					"Picture",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getTextWidth()": {
+			"Syntax": "**.getTextWidth**( *string* : Text; *fontAttributes* : Object )->width : Integer",
+			"Params": [
+				[
+					"string",
+					"Text",
+					"->"
+				],
+				[
+					"fontAttributes",
+					"Object",
+					"->"
+				],
+				[
+					"width",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"preview()": {
+			"Syntax": "**.preview**( *keepStructure* : Boolean )",
+			"Params": [
+				[
+					"keepStructure",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"isOfClass()": {
+			"Syntax": "**.isOfClass**( *class* : Text; *applyTo* : Variant ) : Boolean",
+			"Params": [
+				[
+					"class",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"addClass()": {
+			"Syntax": "**.addClass**( *class* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"class",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"hide()": {
+			"Syntax": "**.hide**( *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"show()": {
+			"Syntax": "**.show**( *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"radius()": {
+			"Syntax": "**.radius**( *radius* : Integer; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"radius",
+					"Integer",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"plot()": {
+			"Syntax": "**.plot**( *points* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"points",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"moveHorizontally()": {
+			"Syntax": "**.moveHorizontally**( *x* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"size()": {
+			"Syntax": "**.size**( *width* : Real; *height* : Real; *unit* : Text ) : cs.pop.svg",
+			"Params": [
+				[
+					"width",
+					"Real",
+					"->"
+				],
+				[
+					"height",
+					"Real",
+					"->"
+				],
+				[
+					"unit",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"dropShadow()": {
+			"Syntax": "**.dropShadow**( *stdDeviation* : Integer; *dx* : Integer; *dy* : Integer ) : cs.pop.svg",
+			"Params": [
+				[
+					"stdDeviation",
+					"Integer",
+					"->"
+				],
+				[
+					"dx",
+					"Integer",
+					"->"
+				],
+				[
+					"dy",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"fill()": {
+			"Syntax": "**.fill**( *value* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"position()": {
+			"Syntax": "**.position**( *x* : Real; *y* : Variant; *unit* : Text ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Variant",
+					"->"
+				],
+				[
+					"unit",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"stroke()": {
+			"Syntax": "**.stroke**( *value* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"opacity()": {
+			"Syntax": "**.opacity**( *opacity* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"opacity",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"push()": {
+			"Syntax": "**.push**( *name* : Text ) : cs.pop.svg",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"c()": {
+			"Syntax": "**.c**( *x1* : Real; *y1* : Real; *x2* : Real; *y2* : Real; *x* : Real; *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x1",
+					"Real",
+					"->"
+				],
+				[
+					"y1",
+					"Real",
+					"->"
+				],
+				[
+					"x2",
+					"Real",
+					"->"
+				],
+				[
+					"y2",
+					"Real",
+					"->"
+				],
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"fetch()": {
+			"Syntax": "**.fetch**( *name* : Text )->dom : Text",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"dom",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"textRendering()": {
+			"Syntax": "**.textRendering**( *rendering* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"rendering",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"strokeOpacity()": {
+			"Syntax": "**.strokeOpacity**( *opacity* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"opacity",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"strokeColor()": {
+			"Syntax": "**.strokeColor**( *color* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"color",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"fillOpacity()": {
+			"Syntax": "**.fillOpacity**( *opacity* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"opacity",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"rotate()": {
+			"Syntax": "**.rotate**( *angle* : Integer; *cx* : Variant; *cy* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"angle",
+					"Integer",
+					"->"
+				],
+				[
+					"cx",
+					"Variant",
+					"->"
+				],
+				[
+					"cy",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"H()": {
+			"Syntax": "**.H**( *x* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"preserveAspectRatio()": {
+			"Syntax": "**.preserveAspectRatio**( *value* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"value",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"fontSize()": {
+			"Syntax": "**.fontSize**( *size* : Integer; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"size",
+					"Integer",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"height()": {
+			"Syntax": "**.height**( *height* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"height",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"with()": {
+			"Syntax": "**.with**( *name* : Text ) : Boolean",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"alignment()": {
+			"Syntax": "**.alignment**( *alignment* : Integer; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"alignment",
+					"Integer",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"font()": {
+			"Syntax": "**.font**( *attributes* : Object; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"attributes",
+					"Object",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"ry()": {
+			"Syntax": "**.ry**( *ry* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"ry",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"smoothCubicBezierCurveto()": {
+			"Syntax": "**.smoothCubicBezierCurveto**( *to* : Collection; *endCtrlPoint* : Collection; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"to",
+					"Collection",
+					"->"
+				],
+				[
+					"endCtrlPoint",
+					"Collection",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"r()": {
+			"Syntax": "**.r**( *r* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"r",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"y()": {
+			"Syntax": "**.y**( *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"symbol()": {
+			"Syntax": "**.symbol**( *name* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"textArea()": {
+			"Syntax": "**.textArea**( *text* : Text; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"text",
+					"Text",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"q()": {
+			"Syntax": "**.q**( *x1* : Real; *y1* : Real; *x* : Real; *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x1",
+					"Real",
+					"->"
+				],
+				[
+					"y1",
+					"Real",
+					"->"
+				],
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"fontStyle()": {
+			"Syntax": "**.fontStyle**( *style* : Integer; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"style",
+					"Integer",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"use()": {
+			"Syntax": "**.use**( *symbol* : Variant; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"symbol",
+					"Variant",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"rect()": {
+			"Syntax": "**.rect**( *width* : Variant; *height* : Real; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"width",
+					"Variant",
+					"->"
+				],
+				[
+					"height",
+					"Real",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"verticalLineto()": {
+			"Syntax": "**.verticalLineto**( *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"setAttribute()": {
+			"Syntax": "**.setAttribute**( *name* : Text; *value* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Z()": {
+			"Syntax": "**.Z**( *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"setAttributes()": {
+			"Syntax": "**.setAttributes**( *attributes* : Variant; *value* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"attributes",
+					"Variant",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"path()": {
+			"Syntax": "**.path**( *data* : Text; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"data",
+					"Text",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"closePath()": {
+			"Syntax": "**.closePath**( *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"viewbox()": {
+			"Syntax": "**.viewbox**( *left* : Variant; *top* : Real; *width* : Real; *height* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"left",
+					"Variant",
+					"->"
+				],
+				[
+					"top",
+					"Real",
+					"->"
+				],
+				[
+					"width",
+					"Real",
+					"->"
+				],
+				[
+					"height",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"T()": {
+			"Syntax": "**.T**( *x* : Real; *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"smoothQuadraticBezierCurveto()": {
+			"Syntax": "**.smoothQuadraticBezierCurveto**( *to* : Collection; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"to",
+					"Collection",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"moveVertically()": {
+			"Syntax": "**.moveVertically**( *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"S()": {
+			"Syntax": "**.S**( *x2* : Real; *y2* : Real; *x* : Real; *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x2",
+					"Real",
+					"->"
+				],
+				[
+					"y2",
+					"Real",
+					"->"
+				],
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"clone()": {
+			"Syntax": "**.clone**( *source* : Text; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"source",
+					"Text",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"setID()": {
+			"Syntax": "**.setID**( *id* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"id",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"translate()": {
+			"Syntax": "**.translate**( *tx* : Real; *ty* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"tx",
+					"Real",
+					"->"
+				],
+				[
+					"ty",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"t()": {
+			"Syntax": "**.t**( *x* : Real; *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"C()": {
+			"Syntax": "**.C**( *x1* : Real; *y1* : Real; *x2* : Real; *y2* : Real; *x* : Real; *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x1",
+					"Real",
+					"->"
+				],
+				[
+					"y1",
+					"Real",
+					"->"
+				],
+				[
+					"x2",
+					"Real",
+					"->"
+				],
+				[
+					"y2",
+					"Real",
+					"->"
+				],
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"rx()": {
+			"Syntax": "**.rx**( *rx* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"rx",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"a()": {
+			"Syntax": "**.a**( *rx* : Real; *ry* : Real; *rotation* : Real; *largeArcFlag* : Integer; *sweepFlag* : Integer; *x* : Real; *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"rx",
+					"Real",
+					"->"
+				],
+				[
+					"ry",
+					"Real",
+					"->"
+				],
+				[
+					"rotation",
+					"Real",
+					"->"
+				],
+				[
+					"largeArcFlag",
+					"Integer",
+					"->"
+				],
+				[
+					"sweepFlag",
+					"Integer",
+					"->"
+				],
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"h()": {
+			"Syntax": "**.h**( *x* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"quadraticBezierCurveto()": {
+			"Syntax": "**.quadraticBezierCurveto**( *to* : Collection; *controlPoint* : Collection; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"to",
+					"Collection",
+					"->"
+				],
+				[
+					"controlPoint",
+					"Collection",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"text()": {
+			"Syntax": "**.text**( *text* : Text; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"text",
+					"Text",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"square()": {
+			"Syntax": "**.square**( *side* : Real; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"side",
+					"Real",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"horizontalLineto()": {
+			"Syntax": "**.horizontalLineto**( *x* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"boundedEllipse()": {
+			"Syntax": "**.boundedEllipse**( *x* : Real; *y* : Real; *width* : Real; *height* : Real; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"width",
+					"Real",
+					"->"
+				],
+				[
+					"height",
+					"Real",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"l()": {
+			"Syntax": "**.l**( *points* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"points",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"width()": {
+			"Syntax": "**.width**( *width* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"width",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"lineTo()": {
+			"Syntax": "**.lineTo**( *point* : Collection; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"point",
+					"Collection",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"color()": {
+			"Syntax": "**.color**( *color* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"color",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"cy()": {
+			"Syntax": "**.cy**( *cy* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"cy",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"m()": {
+			"Syntax": "**.m**( *points* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"points",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"setText()": {
+			"Syntax": "**.setText**( *text* : Text; *applyTo* : Variant )",
+			"Params": [
+				[
+					"text",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"removeClass()": {
+			"Syntax": "**.removeClass**( *class* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"class",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"circle()": {
+			"Syntax": "**.circle**( *r* : Real; *cx* : Real; *cy* : Real; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"r",
+					"Real",
+					"->"
+				],
+				[
+					"cx",
+					"Real",
+					"->"
+				],
+				[
+					"cy",
+					"Real",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"M()": {
+			"Syntax": "**.M**( *points* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"points",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"visible()": {
+			"Syntax": "**.visible**( *visible* : Boolean; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"visible",
+					"Boolean",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"group()": {
+			"Syntax": "**.group**( *id* : Text; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"id",
+					"Text",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"absolute()": {
+			"Syntax": "**.absolute**() : cs.pop.svg",
+			"Params": [
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"d()": {
+			"Syntax": "**.d**( *data* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"data",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"strokeWidth()": {
+			"Syntax": "**.strokeWidth**( *width* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"width",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"polygon()": {
+			"Syntax": "**.polygon**( *points* : Variant; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"points",
+					"Variant",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"convertToGrayScale()": {
+			"Syntax": "**.convertToGrayScale**( *grey* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"grey",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"points()": {
+			"Syntax": "**.points**( *points* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"points",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"fivePointStar()": {
+			"Syntax": "**.fivePointStar**( *diameter* : Real; *cx* : Real; *cy* : Real ) : cs.pop.svg",
+			"Params": [
+				[
+					"diameter",
+					"Real",
+					"->"
+				],
+				[
+					"cx",
+					"Real",
+					"->"
+				],
+				[
+					"cy",
+					"Real",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"regularPolygon()": {
+			"Syntax": "**.regularPolygon**( *diameter* : Real; *sides* : Integer; *cx* : Real; *cy* : Real ) : cs.pop.svg",
+			"Params": [
+				[
+					"diameter",
+					"Real",
+					"->"
+				],
+				[
+					"sides",
+					"Integer",
+					"->"
+				],
+				[
+					"cx",
+					"Real",
+					"->"
+				],
+				[
+					"cy",
+					"Real",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"setValue()": {
+			"Syntax": "**.setValue**( *value* : Text; *applyTo* : Variant; *CDATA* : Boolean ) : cs.pop.svg",
+			"Params": [
+				[
+					"value",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"CDATA",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"polyline()": {
+			"Syntax": "**.polyline**( *points* : Variant; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"points",
+					"Variant",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"cx()": {
+			"Syntax": "**.cx**( *cx* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"cx",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"filter()": {
+			"Syntax": "**.filter**( *id* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"id",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"styleSheet()": {
+			"Syntax": "**.styleSheet**( *file* : 4D.File ) : cs.pop.svg",
+			"Params": [
+				[
+					"file",
+					"4D.File",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"relative()": {
+			"Syntax": "**.relative**() : cs.pop.svg",
+			"Params": [
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"scale()": {
+			"Syntax": "**.scale**( *sx* : Real; *sy* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"sx",
+					"Real",
+					"->"
+				],
+				[
+					"sy",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"arc()": {
+			"Syntax": "**.arc**( *to* : Collection; *radii* : Variant; *axis* : Real; *flags* : Collection; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"to",
+					"Collection",
+					"->"
+				],
+				[
+					"radii",
+					"Variant",
+					"->"
+				],
+				[
+					"axis",
+					"Real",
+					"->"
+				],
+				[
+					"flags",
+					"Collection",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"cubicBezierCurveto()": {
+			"Syntax": "**.cubicBezierCurveto**( *to* : Collection; *beginCtrlPoint* : Collection; *endCtrlPoint* : Collection; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"to",
+					"Collection",
+					"->"
+				],
+				[
+					"beginCtrlPoint",
+					"Collection",
+					"->"
+				],
+				[
+					"endCtrlPoint",
+					"Collection",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"v()": {
+			"Syntax": "**.v**( *x* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"A()": {
+			"Syntax": "**.A**( *rx* : Real; *ry* : Real; *rotation* : Real; *largeArcFlag* : Integer; *sweepFlag* : Integer; *x* : Real; *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"rx",
+					"Real",
+					"->"
+				],
+				[
+					"ry",
+					"Real",
+					"->"
+				],
+				[
+					"rotation",
+					"Real",
+					"->"
+				],
+				[
+					"largeArcFlag",
+					"Integer",
+					"->"
+				],
+				[
+					"sweepFlag",
+					"Integer",
+					"->"
+				],
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"newCanvas()": {
+			"Syntax": "**.newCanvas**( *attributes* : Object ) : cs.pop.svg",
+			"Params": [
+				[
+					"attributes",
+					"Object",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"layer()": {
+			"Syntax": "**.layer**( *name* : Text; *...* : Text ) : cs.pop.svg",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getTextHeight()": {
+			"Syntax": "**.getTextHeight**( *string* : Text; *fontAttributes* : Object )->height : Integer",
+			"Params": [
+				[
+					"string",
+					"Text",
+					"->"
+				],
+				[
+					"fontAttributes",
+					"Object",
+					"->"
+				],
+				[
+					"height",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"L()": {
+			"Syntax": "**.L**( *points* : Variant; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"points",
+					"Variant",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"desc()": {
+			"Syntax": "**.desc**( *description* : Text ) : cs.pop.svg",
+			"Params": [
+				[
+					"description",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"s()": {
+			"Syntax": "**.s**( *x2* : Real; *y2* : Real; *x* : Real; *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x2",
+					"Real",
+					"->"
+				],
+				[
+					"y2",
+					"Real",
+					"->"
+				],
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"class()": {
+			"Syntax": "**.class**( *class* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"class",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"comment()": {
+			"Syntax": "**.comment**( *comment* : Text; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"comment",
+					"Text",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"exportPicture()": {
+			"Syntax": "**.exportPicture**( *file* : 4D.File; *keepStructure* : Boolean ) : cs.pop.svg",
+			"Params": [
+				[
+					"file",
+					"4D.File",
+					"->"
+				],
+				[
+					"keepStructure",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"dasharray()": {
+			"Syntax": "**.dasharray**( *dash* : Real; *...* : Integer ) : cs.pop.svg",
+			"Params": [
+				[
+					"dash",
+					"Real",
+					"->"
+				],
+				[
+					"",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Q()": {
+			"Syntax": "**.Q**( *x1* : Real; *y1* : Real; *x* : Real; *y* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x1",
+					"Real",
+					"->"
+				],
+				[
+					"y1",
+					"Real",
+					"->"
+				],
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"y",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"clipPath()": {
+			"Syntax": "**.clipPath**( *id* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"id",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"title()": {
+			"Syntax": "**.title**( *title* : Text ) : cs.pop.svg",
+			"Params": [
+				[
+					"title",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"picture()": {
+			"Syntax": "**.picture**( *exportType* : Variant; *keepStructure* : Boolean ) : Picture",
+			"Params": [
+				[
+					"exportType",
+					"Variant",
+					"->"
+				],
+				[
+					"keepStructure",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Picture",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"fillColor()": {
+			"Syntax": "**.fillColor**( *color* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"color",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"style()": {
+			"Syntax": "**.style**( *style* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"style",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"fontFamily()": {
+			"Syntax": "**.fontFamily**( *fonts* : Text; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"fonts",
+					"Text",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"V()": {
+			"Syntax": "**.V**( *x* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"image()": {
+			"Syntax": "**.image**( *picture* : Variant; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"picture",
+					"Variant",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"x()": {
+			"Syntax": "**.x**( *x* : Real; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x",
+					"Real",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"ellipse()": {
+			"Syntax": "**.ellipse**( *rx* : Real; *ry* : Real; *cx* : Real; *cy* : Real; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"rx",
+					"Real",
+					"->"
+				],
+				[
+					"ry",
+					"Real",
+					"->"
+				],
+				[
+					"cx",
+					"Real",
+					"->"
+				],
+				[
+					"cy",
+					"Real",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"moveTo()": {
+			"Syntax": "**.moveTo**( *point* : Collection; *applyTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"point",
+					"Collection",
+					"->"
+				],
+				[
+					"applyTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"exportText()": {
+			"Syntax": "**.exportText**( *file* : 4D.File; *keepStructure* : Boolean ) : cs.pop.svg",
+			"Params": [
+				[
+					"file",
+					"4D.File",
+					"->"
+				],
+				[
+					"keepStructure",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"attachTo()": {
+			"Syntax": "**.attachTo**( *parent* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"parent",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"line()": {
+			"Syntax": "**.line**( *x1* : Real; *y1* : Real; *x2* : Real; *y2* : Real; *attachTo* : Variant ) : cs.pop.svg",
+			"Params": [
+				[
+					"x1",
+					"Real",
+					"->"
+				],
+				[
+					"y1",
+					"Real",
+					"->"
+				],
+				[
+					"x2",
+					"Real",
+					"->"
+				],
+				[
+					"y2",
+					"Real",
+					"->"
+				],
+				[
+					"attachTo",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.svg",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"store": {
+			"Syntax": "store : Collection"
+		},
+		"_inheritedFrom_": "xml"
+	},
 	"_classCore": {
 		"get _()": {
 			"Syntax": "**.get _**() : Object",
@@ -852,335 +4157,70 @@
 			"Summary": ""
 		}
 	},
-	"motor": {
-		"setUpdateFolder()": {
-			"Syntax": "**.setUpdateFolder**( *folder* : Variant; *silent* : Boolean )",
-			"Params": [
-				[
-					"folder",
-					"Variant",
-					"->"
-				],
-				[
-					"silent",
-					"Boolean",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"quit()": {
-			"Syntax": "**.quit**( *delay* : Integer )",
-			"Params": [
-				[
-					"delay",
-					"Integer",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"restart()": {
-			"Syntax": "**.restart**( *delay* : Integer; *message* : Text )",
-			"Params": [
-				[
-					"delay",
-					"Integer",
-					"->"
-				],
-				[
-					"message",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get version()": {
-			"Syntax": "**.get version**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get machine()": {
-			"Syntax": "**.get machine**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get sdi()": {
-			"Syntax": "**.get sdi**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get branch()": {
-			"Syntax": "**.get branch**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get longVersion()": {
-			"Syntax": "**.get longVersion**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get merged()": {
-			"Syntax": "**.get merged**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get demo()": {
-			"Syntax": "**.get demo**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get server()": {
-			"Syntax": "**.get server**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get shortVersion()": {
-			"Syntax": "**.get shortVersion**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get debug()": {
-			"Syntax": "**.get debug**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get root()": {
-			"Syntax": "**.get root**() : 4D.Folder",
-			"Params": [
-				[
-					"",
-					"4D.Folder",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get service()": {
-			"Syntax": "**.get service**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get arm()": {
-			"Syntax": "**.get arm**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get headless()": {
-			"Syntax": "**.get headless**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"rejectNewConnections()": {
-			"Syntax": "**.rejectNewConnections**()",
+	"Preferences": {
+		"save()": {
+			"Syntax": "**.save**()",
 			"Params": [],
 			"Summary": ""
 		},
-		"get ipv4()": {
-			"Syntax": "**.get ipv4**() : Text",
+		"default()": {
+			"Syntax": "**.default**( *default* : Object )",
 			"Params": [
 				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get newConnectionsAllowed()": {
-			"Syntax": "**.get newConnectionsAllowed**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get buildNumber()": {
-			"Syntax": "**.get buildNumber**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get remote()": {
-			"Syntax": "**.get remote**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get local()": {
-			"Syntax": "**.get local**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"acceptNewConnections()": {
-			"Syntax": "**.acceptNewConnections**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"languages": {
-			"Syntax": "languages : Object"
-		},
-		"os": {
-			"Syntax": "os : Object"
-		},
-		"infos": {
-			"Syntax": "infos : Object"
-		},
-		"_inheritedFrom_": "_classCore"
-	},
-	"menuBar": {
-		"defaultMinimalMenuBar()": {
-			"Syntax": "**.defaultMinimalMenuBar**() : cs.pop.menuBar",
-			"Params": [
-				[
-					"",
-					"cs.pop.menuBar",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"disableItem()": {
-			"Syntax": "**.disableItem**( *item* : Text )",
-			"Params": [
-				[
-					"item",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"enableItem()": {
-			"Syntax": "**.enableItem**( *item* : Text; *enabled* : Boolean )",
-			"Params": [
-				[
-					"item",
-					"Text",
-					"->"
-				],
-				[
-					"enabled",
-					"Boolean",
+					"default",
+					"Object",
 					"->"
 				]
 			],
 			"Summary": ""
 		},
 		"set()": {
-			"Syntax": "**.set**() : cs.pop.menuBar",
+			"Syntax": "**.set**( *key* : Variant; *value* : Variant ) : cs.pop.Preferences",
 			"Params": [
 				[
+					"key",
+					"Variant",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
 					"",
-					"cs.pop.menuBar",
+					"cs.pop.Preferences",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"_inheritedFrom_": "menu"
+		"get()": {
+			"Syntax": "**.get**( *key* : Text ) : Variant",
+			"Params": [
+				[
+					"key",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"data": {
+			"Syntax": "data : Object"
+		},
+		"file": {
+			"Syntax": "file : 4D.File"
+		}
 	},
 	"xml": {
 		"isReference()": {
-			"Syntax": "**.isReference**( *text* : Text )->response : Boolean",
+			"Syntax": "**.isReference**( *text* : Text ) : Boolean",
 			"Params": [
 				[
 					"text",
@@ -1188,7 +4228,7 @@
 					"->"
 				],
 				[
-					"response",
+					"",
 					"Boolean",
 					"<-"
 				]
@@ -1196,7 +4236,7 @@
 			"Summary": ""
 		},
 		"setValue()": {
-			"Syntax": "**.setValue**( *node* : Text; *value* : Variant; *inCDATA* : Boolean )->this : cs.pop.xml",
+			"Syntax": "**.setValue**( *node* : Text; *value* : Variant; *inCDATA* : Boolean ) : cs.pop.xml",
 			"Params": [
 				[
 					"node",
@@ -1214,7 +4254,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1307,7 +4347,7 @@
 			"Summary": ""
 		},
 		"remove()": {
-			"Syntax": "**.remove**( *node* : Text )->this : cs.pop.xml",
+			"Syntax": "**.remove**( *node* : Text ) : cs.pop.xml",
 			"Params": [
 				[
 					"node",
@@ -1315,7 +4355,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1360,7 +4400,7 @@
 			"Summary": ""
 		},
 		"parse()": {
-			"Syntax": "**.parse**( *source* : Variant; *validate* : Boolean; *schema* : Text )->this : cs.pop.xml",
+			"Syntax": "**.parse**( *source* : Variant; *validate* : Boolean; *schema* : Text ) : cs.pop.xml",
 			"Params": [
 				[
 					"source",
@@ -1378,7 +4418,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1449,7 +4489,7 @@
 			"Summary": ""
 		},
 		"comment()": {
-			"Syntax": "**.comment**( *target* : Text; *comment* : Text ) : Text",
+			"Syntax": "**.comment**( *target* : Text; *comment* : Text )->node : Text",
 			"Params": [
 				[
 					"target",
@@ -1462,7 +4502,7 @@
 					"->"
 				],
 				[
-					"",
+					"node",
 					"Text",
 					"<-"
 				]
@@ -1470,7 +4510,7 @@
 			"Summary": ""
 		},
 		"setName()": {
-			"Syntax": "**.setName**( *node* : Text; *name* : Text )->this : cs.pop.xml",
+			"Syntax": "**.setName**( *node* : Text; *name* : Text ) : cs.pop.xml",
 			"Params": [
 				[
 					"node",
@@ -1483,7 +4523,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1570,7 +4610,7 @@
 			"Summary": ""
 		},
 		"isNull()": {
-			"Syntax": "**.isNull**( *reference* : Text )->response : Boolean",
+			"Syntax": "**.isNull**( *reference* : Text ) : Boolean",
 			"Params": [
 				[
 					"reference",
@@ -1578,7 +4618,7 @@
 					"->"
 				],
 				[
-					"response",
+					"",
 					"Boolean",
 					"<-"
 				]
@@ -1665,7 +4705,7 @@
 			"Summary": ""
 		},
 		"setOptions()": {
-			"Syntax": "**.setOptions**( *selector* : Integer; *value* : Integer; *...* : Integer )->this : cs.pop.xml",
+			"Syntax": "**.setOptions**( *selector* : Integer; *value* : Integer; *...* : Integer ) : cs.pop.xml",
 			"Params": [
 				[
 					"selector",
@@ -1683,7 +4723,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1691,10 +4731,10 @@
 			"Summary": ""
 		},
 		"close()": {
-			"Syntax": "**.close**()->this : cs.pop.xml",
+			"Syntax": "**.close**() : cs.pop.xml",
 			"Params": [
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1702,7 +4742,7 @@
 			"Summary": ""
 		},
 		"setOption()": {
-			"Syntax": "**.setOption**( *selector* : Integer; *value* : Integer )->this : cs.pop.xml",
+			"Syntax": "**.setOption**( *selector* : Integer; *value* : Integer ) : cs.pop.xml",
 			"Params": [
 				[
 					"selector",
@@ -1715,7 +4755,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1786,7 +4826,7 @@
 			"Summary": ""
 		},
 		"setAttribute()": {
-			"Syntax": "**.setAttribute**( *node* : Text; *name* : Text; *value* : Variant )->this : cs.pop.xml",
+			"Syntax": "**.setAttribute**( *node* : Text; *name* : Text; *value* : Variant ) : cs.pop.xml",
 			"Params": [
 				[
 					"node",
@@ -1804,7 +4844,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1927,7 +4967,7 @@
 			"Summary": ""
 		},
 		"newRef()": {
-			"Syntax": "**.newRef**( *root* : Text; *nameSpace* : Text; *...* : Text )->this : cs.pop.xml",
+			"Syntax": "**.newRef**( *root* : Text; *nameSpace* : Text; *...* : Text ) : cs.pop.xml",
 			"Params": [
 				[
 					"root",
@@ -1945,7 +4985,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -1953,7 +4993,7 @@
 			"Summary": ""
 		},
 		"open()": {
-			"Syntax": "**.open**( *file* : 4D.File; *validate* : Boolean; *schema* : Text )->this : cs.pop.xml",
+			"Syntax": "**.open**( *file* : 4D.File; *validate* : Boolean; *schema* : Text ) : cs.pop.xml",
 			"Params": [
 				[
 					"file",
@@ -1971,7 +5011,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -2005,7 +5045,7 @@
 			"Summary": ""
 		},
 		"load()": {
-			"Syntax": "**.load**( *source* : Variant; *validate* : Boolean; *schema* : Text )->this : cs.pop.xml",
+			"Syntax": "**.load**( *source* : Variant; *validate* : Boolean; *schema* : Text ) : cs.pop.xml",
 			"Params": [
 				[
 					"source",
@@ -2023,7 +5063,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -2068,7 +5108,7 @@
 			"Summary": ""
 		},
 		"removeAttribute()": {
-			"Syntax": "**.removeAttribute**( *node* : Text; *attribute* : Text )->this : cs.pop.xml",
+			"Syntax": "**.removeAttribute**( *node* : Text; *attribute* : Text ) : cs.pop.xml",
 			"Params": [
 				[
 					"node",
@@ -2081,7 +5121,7 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
 					"<-"
 				]
@@ -2089,7 +5129,7 @@
 			"Summary": ""
 		},
 		"isNotNull()": {
-			"Syntax": "**.isNotNull**( *reference* : Text )->response : Boolean",
+			"Syntax": "**.isNotNull**( *reference* : Text ) : Boolean",
 			"Params": [
 				[
 					"reference",
@@ -2097,7 +5137,7 @@
 					"->"
 				],
 				[
-					"response",
+					"",
 					"Boolean",
 					"<-"
 				]
@@ -2105,7 +5145,7 @@
 			"Summary": ""
 		},
 		"save()": {
-			"Syntax": "**.save**( *file* : Variant; *keepStructure* : Boolean )->this : cs.pop.xml",
+			"Syntax": "**.save**( *file* : Variant; *keepStructure* : Boolean ) : cs.pop.xml",
 			"Params": [
 				[
 					"file",
@@ -2118,97 +5158,8 @@
 					"->"
 				],
 				[
-					"this",
+					"",
 					"cs.pop.xml",
-					"<-"
-				]
-			],
-			"Summary": ""
-		}
-	},
-	"Preferences": {
-		"save()": {
-			"Syntax": "**.save**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"default()": {
-			"Syntax": "**.default**( *default* : Object )",
-			"Params": [
-				[
-					"default",
-					"Object",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"set()": {
-			"Syntax": "**.set**( *key* : Variant; *value* : Variant ) : cs.pop.Preferences",
-			"Params": [
-				[
-					"key",
-					"Variant",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.Preferences",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get()": {
-			"Syntax": "**.get**( *key* : Text ) : Variant",
-			"Params": [
-				[
-					"key",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Variant",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"data": {
-			"Syntax": "data : Object"
-		},
-		"file": {
-			"Syntax": "file : 4D.File"
-		}
-	},
-	"_widget": {
-		"getIcon()": {
-			"Syntax": "**.getIcon**( *file* : 4D.File; *size* : Integer; *crop* : Boolean ) : Picture",
-			"Params": [
-				[
-					"file",
-					"4D.File",
-					"->"
-				],
-				[
-					"size",
-					"Integer",
-					"->"
-				],
-				[
-					"crop",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Picture",
 					"<-"
 				]
 			],
@@ -2432,85 +5383,6 @@
 			"Syntax": "homeFolder : 4D.Folder"
 		},
 		"_inheritedFrom_": "_classCore"
-	},
-	"coord": {
-		"applyToWidget()": {
-			"Syntax": "**.applyToWidget**( *name* : Text )",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get dimensions()": {
-			"Syntax": "**.get dimensions**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"applyToWindow()": {
-			"Syntax": "**.applyToWindow**( *winRef* : Integer )",
-			"Params": [
-				[
-					"winRef",
-					"Integer",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get height()": {
-			"Syntax": "**.get height**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get windowCoordinates()": {
-			"Syntax": "**.get windowCoordinates**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get width()": {
-			"Syntax": "**.get width**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get screenCoordinates()": {
-			"Syntax": "**.get screenCoordinates**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		}
 	},
 	"menu": {
 		"fonts()": {
