@@ -1,13 +1,8 @@
 {
 	"_method_": {
 		"pop": {
-			"Syntax": "**pop**( *class* : Text ) : 4D.Class",
+			"Syntax": "**pop**() : 4D.Class",
 			"Params": [
-				[
-					"class",
-					"Text",
-					"->"
-				],
 				[
 					"",
 					"4D.Class",
