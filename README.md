@@ -1,7 +1,9 @@
 <!-- MARKDOWN LINKS & IMAGES -->
 [code-shield]: https://img.shields.io/static/v1?label=language&message=4d&color=blue
 [code-url]: https://developer.4d.com/
-[componentManager]: https://img.shields.io/badge/Component_Manager-compatible-blue
+[componentManager]: https://img.shields.io/badge/Compatible-manager?logo=4d&label=Component%20Manager&color=blue&link=https%3A%2F%2Fdeveloper.4d.com%2Fdocs%2FProject%2Fcomponents%2F%23loading-components
+
+
 
 [code-top]: https://img.shields.io/github/languages/top/vdelachaux/4DPop.svg
 [code-size]: https://img.shields.io/github/languages/code-size/vdelachaux/4DPop.svg
@@ -20,12 +22,12 @@
 [![language][code-shield]][code-url]
 [![language-top][code-top]][code-url]
 ![code-size][code-size]
-![componentManager][componentManager]
 <br>
 [![license][license-shield]][license-url]
 <br>
 [![release][release-shield]][release-url]
 [![build][build-shield]][build-url]
+![componentManager][componentManager]
 
 # <a name="overview">Overview</a>
 
