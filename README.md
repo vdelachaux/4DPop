@@ -22,12 +22,12 @@
 [![language][code-shield]][code-url]
 [![language-top][code-top]][code-url]
 ![code-size][code-size]
+![componentManager][componentManager]
 <br>
 [![license][license-shield]][license-url]
 <br>
 [![release][release-shield]][release-url]
 [![build][build-shield]][build-url]
-![componentManager][componentManager]
 
 # <a name="overview">Overview</a>
 
