@@ -17,7 +17,7 @@ Case of
 		If (Is compiled mode:C492)
 			
 			// Define the global error handler
-			ON ERR CALL:C155(Formula:C1597(noError).source; ek global:K92:2)
+			ON ERR CALL:C155("noError"; ek global:K92:2)
 			
 		End if 
 		
@@ -31,12 +31,12 @@ Case of
 			
 			If (Find in array:C230($componentsArray; "4DPop QuickOpen")>0)
 				
-				INSTALL ACTIONS
+				EXECUTE METHOD:C1007("INSTALL ACTIONS")
 				
 			End if 
 		End if 
 		
-		DISPLAY 4DPOP STRIP
+		EXECUTE METHOD:C1007("DISPLAY 4DPOP STRIP")
 		
 		//________________________________________
 	: ($eventCode=On before host database exit:K74:5)

@@ -8,7 +8,6 @@ Class constructor($options)
 	
 	This:C1470.__CLASS__:=OB Class:C1730(This:C1470)
 	
-	This:C1470.ref:=Null:C1517
 	This:C1470.autoRelease:=True:C214
 	This:C1470.localize:=True:C214
 	This:C1470.metacharacters:=False:C215
@@ -110,7 +109,7 @@ Function release()
 	If (This:C1470._isMenu())
 		
 		RELEASE MENU:C978(This:C1470.ref)
-		This:C1470.ref:=Null:C1517
+		This:C1470.ref:=""
 		
 	End if 
 	
@@ -177,7 +176,7 @@ Function append($item; $param; $mark; $afterItem : Integer) : cs:C1710.menu
 					//______________________________________________________
 				Else 
 					
-					$t:=Get localized string:C991($item)
+					$t:=Localized string:C991($item)
 					
 					//______________________________________________________
 			End case 
@@ -1202,7 +1201,7 @@ Function _cleanup()
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function _isMenu() : Boolean
 	
-	If (Asserted:C1132(This:C1470.ref#Null:C1517; Current method name:C684+": The menu reference is null"))
+	If (Asserted:C1132((This:C1470.ref#Null:C1517) && (Length:C16(String:C10(This:C1470.ref))>0); Current method name:C684+": The menu reference is null"))
 		
 		return True:C214
 		

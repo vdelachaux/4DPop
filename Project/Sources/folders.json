@@ -50,7 +50,6 @@
 	"📦 MAIN": {
 		"methods": [
 			"_STRIP_Controller",
-			"COMPILER_MAIN",
 			"DISPLAY 4DPOP STRIP",
 			"INSTALL ACTIONS"
 		],

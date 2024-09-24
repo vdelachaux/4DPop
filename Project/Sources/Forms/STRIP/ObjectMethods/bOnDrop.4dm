@@ -1,3 +1,3 @@
-C_LONGINT:C283($0)
+#DECLARE() : Integer
 
-$0:=strip.doDrop()
+return strip.doDrop()
