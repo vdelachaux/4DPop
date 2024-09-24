@@ -2,6 +2,7 @@
 .*
 !.gitignore
 !.gitattributes
+!.github
 
 #--------------------------------
 # Don't ignore .github workflow
