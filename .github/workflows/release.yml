@@ -16,8 +16,12 @@ jobs:
       - name: BuildAndPackage
         uses: 4d/build4d-action@main
         with:
-          actions: "build,pack,sign,archive"
-          sign-certificate: "Vincent de Lachaux (DYRKW64QA9)"
+            product-line: vcs
+            version: vcs
+            build: official
+            token: ${{ secrets.DLTK }}
+            actions: "build,pack,sign,archive"
+            sign-certificate: "Vincent de Lachaux (DYRKW64QA9)"
       - name: Upload
         run: |
-          gh release upload ${{github.event.release.tag_name}} build/tool4d-action-test.zip
+          gh release upload ${{github.event.release.tag_name}} build/4DPop.zip
