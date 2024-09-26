@@ -1,39 +1,27 @@
 <!-- MARKDOWN LINKS & IMAGES -->
-[code-shield]: https://img.shields.io/static/v1?label=language&message=4d&color=blue
-[code-url]: https://developer.4d.com/
-[componentManager]: https://img.shields.io/badge/Compatible-manager?logo=4d&label=Project%20Dependencies&color=blue&link=https%3A%2F%2Fdeveloper.4d.com%2Fdocs%2FProject%2Fcomponents%2F%23loading-components
-
-
-
-[code-top]: https://img.shields.io/github/languages/top/vdelachaux/4DPop.svg
-[code-size]: https://img.shields.io/github/languages/code-size/vdelachaux/4DPop.svg
 
 [release-shield]: https://img.shields.io/github/v/release/vdelachaux/4DPop?include_prereleases
 [release-url]: https://github.com/vdelachaux/4DPop/releases/latest
 
 [license-shield]: https://img.shields.io/github/license/vdelachaux/4DPop
-[license-url]: LICENSE
 
 [build-shield]: https://github.com/vdelachaux/4DPop/actions/workflows/build.yml/badge.svg
 [build-url]: https://github.com/vdelachaux/4DPop/actions/workflows/build.yml
 
-[notarized]: https://img.shields.io/badge/notarized-blue
+[strip]:./assets/4DPop.png
 
-[![language][code-shield]][code-url]
-[![language-top][code-top]][code-url]
-![code-size][code-size]
-![componentManager][componentManager]
-<br>
-[![license][license-shield]][license-url]
+<!--BADGES-->
+![Static Badge](https://img.shields.io/badge/Dev%20Component-blue?logo=4d&link=https%3A%2F%2Fdeveloper.4d.com)
+![Static Badge](https://img.shields.io/badge/Project%20Dependencies-blue?logo=4d&link=https%3A%2F%2Fdeveloper.4d.com%2Fdocs%2FProject%2Fcomponents%2F%23loading-components)
 <br>
 [![release][release-shield]][release-url]
-[![build][build-shield]][build-url]
+[![license][license-shield]](LICENSE)
 
 # <a name="overview">Overview</a>
 
 `4DPop` is a series of productivity components grouped into a toolbar that integrates perfectly with the 4D development environment. 
 
-<img src="./assets/4DPop.png" width="900">
+![strip]
 
 [4D TN Spotlight](https://vimeo.com/3750045)
 
@@ -61,24 +49,24 @@ You can enhance `4DPop` with [your own components](#how-to), and you are also ab
 
 📥 [Get the latest version of the all-in-one family ](https://github.com/vdelachaux/4DPop-Family/releases/latest) or explore the family and add only the components you want from the list below.
 
-| Repository| Last release | Build status | macOS |
-|:------:|--------------|--------------|:---:|
-|[**4DPop**](https://github.com/vdelachaux/4DPop)|[![release][release-shield]][release-url]|[![build][build-shield]][license-url]|![notarized][notarized]
-|[**AppMaker**](https://github.com/vdelachaux/4DPop-AppMaker)|[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-AppMaker?include_prereleases)](https://github.com/vdelachaux/4DPop-AppMaker/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-AppMaker/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-AppMaker/actions/workflows/build.yml)|![notarized][notarized]
-|[**Bookmarks**](https://github.com/vdelachaux/4DPop-Bookmarks) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Bookmarks?include_prereleases)](https://github.com/vdelachaux/4DPop-Bookmarks/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Bookmarks/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Bookmarks/actions/workflows/build.yml)|![notarized][notarized]
-|[**ColorChart**](https://github.com/vdelachaux/4DPop-ColorChart) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-ColorChart?include_prereleases)](https://github.com/vdelachaux/4DPop-ColorChart/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-ColorChart/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-ColorChart/actions/workflows/build.yml)|![notarized][notarized]
-|[**Commands**](https://github.com/vdelachaux/4DPop-Commands) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Commands?include_prereleases)](https://github.com/vdelachaux/4DPop-Commands/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Commands/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Commands/actions/workflows/build.yml)|![notarized][notarized]
-|[**Constants-Editor**](https://github.com/vdelachaux/4DPop-Constants-Editor)|[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Constants-Editor?include_prereleases)](https://github.com/vdelachaux/4DPop-Constants-Editor/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Constants-Editor/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Constants-Editor/actions/workflows/build.yml)|![notarized][notarized]
-|[**Git**](https://vdelachaux.github.io/4DPop-Git/) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Git?include_prereleases)](https://github.com/vdelachaux/4DPop-Git/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Git/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Git/actions/workflows/build.yml)|![notarized][notarized]
-|[**Image-Buddy**](https://github.com/vdelachaux/4DPop-Image-Buddy)|[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Image-Buddy?include_prereleases)](https://github.com/vdelachaux/4DPop-Image-Buddy/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Image-Buddy/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Image-Buddy/actions/workflows/build.yml)|![notarized][notarized]
-|[**KeepIt**](https://github.com/vdelachaux/4DPop-KeepIt) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-KeepIt?include_prereleases)](https://github.com/vdelachaux/4DPop-KeepIt/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-KeepIt/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-KeepIt/actions/workflows/build.yml)|![notarized][notarized]
-|[**Macros**](https://github.com/vdelachaux/4DPop-Macros)|[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Macros?include_prereleases)](https://github.com/vdelachaux/4DPop-Macros/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Macros/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Macros/actions/workflows/build.yml)|![notarized][notarized]
-|[**Pasteboard**](https://github.com/vdelachaux/4DPop-Pasteboard) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Pasteboard?include_prereleases)](https://github.com/vdelachaux/4DPop-Pasteboard/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Pasteboard/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Pasteboard/actions/workflows/build.yml)|![notarized][notarized]
-|[**QuickOpen**](https://github.com/vdelachaux/4DPop-QuickOpen) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-QuickOpen?include_prereleases)](https://github.com/vdelachaux/4DPop-QuickOpen/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-QuickOpen/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-QuickOpen/actions/workflows/build.yml)|![notarized][notarized]
-|[**Rulers**](https://github.com/vdelachaux/4DPop-Rulers) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Rulers?include_prereleases)](https://github.com/vdelachaux/4DPop-Rulers/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Rulers/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Rulers/actions/workflows/build.yml)|![notarized][notarized]
-|[**sqlSchemas**](https://github.com/vdelachaux/4DPop-sqlSchemas) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-sqlSchemas?include_prereleases)](https://github.com/vdelachaux/4DPop-sqlSchemas/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-sqlSchemas/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-sqlSchemas/actions/workflows/build.yml)|![notarized][notarized]
-|[**Window**](https://github.com/vdelachaux/4DPop-Window) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Window?include_prereleases)](https://github.com/vdelachaux/4DPop-Window/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Window/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Window/actions/workflows/build.yml)|![notarized][notarized]
-|[**XLIFF-Pro**](https://vdelachaux.github.io/4DPop-XLIFF-Pro) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-XLIFF-Pro?include_prereleases)](https://github.com/vdelachaux/4DPop-XLIFF-Pro/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-XLIFF-Pro/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-XLIFF-Pro/actions/workflows/build.yml)|![notarized][notarized]
+| Repository| Last release | Build status | 
+|:------:|--------------|--------------|
+|[**4DPop**](https://github.com/vdelachaux/4DPop)|[![release][release-shield]][release-url]|![build][build-shield]|
+|[**AppMaker**](https://github.com/vdelachaux/4DPop-AppMaker)|[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-AppMaker?include_prereleases)](https://github.com/vdelachaux/4DPop-AppMaker/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-AppMaker/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-AppMaker/actions/workflows/build.yml)
+|[**Bookmarks**](https://github.com/vdelachaux/4DPop-Bookmarks) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Bookmarks?include_prereleases)](https://github.com/vdelachaux/4DPop-Bookmarks/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Bookmarks/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Bookmarks/actions/workflows/build.yml)
+|[**ColorChart**](https://github.com/vdelachaux/4DPop-ColorChart) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-ColorChart?include_prereleases)](https://github.com/vdelachaux/4DPop-ColorChart/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-ColorChart/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-ColorChart/actions/workflows/build.yml)
+|[**Commands**](https://github.com/vdelachaux/4DPop-Commands) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Commands?include_prereleases)](https://github.com/vdelachaux/4DPop-Commands/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Commands/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Commands/actions/workflows/build.yml)
+|[**Constants-Editor**](https://github.com/vdelachaux/4DPop-Constants-Editor)|[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Constants-Editor?include_prereleases)](https://github.com/vdelachaux/4DPop-Constants-Editor/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Constants-Editor/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Constants-Editor/actions/workflows/build.yml)
+|[**Git**](https://vdelachaux.github.io/4DPop-Git/) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Git?include_prereleases)](https://github.com/vdelachaux/4DPop-Git/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Git/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Git/actions/workflows/build.yml)
+|[**Image-Buddy**](https://github.com/vdelachaux/4DPop-Image-Buddy)|[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Image-Buddy?include_prereleases)](https://github.com/vdelachaux/4DPop-Image-Buddy/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Image-Buddy/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Image-Buddy/actions/workflows/build.yml)
+|[**KeepIt**](https://github.com/vdelachaux/4DPop-KeepIt) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-KeepIt?include_prereleases)](https://github.com/vdelachaux/4DPop-KeepIt/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-KeepIt/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-KeepIt/actions/workflows/build.yml)
+|[**Macros**](https://github.com/vdelachaux/4DPop-Macros)|[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Macros?include_prereleases)](https://github.com/vdelachaux/4DPop-Macros/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Macros/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Macros/actions/workflows/build.yml)
+|[**Pasteboard**](https://github.com/vdelachaux/4DPop-Pasteboard) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Pasteboard?include_prereleases)](https://github.com/vdelachaux/4DPop-Pasteboard/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Pasteboard/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Pasteboard/actions/workflows/build.yml)
+|[**QuickOpen**](https://github.com/vdelachaux/4DPop-QuickOpen) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-QuickOpen?include_prereleases)](https://github.com/vdelachaux/4DPop-QuickOpen/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-QuickOpen/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-QuickOpen/actions/workflows/build.yml)
+|[**Rulers**](https://github.com/vdelachaux/4DPop-Rulers) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Rulers?include_prereleases)](https://github.com/vdelachaux/4DPop-Rulers/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Rulers/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Rulers/actions/workflows/build.yml)
+|[**sqlSchemas**](https://github.com/vdelachaux/4DPop-sqlSchemas) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-sqlSchemas?include_prereleases)](https://github.com/vdelachaux/4DPop-sqlSchemas/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-sqlSchemas/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-sqlSchemas/actions/workflows/build.yml)
+|[**Window**](https://github.com/vdelachaux/4DPop-Window) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-Window?include_prereleases)](https://github.com/vdelachaux/4DPop-Window/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-Window/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-Window/actions/workflows/build.yml)
+|[**XLIFF-Pro**](https://vdelachaux.github.io/4DPop-XLIFF-Pro) |[![release](https://img.shields.io/github/v/release/vdelachaux/4DPop-XLIFF-Pro?include_prereleases)](https://github.com/vdelachaux/4DPop-XLIFF-Pro/releases/latest)|[![Build](https://github.com/vdelachaux/4DPop-XLIFF-Pro/actions/workflows/build.yml/badge.svg)](https://github.com/vdelachaux/4DPop-XLIFF-Pro/actions/workflows/build.yml)
 
 >  📌 Click on a component name in the "Repository" column above to access its repository, where the source code is available.
 >     
