@@ -1,7 +1,7 @@
 <!-- MARKDOWN LINKS & IMAGES -->
 [code-shield]: https://img.shields.io/static/v1?label=language&message=4d&color=blue
 [code-url]: https://developer.4d.com/
-[componentManager]: https://img.shields.io/badge/Compatible-manager?logo=4d&label=Component%20Manager&color=blue&link=https%3A%2F%2Fdeveloper.4d.com%2Fdocs%2FProject%2Fcomponents%2F%23loading-components
+[componentManager]: https://img.shields.io/badge/Compatible-manager?logo=4d&label=Project%20Dependencies&color=blue&link=https%3A%2F%2Fdeveloper.4d.com%2Fdocs%2FProject%2Fcomponents%2F%23loading-components
 
 
 
