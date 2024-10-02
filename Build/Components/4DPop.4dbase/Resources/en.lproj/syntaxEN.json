@@ -1,28 +1,5 @@
 {
-	"_method_": {
-		"pop": {
-			"Syntax": "**pop**() : 4D.Class",
-			"Params": [
-				[
-					"",
-					"4D.Class",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"recoverWindow": {
-			"Syntax": "**recoverWindow**( *resize* : Boolean )",
-			"Params": [
-				[
-					"resize",
-					"Boolean",
-					"->"
-				]
-			],
-			"Summary": ""
-		}
-	},
+	"_method_": {},
 	"cs.pop": {
 		"database": {
 			"new()": {

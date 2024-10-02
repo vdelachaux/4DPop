@@ -23,7 +23,7 @@ If ($name#("$4DPop"))  // Create a new process
 	
 Else 
 	
-	var strip : cs:C1710._4DPop
+	COMPILER_MAIN
 	
 	If (Structure file:C489=Structure file:C489(*))
 		

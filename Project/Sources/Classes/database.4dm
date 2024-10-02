@@ -230,15 +230,15 @@ Function isPluginAvailable($name : Text) : Boolean
 Function isWritable() : Boolean
 	
 	var $writable : Boolean
-	var $methodCalledOnError : Text
 	var $file : 4D:C1709.File
 	
-	$methodCalledOnError:=Method called on error:C704
-	ON ERR CALL:C155(Formula:C1597(noError).source)
-	$file:=This:C1470.databaseFolder.file("._")
-	$writable:=$file.create()
-	$file.delete()
-	ON ERR CALL:C155($methodCalledOnError)
+	Try
+		
+		$file:=This:C1470.databaseFolder.file("._")
+		$writable:=$file.create()
+		$file.delete()
+		
+	End try
 	
 	return $writable
 	

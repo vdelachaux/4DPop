@@ -1,5 +1,4 @@
 <!-- MARKDOWN LINKS & IMAGES -->
-
 [release-shield]: https://img.shields.io/github/v/release/vdelachaux/4DPop?include_prereleases
 [release-url]: https://github.com/vdelachaux/4DPop/releases/latest
 
@@ -16,6 +15,8 @@
 <br>
 [![release][release-shield]][release-url]
 [![license][license-shield]](LICENSE)
+<br>
+<img src="https://img.shields.io/github/downloads/vdelachaux/4DPop/total"/>
 
 # <a name="overview">Overview</a>
 

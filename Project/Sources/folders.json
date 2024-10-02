@@ -1,27 +1,11 @@
 {
-	"(# CLASSES)": {},
-	"(♻️ Common)": {},
-	"(📦 Current)": {},
-	"(Classes_1)": {},
-	"(classes)": {},
-	"(hidden)": {},
-	"(lib)": {},
-	"(PRIVATE_1)": {},
-	"(Private)": {},
-	"(Public)": {},
-	"(xml)": {},
 	"# 🚧 DEV": {
 		"methods": [
 			"00 DISPLAY STRIP",
 			"00_test"
 		]
 	},
-	"#️⃣ API": {
-		"methods": [
-			"pop",
-			"recoverWindow"
-		]
-	},
+	"#️⃣ API": {},
 	"♻️ LIBRAIRIES": {
 		"methods": [
 			"noError"
@@ -51,7 +35,8 @@
 		"methods": [
 			"_STRIP_Controller",
 			"DISPLAY 4DPOP STRIP",
-			"INSTALL ACTIONS"
+			"INSTALL ACTIONS",
+			"recoverWindow"
 		],
 		"forms": [
 			"ABOUT",
@@ -85,19 +70,5 @@
 			"env"
 		]
 	},
-	"trash": {
-		"groups": [
-			"(# CLASSES)",
-			"(♻️ Common)",
-			"(📦 Current)",
-			"(Classes_1)",
-			"(classes)",
-			"(hidden)",
-			"(lib)",
-			"(PRIVATE_1)",
-			"(Private)",
-			"(Public)",
-			"(xml)"
-		]
-	}
+	"trash": {}
 }

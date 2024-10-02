@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"shared":true}
+//%attributes = {"invisible":true}
 // ----------------------------------------------------
 // Method : 4DPop_RECOVER_WINDOW
 // Created 22/05/08 by vdl
