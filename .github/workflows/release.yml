@@ -22,6 +22,7 @@ jobs:
             token: ${{ secrets.DLTK }}
             actions: "build,pack,sign,archive"
             sign-certificate: "${{deployement.DEV_ID }}"
+            #
       - name: Upload
         run: |
           gh release upload ${{github.event.release.tag_name}} build/4DPop.zip
