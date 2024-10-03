@@ -21,7 +21,7 @@ jobs:
             build: official
             token: ${{ secrets.DLTK }}
             actions: "build,pack,sign,archive"
-            sign-certificate: "${{deployement.DEV_ID }}"
+            sign-certificate: "${{ secrets.DEV_ID }}"
             #
       - name: Upload
         run: |
