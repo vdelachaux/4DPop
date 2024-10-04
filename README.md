@@ -176,6 +176,7 @@ All the components in the 4DPop collection are compatible with the project's dep
 You can download a pre-configured `dependencies.json` file for the complete collection [**here**](./dependencies.json) and place it in the `Sources` folder of your project.
 
 >📍The project's dependency manager ensures that you are always using the latest available version of the components.
+>
 >📍No more notarisation problems with this installation method!
 
 ## Earlier versions of 4D or binary database
