@@ -168,10 +168,9 @@ You can enhance `4DPop` with [your own components](#how-to), and you are also ab
 * One or more components from the collection
 * **Don't forget** to open your database structure settings dialog and go to the `Security` page to enable, if necessary, the `Execute the "On host database event" method of the component` option.
 
+## ![Static Badge](https://img.shields.io/badge/Project%20Dependencies-blue?logo=4d&link=https%3A%2F%2Fdeveloper.4d.com%2Fdocs%2FProject%2Fcomponents%2F%23loading-components)
 
-## 4D 20R6+ - Project mode
-
-All the components in the 4DPop collection are compatible with the project's dependency manager. 
+All the components in the 4DPop collection are compatible with the [Project dependencies](https://developer.4d.com/docs/Project/components#monitoring-project-dependencies) feature. So you can simply integrate one or components into your project by selecting `Design` > `Project dependencies` and adding `vdelachaux/4DPop{-name}` as the repository address in the dedicated dialog box. **This way, you can benefit from updates over time**.
 
 You can download a pre-configured `dependencies.json` file for the complete collection [**here**](./dependencies.json) and place it in the `Sources` folder of your project.
 
@@ -256,38 +255,43 @@ The manifest describes the elements of the component that will be available via 
 | `name`     | The name that will be displayed below the button | ① | Mandatory
 | `media`    | File name of the image used for the button. |⑦| If omitted a default picture is used
 | `handler`  | The name of the ‘entry point’ method for your component. <br>I suggest that this name starts with an underscore (`_`) to avoid it interfering with the type ahead, as it is shared. | ② | Mandatory
-| `default`  | The name of the method to be executed when the user clicks on the strip's button | ③ ④ ⑤| Optional if `tools`is defined
+| `default`  | The name of the method to be executed when the user clicks on the strip's button | ③ ⑤| Optional if `tools`is defined
 | `tools`    | Collection of [tool objects](#tool) that will be displayed as a linked menu  | ④ ⑥
-| `popup`    | To force the display of a linked menu indicator even if there is only one tool  | ④
-|`ondrop`    | The name of the method to be executed at the time of a drop on the button | ③
-|  `initproc`         |  The name of the method to be executed when the component is loaded | ③
-| `helptip`  | Text of help tip associated with button
+| `popup`    | To force the display of a linked menu indicator even if there is only one tool  | ⑤
+| `ondrop`   | The name of the method to be executed at the time of a drop on the button | ③
+| `initproc` | The name of the method to be executed when the component is loaded | ③
+| `helptip`  | Text of help tip associated with button | ① 
 
 ### <a name="tool">tool object</a>
 
 | Attributes |    |      |    |
 |------------|----|:----:|----|
-| `name` | Name of the tool as it will appear in the menu associated with the button | ① ④ | Mandatory if there are several `tool`<br>• pass "-" to display a separator line
+| `name` | Name of the tool as it will appear in the menu | ① ④ ⑧| Mandatory if there is more than one `tool` 
 | `method` | The name of the method to run when the item is selected | ③ | Mandatory
-----
+
+<hr>
+
 > ① The `name` & `helptip` attributes accepts the syntax ‘ :xliff :resname’, so the string must be defined in the component's xliff files, and the string displayed will be localized.    
 
-> ② You must check the `Shared by component and host project` property. The method code must be:
+> ② The method code must be:
 
 ```4d
 #DECLARE() : 4D.Function
->return Formula(Formula from string($1))
+return Formula(Formula from string($1))
 ```
+> ⚠️ Don't forget to enable the `Shared by component and host project` property for this method.
 
 > ③ The methods called receive an object as a parameter (for future use). If you plan to compile the component, this parameter must be declared explicitly `#DECLARE($data: Object)` in all the methods of the component called. It is not necessary to declare the method as shared.
 
-> ④ If there is only one `tool`, the method is executed as soon as the button is clicked. If there are several `tool`, a menu arrow linked with the button is displayed and a menu listing the available tools is provided for the user. 
+> ④ If there is only one `tool`, the method is executed as soon as the button is clicked. If there are several `tools`, a menu arrow linked to the button is displayed and a menu, listing the available tools, is displayed when the user clicks on the arrow or performs a long click. 
 
-> ⑤ The component method may be responsible for constructing and displaying the menu. In this case, set the `default` attribute to the name of the method whose code displays the menu and processes the user's choice. For the menu arrow to be displayed on your tool's button, you need to specify ‘True’ in the `popup` attribute.
+> ⑤ The component method may be responsible for building and displaying the menu. In this case, set the `default` attribute to the name of the method whose code displays the menu and processes the user's choice. This method will be called when the user clicks on the button or the arrow. For the menu arrow to be displayed on your tool's button, you need to specify “True” in the `popup` attribute.
 
-> ⑥ In case of the default attribute is defined, a simple clic launches the `default` method and a long click or an on arrow click display the tools' menu.
-> 
+> ⑥ If more than one tool is defined and the `default` attribute is set, a single click launches the `default` method and a long click or click on the arrow displays the tool menu. If there is no `default` attribute, the menu is always displayed.
+
 > ⑦  You must provide an image of 512x512 pixels, 4DPop builds the various icons needed to display in the strip, the settings or the About dialog.
+
+> ⑧  Put “-” to display a separator line
 
 # <a name="topic">Topic 4DPop</a>
 
@@ -301,3 +305,6 @@ Found the issue? Go on and join its discussion thread.
 Not found? Go on and <a href="https://github.com/vdelachaux/4DPop/issues/new" target="_blank">create one</a>.
 
 I strongly recommend that you create a [clone of this repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and do a [pull-request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) for your improvements and bug fixes.
+
+<hr>
+`Enjoy the 4th dimension`
