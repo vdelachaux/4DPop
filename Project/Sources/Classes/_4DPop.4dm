@@ -332,7 +332,7 @@ Function getDependencies() : Collection
 	return $c
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Display the palett
+	// Display the palette
 Function display()
 	
 	var $height; $width : Integer
@@ -493,7 +493,7 @@ Function abort()
 	
 	For ($i; 1; Count user processes:C343; 1)
 		
-		PROCESS PROPERTIES:C336($i; $t; $l; $l)
+		_O_PROCESS PROPERTIES:C336($i; $t; $l; $l)
 		
 		If ($t="$4DPop")
 			

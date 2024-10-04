@@ -251,21 +251,22 @@ The manifest describes the elements of the component that will be available via 
 }
 ```
 
-| Attributes |   |   ||
-|---- | ----| ----| ----|
-| `name` | The name that will be displayed below the button | ① | Mandatory
-| `media` | File name of the image used for the button. |⑦| If omitted a default picture is used
-| `handler` | The name of the ‘entry point’ method for your component. <br>I suggest that this name starts with an underscore (`_`) to avoid it interfering with the type ahead, as it is shared. | ② | Mandatory
-| `default` | The name of the method to be executed when the user clicks on the strip's button | ③ ④ ⑤| Optional if `tools`is defined
-| `tools` | Collection of [tool objects](#tool) that will be displayed as a linked menu  | ④ ⑥
-| `popup` | To force the display of a linked menu indicator even if there is only one tool  | ④
-|  `ondrop` | The name of the method to be executed at the time of a drop on the button | ③
-| `helptip` | Text of help tip associated with button
+| Attributes |    |      |    |
+|------------|----|:----:|----|
+| `name`     | The name that will be displayed below the button | ① | Mandatory
+| `media`    | File name of the image used for the button. |⑦| If omitted a default picture is used
+| `handler`  | The name of the ‘entry point’ method for your component. <br>I suggest that this name starts with an underscore (`_`) to avoid it interfering with the type ahead, as it is shared. | ② | Mandatory
+| `default`  | The name of the method to be executed when the user clicks on the strip's button | ③ ④ ⑤| Optional if `tools`is defined
+| `tools`    | Collection of [tool objects](#tool) that will be displayed as a linked menu  | ④ ⑥
+| `popup`    | To force the display of a linked menu indicator even if there is only one tool  | ④
+|`ondrop`    | The name of the method to be executed at the time of a drop on the button | ③
+|  `initproc`         |  The name of the method to be executed when the component is loaded | ③
+| `helptip`  | Text of help tip associated with button
 
 ### <a name="tool">tool object</a>
 
-| Attributes |   |   ||
-|---- | ----| ----| ----|
+| Attributes |    |      |    |
+|------------|----|:----:|----|
 | `name` | Name of the tool as it will appear in the menu associated with the button | ① ④ | Mandatory if there are several `tool`<br>• pass "-" to display a separator line
 | `method` | The name of the method to run when the item is selected | ③ | Mandatory
 ----
