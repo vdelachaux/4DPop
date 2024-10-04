@@ -291,7 +291,7 @@ The manifest describes the elements of the component that will be available via 
 
 If you develop a [component compatible with 4DPop](#how-to), it is strongly recommended to add the "4DPop" [topic](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/classifying-your-repository-with-topics) to be referenced in the [list of 4DPop compatible components](https://github.com/topics/4dpop).
 
-# <a name="improvments">Impovements and bug fixes</a>
+# <a name="improvments">Improvements and bug fixes</a>
 
 If you encountered a bug or have a feature request, feel free to create an issue.
 However, it is highly appreciated if you <a href="https://github.com/vdelachaux/4DPop/issues" target="_blank">browse and search current issues</a> first.
