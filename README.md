@@ -168,10 +168,9 @@ You can enhance `4DPop` with [your own components](#how-to), and you are also ab
 * One or more components from the collection
 * **Don't forget** to open your database structure settings dialog and go to the `Security` page to enable, if necessary, the `Execute the "On host database event" method of the component` option.
 
+## ![Static Badge](https://img.shields.io/badge/Project%20Dependencies-blue?logo=4d&link=https%3A%2F%2Fdeveloper.4d.com%2Fdocs%2FProject%2Fcomponents%2F%23loading-components)
 
-## 4D 20R6+ - Project mode
-
-All the components in the 4DPop collection are compatible with the project's dependency manager. 
+All the components in the 4DPop collection are compatible with the [Project dependencies](https://developer.4d.com/docs/Project/components#monitoring-project-dependencies) feature. So you can simply integrate one or components into your project by selecting `Design` > `Project dependencies` and adding `vdelachaux/4DPop{-name}` as the repository address in the dedicated dialog box. **This way, you can benefit from updates over time**.
 
 You can download a pre-configured `dependencies.json` file for the complete collection [**here**](./dependencies.json) and place it in the `Sources` folder of your project.
 
@@ -276,7 +275,7 @@ The manifest describes the elements of the component that will be available via 
 
 ```4d
 #DECLARE() : 4D.Function
->return Formula(Formula from string($1))
+return Formula(Formula from string($1))
 ```
 
 > ③ The methods called receive an object as a parameter (for future use). If you plan to compile the component, this parameter must be declared explicitly `#DECLARE($data: Object)` in all the methods of the component called. It is not necessary to declare the method as shared.
@@ -301,3 +300,7 @@ Found the issue? Go on and join its discussion thread.
 Not found? Go on and <a href="https://github.com/vdelachaux/4DPop/issues/new" target="_blank">create one</a>.
 
 I strongly recommend that you create a [clone of this repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and do a [pull-request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) for your improvements and bug fixes.
+
+#  
+
+`Enjoy the 4th dimension`
