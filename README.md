@@ -169,11 +169,11 @@ You can enhance `4DPop` with [your own components](#how-to), and you are also ab
 * **Don't forget** to open your database structure settings dialog and go to the `Security` page to enable, if necessary, the `Execute the "On host database event" method of the component` option.
 
 
-## 4D 20R6+ & Project mode
+## 4D 20R6+ - Project mode
 
 All the components in the 4DPop collection are compatible with the project's dependency manager. 
 
-You can download a pre-configured `dependencies.json` file for the complete collection [here] (https://github.com/vdelachaux/4DPop/assets/dependencies.json) and place it in the `Sources` folder of your project.
+You can download a pre-configured `dependencies.json` file for the complete collection [**here**](./dependencies.json) and place it in the `Sources` folder of your project.
 
 >📍The project's dependency manager ensures that you are always using the latest available version of the components.
 >📍No more notarisation problems with this installation method!
