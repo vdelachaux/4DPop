@@ -261,7 +261,7 @@ The manifest describes the elements of the component that will be available via 
 |  `ondrop` | The name of the method to be executed at the time of a drop on the button | ③
 | `helptip` | Text of help tip associated with button
 
-<a name="tool">tool object</a>
+### <a name="tool">tool object</a>
 
 | Attributes |   |   ||
 |---- | ----| ----| ----|
@@ -272,8 +272,9 @@ The manifest describes the elements of the component that will be available via 
 
 > ② You must check the `Shared by component and host project` property. The method code must be:
 
->```4d
->#DECLARE() : 4D.Function>>return Formula(Formula from string($1))
+```4d
+#DECLARE() : 4D.Function
+>return Formula(Formula from string($1))
 ```
 
 > ③ The methods called receive an object as a parameter (for future use). If you plan to compile the component, this parameter must be declared explicitly `#DECLARE($data: Object)` in all the methods of the component called. It is not necessary to declare the method as shared.
