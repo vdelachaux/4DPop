@@ -1,5 +1,7 @@
 Class extends menu
 
+property parameters : Collection
+
 Class constructor($menus : Collection)
 	
 	var $parameter : Text

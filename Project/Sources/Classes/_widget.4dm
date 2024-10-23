@@ -1,3 +1,14 @@
+property file; manifest : Object
+property name; default; ondrop; helptip; tool; form; infos; copyright : Text
+property help; plist : 4D:C1709.File
+property icon; picture : Picture
+property popup; visible : Boolean
+property handler : 4D:C1709.Function
+property tools : Collection
+property order : Integer
+property index : Integer
+property width : Integer
+
 Class constructor($component : Object; $manifest : Object)
 	
 	var $item; $key : Text
@@ -22,9 +33,7 @@ Class constructor($component : Object; $manifest : Object)
 	This:C1470.handler:=Null:C1517
 	This:C1470.tools:=[]
 	This:C1470.order:=0
-	This:C1470.tool:=""
 	This:C1470.index:=0
-	This:C1470.form:=Null:C1517
 	This:C1470.width:=70
 	
 	If ($manifest.handler#Null:C1517)

@@ -11,19 +11,15 @@ If ($name#("$4DPop"))  // Create a new process
 	
 	If (Structure file:C489=Structure file:C489(*))
 		
-		// $process:=New process(Formula(DISPLAY 4DPOP STRIP).source; 0; "$4DPop"; *)
 		$process:=New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *)
 		
 	Else 
 		
-		// HIDE PROCESS(New process(Formula(DISPLAY 4DPOP STRIP).source; 0; "$4DPop"; *))
 		HIDE PROCESS:C324(New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *))
 		
 	End if 
 	
 Else 
-	
-	COMPILER_MAIN
 	
 	If (Structure file:C489=Structure file:C489(*))
 		
@@ -38,7 +34,7 @@ Else
 		
 	End if 
 	
-	strip:=strip || cs:C1710._4DPop.new()
+	var strip : cs:C1710._4DPop:=strip || cs:C1710._4DPop.new()
 	strip.display()
 	
 End if 

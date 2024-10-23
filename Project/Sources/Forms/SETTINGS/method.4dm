@@ -9,7 +9,7 @@ Case of
 		
 		OBJECT SET SCROLLBAR:C843(*; "list"; 0; 2)
 		
-		Form:C1466.$modifiedOrder:=False:C215
+		Form:C1466._modifiedOrder:=False:C215
 		
 		//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 	: ($e.code=On Clicked:K2:4)
@@ -19,7 +19,7 @@ Case of
 			 || ($e.objectName="BottomLeft")\
 			 || ($e.objectName="BottomRight")
 			
-			Form:C1466.$setPosition:=$e.objectName
+			Form:C1466._setPosition:=$e.objectName
 			
 		End if 
 		

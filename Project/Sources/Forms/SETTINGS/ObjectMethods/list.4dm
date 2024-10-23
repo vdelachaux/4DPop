@@ -33,7 +33,7 @@ Case of
 		//______________________________________________________
 	: ($e.code=On Mouse Move:K2:35)
 		
-		GET MOUSE:C468($x; $y; $button)
+		MOUSE POSITION:C468($x; $y; $button)
 		LISTBOX GET CELL POSITION:C971(*; "list"; $x; $y; $column; $row)
 		
 		For each ($o; Form:C1466.properties.widgets)
@@ -82,7 +82,7 @@ Case of
 		$c.remove($c.indices("name = :1"; $data.name).first())
 		$c.insert(Drop position:C608-1; $data)
 		
-		Form:C1466.$modifiedOrder:=True:C214
+		Form:C1466._modifiedOrder:=True:C214
 		
 		//______________________________________________________
 End case 

@@ -1,13 +1,15 @@
+Class extends xml
+
 property store : Collection
 property _containers; _shapes; _descriptive; _notContainer; _aspectRatioValues; _textRenderingValue; _reservedNames : Collection
-
-Class extends xml
+property graphic : Picture
+property latest; _current : Text
 
 Class constructor($content)
 	
 	Super:C1705($content)
 	
-	This:C1470.latest:=Null:C1517
+	This:C1470.latest:=""
 	This:C1470.graphic:=Null:C1517
 	This:C1470.store:=New collection:C1472
 	
@@ -4141,7 +4143,7 @@ Function _reset
 	
 	Super:C1706._reset()
 	
-	This:C1470.latest:=Null:C1517
+	This:C1470.latest:=""
 	This:C1470.graphic:=Null:C1517
 	This:C1470.store:=New collection:C1472
 	
@@ -4181,7 +4183,7 @@ Function _getContainer($param) : Text
 		
 	End if 
 	
-	$name:=Split string:C1554(Get call chain:C1662[1].name; ".")[1]
+	$name:=Split string:C1554(Call chain:C1662[1].name; ".")[1]
 	
 	If (This:C1470._notContainer.includes($name))
 		
@@ -4230,7 +4232,7 @@ Function _getTarget($param) : Text
 			//_______________________________
 		: ($param="parent")
 			
-			If (This:C1470.latest=Null:C1517)
+			If (This:C1470.latest="")
 				
 				return This:C1470.root
 				
@@ -4261,7 +4263,7 @@ Function _getTarget($param) : Text
 			//_______________________________
 	End case 
 	
-	return This:C1470.latest#Null:C1517 ? This:C1470.latest : This:C1470.root
+	return This:C1470.latest#"" ? This:C1470.latest : This:C1470.root
 	
 	//*** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
 	// Looks for element "defs", create if not exists

@@ -1,13 +1,22 @@
+property root : Text
+property file : 4D:C1709.File
+property xml : Text
+
+property success : Boolean
+property autoClose : Boolean
+
+property errors : Collection
+
 Class constructor($variable)
 	
-	This:C1470.root:=Null:C1517
+	This:C1470.root:=""
+	This:C1470.xml:=""
 	This:C1470.file:=Null:C1517
-	This:C1470.xml:=Null:C1517
 	
 	This:C1470.success:=False:C215
 	This:C1470.autoClose:=True:C214
 	
-	This:C1470.errors:=New collection:C1472
+	This:C1470.errors:=[]
 	
 	If ($variable#Null:C1517)
 		
@@ -343,13 +352,13 @@ Function save($file; $keepStructure : Boolean) : cs:C1710.xml
 	// Close the XML tree
 Function close() : cs:C1710.xml
 	
-	This:C1470.success:=(This:C1470.root#Null:C1517)
+	This:C1470.success:=(This:C1470.root#"")
 	
 	If (This:C1470.success)
 		
 		DOM CLOSE XML:C722(This:C1470.root)
 		This:C1470.success:=Bool:C1537(OK)
-		This:C1470.root:=Null:C1517
+		This:C1470.root:=""
 		
 	End if 
 	
@@ -1521,7 +1530,7 @@ Function _close($keepOpened : Boolean)
 Function _pushError($description : Text)
 	
 	This:C1470.success:=False:C215
-	This:C1470.errors.push(Get call chain:C1662[1].name+" - "+$description)
+	This:C1470.errors.push(Call chain:C1662[1].name+" - "+$description)
 	
 	//———————————————————————————————————————————————————————————
 Function _reset
@@ -1529,7 +1538,7 @@ Function _reset
 	This:C1470.close()
 	
 	This:C1470.file:=Null:C1517
-	This:C1470.xml:=Null:C1517
+	This:C1470.xml:=""
 	
 	This:C1470.autoClose:=True:C214
 	

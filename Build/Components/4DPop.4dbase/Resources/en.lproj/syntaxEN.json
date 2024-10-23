@@ -495,6 +495,15 @@
 			],
 			"Summary": ""
 		},
+		"formName": {
+			"Syntax": "formName : Text"
+		},
+		"windowType": {
+			"Syntax": "windowType : Integer"
+		},
+		"motor": {
+			"Syntax": "motor : cs.pop.motor"
+		},
 		"properties": {
 			"Syntax": "properties : Object"
 		},
@@ -506,9 +515,6 @@
 		},
 		"database": {
 			"Syntax": "database : cs.pop.database"
-		},
-		"motor": {
-			"Syntax": "motor : cs.pop.motor"
 		}
 	},
 	"motor": {
@@ -862,6 +868,18 @@
 				]
 			],
 			"Summary": ""
+		},
+		"bottom": {
+			"Syntax": "bottom : Integer"
+		},
+		"right": {
+			"Syntax": "right : Integer"
+		},
+		"top": {
+			"Syntax": "top : Integer"
+		},
+		"left": {
+			"Syntax": "left : Integer"
 		}
 	},
 	"_widget": {
@@ -890,6 +908,69 @@
 				]
 			],
 			"Summary": ""
+		},
+		"width": {
+			"Syntax": "width : Integer"
+		},
+		"handler": {
+			"Syntax": "handler : 4D.Function"
+		},
+		"tools": {
+			"Syntax": "tools : Collection"
+		},
+		"popup": {
+			"Syntax": "popup : Boolean"
+		},
+		"plist": {
+			"Syntax": "plist : 4D.File"
+		},
+		"order": {
+			"Syntax": "order : Integer"
+		},
+		"help": {
+			"Syntax": "help : 4D.File"
+		},
+		"infos": {
+			"Syntax": "infos : Text"
+		},
+		"helptip": {
+			"Syntax": "helptip : Text"
+		},
+		"index": {
+			"Syntax": "index : Integer"
+		},
+		"name": {
+			"Syntax": "name : Text"
+		},
+		"visible": {
+			"Syntax": "visible : Boolean"
+		},
+		"default": {
+			"Syntax": "default : Text"
+		},
+		"form": {
+			"Syntax": "form : Text"
+		},
+		"picture": {
+			"Syntax": "picture : Picture"
+		},
+		"manifest": {
+			"Syntax": "manifest : Object"
+		},
+		"file": {
+			"Syntax": "file : Object"
+		},
+		"ondrop": {
+			"Syntax": "ondrop : Text"
+		},
+		"icon": {
+			"Syntax": "icon : Picture"
+		},
+		"copyright": {
+			"Syntax": "copyright : Text"
+		},
+		"tool": {
+			"Syntax": "tool : Text"
 		}
 	},
 	"menuBar": {
@@ -941,6 +1022,9 @@
 				]
 			],
 			"Summary": ""
+		},
+		"parameters": {
+			"Syntax": "parameters : Collection"
 		},
 		"_inheritedFrom_": "menu"
 	},
@@ -3793,6 +3877,12 @@
 			],
 			"Summary": ""
 		},
+		"latest": {
+			"Syntax": "latest : Text"
+		},
+		"graphic": {
+			"Syntax": "graphic : Picture"
+		},
 		"store": {
 			"Syntax": "store : Collection"
 		},
@@ -5136,6 +5226,24 @@
 				]
 			],
 			"Summary": ""
+		},
+		"errors": {
+			"Syntax": "errors : Collection"
+		},
+		"autoClose": {
+			"Syntax": "autoClose : Boolean"
+		},
+		"xml": {
+			"Syntax": "xml : Text"
+		},
+		"file": {
+			"Syntax": "file : 4D.File"
+		},
+		"success": {
+			"Syntax": "success : Boolean"
+		},
+		"root": {
+			"Syntax": "root : Text"
 		}
 	},
 	"env": {

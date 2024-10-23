@@ -94,9 +94,11 @@ Function get singleton() : Boolean  // Return True if it's a refernce to the cla
 	return This:C1470.__CLASS__#Null:C1517
 	
 	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
-Function get matrix() : Boolean  // Return True if it's the fisrt inastance of the class
+Function get matrix() : Boolean  // Return True if it's the fisrt instance of the class
 	
+	//%W-550.26
 	return This:C1470.__LockerID=Null:C1517
+	//%W+550.26
 	
 	// Mark:-
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
@@ -230,7 +232,7 @@ Function _pushError($message : Text)
 	
 	var $current; $o : Object
 	var $c : Collection
-	$c:=Get call chain:C1662
+	$c:=Call chain:C1662
 	
 	For each ($o; $c)
 		

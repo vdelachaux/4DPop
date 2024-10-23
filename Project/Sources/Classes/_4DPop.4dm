@@ -7,6 +7,12 @@ property preferences : cs:C1710.Preferences
 property env : cs:C1710.env
 property properties : Object
 
+property formName : Text
+property windowType : Integer
+
+property _setPosition : Text
+property _modifiedOrder : Boolean
+
 // Mark:-
 Class constructor
 	
@@ -86,6 +92,14 @@ Function load() : Object
 			
 			$component:=$component.parent.parent
 			
+		Else 
+			
+			//MARK:New component architecture
+			If ($component.folder("Contents").exists)
+				
+				$component:=$component.folder("Contents")
+				
+			End if 
 		End if 
 		
 		// Get the definition file
@@ -563,13 +577,13 @@ Function doSettings()
 			
 		End if 
 		
-		If (This:C1470.$setPosition#Null:C1517)
+		If (This:C1470._setPosition#Null:C1517)
 			
-			This:C1470.position(This:C1470.$setPosition)
+			This:C1470.position(This:C1470._setPosition)
 			
 		End if 
 		
-		If (Bool:C1537(This:C1470.$modifiedOrder))
+		If (Bool:C1537(This:C1470._modifiedOrder))
 			
 			$order:={}
 			

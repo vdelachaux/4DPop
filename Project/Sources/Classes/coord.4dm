@@ -1,3 +1,5 @@
+property left; top; right; bottom : Integer
+
 Class constructor($left : Integer; $top : Integer; $right : Integer; $bottom : Integer)
 	
 	This:C1470.left:=$left
