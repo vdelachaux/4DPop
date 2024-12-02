@@ -1,0 +1,38 @@
+@charset "UTF-8";
+body, td, th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+}
+H1, H2, H3, H4 {
+	color: #000000
+}
+.Command4D {
+	font-size: 14px;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+.fileAndFolder {
+	font-size: 12px;
+	font-style: italic;
+	letter-spacing: 2px;
+}
+.macro {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+.note {
+	font-size: 10px
+}
+.Code4D {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	background-color: #FFFFCC;
+	border: thin solid #CCCCCC;
+	letter-spacing: 2px;
+	padding-top: 0px;
+	padding-right: 1px;
+	padding-bottom: 0px;
+	padding-left: 1px;
+}

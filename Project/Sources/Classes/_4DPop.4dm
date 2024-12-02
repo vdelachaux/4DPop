@@ -216,7 +216,7 @@ Function getPMComponents() : Collection
 	var $folder : 4D:C1709.Folder
 	var $o : 4D:C1709.Object
 	
-	If (This:C1470.motor.remote/* and FIXME not in situ*/)
+	If (This:C1470.motor.isRemote)
 		
 		return This:C1470.motor.root.folder("PackageManager").folder("Components").folders()
 		
@@ -308,28 +308,28 @@ Function getPMComponents() : Collection
 	// Return the loaded dependencies folders
 Function getDependencies() : Collection
 	
-	var $key : Text
-	var $dependencies : Object
-	var $c : Collection
-	var $file : 4D:C1709.File
-	
-	$file:=File:C1566("/PACKAGE/userPreferences."+Current system user:C484+"/dependencies-lock.json"; *)
+	var $c : Collection:=[]
+	var $file : 4D:C1709.File:=File:C1566("/PACKAGE/userPreferences."+Current system user:C484+"/dependencies-lock.json"; *)
 	
 	If (Not:C34($file.exists))
 		
-		return []
+		return $c
 		
 	End if 
 	
-	$dependencies:=Try(JSON Parse:C1218($file.getText()).dependencies)
+	var $dependencies : Object:=Try(JSON Parse:C1218($file.getText()).dependencies)
 	
 	If ($dependencies=Null:C1517)
 		
-		return []
+		return $c
 		
 	End if 
 	
-	$c:=[]
+	var $cache : 4D:C1709.Folder:=Is macOS:C1572\
+		 ? Folder:C1567(fk home folder:K87:24).folder("Library/Caches/4D/Dependencies/.github")\
+		 : Folder:C1567(fk home folder:K87:24).folder("AppData/Caches/4D/Dependencies/.github")
+	
+	var $key : Text
 	
 	For each ($key; $dependencies)
 		
@@ -339,7 +339,24 @@ Function getDependencies() : Collection
 			
 		End if 
 		
-		$c.push(Folder:C1567($dependencies[$key].path; fk platform path:K87:2))
+		If ($dependencies[$key].github#Null:C1517)
+			
+			var $split : Collection:=Split string:C1554($dependencies[$key].github; "/")
+			var $folder : 4D:C1709.Folder:=$cache.folder($split.first()+"/"+$split.last()+"/"+$dependencies[$key].tag)
+			
+			If ($folder.exists)
+				
+				$c.push($folder)
+				
+			End if 
+			
+		Else 
+			
+			// Local
+			$c.push(Folder:C1567($dependencies[$key].path; fk platform path:K87:2))
+			
+		End if 
+		
 		
 	End for each 
 	

@@ -1,5 +1,7 @@
 property file : 4D:C1709.File
 property data; _factory : Object
+property version : Integer
+property module : Text
 
 Class constructor($module : Text)
 	

@@ -1,14 +1,18 @@
+property __CLASS__ : Object
 property data; submenus : Collection
 property choice; ref : Text
-property autoRelease; localize; metacharacters; selected : Boolean
+property autoRelease; released; localize; metacharacters; selected : Boolean
+property _iconAccessor : 4D:C1709.Function
 
-Class constructor($options)
+Class constructor($data)
 	
 	var $c : Collection
 	
 	This:C1470.__CLASS__:=OB Class:C1730(This:C1470)
 	
+	This:C1470.ref:=""
 	This:C1470.autoRelease:=True:C214
+	This:C1470.released:=False:C215
 	This:C1470.localize:=True:C214
 	This:C1470.metacharacters:=False:C215
 	This:C1470.selected:=False:C215
@@ -21,26 +25,26 @@ Class constructor($options)
 		Case of 
 				
 				//______________________________________________________
-			: (Value type:C1509($options)=Is text:K8:3)
+			: (Value type:C1509($data)=Is text:K8:3)
 				
 				Case of 
 						
 						//______________________________________________________
-					: ($options="menuBar")  // Load the current menu bar
+					: ($data="menuBar")  // Load the current menu bar
 						
 						This:C1470.ref:=Get menu bar reference:C979
 						
 						//______________________________________________________
-					: (Match regex:C1019("(?m-si)\\|MR\\|\\d{12}"; $options; 1))  // Menu reference
+					: (Match regex:C1019("(?m-si)\\|MR\\|\\d{12}"; $data; 1))  // Menu reference
 						
-						This:C1470.ref:=$options
+						This:C1470.ref:=$data
 						
 						//______________________________________________________
 					Else 
 						
 						This:C1470.ref:=Create menu:C408
 						
-						$c:=Split string:C1554(String:C10($options); ";")
+						$c:=Split string:C1554(String:C10($data); ";")
 						
 						Case of 
 								
@@ -52,41 +56,72 @@ Class constructor($options)
 								This:C1470.localize:=($c.indexOf("no-localization")=-1)
 								
 								//-----------------
-							: ($options="no-localization")
+							: ($data="no-localization")
 								
 								This:C1470.localize:=False:C215
 								
 								//-----------------
-							: ($options="keep-reference")
+							: ($data="keep-reference")
 								
 								This:C1470.autoRelease:=False:C215
 								
 								//-----------------
-							: ($options="display-metacharacters")
+							: ($data="display-metacharacters")
 								
 								This:C1470.metacharacters:=True:C214
 								
 								//-----------------
 							Else   // Menu bar name 
 								
-								This:C1470.ref:=Create menu:C408($options)
+								This:C1470.ref:=Try(Create menu:C408($data))
 								
 								//-----------------
 						End case 
 						
 						//______________________________________________________
 				End case 
-				//______________________________________________________
-			: (Value type:C1509($options)=Is real:K8:4)\
-				 | (Value type:C1509($options)=Is longint:K8:6)  // Menu bar number
-				
-				This:C1470.ref:=Create menu:C408($options)
 				
 				//______________________________________________________
-			: (Value type:C1509($options)=Is collection:K8:32)  // Create from collection
+			: (Value type:C1509($data)=Is real:K8:4)\
+				 | (Value type:C1509($data)=Is longint:K8:6)  // Menu bar number
+				
+				This:C1470.ref:=Create menu:C408($data)
+				
+				//______________________________________________________
+			: (Value type:C1509($data)=Is collection:K8:32)  // Create from collection
 				
 				This:C1470.ref:=Create menu:C408
-				This:C1470.append($options)
+				This:C1470.append($data)
+				
+				//______________________________________________________
+			: (Value type:C1509($data)=Is object:K8:27)
+				
+				If ($data.localize#Null:C1517)
+					
+					This:C1470.localize:=$data.localize
+					
+				End if 
+				
+				If ($data.autoRelease#Null:C1517)
+					
+					This:C1470.autoRelease:=$data.autoRelease
+					
+				End if 
+				
+				If ($data.metacharacters#Null:C1517)
+					
+					This:C1470.metacharacters:=$data.metacharacters
+					
+				End if 
+				
+				If ($data.iconAccessor#Null:C1517)\
+					 && (OB Instance of:C1731($data.iconAccessor; 4D:C1709.Function))
+					
+					This:C1470._iconAccessor:=$data.iconAccessor
+					
+				End if 
+				
+				This:C1470.ref:=Create menu:C408
 				
 				//______________________________________________________
 			Else 
@@ -102,17 +137,7 @@ Class constructor($options)
 		
 	End if 
 	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Removes the menu from memory
-Function release()
-	
-	If (This:C1470._isMenu())
-		
-		RELEASE MENU:C978(This:C1470.ref)
-		This:C1470.ref:=""
-		
-	End if 
-	
+	// MARK:-[DEFINITION]
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Adds/insert an item
 	// If afterItem < 0, it is considered as the offset from the item count of the menu
@@ -146,6 +171,7 @@ Function append($item; $param; $mark; $afterItem : Integer) : cs:C1710.menu
 		: (Value type:C1509($item)=Is text:K8:3)
 			
 			Case of 
+					
 					//______________________________________________________
 				: (Length:C16($item)=0)
 					
@@ -157,16 +183,15 @@ Function append($item; $param; $mark; $afterItem : Integer) : cs:C1710.menu
 					// 👍 let 4D do the work
 					
 					//______________________________________________________
-					//%W-533.1
-				: ($item[[1]]=Char:C90(1))
-					//%W+533.1
+				: (Position:C15(Char:C90(1); $item)=1)
 					
-					// 🤬 The "Get localized string" command does not like it at all.
+					// 😱 The "Get localized string" command does not like it at all.
 					
 					//______________________________________________________
 				: (Not:C34(This:C1470.localize))  // Don't try to localize
 					
-					If ($item#"-@") && ($item#"(-@")
+					If ($item#"-@")\
+						 && ($item#"(-@")
 						
 						// Replace the hyphen by the unicode 2013 (better UI)
 						$item:=Replace string:C233($item; "-"; "–")
@@ -176,7 +201,7 @@ Function append($item; $param; $mark; $afterItem : Integer) : cs:C1710.menu
 					//______________________________________________________
 				Else 
 					
-					$t:=Localized string:C991($item)
+					$t:=Formula from string:C1601("Get localized string:C991($1)"; sk execute in host database:K88:5).call(Null:C1517; $item)
 					
 					//______________________________________________________
 			End case 
@@ -189,8 +214,8 @@ Function append($item; $param; $mark; $afterItem : Integer) : cs:C1710.menu
 					
 					If (Asserted:C1132(OB Instance of:C1731($param; cs:C1710.menu)))
 						
-						//FIXME:Remove empty submenu in the cleanup phase
-						//If ($param.itemCount()>0)  // Don't do it if there are no items in the sub-menu
+						// FIXME:Remove empty submenu in the cleanup phase
+						// If ($param.itemCount()>0) // Don't do it if there are no items in the sub-menu
 						
 						If (This:C1470.metacharacters)
 							
@@ -226,11 +251,13 @@ Function append($item; $param; $mark; $afterItem : Integer) : cs:C1710.menu
 							This:C1470.data.push($o)
 							
 						End for each 
-						//End if 
+						
+						// End if
 						
 						If ($param.autoRelease)
 							
 							RELEASE MENU:C978($param.ref)
+							$param.released:=True:C214
 							
 						End if 
 						
@@ -280,6 +307,7 @@ Function append($item; $param; $mark; $afterItem : Integer) : cs:C1710.menu
 						
 					End if 
 				End if 
+				
 			Else 
 				
 				If (This:C1470.metacharacters)
@@ -337,7 +365,7 @@ Function append($item; $param; $mark; $afterItem : Integer) : cs:C1710.menu
 				
 				If ($o.shortcut#Null:C1517)
 					
-					This:C1470.shortcut($o.shortcut)
+					This:C1470.shortcut($o.shortcut; Num:C11($o.modifier))
 					
 				End if 
 			End for each 
@@ -376,6 +404,110 @@ Function line($afterItem : Integer) : cs:C1710.menu
 	return This:C1470
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Delete an item or the last added item
+Function delete($index : Integer) : cs:C1710.menu
+	
+	If (Count parameters:C259=0)
+		
+		DELETE MENU ITEM:C413(This:C1470.ref; -1)
+		
+	Else 
+		
+		DELETE MENU ITEM:C413(This:C1470.ref; $index)
+		
+	End if 
+	
+	return This:C1470
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Removes the menu from memory
+Function release()
+	
+	If (This:C1470._isMenu())
+		
+		RELEASE MENU:C978(This:C1470.ref)
+		This:C1470.released:=True:C214
+		
+	End if 
+	
+	// MARK:-[PROPERTIES]
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Modifies the icon associated with a menu item
+Function icon($proxy : Text; $index : Integer) : cs:C1710.menu
+	
+	$index:=Count parameters:C259>=2 ? $index : -1
+	
+	If (This:C1470._iconAccessor#Null:C1517)
+		
+		This:C1470._iconAccessor.call(Null:C1517; This:C1470.ref; $index; This:C1470._proxy($proxy))
+		
+	Else 
+		
+		Formula from string:C1601("SET MENU ITEM ICON:C984($1; $2; $3)"; sk execute in host database:K88:5).call(Null:C1517; This:C1470.ref; $index; This:C1470._proxy($proxy))
+		
+	End if 
+	
+	return This:C1470
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Sets the check mark of a menu item
+Function mark($checked : Boolean; $index : Integer) : cs:C1710.menu
+	
+	Case of 
+			
+			//______________________________________________________
+		: (Count parameters:C259=0)
+			
+			SET MENU ITEM MARK:C208(This:C1470.ref; -1; Char:C90(18))
+			
+			//______________________________________________________
+		: (Count parameters:C259=1)
+			
+			SET MENU ITEM MARK:C208(This:C1470.ref; -1; Char:C90(18)*Num:C11($checked))
+			
+			//______________________________________________________
+		Else 
+			
+			SET MENU ITEM MARK:C208(This:C1470.ref; $index; Char:C90(18)*Num:C11($checked))
+			
+			//______________________________________________________
+	End case 
+	
+	return This:C1470
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Associates a custom parameter to a menu item
+Function parameter($param : Text; $index : Integer) : cs:C1710.menu
+	
+	If (Count parameters:C259=0)
+		
+		SET MENU ITEM PARAMETER:C1004(This:C1470.ref; -1; $param)
+		
+	Else 
+		
+		SET MENU ITEM PARAMETER:C1004(This:C1470.ref; $index; $param)
+		
+	End if 
+	
+	return This:C1470
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Associate a standard action with a menu item
+Function action($action : Variant; $index : Integer) : cs:C1710.menu
+	
+	If (Count parameters:C259=1)
+		
+		SET MENU ITEM PROPERTY:C973(This:C1470.ref; -1; Associated standard action name:K28:8; $action)
+		
+	Else 
+		
+		SET MENU ITEM PROPERTY:C973(This:C1470.ref; $index; Associated standard action name:K28:8; $action)
+		
+	End if 
+	
+	return This:C1470
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Defines the project method associated with a menu item
 Function method($method : Text; $index : Integer) : cs:C1710.menu
 	
@@ -393,18 +525,75 @@ Function method($method : Text; $index : Integer) : cs:C1710.menu
 	return This:C1470
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Delete an item or the last added item
-Function delete($index : Integer) : cs:C1710.menu
+	// Replaces the shortcut key associated with the menu item
+Function shortcut($key; $modifier : Integer; $index : Integer) : cs:C1710.menu
 	
-	If (Count parameters:C259=0)
+	$index:=($index=0) ? -1 : $index
+	
+	If (Count parameters:C259>=2)
 		
-		DELETE MENU ITEM:C413(This:C1470.ref; -1)
+		If (Value type:C1509($key)=Is object:K8:27)
+			
+			SET MENU ITEM SHORTCUT:C423(This:C1470.ref; $index; String:C10($key.key); Num:C11($key.modifier))
+			
+		Else 
+			
+			SET MENU ITEM SHORTCUT:C423(This:C1470.ref; $index; String:C10($key); $modifier)
+			
+		End if 
 		
 	Else 
 		
-		DELETE MENU ITEM:C413(This:C1470.ref; $index)
+		If (Value type:C1509($key)=Is object:K8:27)
+			
+			SET MENU ITEM SHORTCUT:C423(This:C1470.ref; -1; String:C10($key.key); Num:C11($key.modifier))
+			
+		Else 
+			
+			SET MENU ITEM SHORTCUT:C423(This:C1470.ref; -1; String:C10($key); 0)
+			
+		End if 
+	End if 
+	
+	return This:C1470
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Associates a property to a menu item
+/*
+⚠️ ONE CAN SET A PROPERTY FOR ALL MENU TYPE (MENU BAR OR POPUP)
+   BUT  UNIQUELY RETRIEVE IT FOR THE MENU BAR ITEMS
+*/
+Function property($property : Text; $value : Variant; $index : Integer) : cs:C1710.menu
+	
+	If (Count parameters:C259>=3)
+		
+		SET MENU ITEM PROPERTY:C973(This:C1470.ref; $index; $property; $value)
+		
+	Else 
+		
+		SET MENU ITEM PROPERTY:C973(This:C1470.ref; -1; $property; $value)
 		
 	End if 
+	
+	return This:C1470
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Changes the font style of the menu item
+Function setStyle($tyle : Integer; $index : Integer) : cs:C1710.menu
+	
+	$index:=Count parameters:C259>=2 ? $index : -1
+	SET MENU ITEM STYLE:C425(This:C1470.ref; $index; $tyle)
+	
+	return This:C1470
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+Function indent($index : Integer; $number : Integer) : cs:C1710.menu
+	
+	$number:=$number>0 ? $number : 1
+	$index:=Count parameters:C259>=1 ? $index : -1
+	
+	// Special tag for indent on windows
+	SET MENU ITEM PROPERTY:C973(This:C1470.ref; $index; "_4D_PictureForIndent"; $number)
 	
 	return This:C1470
 	
@@ -451,123 +640,15 @@ Function enable($enabled : Boolean; $index : Integer) : cs:C1710.menu
 	return This:C1470
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-Function indent($index : Integer; $number : Integer) : cs:C1710.menu
-	
-	If (Count parameters:C259=0)
-		
-		// Special tag for indent on windows
-		SET MENU ITEM PROPERTY:C973(This:C1470.ref; -1; "_4D_PictureForIndent"; 1)
-		
-	Else 
-		
-		If (Count parameters:C259=1)
-			
-			SET MENU ITEM PROPERTY:C973(This:C1470.ref; $index; "_4D_PictureForIndent"; 1)
-			
-		Else 
-			
-			SET MENU ITEM PROPERTY:C973(This:C1470.ref; $index; "_4D_PictureForIndent"; $number)
-			
-		End if 
-	End if 
-	
-	return This:C1470
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Disable a menu item
 Function disable($index : Integer) : cs:C1710.menu
 	
-	If (Count parameters:C259=0)
-		
-		DISABLE MENU ITEM:C150(This:C1470.ref; -1)
-		
-	Else 
-		
-		DISABLE MENU ITEM:C150(This:C1470.ref; $index)
-		
-	End if 
+	$index:=Count parameters:C259>=1 ? $index : -1
+	DISABLE MENU ITEM:C150(This:C1470.ref; $index)
 	
 	return This:C1470
 	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Associate a standard action with a menu item
-Function action($action : Variant; $index : Integer) : cs:C1710.menu
-	
-	If (Count parameters:C259=1)
-		
-		SET MENU ITEM PROPERTY:C973(This:C1470.ref; -1; Associated standard action name:K28:8; $action)
-		
-	Else 
-		
-		SET MENU ITEM PROPERTY:C973(This:C1470.ref; $index; Associated standard action name:K28:8; $action)
-		
-	End if 
-	
-	return This:C1470
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Associates a custom parameter to a menu item
-Function parameter($param : Text; $index : Integer) : cs:C1710.menu
-	
-	If (Count parameters:C259=0)
-		
-		SET MENU ITEM PARAMETER:C1004(This:C1470.ref; -1; $param)
-		
-	Else 
-		
-		SET MENU ITEM PARAMETER:C1004(This:C1470.ref; $index; $param)
-		
-	End if 
-	
-	return This:C1470
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Associates a property to a menu item
-/*
-⚠️ ONE CAN SET A PROPERTY FOR ALL MENU TYPE (MENU BAR OR POPUP)
-   BUT  UNIQUELY RETRIEVE IT FOR THE MENU BAR ITEMS
-*/
-Function property($property : Text; $value : Variant; $index : Integer) : cs:C1710.menu
-	
-	If (Count parameters:C259>=3)
-		
-		SET MENU ITEM PROPERTY:C973(This:C1470.ref; $index; $property; $value)
-		
-	Else 
-		
-		SET MENU ITEM PROPERTY:C973(This:C1470.ref; -1; $property; $value)
-		
-	End if 
-	
-	return This:C1470
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Returns a property of a menu item
-Function getProperty($property : Text; $index : Integer) : Variant
-	
-	var $value : Text
-	
-	GET MENU ITEM PROPERTY:C972(This:C1470.ref; $index; $property; $value)
-	
-	Case of 
-			
-			//______________________________________________________
-		: (Match regex:C1019("(?m-is)^(?:[tT]rue|[fF]alse)$"; $value; 1; *))
-			
-			return $value="true"
-			
-		: (Match regex:C1019("(?m-si)^(?:\\+|-)?\\d*\\.*\\d+$"; $value; 1; *))
-			
-			return Num:C11($value)
-			
-			//______________________________________________________
-		Else 
-			
-			return $value
-			
-			//______________________________________________________
-	End case 
-	
+	// MARK:-[DATA]
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Associates data to a menu item
 Function setData($name : Text; $value : Variant; $index : Integer) : cs:C1710.menu
@@ -575,27 +656,10 @@ Function setData($name : Text; $value : Variant; $index : Integer) : cs:C1710.me
 	var $ref : Text
 	var $o : Object
 	
-	Case of 
-			
-			//_____________________________
-		: (Count parameters:C259=3)
-			
-			$ref:=Get menu item parameter:C1003(This:C1470.ref; $index)
-			
-			//_____________________________
-		: (Count parameters:C259=2)
-			
-			$ref:=Get menu item parameter:C1003(This:C1470.ref; -1)
-			
-			//_____________________________
-		Else 
-			
-			ASSERT:C1129(False:C215; "Missing parameter")
-			
-			//_____________________________
-	End case 
+	$index:=Count parameters:C259>=3 ? $index : -1
+	$ref:=Get menu item parameter:C1003(This:C1470.ref; $index)
 	
-	$o:=This:C1470.data.query("ref = :1 & name = :2"; $ref; $name).pop()
+	$o:=This:C1470.data.query("ref = :1 & name = :2"; $ref; $name).first()
 	
 	If ($o=Null:C1517)
 		
@@ -620,236 +684,22 @@ Function getData($name : Text; $ref : Text) : Variant
 	
 	var $o : Object
 	
-	If (Asserted:C1132(This:C1470.selected))
+	$o:=Count parameters:C259>=2\
+		 ? This:C1470.data.query("name = :1 & ref = :2"; $name; $ref).first()\
+		 : This:C1470.data.query("name = :1"; $name).first()
+	
+	If ($o#Null:C1517)
 		
-		If (Count parameters:C259>=2)
-			
-			$o:=This:C1470.data.query("name = :1 & ref = :2"; $name; $ref).pop()
-			
-		Else 
-			
-			$o:=This:C1470.data.query("name = :1"; $name).pop()
-			
-		End if 
-		
-		If ($o#Null:C1517)
-			
-			return $o.value
-			
-		End if 
-	End if 
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Sets the check mark of a menu item
-Function mark($checked : Boolean; $index : Integer) : cs:C1710.menu
-	
-	Case of 
-			
-			//______________________________________________________
-		: (Count parameters:C259=0)
-			
-			SET MENU ITEM MARK:C208(This:C1470.ref; -1; Char:C90(18))
-			
-			//______________________________________________________
-		: (Count parameters:C259=1)
-			
-			SET MENU ITEM MARK:C208(This:C1470.ref; -1; Char:C90(18)*Num:C11($checked))
-			
-			//______________________________________________________
-		Else 
-			
-			SET MENU ITEM MARK:C208(This:C1470.ref; $index; Char:C90(18)*Num:C11($checked))
-			
-			//______________________________________________________
-	End case 
-	
-	return This:C1470
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Replaces the shortcut key associated with the menu item
-Function shortcut($key; $modifier : Integer; $index : Integer) : cs:C1710.menu
-	
-	$index:=($index=0) ? -1 : $index
-	
-	If (Count parameters:C259>=2)
-		
-		If (Value type:C1509($key)=Is object:K8:27)
-			
-			SET MENU ITEM SHORTCUT:C423(This:C1470.ref; $index; String:C10($key.key); Num:C11($key.modifier))
-			
-		Else 
-			
-			SET MENU ITEM SHORTCUT:C423(This:C1470.ref; $index; String:C10($key); $modifier)
-			
-		End if 
-		
-	Else 
-		
-		If (Value type:C1509($key)=Is object:K8:27)
-			
-			SET MENU ITEM SHORTCUT:C423(This:C1470.ref; -1; String:C10($key.key); Num:C11($key.modifier))
-			
-		Else 
-			
-			SET MENU ITEM SHORTCUT:C423(This:C1470.ref; -1; String:C10($key); 0)
-			
-		End if 
-	End if 
-	
-	return This:C1470
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Modifies the icon associated with a menu item
-Function icon($proxy : Text; $index : Integer) : cs:C1710.menu
-	
-	var $path : Text
-	
-	Case of 
-			
-			//______________________________________________________
-		: (Position:C15("path:"; $proxy)=1)
-			
-			$path:=$proxy
-			
-			//______________________________________________________
-		: (Position:C15("#"; $proxy)=1)  // Shortcut for Resources folder
-			
-			$path:="path:/RESOURCES/"+Delete string:C232($proxy; 1; 1)
-			
-			//______________________________________________________
-		: ($proxy="|@")
-			
-			$path:="path:/.PRODUCT_RESOURCES/"+Delete string:C232($proxy; 1; 1)
-			
-			//______________________________________________________
-		: (Position:C15("/"; $proxy)=1)
-			
-			$path:="path:"+$proxy
-			
-			//______________________________________________________
-		Else 
-			
-			$path:="path:/RESOURCES/"+$proxy
-			
-			//______________________________________________________
-	End case 
-	
-	If (Count parameters:C259>1)
-		
-		SET MENU ITEM ICON:C984(This:C1470.ref; $index; $path)
-		
-	Else 
-		
-		SET MENU ITEM ICON:C984(This:C1470.ref; -1; $path)
+		return $o.value
 		
 	End if 
 	
-	return This:C1470
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Changes the font style of the menu item
-Function setStyle($tyle : Integer; $index : Integer) : cs:C1710.menu
-	
-	If (Count parameters:C259>1)
-		
-		SET MENU ITEM STYLE:C425(This:C1470.ref; $index; $tyle)
-		
-	Else 
-		
-		SET MENU ITEM STYLE:C425(This:C1470.ref; -1; $tyle)
-		
-	End if 
-	
-	return This:C1470
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Display the current menu as a pop-up menu
-Function popup($where : Variant; $x : Variant; $y : Integer) : cs:C1710.menu
-	
-	This:C1470._cleanup()
-	
-	Case of 
-			
-			//______________________________________________________
-		: (Count parameters:C259=0)  // At the current location of the mouse
-			
-			This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref)
-			
-			//______________________________________________________
-		: (Value type:C1509($where)=Is object:K8:27)  // Widget reference {; default}
-			
-			If (Count parameters:C259>1)
-				
-				This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref; String:C10($x); Num:C11($where.windowCoordinates.left); Num:C11($where.windowCoordinates.bottom))
-				
-			Else 
-				
-				This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref; ""; Num:C11($where.windowCoordinates.left); Num:C11($where.windowCoordinates.bottom))
-				
-			End if 
-			
-			//______________________________________________________
-		: (Value type:C1509($where)=Is text:K8:3)  //  default {; x ; y }
-			
-			If (Count parameters:C259>2)
-				
-				This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref; $where; Num:C11($x); $y)
-				
-			Else 
-				
-				This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref; $where)
-				
-			End if 
-			
-			//______________________________________________________
-		: (Count parameters:C259<2)
-			
-			ASSERT:C1129(False:C215; "Missing x & y parameters")
-			
-			//______________________________________________________
-		Else   // x ; y  (no item selected)
-			
-			This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref; ""; Num:C11($where); Num:C11($x))
-			
-			//______________________________________________________
-	End case 
-	
-	This:C1470.selected:=(Length:C16(This:C1470.choice)>0)
-	
-	If (This:C1470.selected)
-		
-		// Get associated data if any
-		//This.data:=This.data.query("ref=:1"; This.choice)
-		
-	End if 
-	
-	If (This:C1470.autoRelease)
-		
-		This:C1470.release()
-		
-	End if 
-	
-	return This:C1470
-	
+	// MARK:-[INFORMATIONS]
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Returns the number of menu items present in the menu
 Function itemCount() : Integer
 	
 	return Count menu items:C405(This:C1470.ref)
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-Function menuSelected() : Object
-	
-	var $menuSelected : Integer
-	var $menuRef : Text
-	
-	$menuSelected:=Menu selected:C152($menuRef)
-	
-	return {\
-		ref: $menuRef; \
-		menu: $menuSelected\65536; \
-		item: $menuSelected%65536\
-		}
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Returns a menu item from its title or index
@@ -859,18 +709,11 @@ Function item($item; $ref : Text) : Object
 	var $indx : Integer
 	var $value
 	
-	ARRAY TEXT:C222($titles; 0)
-	ARRAY TEXT:C222($references; 0)
+	$ref:=Count parameters:C259>=2 ? $ref : This:C1470.ref
 	
-	If (Count parameters:C259>=2)
-		
-		GET MENU ITEMS:C977($ref; $titles; $references)
-		
-	Else 
-		
-		GET MENU ITEMS:C977(This:C1470.ref; $titles; $references)
-		
-	End if 
+	ARRAY TEXT:C222($titles; 0x0000)
+	ARRAY TEXT:C222($references; 0x0000)
+	GET MENU ITEMS:C977($ref; $titles; $references)
 	
 	Case of 
 			
@@ -938,6 +781,35 @@ Function items() : Collection
 	return $items
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+Function isSeparatorItem($item : Integer; $ref : Text) : Boolean
+	
+	var $value
+	
+	$ref:=Count parameters:C259>=2 ? $ref : This:C1470.ref
+	
+	Case of 
+			
+			//________________________________________
+		: (Get menu item:C422($ref; $item)="(-@")
+			
+			return True:C214
+			
+			//________________________________________
+		: (Get menu item:C422($ref; $item)="-@")
+			
+			return True:C214
+			
+			//________________________________________
+		Else 
+			
+			GET MENU ITEM PROPERTY:C972($ref; $item; "4D_separator"; $value)
+			
+			return $value#0
+			
+			//________________________________________
+	End case 
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function itemSubMenuRef($withTitle : Text) : Text
 	
 	var $indx : Integer
@@ -955,37 +827,102 @@ Function itemSubMenuRef($withTitle : Text) : Text
 	End if 
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-Function isSeparatorItem($item : Integer) : Boolean
+	// Returns a property of a menu item
+Function getProperty($property : Text; $index : Integer) : Variant
 	
-	var $value
+	var $value : Text
+	
+	GET MENU ITEM PROPERTY:C972(This:C1470.ref; $index; $property; $value)
 	
 	Case of 
 			
-			//________________________________________
-		: (Get menu item:C422(This:C1470.ref; $item)="(-@")
+			//______________________________________________________
+		: (Match regex:C1019("(?m-is)^(?:[tT]rue|[fF]alse)$"; $value; 1; *))
 			
-			return True:C214
+			return $value="true"
 			
-			//________________________________________
-		: (Get menu item:C422(This:C1470.ref; $item)="-@")
+		: (Match regex:C1019("(?m-si)^(?:\\+|-)?\\d*\\.*\\d+$"; $value; 1; *))
 			
-			return True:C214
+			return Num:C11($value)
 			
-			//________________________________________
+			//______________________________________________________
 		Else 
 			
-			GET MENU ITEM PROPERTY:C972(This:C1470.ref; $item; "4D_separator"; $value)
-			return $value#0
+			return $value
 			
-			//________________________________________
+			//______________________________________________________
 	End case 
 	
-	// MARK:-Standard menus
+	// MARK:-[TOOLS]
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Default File menu
-Function file() : cs:C1710.menu
+	// Display the current menu as a pop-up menu
+Function popup($where : Variant; $x : Variant; $y : Integer) : cs:C1710.menu
 	
-	This:C1470.append(":xliff:CommonMenuItemQuit").action(ak quit:K76:61).shortcut("Q")
+	This:C1470._cleanup()
+	
+	Case of 
+			
+			//______________________________________________________
+		: (Count parameters:C259=0)\
+			 || ($where=Null:C1517)  // At the current location of the mouse
+			
+			This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref)
+			
+			//______________________________________________________
+		: (Value type:C1509($where)=Is object:K8:27)  // Widget reference {; default}
+			
+			Try($where.updateCoordinates())
+			
+			If (Count parameters:C259>1)
+				
+				This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref; String:C10($x); Num:C11($where.windowCoordinates.left); Num:C11($where.windowCoordinates.bottom))
+				
+			Else 
+				
+				This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref; ""; Num:C11($where.windowCoordinates.left); Num:C11($where.windowCoordinates.bottom))
+				
+			End if 
+			
+			//______________________________________________________
+		: (Value type:C1509($where)=Is text:K8:3)  //  default {; x ; y }
+			
+			If (Count parameters:C259>2)
+				
+				This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref; $where; Num:C11($x); $y)
+				
+			Else 
+				
+				This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref; $where)
+				
+			End if 
+			
+			//______________________________________________________
+		: (Count parameters:C259<2)
+			
+			ASSERT:C1129(False:C215; "Missing x & y parameters")
+			
+			//______________________________________________________
+		Else   // x ; y  (no item selected)
+			
+			This:C1470.choice:=Dynamic pop up menu:C1006(This:C1470.ref; ""; Num:C11($where); Num:C11($x))
+			
+			//______________________________________________________
+	End case 
+	
+	This:C1470.selected:=(Length:C16(This:C1470.choice)>0)
+	
+	If (This:C1470.selected)
+		
+		// Get associated data if any
+		//This.data:=This.data.query("ref=:1"; This.choice)
+		
+	End if 
+	
+	If (This:C1470.autoRelease)
+		
+		This:C1470.release()
+		
+	End if 
 	
 	return This:C1470
 	
@@ -1007,62 +944,12 @@ Function edit() : cs:C1710.menu
 	return This:C1470
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Windows menu
-Function windows($callback : Text) : cs:C1710.menu
+	// Default File menu
+Function file() : cs:C1710.menu
 	
-	var $name : Text
-	var $current; $frontmostWindow; $i : Integer
-	var $o : Object
-	var $c : Collection
-	
-	ARRAY LONGINT:C221($windows; 0x0000)
-	WINDOW LIST:C442($windows)
-	
-	$c:=[]
-	
-	For ($i; 1; Size of array:C274($windows); 1)
-		
-		$c.push({\
-			ref: $windows{$i}; \
-			name: Get window title:C450($windows{$i}); \
-			process: Window process:C446($windows{$i})\
-			})
-		
-	End for 
-	
-	$c:=$c.orderBy([\
-		{propertyPath: "process"; descending: True:C214}; \
-		{propertyPath: "name"}\
-		])
-	
-	If ($c.length>0)
-		
-		$frontmostWindow:=Frontmost window:C447
-		
-		$current:=$c[0].process
-		$name:=Substring:C12($c[0].name; 1; Position:C15(":"; $c[0].name))
-		
-		For each ($o; $c)
-			
-			If ($o.process#$current)\
-				 | (Substring:C12($o.name; 1; Position:C15(":"; $o.name))#$name)
-				
-				This:C1470.line()
-				$current:=$o.process
-				$name:=Substring:C12($o.name; 1; Position:C15(":"; $o.name))
-				
-			End if 
-			
-			This:C1470.append($o.name; $o.ref; $frontmostWindow=$o.ref)
-			
-			If ($callback#"")
-				
-				This:C1470.method($callback)
-				
-			End if 
-			
-		End for each 
-	End if 
+	This:C1470.append(":xliff:CommonClose").shortcut("W").action(ak cancel:K76:36)
+	This:C1470.line()
+	This:C1470.append(":xliff:CommonMenuItemQuit").action(ak quit:K76:61).shortcut("Q")
 	
 	return This:C1470
 	
@@ -1135,7 +1022,67 @@ Function fonts($withStyle; $callback : Text) : cs:C1710.menu
 	
 	return This:C1470
 	
-	// MARK:-Private
+	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Windows menu
+Function windows($callback : Text) : cs:C1710.menu
+	
+	var $name : Text
+	var $current; $frontmostWindow; $i : Integer
+	var $o : Object
+	var $c : Collection
+	
+	ARRAY LONGINT:C221($windows; 0x0000)
+	WINDOW LIST:C442($windows)
+	
+	$c:=[]
+	
+	For ($i; 1; Size of array:C274($windows); 1)
+		
+		$c.push({\
+			ref: $windows{$i}; \
+			name: Get window title:C450($windows{$i}); \
+			process: Window process:C446($windows{$i})\
+			})
+		
+	End for 
+	
+	$c:=$c.orderBy([\
+		{propertyPath: "process"; descending: True:C214}; \
+		{propertyPath: "name"}\
+		])
+	
+	If ($c.length>0)
+		
+		$frontmostWindow:=Frontmost window:C447
+		
+		$current:=$c[0].process
+		$name:=Substring:C12($c[0].name; 1; Position:C15(":"; $c[0].name))
+		
+		For each ($o; $c)
+			
+			If ($o.process#$current)\
+				 | (Substring:C12($o.name; 1; Position:C15(":"; $o.name))#$name)
+				
+				This:C1470.line()
+				$current:=$o.process
+				$name:=Substring:C12($o.name; 1; Position:C15(":"; $o.name))
+				
+			End if 
+			
+			This:C1470.append($o.name; $o.ref; $frontmostWindow=$o.ref)
+			
+			If ($callback#"")
+				
+				This:C1470.method($callback)
+				
+			End if 
+			
+		End for each 
+	End if 
+	
+	return This:C1470
+	
+	// MARK:-
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Remove duplicates (lines or items)
 Function _cleanup()
@@ -1201,8 +1148,50 @@ Function _cleanup()
 	// === === === === === === === === === === === === === === === === === === === === === === === === === ===
 Function _isMenu() : Boolean
 	
-	If (Asserted:C1132((This:C1470.ref#Null:C1517) && (Length:C16(String:C10(This:C1470.ref))>0); Current method name:C684+": The menu reference is null"))
+	If (Asserted:C1132(Length:C16(This:C1470.ref)>0; Current method name:C684+": The menu reference is null"))
 		
 		return True:C214
 		
 	End if 
+	
+	// *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+Function _proxy($proxy : Text) : Text
+	
+	Case of 
+			
+			//______________________________________________________
+		: (Position:C15("path:"; $proxy)=1)\
+			 || (Position:C15("file:"; $proxy)=1)\
+			 || (Position:C15("var:"; $proxy)=1)\
+			 || (Position:C15("!"; $proxy)=1)
+			
+			return $proxy
+			
+			//______________________________________________________
+		: (Position:C15("#"; $proxy)=1)  // Shortcut for Resources folder
+			
+			return "path:/RESOURCES/"+Delete string:C232($proxy; 1; 1)
+			
+			//______________________________________________________
+		: (Position:C15("§"; $proxy)=1)  // Shortcut for current form folder
+			
+			return "path:/FORM/"+Delete string:C232($proxy; 1; 1)
+			
+			//______________________________________________________
+		: ($proxy="|@")
+			
+			return "path:/.PRODUCT_RESOURCES/"+Delete string:C232($proxy; 1; 1)
+			
+			//______________________________________________________
+		: (Position:C15("/"; $proxy)=1)
+			
+			return "path:"+$proxy
+			
+			//______________________________________________________
+		Else 
+			
+			return "path:/RESOURCES/"+$proxy
+			
+			//______________________________________________________
+	End case 
+	

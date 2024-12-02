@@ -116,7 +116,9 @@ Function Singletonize($instance : Object)  // Make the class a singleton
 			This:C1470.__CLASS__.instance:=OB Copy:C1225($instance; ck shared:K85:29; This:C1470.__CLASS__)
 			
 			// Save the new function…
+			//%W-550.26
 			This:C1470.__CLASS__._new:=This:C1470.new
+			//%W+550.26
 			
 			// And replace it
 			This:C1470.__CLASS__.new:=Formula:C1597(This:C1470.instance)

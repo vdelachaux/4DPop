@@ -2,24 +2,9 @@
 // ----------------------------------------------------
 // Created 01/12/06 by Vincent de Lachaux
 // ----------------------------------------------------
-var $name : Text
-var $process; $state; $time : Integer
-
-_O_PROCESS PROPERTIES:C336(Current process:C322; $name; $state; $time)
-
-If ($name#("$4DPop"))  // Create a new process
+If (Process info:C1843(Current process:C322).name="$4DPop")
 	
-	If (Structure file:C489=Structure file:C489(*))
-		
-		$process:=New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *)
-		
-	Else 
-		
-		HIDE PROCESS:C324(New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *))
-		
-	End if 
-	
-Else 
+	var strip : cs:C1710._4DPop
 	
 	If (Structure file:C489=Structure file:C489(*))
 		
@@ -34,7 +19,20 @@ Else
 		
 	End if 
 	
-	var strip : cs:C1710._4DPop:=strip || cs:C1710._4DPop.new()
+	strip:=strip || cs:C1710._4DPop.new()
 	strip.display()
 	
+Else 
+	
+	// Create a new process
+	
+	If (Structure file:C489=Structure file:C489(*))
+		
+		var $process : Integer:=New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *)
+		
+	Else 
+		
+		HIDE PROCESS:C324(New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *))
+		
+	End if 
 End if 

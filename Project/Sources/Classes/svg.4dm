@@ -2,15 +2,13 @@ Class extends xml
 
 property store : Collection
 property _containers; _shapes; _descriptive; _notContainer; _aspectRatioValues; _textRenderingValue; _reservedNames : Collection
-property graphic : Picture
 property latest; _current : Text
+property graphic : Picture
 
 Class constructor($content)
 	
 	Super:C1705($content)
 	
-	This:C1470.latest:=""
-	This:C1470.graphic:=Null:C1517
 	This:C1470.store:=New collection:C1472
 	
 	If ($content=Null:C1517)
@@ -234,7 +232,7 @@ Function group($id : Text; $attachTo) : cs:C1710.svg
 		
 	Else 
 		
-		If (This:C1470.latest=Null:C1517)
+		If (This:C1470.latest=Null:C1517) || (This:C1470.latest="")
 			
 			This:C1470.latest:=This:C1470.root
 			
@@ -498,11 +496,11 @@ Function relative() : cs:C1710.svg
 	return This:C1470
 	
 	//———————————————————————————————————————————————————————————
-Function rect($width : Variant; $height : Real; $attachTo) : cs:C1710.svg
+Function rect($width; $height; $attachTo) : cs:C1710.svg
 	
 	var $node : Text
-	var $breadth : Real
 	var $paramNumber : Integer
+	var $breadth
 	
 	$paramNumber:=Count parameters:C259
 	
@@ -522,7 +520,8 @@ Function rect($width : Variant; $height : Real; $attachTo) : cs:C1710.svg
 			: ($paramNumber=2)
 				
 				If (Value type:C1509($height)=Is real:K8:4)\
-					 | (Value type:C1509($width)=Is longint:K8:6)
+					 | (Value type:C1509($width)=Is longint:K8:6)\
+					 | (Value type:C1509($width)=Is text:K8:3)
 					
 					// .rect(width; height)
 					$breadth:=$height
@@ -3192,11 +3191,11 @@ Function dropShadow($stdDeviation : Integer; $dx : Integer; $dy : Integer) : cs:
 		 && ($dy=4)
 		
 		// Use default definition
-		$id:="d4:dropShadow"
+		$id:="dropShadow"
 		
 	Else 
 		
-		$id:="d4:dropShadow"
+		$id:="dropShadow"
 		$id+="_"+String:C10($stdDeviation)
 		$id+="_"+String:C10($dx)
 		$id+="_"+String:C10($dy)
@@ -3292,20 +3291,21 @@ Function convertToGrayScale($grey; $applyTo) : cs:C1710.svg
 	
 	If ($grey=8858)
 		
-		$matrix:=\
-			".299 .587 .114 0 0 "+\
-			".299 .587 .114 0 0 "+\
-			".299 .587 .114 0 0 "+\
-			"0 0 0 1 0"
+		$matrix:=".299 .587 .114 0 0 "
+		$matrix+=".299 .587 .114 0 0 "
+		$matrix+=".299 .587 .114 0 0 "
+		$matrix+="0 0 0 1 0"
 		
 	Else 
 		
-		$matrix:=\
-			"{%} {%} {%} 0 0"+\
-			"{%} {%} {%} 0 0"+\
-			"{%} {%} {%} 0 0"+\
-			"0 0 0 1 0"
+		$matrix:="{%} {%} {%} 0 0 "
+		$matrix+="{%} {%} {%} 0 0 "
+		$matrix+="{%} {%} {%} 0 0 "
+		$matrix+="0 0 0 1 0"
 		
+		// Allow the value to be passed as a real number between 0 & 1
+		// or as an integer between 0 & 100
+		$grey:=$grey>1 ? $grey/100 : $grey
 		$matrix:=Replace string:C233($matrix; "{%}"; String:C10($grey; "&xml"))
 		
 	End if 
@@ -4020,6 +4020,99 @@ Function preview($keepStructure : Boolean)
 	End if 
 	
 	//———————————————————————————————————————————————————————————
+	// Provides the text of a <text>, <tspan> or <textArea> with line breaks.
+Function getText($applyTo : Text) : Text
+	
+	var $name; $t; $text : Text
+	var $i : Integer
+	
+	ARRAY TEXT:C222($_nodes; 0)
+	ARRAY LONGINT:C221($_types; 0)
+	
+	var $node : Text:=Count parameters:C259>=1 ? This:C1470._getTarget($applyTo) : This:C1470._getTarget()
+	
+	DOM GET XML ELEMENT NAME:C730($node; $name)
+	
+	If ($name="text")\
+		 || ($name="textArea")\
+		 || ($name="tspan")
+		
+		var $isTextArea : Boolean:=$name="textArea"
+		
+		DOM GET XML CHILD NODES:C1081($node; $_types; $_nodes)
+		
+		For ($i; 1; Size of array:C274($_types); 1)
+			
+			Case of 
+					
+					//______________________________________________________
+				: ($_types{$i}=XML DATA:K45:12)
+					
+					$_nodes{$i}:=Replace string:C233($_nodes{$i}; "\r"; "")
+					$_nodes{$i}:=Replace string:C233($_nodes{$i}; "\n"; "")
+					
+					$text+=$_nodes{$i}
+					
+					//______________________________________________________
+				: ($_types{$i}=XML ELEMENT:K45:20)
+					
+					DOM GET XML ELEMENT NAME:C730($_nodes{$i}; $name)
+					
+					Case of 
+							
+							//………………………………………………………………………………………………………
+						: ($name="tbreak")
+							
+							$text+="\r"
+							
+							//………………………………………………………………………………………………………
+						: ($name="tspan")
+							
+							DOM GET XML ELEMENT VALUE:C731($_nodes{$i}; $t)
+							
+							If (Not:C34($isTextArea))
+								
+								// The line breaks are managed with <tbreak> elements
+								
+								If (Length:C16($text)>0)
+									
+									$text+="\r"
+									
+								End if 
+							End if 
+							
+							$text+=$t
+							
+							//………………………………………………………………………………………………………
+					End case 
+					
+					//______________________________________________________
+			End case 
+		End for 
+		
+		return $text
+		
+	End if 
+	
+	//———————————————————————————————————————————————————————————
+Function setText($text : Text; $applyTo)
+	
+	var $node : Text
+	
+	If (Count parameters:C259>=2)
+		
+		$node:=This:C1470._getTarget(String:C10($applyTo))
+		
+	Else 
+		
+		$node:=This:C1470._getTarget()
+		
+	End if 
+	
+	DOM SET XML ELEMENT VALUE:C868($node; "")
+	$node:=DOM Append XML child node:C1080($node; XML DATA:K45:12; $text)
+	
+	//———————————————————————————————————————————————————————————
 	// Returns text width
 Function getTextWidth($string : Text; $fontAttributes : Object)->$width : Integer
 	
@@ -4090,24 +4183,6 @@ Function getTextHeight($string : Text; $fontAttributes : Object)->$height : Inte
 		$o.font($fontAttributes)
 		
 	End if 
-	
-	//———————————————————————————————————————————————————————————
-Function setText($text : Text; $applyTo)
-	
-	var $node : Text
-	
-	If (Count parameters:C259>=2)
-		
-		$node:=This:C1470._getTarget(String:C10($applyTo))
-		
-	Else 
-		
-		$node:=This:C1470._getTarget()
-		
-	End if 
-	
-	DOM SET XML ELEMENT VALUE:C868($node; "")
-	$node:=DOM Append XML child node:C1080($node; XML DATA:K45:12; $text)
 	
 	//———————————————————————————————————————————————————————————
 Function TextToPicture($text : Text; $attributes : Object) : Picture
@@ -4232,7 +4307,7 @@ Function _getTarget($param) : Text
 			//_______________________________
 		: ($param="parent")
 			
-			If (This:C1470.latest="")
+			If (This:C1470.latest=Null:C1517) || (This:C1470.latest="")
 				
 				return This:C1470.root
 				
@@ -4263,7 +4338,7 @@ Function _getTarget($param) : Text
 			//_______________________________
 	End case 
 	
-	return This:C1470.latest#"" ? This:C1470.latest : This:C1470.root
+	return (This:C1470.latest#Null:C1517) && (This:C1470.latest#"") ? This:C1470.latest : This:C1470.root
 	
 	//*** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
 	// Looks for element "defs", create if not exists
@@ -4272,7 +4347,7 @@ Function _defs()->$reference
 	var $node; $root : Text
 	var $c : Collection
 	
-	$c:=This:C1470.findByName(This:C1470.root; "defs")
+	$c:=This:C1470.findByName("defs")
 	
 	If (This:C1470.success)
 		

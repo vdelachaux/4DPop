@@ -1,6 +1,26 @@
 {
 	"_method_": {},
 	"cs.pop": {
+		"_classCore": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"Preferences": {
+			"new()": {
+				"Syntax": "**.new**( *module* : Text )",
+				"Params": [
+					[
+						"module",
+						"Text",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
 		"database": {
 			"new()": {
 				"Syntax": "**.new**( *full* : Boolean )",
@@ -21,6 +41,13 @@
 				"Summary": ""
 			}
 		},
+		"os": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
 		"motor": {
 			"new()": {
 				"Syntax": "**.new**()",
@@ -28,13 +55,26 @@
 				"Summary": ""
 			}
 		},
+		"svg": {
+			"new()": {
+				"Syntax": "**.new**( *content* : Variant )",
+				"Params": [
+					[
+						"content",
+						"Variant",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
 		"coord": {
 			"new()": {
-				"Syntax": "**.new**( *left* : Integer; *top* : Integer; *right* : Integer; *bottom* : Integer )",
+				"Syntax": "**.new**( *left* : Variant; *top* : Integer; *right* : Integer; *bottom* : Integer )",
 				"Params": [
 					[
 						"left",
-						"Integer",
+						"Variant",
 						"->"
 					],
 					[
@@ -87,39 +127,6 @@
 				"Summary": ""
 			}
 		},
-		"svg": {
-			"new()": {
-				"Syntax": "**.new**( *content* : Variant )",
-				"Params": [
-					[
-						"content",
-						"Variant",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
-		"_classCore": {
-			"new()": {
-				"Syntax": "**.new**()",
-				"Params": [],
-				"Summary": ""
-			}
-		},
-		"Preferences": {
-			"new()": {
-				"Syntax": "**.new**( *module* : Text )",
-				"Params": [
-					[
-						"module",
-						"Text",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
 		"xml": {
 			"new()": {
 				"Syntax": "**.new**( *variable* : Variant )",
@@ -148,16 +155,414 @@
 		},
 		"menu": {
 			"new()": {
-				"Syntax": "**.new**( *options* : Variant )",
+				"Syntax": "**.new**( *data* : Variant )",
 				"Params": [
 					[
-						"options",
+						"data",
 						"Variant",
 						"->"
 					]
 				],
 				"Summary": ""
 			}
+		}
+	},
+	"_classCore": {
+		"get _()": {
+			"Syntax": "**.get _**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isJsonObject()": {
+			"Syntax": "**.isJsonObject**( *value* : Variant ) : Boolean",
+			"Params": [
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isFolder()": {
+			"Syntax": "**.isFolder**( *value* : Variant ) : Boolean",
+			"Params": [
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isFile()": {
+			"Syntax": "**.isFile**( *value* : Variant ) : Boolean",
+			"Params": [
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isNum()": {
+			"Syntax": "**.isNum**( *value* : Variant ) : Boolean",
+			"Params": [
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Obfuscate()": {
+			"Syntax": "**.Obfuscate**( *key* : Text; *value* : Variant )",
+			"Params": [
+				[
+					"key",
+					"Text",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"isPlatformPath()": {
+			"Syntax": "**.isPlatformPath**( *value* : Variant ) : Boolean",
+			"Params": [
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get uid()": {
+			"Syntax": "**.get uid**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isText()": {
+			"Syntax": "**.isText**( *value* : Variant ) : Boolean",
+			"Params": [
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Digest()": {
+			"Syntax": "**.Digest**( *tgt* : Variant ) : Text",
+			"Params": [
+				[
+					"tgt",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Singletonize()": {
+			"Syntax": "**.Singletonize**( *instance* : Object )",
+			"Params": [
+				[
+					"instance",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get ready()": {
+			"Syntax": "**.get ready**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Failure()": {
+			"Syntax": "**.Failure**( *value* : Boolean ) : cs.pop._classCore",
+			"Params": [
+				[
+					"value",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"cs.pop._classCore",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get errors()": {
+			"Syntax": "**.get errors**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isJsonArray()": {
+			"Syntax": "**.isJsonArray**( *value* : Variant ) : Boolean",
+			"Params": [
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get singleton()": {
+			"Syntax": "**.get singleton**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isJson()": {
+			"Syntax": "**.isJson**( *value* : Variant ) : Boolean",
+			"Params": [
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get notReady()": {
+			"Syntax": "**.get notReady**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get lastError()": {
+			"Syntax": "**.get lastError**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set ready()": {
+			"Syntax": "**.set ready**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"get matrix()": {
+			"Syntax": "**.get matrix**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get fail()": {
+			"Syntax": "**.get fail**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Succeed()": {
+			"Syntax": "**.Succeed**( *value* : Boolean ) : cs.pop._classCore",
+			"Params": [
+				[
+					"value",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"cs.pop._classCore",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set success()": {
+			"Syntax": "**.set success**( *value* : Boolean )",
+			"Params": [
+				[
+					"value",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get success()": {
+			"Syntax": "**.get success**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"Preferences": {
+		"save()": {
+			"Syntax": "**.save**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"default()": {
+			"Syntax": "**.default**( *default* : Object )",
+			"Params": [
+				[
+					"default",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set()": {
+			"Syntax": "**.set**( *key* : Variant; *value* : Variant ) : cs.pop.Preferences",
+			"Params": [
+				[
+					"key",
+					"Variant",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.Preferences",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get()": {
+			"Syntax": "**.get**( *key* : Text ) : Variant",
+			"Params": [
+				[
+					"key",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"module": {
+			"Syntax": "module : Text"
+		},
+		"version": {
+			"Syntax": "version : Integer"
+		},
+		"data": {
+			"Syntax": "data : Object"
+		},
+		"file": {
+			"Syntax": "file : 4D.File"
 		}
 	},
 	"database": {
@@ -209,6 +614,53 @@
 			],
 			"Summary": ""
 		},
+		"startDiagnosticLog()": {
+			"Syntax": "**.startDiagnosticLog**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"deleteDebugLogs()": {
+			"Syntax": "**.deleteDebugLogs**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"debugLog()": {
+			"Syntax": "**.debugLog**( *tart* : Boolean )",
+			"Params": [
+				[
+					"tart",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"stopDiagnosticLog()": {
+			"Syntax": "**.stopDiagnosticLog**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"isDataEmpty()": {
+			"Syntax": "**.isDataEmpty**( *legacy* : Boolean ) : Boolean",
+			"Params": [
+				[
+					"legacy",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"stopDebugLog()": {
+			"Syntax": "**.stopDebugLog**()",
+			"Params": [],
+			"Summary": ""
+		},
 		"setUserParam()": {
 			"Syntax": "**.setUserParam**( *userParam* : Variant )",
 			"Params": [
@@ -216,6 +668,49 @@
 					"userParam",
 					"Variant",
 					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"clearCompiledCode()": {
+			"Syntax": "**.clearCompiledCode**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"get remote()": {
+			"Syntax": "**.get remote**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isWritable()": {
+			"Syntax": "**.isWritable**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isMethodAvailable()": {
+			"Syntax": "**.isMethodAvailable**( *name* : Text ) : Boolean",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
 				]
 			],
 			"Summary": ""
@@ -236,13 +731,8 @@
 			],
 			"Summary": ""
 		},
-		"deleteGeometry()": {
-			"Syntax": "**.deleteGeometry**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"isWritable()": {
-			"Syntax": "**.isWritable**() : Boolean",
+		"get interpreted()": {
+			"Syntax": "**.get interpreted**() : Boolean",
 			"Params": [
 				[
 					"",
@@ -252,9 +742,112 @@
 			],
 			"Summary": ""
 		},
-		"clearCompiledCode()": {
-			"Syntax": "**.clearCompiledCode**()",
+		"get server()": {
+			"Syntax": "**.get server**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"diagnosticLog()": {
+			"Syntax": "**.diagnosticLog**( *enable* : Boolean )",
+			"Params": [
+				[
+					"enable",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"setUpdateFolder()": {
+			"Syntax": "**.setUpdateFolder**( *folder* : Variant; *silent* : Boolean )",
+			"Params": [
+				[
+					"folder",
+					"Variant",
+					"->"
+				],
+				[
+					"silent",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"deleteGeometry()": {
+			"Syntax": "**.deleteGeometry**()",
 			"Params": [],
+			"Summary": ""
+		},
+		"isPluginAvailable()": {
+			"Syntax": "**.isPluginAvailable**( *name* : Text ) : Boolean",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get local()": {
+			"Syntax": "**.get local**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"startDebugLog()": {
+			"Syntax": "**.startDebugLog**( *delete* : Boolean )",
+			"Params": [
+				[
+					"delete",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get compiled()": {
+			"Syntax": "**.get compiled**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isComponentAvailable()": {
+			"Syntax": "**.isComponentAvailable**( *name* : Text ) : Boolean",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
 			"Summary": ""
 		},
 		"methods()": {
@@ -284,64 +877,104 @@
 			],
 			"Summary": ""
 		},
-		"isComponentAvailable()": {
-			"Syntax": "**.isComponentAvailable**( *name* : Text ) : Boolean",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"compatibilityVersion": {
+			"Syntax": "compatibilityVersion : Integer"
 		},
-		"isPluginAvailable()": {
-			"Syntax": "**.isPluginAvailable**( *name* : Text ) : Boolean",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"parameters": {
+			"Syntax": "parameters : Variant"
 		},
-		"isMethodAvailable()": {
-			"Syntax": "**.isMethodAvailable**( *name* : Text ) : Boolean",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"motor": {
+			"Syntax": "motor : cs.pop.motor"
 		},
-		"isDataEmpty()": {
-			"Syntax": "**.isDataEmpty**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"plugins": {
+			"Syntax": "plugins : Collection"
+		},
+		"dataFile": {
+			"Syntax": "dataFile : 4D.File"
+		},
+		"preferencesFolder": {
+			"Syntax": "preferencesFolder : 4D.Folder"
+		},
+		"version": {
+			"Syntax": "version : Text"
+		},
+		"internal": {
+			"Syntax": "internal : Boolean"
+		},
+		"userPreferencesFolder": {
+			"Syntax": "userPreferencesFolder : 4D.Folder"
+		},
+		"dataFolder": {
+			"Syntax": "dataFolder : 4D.Folder"
+		},
+		"type": {
+			"Syntax": "type : Text"
+		},
+		"databaseFolder": {
+			"Syntax": "databaseFolder : 4D.Folder"
+		},
+		"resourcesFolder": {
+			"Syntax": "resourcesFolder : 4D.Folder"
+		},
+		"isDebug": {
+			"Syntax": "isDebug : Boolean"
+		},
+		"isModifiable": {
+			"Syntax": "isModifiable : Boolean"
+		},
+		"plistFile": {
+			"Syntax": "plistFile : 4D.File"
+		},
+		"dataReadOnly": {
+			"Syntax": "dataReadOnly : Boolean"
+		},
+		"settingsFolder": {
+			"Syntax": "settingsFolder : 4D.Folder"
+		},
+		"isMatrix": {
+			"Syntax": "isMatrix : Boolean"
+		},
+		"components": {
+			"Syntax": "components : Collection"
+		},
+		"isServer": {
+			"Syntax": "isServer : Boolean"
+		},
+		"isCompiled": {
+			"Syntax": "isCompiled : Boolean"
+		},
+		"isComponent": {
+			"Syntax": "isComponent : Boolean"
+		},
+		"isRemote": {
+			"Syntax": "isRemote : Boolean"
+		},
+		"isInterpreted": {
+			"Syntax": "isInterpreted : Boolean"
+		},
+		"isBinary": {
+			"Syntax": "isBinary : Boolean"
+		},
+		"name": {
+			"Syntax": "name : Text"
+		},
+		"isProject": {
+			"Syntax": "isProject : Boolean"
+		},
+		"structureFile": {
+			"Syntax": "structureFile : 4D.File"
+		},
+		"isLocal": {
+			"Syntax": "isLocal : Boolean"
+		},
+		"project": {
+			"Syntax": "project : Object"
+		},
+		"buildAppSettingsFile": {
+			"Syntax": "buildAppSettingsFile : 4D.File"
+		},
+		"isDataless": {
+			"Syntax": "isDataless : Boolean"
 		},
 		"_inheritedFrom_": "_classCore"
 	},
@@ -517,19 +1150,138 @@
 			"Syntax": "database : cs.pop.database"
 		}
 	},
-	"motor": {
-		"setUpdateFolder()": {
-			"Syntax": "**.setUpdateFolder**( *folder* : Variant; *silent* : Boolean )",
+	"os": {
+		"getVolumes()": {
+			"Syntax": "**.getVolumes**( *infos* : Object ) : Collection",
 			"Params": [
 				[
-					"folder",
+					"infos",
+					"Object",
+					"->"
+				],
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"documentsFolder": {
+			"Syntax": "documentsFolder : 4D.Folder"
+		},
+		"applicationsFolder": {
+			"Syntax": "applicationsFolder : 4D.Folder"
+		},
+		"libraryFolder": {
+			"Syntax": "libraryFolder : 4D.Folder"
+		},
+		"startupDisk": {
+			"Syntax": "startupDisk : Object"
+		},
+		"user": {
+			"Syntax": "user : Object"
+		},
+		"homeFolder": {
+			"Syntax": "homeFolder : 4D.Folder"
+		},
+		"isRoseta": {
+			"Syntax": "isRoseta : Boolean"
+		},
+		"logsFolder": {
+			"Syntax": "logsFolder : 4D.Folder"
+		},
+		"isARM": {
+			"Syntax": "isARM : Boolean"
+		},
+		"systemFolder": {
+			"Syntax": "systemFolder : 4D.Folder"
+		},
+		"macOS": {
+			"Syntax": "macOS : Boolean"
+		},
+		"desktopFolder": {
+			"Syntax": "desktopFolder : 4D.Folder"
+		},
+		"version": {
+			"Syntax": "version : Text"
+		},
+		"ipv6": {
+			"Syntax": "ipv6 : Text"
+		},
+		"Windows": {
+			"Syntax": "Windows : Boolean"
+		},
+		"cacheFolder": {
+			"Syntax": "cacheFolder : 4D.Folder"
+		},
+		"temporaryFolder": {
+			"Syntax": "temporaryFolder : 4D.Folder"
+		},
+		"ipv4": {
+			"Syntax": "ipv4 : Text"
+		},
+		"machine": {
+			"Syntax": "machine : Text"
+		},
+		"linux": {
+			"Syntax": "linux : Boolean"
+		},
+		"volumes": {
+			"Syntax": "volumes : Collection"
+		},
+		"language": {
+			"Syntax": "language : Text"
+		},
+		"processor": {
+			"Syntax": "processor : Text"
+		}
+	},
+	"motor": {
+		"hex2long()": {
+			"Syntax": "**.hex2long**( *hex* : Variant ) : Integer",
+			"Params": [
+				[
+					"hex",
 					"Variant",
 					"->"
 				],
 				[
-					"silent",
-					"Boolean",
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"autoConnect()": {
+			"Syntax": "**.autoConnect**( *client* : Object; *userParam* : Variant ) : Object",
+			"Params": [
+				[
+					"client",
+					"Object",
 					"->"
+				],
+				[
+					"userParam",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get newConnectionsAllowed()": {
+			"Syntax": "**.get newConnectionsAllowed**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
 				]
 			],
 			"Summary": ""
@@ -561,8 +1313,13 @@
 			],
 			"Summary": ""
 		},
-		"get version()": {
-			"Syntax": "**.get version**() : Text",
+		"acceptNewConnections()": {
+			"Syntax": "**.acceptNewConnections**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"get shortVersion()": {
+			"Syntax": "**.get shortVersion**() : Text",
 			"Params": [
 				[
 					"",
@@ -572,26 +1329,9 @@
 			],
 			"Summary": ""
 		},
-		"get machine()": {
-			"Syntax": "**.get machine**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get sdi()": {
-			"Syntax": "**.get sdi**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
+		"rejectNewConnections()": {
+			"Syntax": "**.rejectNewConnections**()",
+			"Params": [],
 			"Summary": ""
 		},
 		"get branch()": {
@@ -616,41 +1356,8 @@
 			],
 			"Summary": ""
 		},
-		"get merged()": {
-			"Syntax": "**.get merged**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get demo()": {
-			"Syntax": "**.get demo**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get server()": {
-			"Syntax": "**.get server**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get shortVersion()": {
-			"Syntax": "**.get shortVersion**() : Text",
+		"get version()": {
+			"Syntax": "**.get version**() : Text",
 			"Params": [
 				[
 					"",
@@ -660,373 +1367,72 @@
 			],
 			"Summary": ""
 		},
-		"get debug()": {
-			"Syntax": "**.get debug**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"favorites": {
+			"Syntax": "favorites : 4D.Folder"
 		},
-		"get root()": {
-			"Syntax": "**.get root**() : 4D.Folder",
-			"Params": [
-				[
-					"",
-					"4D.Folder",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"components": {
+			"Syntax": "components : Collection"
 		},
-		"get service()": {
-			"Syntax": "**.get service**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"isServer": {
+			"Syntax": "isServer : Boolean"
 		},
-		"get arm()": {
-			"Syntax": "**.get arm**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"appVersion": {
+			"Syntax": "appVersion : Object"
 		},
-		"get headless()": {
-			"Syntax": "**.get headless**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"asService": {
+			"Syntax": "asService : Boolean"
 		},
-		"rejectNewConnections()": {
-			"Syntax": "**.rejectNewConnections**()",
-			"Params": [],
-			"Summary": ""
+		"isHeadless": {
+			"Syntax": "isHeadless : Boolean"
 		},
-		"get ipv4()": {
-			"Syntax": "**.get ipv4**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"isSDI": {
+			"Syntax": "isSDI : Boolean"
 		},
-		"get newConnectionsAllowed()": {
-			"Syntax": "**.get newConnectionsAllowed**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"isDebug": {
+			"Syntax": "isDebug : Boolean"
 		},
-		"get buildNumber()": {
-			"Syntax": "**.get buildNumber**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"isDemo": {
+			"Syntax": "isDemo : Boolean"
 		},
-		"get remote()": {
-			"Syntax": "**.get remote**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"isMerged": {
+			"Syntax": "isMerged : Boolean"
 		},
-		"get local()": {
-			"Syntax": "**.get local**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"isLocal": {
+			"Syntax": "isLocal : Boolean"
 		},
-		"acceptNewConnections()": {
-			"Syntax": "**.acceptNewConnections**()",
-			"Params": [],
-			"Summary": ""
+		"isRemote": {
+			"Syntax": "isRemote : Boolean"
+		},
+		"plugins": {
+			"Syntax": "plugins : Collection"
 		},
 		"languages": {
 			"Syntax": "languages : Object"
 		},
-		"os": {
-			"Syntax": "os : Object"
+		"type": {
+			"Syntax": "type : Integer"
+		},
+		"versionType": {
+			"Syntax": "versionType : Integer"
+		},
+		"cache": {
+			"Syntax": "cache : 4D.Folder"
 		},
 		"infos": {
 			"Syntax": "infos : Object"
 		},
-		"_inheritedFrom_": "_classCore"
-	},
-	"coord": {
-		"applyToWidget()": {
-			"Syntax": "**.applyToWidget**( *name* : Text )",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
+		"root": {
+			"Syntax": "root : 4D.Folder"
 		},
-		"get dimensions()": {
-			"Syntax": "**.get dimensions**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"applyToWindow()": {
-			"Syntax": "**.applyToWindow**( *winRef* : Integer )",
-			"Params": [
-				[
-					"winRef",
-					"Integer",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get height()": {
-			"Syntax": "**.get height**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get windowCoordinates()": {
-			"Syntax": "**.get windowCoordinates**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get width()": {
-			"Syntax": "**.get width**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get screenCoordinates()": {
-			"Syntax": "**.get screenCoordinates**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"bottom": {
-			"Syntax": "bottom : Integer"
-		},
-		"right": {
-			"Syntax": "right : Integer"
-		},
-		"top": {
-			"Syntax": "top : Integer"
-		},
-		"left": {
-			"Syntax": "left : Integer"
-		}
-	},
-	"_widget": {
-		"getIcon()": {
-			"Syntax": "**.getIcon**( *file* : 4D.File; *size* : Integer; *crop* : Boolean ) : Picture",
-			"Params": [
-				[
-					"file",
-					"4D.File",
-					"->"
-				],
-				[
-					"size",
-					"Integer",
-					"->"
-				],
-				[
-					"crop",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Picture",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"width": {
-			"Syntax": "width : Integer"
-		},
-		"handler": {
-			"Syntax": "handler : 4D.Function"
-		},
-		"tools": {
-			"Syntax": "tools : Collection"
-		},
-		"popup": {
-			"Syntax": "popup : Boolean"
-		},
-		"plist": {
-			"Syntax": "plist : 4D.File"
-		},
-		"order": {
-			"Syntax": "order : Integer"
-		},
-		"help": {
-			"Syntax": "help : 4D.File"
-		},
-		"infos": {
-			"Syntax": "infos : Text"
-		},
-		"helptip": {
-			"Syntax": "helptip : Text"
-		},
-		"index": {
-			"Syntax": "index : Integer"
+		"exe": {
+			"Syntax": "exe : 4D.File"
 		},
 		"name": {
 			"Syntax": "name : Text"
 		},
-		"visible": {
-			"Syntax": "visible : Boolean"
-		},
-		"default": {
-			"Syntax": "default : Text"
-		},
-		"form": {
-			"Syntax": "form : Text"
-		},
-		"picture": {
-			"Syntax": "picture : Picture"
-		},
-		"manifest": {
-			"Syntax": "manifest : Object"
-		},
-		"file": {
-			"Syntax": "file : Object"
-		},
-		"ondrop": {
-			"Syntax": "ondrop : Text"
-		},
-		"icon": {
-			"Syntax": "icon : Picture"
-		},
-		"copyright": {
-			"Syntax": "copyright : Text"
-		},
-		"tool": {
-			"Syntax": "tool : Text"
+		"app": {
+			"Syntax": "app : Object"
 		}
-	},
-	"menuBar": {
-		"defaultMinimalMenuBar()": {
-			"Syntax": "**.defaultMinimalMenuBar**() : cs.pop.menuBar",
-			"Params": [
-				[
-					"",
-					"cs.pop.menuBar",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"disableItem()": {
-			"Syntax": "**.disableItem**( *item* : Text )",
-			"Params": [
-				[
-					"item",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"enableItem()": {
-			"Syntax": "**.enableItem**( *item* : Text; *enabled* : Boolean )",
-			"Params": [
-				[
-					"item",
-					"Text",
-					"->"
-				],
-				[
-					"enabled",
-					"Boolean",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"set()": {
-			"Syntax": "**.set**() : cs.pop.menuBar",
-			"Params": [
-				[
-					"",
-					"cs.pop.menuBar",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"parameters": {
-			"Syntax": "parameters : Collection"
-		},
-		"_inheritedFrom_": "menu"
 	},
 	"svg": {
 		"polarToCartesian()": {
@@ -1113,6 +1519,22 @@
 				[
 					"width",
 					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getText()": {
+			"Syntax": "**.getText**( *applyTo* : Text ) : Text",
+			"Params": [
+				[
+					"applyTo",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Text",
 					"<-"
 				]
 			],
@@ -1952,7 +2374,7 @@
 			"Summary": ""
 		},
 		"rect()": {
-			"Syntax": "**.rect**( *width* : Variant; *height* : Real; *attachTo* : Variant ) : cs.pop.svg",
+			"Syntax": "**.rect**( *width* : Variant; *height* : Variant; *attachTo* : Variant ) : cs.pop.svg",
 			"Params": [
 				[
 					"width",
@@ -1961,7 +2383,7 @@
 				],
 				[
 					"height",
-					"Real",
+					"Variant",
 					"->"
 				],
 				[
@@ -3888,9 +4310,20 @@
 		},
 		"_inheritedFrom_": "xml"
 	},
-	"_classCore": {
-		"get _()": {
-			"Syntax": "**.get _**() : Object",
+	"coord": {
+		"applyToWidget()": {
+			"Syntax": "**.applyToWidget**( *name* : Text )",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get dimensions()": {
+			"Syntax": "**.get dimensions**() : Object",
 			"Params": [
 				[
 					"",
@@ -3900,385 +4333,315 @@
 			],
 			"Summary": ""
 		},
-		"isJsonObject()": {
-			"Syntax": "**.isJsonObject**( *value* : Variant ) : Boolean",
+		"applyToWindow()": {
+			"Syntax": "**.applyToWindow**( *winRef* : Integer )",
 			"Params": [
 				[
-					"value",
-					"Variant",
+					"winRef",
+					"Integer",
 					"->"
-				],
+				]
+			],
+			"Summary": ""
+		},
+		"get height()": {
+			"Syntax": "**.get height**() : Integer",
+			"Params": [
 				[
 					"",
-					"Boolean",
+					"Integer",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"isFolder()": {
-			"Syntax": "**.isFolder**( *value* : Variant ) : Boolean",
-			"Params": [
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"isFile()": {
-			"Syntax": "**.isFile**( *value* : Variant ) : Boolean",
-			"Params": [
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"isNum()": {
-			"Syntax": "**.isNum**( *value* : Variant ) : Boolean",
-			"Params": [
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"Obfuscate()": {
-			"Syntax": "**.Obfuscate**( *key* : Text; *value* : Variant )",
-			"Params": [
-				[
-					"key",
-					"Text",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"isPlatformPath()": {
-			"Syntax": "**.isPlatformPath**( *value* : Variant ) : Boolean",
-			"Params": [
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get uid()": {
-			"Syntax": "**.get uid**() : Text",
+		"get windowCoordinates()": {
+			"Syntax": "**.get windowCoordinates**() : Object",
 			"Params": [
 				[
 					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"isText()": {
-			"Syntax": "**.isText**( *value* : Variant ) : Boolean",
-			"Params": [
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"Digest()": {
-			"Syntax": "**.Digest**( *tgt* : Variant ) : Text",
-			"Params": [
-				[
-					"tgt",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"Singletonize()": {
-			"Syntax": "**.Singletonize**( *instance* : Object )",
-			"Params": [
-				[
-					"instance",
 					"Object",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get ready()": {
-			"Syntax": "**.get ready**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"Failure()": {
-			"Syntax": "**.Failure**( *value* : Boolean ) : cs.pop._classCore",
+		"get width()": {
+			"Syntax": "**.get width**() : Integer",
 			"Params": [
 				[
-					"value",
-					"Boolean",
-					"->"
-				],
-				[
 					"",
-					"cs.pop._classCore",
+					"Integer",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"get errors()": {
-			"Syntax": "**.get errors**() : Collection",
+		"get screenCoordinates()": {
+			"Syntax": "**.get screenCoordinates**() : Object",
 			"Params": [
 				[
 					"",
-					"Collection",
+					"Object",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"isJsonArray()": {
-			"Syntax": "**.isJsonArray**( *value* : Variant ) : Boolean",
-			"Params": [
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"bottom": {
+			"Syntax": "bottom : Integer"
 		},
-		"get singleton()": {
-			"Syntax": "**.get singleton**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"right": {
+			"Syntax": "right : Integer"
 		},
-		"isJson()": {
-			"Syntax": "**.isJson**( *value* : Variant ) : Boolean",
-			"Params": [
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"top": {
+			"Syntax": "top : Integer"
 		},
-		"get notReady()": {
-			"Syntax": "**.get notReady**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"left": {
+			"Syntax": "left : Integer"
 		},
-		"get lastError()": {
-			"Syntax": "**.get lastError**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"set ready()": {
-			"Syntax": "**.set ready**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"get matrix()": {
-			"Syntax": "**.get matrix**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get fail()": {
-			"Syntax": "**.get fail**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"Succeed()": {
-			"Syntax": "**.Succeed**( *value* : Boolean ) : cs.pop._classCore",
-			"Params": [
-				[
-					"value",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"cs.pop._classCore",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"set success()": {
-			"Syntax": "**.set success**( *value* : Boolean )",
-			"Params": [
-				[
-					"value",
-					"Boolean",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get success()": {
-			"Syntax": "**.get success**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"name": {
+			"Syntax": "name : Text"
 		}
 	},
-	"Preferences": {
-		"save()": {
-			"Syntax": "**.save**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"default()": {
-			"Syntax": "**.default**( *default* : Object )",
+	"_widget": {
+		"getIcon()": {
+			"Syntax": "**.getIcon**( *file* : 4D.File; *size* : Integer; *crop* : Boolean ) : Picture",
 			"Params": [
 				[
-					"default",
+					"file",
+					"4D.File",
+					"->"
+				],
+				[
+					"size",
+					"Integer",
+					"->"
+				],
+				[
+					"crop",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Picture",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"width": {
+			"Syntax": "width : Integer"
+		},
+		"handler": {
+			"Syntax": "handler : 4D.Function"
+		},
+		"tools": {
+			"Syntax": "tools : Collection"
+		},
+		"popup": {
+			"Syntax": "popup : Boolean"
+		},
+		"plist": {
+			"Syntax": "plist : 4D.File"
+		},
+		"order": {
+			"Syntax": "order : Integer"
+		},
+		"help": {
+			"Syntax": "help : 4D.File"
+		},
+		"infos": {
+			"Syntax": "infos : Text"
+		},
+		"helptip": {
+			"Syntax": "helptip : Text"
+		},
+		"index": {
+			"Syntax": "index : Integer"
+		},
+		"name": {
+			"Syntax": "name : Text"
+		},
+		"visible": {
+			"Syntax": "visible : Boolean"
+		},
+		"default": {
+			"Syntax": "default : Text"
+		},
+		"form": {
+			"Syntax": "form : Text"
+		},
+		"picture": {
+			"Syntax": "picture : Picture"
+		},
+		"manifest": {
+			"Syntax": "manifest : Object"
+		},
+		"file": {
+			"Syntax": "file : Object"
+		},
+		"ondrop": {
+			"Syntax": "ondrop : Text"
+		},
+		"icon": {
+			"Syntax": "icon : Picture"
+		},
+		"copyright": {
+			"Syntax": "copyright : Text"
+		},
+		"tool": {
+			"Syntax": "tool : Text"
+		}
+	},
+	"menuBar": {
+		"getMenuItemParameter()": {
+			"Syntax": "**.getMenuItemParameter**( *type* : Integer ) : Variant",
+			"Params": [
+				[
+					"type",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"menuSelected()": {
+			"Syntax": "**.menuSelected**() : Object",
+			"Params": [
+				[
+					"",
 					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"disableItem()": {
+			"Syntax": "**.disableItem**( *item* : Text )",
+			"Params": [
+				[
+					"item",
+					"Text",
 					"->"
 				]
 			],
+			"Summary": ""
+		},
+		"defaultMinimalMenuBar()": {
+			"Syntax": "**.defaultMinimalMenuBar**() : cs.pop.menuBar",
+			"Params": [
+				[
+					"",
+					"cs.pop.menuBar",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"enableItem()": {
+			"Syntax": "**.enableItem**( *item* : Text; *enabled* : Boolean )",
+			"Params": [
+				[
+					"item",
+					"Text",
+					"->"
+				],
+				[
+					"enabled",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"update()": {
+			"Syntax": "**.update**( *index* : Integer; *menu* : cs.pop.menu ) : cs.pop.menuBar",
+			"Params": [
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"menu",
+					"cs.pop.menu",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menuBar",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"setAbout()": {
+			"Syntax": "**.setAbout**( *label* : Text; *method* : Text )",
+			"Params": [
+				[
+					"label",
+					"Text",
+					"->"
+				],
+				[
+					"method",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"resetsAbout()": {
+			"Syntax": "**.resetsAbout**()",
+			"Params": [],
 			"Summary": ""
 		},
 		"set()": {
-			"Syntax": "**.set**( *key* : Variant; *value* : Variant ) : cs.pop.Preferences",
+			"Syntax": "**.set**() : cs.pop.menuBar",
 			"Params": [
 				[
-					"key",
-					"Variant",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
 					"",
-					"cs.pop.Preferences",
+					"cs.pop.menuBar",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"get()": {
-			"Syntax": "**.get**( *key* : Text ) : Variant",
+		"setHelpMenu()": {
+			"Syntax": "**.setHelpMenu**( *items* : Collection )",
 			"Params": [
 				[
-					"key",
-					"Text",
+					"items",
+					"Collection",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"populate()": {
+			"Syntax": "**.populate**( *menus* : Collection ) : cs.pop.menuBar",
+			"Params": [
+				[
+					"menus",
+					"Collection",
 					"->"
 				],
 				[
 					"",
-					"Variant",
+					"cs.pop.menuBar",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"data": {
-			"Syntax": "data : Object"
-		},
-		"file": {
-			"Syntax": "file : 4D.File"
-		}
+		"_inheritedFrom_": "menu"
 	},
 	"xml": {
 		"isReference()": {
@@ -5234,19 +5597,40 @@
 			"Syntax": "autoClose : Boolean"
 		},
 		"xml": {
-			"Syntax": "xml : Text"
+			"Syntax": "xml : Variant"
 		},
 		"file": {
-			"Syntax": "file : 4D.File"
+			"Syntax": "file : Variant"
 		},
 		"success": {
 			"Syntax": "success : Boolean"
 		},
 		"root": {
-			"Syntax": "root : Text"
+			"Syntax": "root : Variant"
 		}
 	},
 	"env": {
+		"applicationSupport()": {
+			"Syntax": "**.applicationSupport**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
 		"get linux()": {
 			"Syntax": "**.get linux**() : Boolean",
 			"Params": [
@@ -5305,6 +5689,27 @@
 				],
 				[
 					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"windowOffsets()": {
+			"Syntax": "**.windowOffsets**( *type* : Integer; *isWindows* : Boolean ) : Object",
+			"Params": [
+				[
+					"type",
+					"Integer",
+					"->"
+				],
+				[
+					"isWindows",
 					"Boolean",
 					"->"
 				],
@@ -5406,27 +5811,6 @@
 			],
 			"Summary": ""
 		},
-		"applicationSupport()": {
-			"Syntax": "**.applicationSupport**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
 		"get macos()": {
 			"Syntax": "**.get macos**() : Boolean",
 			"Params": [
@@ -5438,31 +5822,99 @@
 			],
 			"Summary": ""
 		},
+		"dateYearPosition": {
+			"Syntax": "dateYearPosition : Integer"
+		},
+		"dateMonthPosition": {
+			"Syntax": "dateMonthPosition : Integer"
+		},
+		"dateDayPosition": {
+			"Syntax": "dateDayPosition : Integer"
+		},
+		"timeMediumPattern": {
+			"Syntax": "timeMediumPattern : Text"
+		},
+		"timeLongPattern": {
+			"Syntax": "timeLongPattern : Text"
+		},
+		"timeAMLabel": {
+			"Syntax": "timeAMLabel : Text"
+		},
+		"dateLongPattern": {
+			"Syntax": "dateLongPattern : Text"
+		},
+		"dateSeparator": {
+			"Syntax": "dateSeparator : Text"
+		},
+		"mainScreenID": {
+			"Syntax": "mainScreenID : Integer"
+		},
+		"currencySymbol": {
+			"Syntax": "currencySymbol : Text"
+		},
+		"desktopFolder": {
+			"Syntax": "desktopFolder : 4D.Folder"
+		},
 		"screens": {
 			"Syntax": "screens : Collection"
 		},
 		"mainScreen": {
 			"Syntax": "mainScreen : Object"
 		},
-		"applicationsFolder": {
-			"Syntax": "applicationsFolder : 4D.Folder"
-		},
 		"systemFolder": {
 			"Syntax": "systemFolder : 4D.Folder"
-		},
-		"desktopFolder": {
-			"Syntax": "desktopFolder : 4D.Folder"
-		},
-		"systemInfos": {
-			"Syntax": "systemInfos : Object"
-		},
-		"documentsFolder": {
-			"Syntax": "documentsFolder : 4D.Folder"
 		},
 		"homeFolder": {
 			"Syntax": "homeFolder : 4D.Folder"
 		},
-		"_inheritedFrom_": "_classCore"
+		"menuBarHeight": {
+			"Syntax": "menuBarHeight : Integer"
+		},
+		"timeShortPattern": {
+			"Syntax": "timeShortPattern : Text"
+		},
+		"timePMLabel": {
+			"Syntax": "timePMLabel : Text"
+		},
+		"systemInfos": {
+			"Syntax": "systemInfos : Object"
+		},
+		"timeSeparator": {
+			"Syntax": "timeSeparator : Text"
+		},
+		"documentsFolder": {
+			"Syntax": "documentsFolder : 4D.Folder"
+		},
+		"cacheFolder": {
+			"Syntax": "cacheFolder : 4D.Folder"
+		},
+		"dateShortPattern": {
+			"Syntax": "dateShortPattern : Text"
+		},
+		"applicationsFolder": {
+			"Syntax": "applicationsFolder : 4D.Folder"
+		},
+		"decimalSeparator": {
+			"Syntax": "decimalSeparator : Text"
+		},
+		"thousandSeparator": {
+			"Syntax": "thousandSeparator : Text"
+		},
+		"toolBarHeight": {
+			"Syntax": "toolBarHeight : Integer"
+		},
+		"fileURI": {
+			"Syntax": "fileURI : Text"
+		},
+		"machineName": {
+			"Syntax": "machineName : Text"
+		},
+		"dateMediumPattern": {
+			"Syntax": "dateMediumPattern : Text"
+		},
+		"userName": {
+			"Syntax": "userName : Text"
+		}
 	},
 	"menu": {
 		"fonts()": {
@@ -5481,92 +5933,6 @@
 				[
 					"",
 					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"isSeparatorItem()": {
-			"Syntax": "**.isSeparatorItem**( *item* : Integer ) : Boolean",
-			"Params": [
-				[
-					"item",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"file()": {
-			"Syntax": "**.file**() : cs.pop.menu",
-			"Params": [
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"itemSubMenuRef()": {
-			"Syntax": "**.itemSubMenuRef**( *withTitle* : Text ) : Text",
-			"Params": [
-				[
-					"withTitle",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"items()": {
-			"Syntax": "**.items**() : Collection",
-			"Params": [
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"item()": {
-			"Syntax": "**.item**( *item* : Variant; *ref* : Text ) : Object",
-			"Params": [
-				[
-					"item",
-					"Variant",
-					"->"
-				],
-				[
-					"ref",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"menuSelected()": {
-			"Syntax": "**.menuSelected**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
 					"<-"
 				]
 			],
@@ -5598,22 +5964,11 @@
 			],
 			"Summary": ""
 		},
-		"itemCount()": {
-			"Syntax": "**.itemCount**() : Integer",
+		"getProperty()": {
+			"Syntax": "**.getProperty**( *property* : Text; *index* : Integer ) : Variant",
 			"Params": [
 				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"icon()": {
-			"Syntax": "**.icon**( *proxy* : Text; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"proxy",
+					"property",
 					"Text",
 					"->"
 				],
@@ -5624,7 +5979,49 @@
 				],
 				[
 					"",
-					"cs.pop.menu",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isSeparatorItem()": {
+			"Syntax": "**.isSeparatorItem**( *item* : Integer; *ref* : Text ) : Boolean",
+			"Params": [
+				[
+					"item",
+					"Integer",
+					"->"
+				],
+				[
+					"ref",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"item()": {
+			"Syntax": "**.item**( *item* : Variant; *ref* : Text ) : Object",
+			"Params": [
+				[
+					"item",
+					"Variant",
+					"->"
+				],
+				[
+					"ref",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Object",
 					"<-"
 				]
 			],
@@ -5667,27 +6064,6 @@
 				[
 					"",
 					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getProperty()": {
-			"Syntax": "**.getProperty**( *property* : Text; *index* : Integer ) : Variant",
-			"Params": [
-				[
-					"property",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"Variant",
 					"<-"
 				]
 			],
@@ -5740,12 +6116,43 @@
 			],
 			"Summary": ""
 		},
-		"mark()": {
-			"Syntax": "**.mark**( *checked* : Boolean; *index* : Integer ) : cs.pop.menu",
+		"append()": {
+			"Syntax": "**.append**( *item* : Variant; *param* : Variant; *mark* : Variant; *afterItem* : Integer ) : cs.pop.menu",
 			"Params": [
 				[
-					"checked",
-					"Boolean",
+					"item",
+					"Variant",
+					"->"
+				],
+				[
+					"param",
+					"Variant",
+					"->"
+				],
+				[
+					"mark",
+					"Variant",
+					"->"
+				],
+				[
+					"afterItem",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"method()": {
+			"Syntax": "**.method**( *method* : Text; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"method",
+					"Text",
 					"->"
 				],
 				[
@@ -5761,17 +6168,12 @@
 			],
 			"Summary": ""
 		},
-		"property()": {
-			"Syntax": "**.property**( *property* : Text; *value* : Variant; *index* : Integer ) : cs.pop.menu",
+		"parameter()": {
+			"Syntax": "**.parameter**( *param* : Text; *index* : Integer ) : cs.pop.menu",
 			"Params": [
 				[
-					"property",
+					"param",
 					"Text",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
 					"->"
 				],
 				[
@@ -5824,6 +6226,112 @@
 				[
 					"",
 					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"property()": {
+			"Syntax": "**.property**( *property* : Text; *value* : Variant; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"property",
+					"Text",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"mark()": {
+			"Syntax": "**.mark**( *checked* : Boolean; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"checked",
+					"Boolean",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"itemCount()": {
+			"Syntax": "**.itemCount**() : Integer",
+			"Params": [
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"icon()": {
+			"Syntax": "**.icon**( *proxy* : Text; *index* : Integer ) : cs.pop.menu",
+			"Params": [
+				[
+					"proxy",
+					"Text",
+					"->"
+				],
+				[
+					"index",
+					"Integer",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"file()": {
+			"Syntax": "**.file**() : cs.pop.menu",
+			"Params": [
+				[
+					"",
+					"cs.pop.menu",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"itemSubMenuRef()": {
+			"Syntax": "**.itemSubMenuRef**( *withTitle* : Text ) : Text",
+			"Params": [
+				[
+					"withTitle",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Text",
 					"<-"
 				]
 			],
@@ -5961,74 +6469,12 @@
 			],
 			"Summary": ""
 		},
-		"parameter()": {
-			"Syntax": "**.parameter**( *param* : Text; *index* : Integer ) : cs.pop.menu",
+		"items()": {
+			"Syntax": "**.items**() : Collection",
 			"Params": [
 				[
-					"param",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
 					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"method()": {
-			"Syntax": "**.method**( *method* : Text; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"method",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"append()": {
-			"Syntax": "**.append**( *item* : Variant; *param* : Variant; *mark* : Variant; *afterItem* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"item",
-					"Variant",
-					"->"
-				],
-				[
-					"param",
-					"Variant",
-					"->"
-				],
-				[
-					"mark",
-					"Variant",
-					"->"
-				],
-				[
-					"afterItem",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
+					"Collection",
 					"<-"
 				]
 			],
@@ -6040,11 +6486,8 @@
 		"metacharacters": {
 			"Syntax": "metacharacters : Boolean"
 		},
-		"localize": {
-			"Syntax": "localize : Boolean"
-		},
-		"ref": {
-			"Syntax": "ref : Text"
+		"released": {
+			"Syntax": "released : Boolean"
 		},
 		"autoRelease": {
 			"Syntax": "autoRelease : Boolean"
@@ -6057,6 +6500,12 @@
 		},
 		"data": {
 			"Syntax": "data : Collection"
+		},
+		"ref": {
+			"Syntax": "ref : Text"
+		},
+		"localize": {
+			"Syntax": "localize : Boolean"
 		}
 	}
 }
