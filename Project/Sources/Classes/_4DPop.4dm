@@ -339,7 +339,7 @@ Function getDependencies() : Collection
 			
 		End if 
 		
-		If ($dependencies[$key].github#Null:C1517)
+		If ($dependencies[$key].path=Null:C1517)
 			
 			var $split : Collection:=Split string:C1554($dependencies[$key].github; "/")
 			var $folder : 4D:C1709.Folder:=$cache.folder($split.first()+"/"+$split.last()+"/"+$dependencies[$key].tag)
@@ -352,12 +352,9 @@ Function getDependencies() : Collection
 			
 		Else 
 			
-			// Local
 			$c.push(Folder:C1567($dependencies[$key].path; fk platform path:K87:2))
 			
 		End if 
-		
-		
 	End for each 
 	
 	return $c
