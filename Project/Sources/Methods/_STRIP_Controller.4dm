@@ -139,7 +139,7 @@ Control whether the pallet should be visible or not
 depending on the origin of the most upstream process
 */
 			
-			PROCESS PROPERTIES:C336(Window process:C446(Frontmost window:C447); $t; $l; $l; $visible; $l; $origin)
+			_O_PROCESS PROPERTIES:C336(Window process:C446(Frontmost window:C447); $t; $l; $l; $visible; $l; $origin)
 			
 			If ($origin=Design process:K36:9)
 				
@@ -147,6 +147,13 @@ depending on the origin of the most upstream process
 					
 					Form:C1466.hidden:=False:C215
 					SHOW PROCESS:C325(Form:C1466.process)
+					
+					// Generate an update event for widgets
+					For each ($widget; Form:C1466.widgets.query("form != null"))
+						
+						EXECUTE METHOD IN SUBFORM:C1085($widget.tool; Formula:C1597(SET TIMER:C645(-1)))
+						
+					End for each 
 					
 				End if 
 				
@@ -203,7 +210,7 @@ depending on the origin of the most upstream process
 				
 				// MARK: ▶︎ User resizes the window
 				SET CURSOR:C469(9010)
-				GET MOUSE:C468($x; $y; $mouseButton; *)
+				MOUSE POSITION:C468($x; $y; $mouseButton; *)
 				GET WINDOW RECT:C443($left; $top; $right; $bottom; Form:C1466.window)
 				
 				$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
@@ -323,7 +330,7 @@ depending on the origin of the most upstream process
 				// MARK: ▶︎ Automatic collapse/expand
 				// #12-12-2013 GET WINDOW RECT returns bad coordinates, for this particular window, on Windows only.
 				// This causes a flickering effect.
-				GET MOUSE:C468($x; $y; $mouseButton)
+				MOUSE POSITION:C468($x; $y; $mouseButton)
 				OBJECT GET SUBFORM CONTAINER SIZE:C1148($width; $height)
 				
 				If ($x>=0) && ($x<=$width)\
