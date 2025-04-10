@@ -304,7 +304,31 @@ However, it is highly appreciated if you <a href="https://github.com/vdelachaux/
 Found the issue? Go on and join its discussion thread.
 Not found? Go on and <a href="https://github.com/vdelachaux/4DPop/issues/new" target="_blank">create one</a>.
 
-I strongly recommend that you create a [clone of this repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and do a [pull-request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) for your improvements and bug fixes.
+We welcome contributions to 4DPop! To contribute, please follow these steps:
+
+1. [Fork the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+2. Create a new branch:
+    ```$
+    git checkout -b my-feature-branch
+    ```
+3. Make your changes and commit them:
+    ```$
+    git commit -m "Add my feature"
+    ```
+4. Push to the branch:
+    ```$
+    git push origin my-feature-branch
+    ```
+5. [Create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+
+For more details, please refer to our [contributing guidelines](CONTRIBUTING.md).
+
+## License
+
+4DPop is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+For any questions or inquiries, please contact the repository owner [@vdelachaux](https://github.com/vdelachaux).
 
 <hr>
 `Enjoy the 4th dimension`
