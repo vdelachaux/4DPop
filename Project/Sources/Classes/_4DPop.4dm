@@ -23,7 +23,7 @@ Class constructor
 	This:C1470.preferences:=cs:C1710.Preferences.new()
 	
 	This:C1470.formName:="STRIP"
-	This:C1470.windowType:=-(Plain dialog box:K34:4+Texture appearance:K34:17+_o_Compositing mode:K34:18)
+	This:C1470.windowType:=-(Plain dialog box:K34:4+Texture appearance:K34:17+/*_o_Compositing mode*/4096)
 	
 	// Loading compatible components
 	This:C1470.properties:=This:C1470.load()
@@ -203,7 +203,7 @@ Function getComponents($folder : 4D:C1709.Folder) : Collection
 	// Return the package manager dependencies folders
 Function getPMComponents() : Collection
 	
-	If (Num:C11(Application version:C493)>=2060)
+	If (Application version:C493>="2060")
 		
 		return This:C1470.getDependencies()
 		
