@@ -110,10 +110,10 @@
 					],
 					"customBackgroundPicture": "!0"
 				},
-				"hightlight": {
+				"dropIndicator": {
 					"type": "picture",
 					"top": 135,
-					"left": 7,
+					"left": 0,
 					"width": 36,
 					"height": 80,
 					"visibility": "hidden",
@@ -344,7 +344,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 553,
+	"geometryStamp": 555,
 	"editor": {
 		"activeView": "button",
 		"defaultView": "main",

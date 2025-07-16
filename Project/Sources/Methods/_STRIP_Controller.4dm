@@ -24,17 +24,7 @@
 // Modified #02-06-2023 by Vincent de Lachaux
 // Management of widgets
 // ----------------------------------------------------
-var $t : Text
-var $visible : Boolean
-var $bottom; $height; $l; $left; $mouseButton; $offset : Integer
-var $origin; $right; $top; $visibleTools; $wantedWidth; $width : Integer
-var $x; $y : Integer
-var $e; $item; $screen : Object
-var $widget : cs:C1710._widget
-var $coord : cs:C1710.coord
-var $menu : cs:C1710.menu
-
-$e:=FORM Event:C1606
+var $e:=FORM Event:C1606
 
 // MARK:-Form Method
 Case of 
@@ -49,6 +39,7 @@ Case of
 		
 		Form:C1466.colorScheme:=FORM Get color scheme:C1761
 		
+		var $left; $top; $right; $bottom : Integer
 		GET WINDOW RECT:C443($left; $top; $right; $bottom; Form:C1466.window)
 		Form:C1466.page:=1+Num:C11($left#0)
 		
@@ -132,6 +123,8 @@ Case of
 		$e.event:=Form:C1466.event
 		Form:C1466.event:=0
 		
+		var $widget : cs:C1710._widget
+		
 		If ($e.event=0)
 			
 /*
@@ -139,11 +132,11 @@ Control whether the pallet should be visible or not
 depending on the origin of the most upstream process
 */
 			
-			_O_PROCESS PROPERTIES:C336(Window process:C446(Frontmost window:C447); $t; $l; $l; $visible; $l; $origin)
+			var $p:=Process info:C1843(Window process:C446(Frontmost window:C447))
 			
-			If ($origin=Design process:K36:9)
+			If ($p.type=Design process:K36:9)
 				
-				If ($visible & Bool:C1537(Form:C1466.hidden))  // Show
+				If ($p.visible && Bool:C1537(Form:C1466.hidden))  // Show
 					
 					Form:C1466.hidden:=False:C215
 					SHOW PROCESS:C325(Form:C1466.process)
@@ -154,7 +147,6 @@ depending on the origin of the most upstream process
 						EXECUTE METHOD IN SUBFORM:C1085($widget.tool; Formula:C1597(SET TIMER:C645(-1)))
 						
 					End for each 
-					
 				End if 
 				
 				If (Form:C1466.mdi)
@@ -164,7 +156,7 @@ depending on the origin of the most upstream process
 					
 					If ($bottom>Screen height:C188)
 						
-						$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
+						var $coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
 						$height:=$coord.height
 						$coord.bottom:=Screen height:C188
 						$coord.top:=$coord.bottom-$height
@@ -175,8 +167,7 @@ depending on the origin of the most upstream process
 				
 			Else 
 				
-				If ($visible)\
-					 & (Not:C34(Bool:C1537(Form:C1466.hidden)))  // Hide
+				If ($p.visible) && (Not:C34(Bool:C1537(Form:C1466.hidden)))  // Hide
 					
 					Form:C1466.hidden:=True:C214
 					HIDE PROCESS:C324(Form:C1466.process)
@@ -193,6 +184,9 @@ depending on the origin of the most upstream process
 			return 
 			
 		End if 
+		
+		var $width; $height : Integer
+		var $x; $y; $mouseButton : Integer
 		
 		Case of 
 				
@@ -214,6 +208,7 @@ depending on the origin of the most upstream process
 				GET WINDOW RECT:C443($left; $top; $right; $bottom; Form:C1466.window)
 				
 				$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
+				var $offset; $visibleTools; $wantedWidth : Integer
 				
 				If (Bool:C1537($mouseButton))  // In progress
 					
@@ -322,7 +317,7 @@ depending on the origin of the most upstream process
 				$coord.left:=0
 				$coord.top:=0
 				$coord.applyToWidget("_background")
-				$coord.applyToWidget("hightlight")
+				$coord.applyToWidget("dropIndicator")
 				
 				//………………………………………………………………………………………………………………
 			: ($e.event=Form:C1466.AUTO)
@@ -352,6 +347,7 @@ depending on the origin of the most upstream process
 				$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
 				
 				// Multi-screens management
+				var $screen : Object
 				For each ($screen; strip.env.screens)
 					
 					If ($coord.left>=$screen.coordinates.left)\
@@ -414,7 +410,7 @@ depending on the origin of the most upstream process
 		If ($e.event=Form:C1466.DROP)  // End drag & drop
 			
 			SET TIMER:C645(20)
-			OBJECT SET VISIBLE:C603(*; "hightlight.@"; False:C215)
+			OBJECT SET VISIBLE:C603(*; "dropIndicator.@"; False:C215)
 			
 			return 
 			
@@ -618,9 +614,10 @@ Case of
 						
 					Else 
 						
-						$menu:=cs:C1710.menu.new()
+						var $menu:=cs:C1710.menu.new()
 						$e.index:=0
 						
+						var $item : Object
 						For each ($item; $e.widget.tools)
 							
 							If ($item.name="-") || ($item.name="(-")

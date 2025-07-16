@@ -2,19 +2,24 @@
 // ----------------------------------------------------
 // Created 01/12/06 by Vincent de Lachaux
 // ----------------------------------------------------
-If (Process info:C1843(Current process:C322).name="$4DPop")
+var $p:=Current process:C322
+var $matrix : Boolean:=Structure file:C489=Structure file:C489(*)
+
+If (Process info:C1843($p).name="$4DPop")
 	
 	var strip : cs:C1710._4DPop
 	
-	If (Structure file:C489=Structure file:C489(*))
+	If ($matrix)
 		
 		CLEAR VARIABLE:C89(strip)
 		
+		// Allow errors and assertions
 		ON ERR CALL:C155(""; ek global:K92:2)
 		SET ASSERT ENABLED:C1131(True:C214; *)
 		
 	Else 
 		
+		// Hide all errors
 		ON ERR CALL:C155(Formula:C1597(noError).source; ek global:K92:2)
 		
 	End if 
@@ -25,10 +30,9 @@ If (Process info:C1843(Current process:C322).name="$4DPop")
 Else 
 	
 	// Create a new process
-	
-	If (Structure file:C489=Structure file:C489(*))
+	If ($matrix)
 		
-		var $process : Integer:=New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *)
+		$p:=New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *)
 		
 	Else 
 		

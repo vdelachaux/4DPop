@@ -32,15 +32,10 @@ Class constructor
 	// Loading compatible components
 Function load() : Object
 	
-	var $component; $manifest; $order; $plist; $result : Object
-	var $components : Collection
-	var $file : 4D:C1709.File
-	var $widget : cs:C1710._widget
-	
 	// 4DPop plist
-	$plist:=Folder:C1567(fk database folder:K87:14).file("Info.plist").getAppInfo()
+	var $plist:=Folder:C1567(fk database folder:K87:14).file("Info.plist").getAppInfo()
 	
-	$result:={\
+	var $result:={\
 		titleWidth: 23; \
 		handleWidth: 13; \
 		offset: 35; \
@@ -60,7 +55,7 @@ Function load() : Object
 		maxWidth: 0\
 		}
 	
-	$components:=This:C1470.getTools()
+	var $components:=This:C1470.getTools()
 	
 	If ($components.length=0)  // No components
 		
@@ -69,7 +64,8 @@ Function load() : Object
 		
 	End if 
 	
-	$order:=This:C1470.preferences.get("order")
+	var $order : Object:=This:C1470.preferences.get("order")
+	var $component : Object
 	
 	For each ($component; $components)
 		
@@ -103,7 +99,8 @@ Function load() : Object
 		End if 
 		
 		// Get the definition file
-		$file:=$component.file("Resources/4DPop.json")
+		var $manifest : Object
+		var $file : 4D:C1709.File:=$component.file("Resources/4DPop.json")
 		
 		If ($file.exists)
 			
@@ -128,7 +125,7 @@ Function load() : Object
 			
 		End if 
 		
-		$widget:=cs:C1710._widget.new($component; $manifest)
+		var $widget:=cs:C1710._widget.new($component; $manifest)
 		
 		// Do not add twice
 		If ($result.widgets.query("name = :1"; $widget.name).pop()=Null:C1517)
@@ -182,32 +179,19 @@ Function getTools() : Collection
 	
 	return This:C1470.getComponents(This:C1470.motor.root.folder("Components"))\
 		.combine(This:C1470.getComponents(This:C1470.database.databaseFolder.folder("Components")))\
-		.combine(This:C1470.getPMComponents())
+		.combine(Application version:C493>="2060" ? This:C1470.getDependencies() : This:C1470.getPMComponents())
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Filtering and resolving aliases
+	// Get the components of a given folder, including resolving aliases
 Function getComponents($folder : 4D:C1709.Folder) : Collection
 	
-	var $c : Collection
-	
-	// The components
-	$c:=$folder.folders().query("extension = .4dbase")
-	
-	// The alias/shortcuts
-	$c.combine($folder.files().query("extension = :1 & original.extension =:1"; ".4dbase"))
-	$c.combine($folder.files().query("extension = :1 & original.extension =:1"; ".4DProject"))
-	
-	return $c
+	return $folder.folders().query("extension = .4dbase")\
+		.combine($folder.files().query("extension = :1 & original.extension =:1"; ".4dbase"))\
+		.combine($folder.files().query("extension = :1 & original.extension =:1"; ".4DProject"))
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Return the package manager dependencies folders
+	// Returns the package manager dependencies folders
 Function getPMComponents() : Collection
-	
-	If (Application version:C493>="2060")
-		
-		return This:C1470.getDependencies()
-		
-	End if 
 	
 	var $name : Text
 	var $env : Object
@@ -305,15 +289,14 @@ Function getPMComponents() : Collection
 	return $c
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Return the loaded dependencies folders
+	// Returns the loaded dependencies folders
 Function getDependencies() : Collection
 	
-	var $c : Collection:=[]
-	var $file : 4D:C1709.File:=File:C1566("/PACKAGE/userPreferences."+Current system user:C484+"/dependencies-lock.json"; *)
+	var $file:=File:C1566("/PACKAGE/userPreferences."+Current system user:C484+"/dependencies-lock.json"; *)
 	
 	If (Not:C34($file.exists))
 		
-		return $c
+		return []
 		
 	End if 
 	
@@ -321,14 +304,16 @@ Function getDependencies() : Collection
 	
 	If ($dependencies=Null:C1517)
 		
-		return $c
+		return []
 		
 	End if 
 	
-	var $cache : 4D:C1709.Folder:=Is macOS:C1572\
-		 ? Folder:C1567(fk home folder:K87:24).folder("Library/Caches/4D/Dependencies/.github")\
-		 : Folder:C1567(fk home folder:K87:24).folder("AppData/Caches/4D/Dependencies/.github")
+	var $cache:=Folder:C1567(fk home folder:K87:24).folder(\
+		Is macOS:C1572\
+		 ? "Library/Caches/4D/Dependencies/.github"\
+		 : "AppData/Caches/4D/Dependencies/.github")
 	
+	var $c:=[]
 	var $key : Text
 	
 	For each ($key; $dependencies)
@@ -341,8 +326,8 @@ Function getDependencies() : Collection
 		
 		If ($dependencies[$key].path=Null:C1517)
 			
-			var $split : Collection:=Split string:C1554($dependencies[$key].github; "/")
-			var $folder : 4D:C1709.Folder:=$cache.folder($split.first()+"/"+$split.last()+"/"+$dependencies[$key].tag)
+			var $split:=Split string:C1554($dependencies[$key].github; "/")
+			var $folder:=$cache.folder([$split.first(); $split.last(); $dependencies[$key].tag].join("/"))
 			
 			If ($folder.exists)
 				
@@ -363,9 +348,6 @@ Function getDependencies() : Collection
 	// Display the palette
 Function display()
 	
-	var $height; $width : Integer
-	var $coord : cs:C1710.coord
-	
 	If (This:C1470.motor.infos.headless)
 		
 		return 
@@ -374,9 +356,10 @@ Function display()
 	
 	This:C1470.properties.autoClose:=Bool:C1537(This:C1470.preferences.get("auto_hide"))
 	
+	var $height; $width : Integer
 	FORM GET PROPERTIES:C674(String:C10(This:C1470.formName); $width; $height)
 	
-	$coord:=(Shift down:C543 ? /* Reset */Null:C1517 : This:C1470.preferences.get("palette"))\
+	var $coord : cs:C1710.coord:=(Shift down:C543 ? /* Reset */Null:C1517 : This:C1470.preferences.get("palette"))\
 		 || /* Default */({left: 0; bottom: Screen height:C188})
 	
 	$coord.top:=$coord.bottom-$height
@@ -425,14 +408,7 @@ Function display()
 	// Initialization of the palett
 Function init()
 	
-	var $format; $icon; $key; $tool; $varName : Text
-	var $dummy; $indx; $left; $right : Integer
-	var $hOffset : Time
-	var $nilPtr; $ptr : Pointer
-	var $default; $o; $properties : Object
-	var $widget : cs:C1710._widget
-	
-	$o:={\
+	var $o:={\
 		title: ""; \
 		picture: ""; \
 		background: "?0"; \
@@ -447,35 +423,41 @@ Function init()
 		underline: 0\
 		}
 	
-	$properties:=This:C1470.properties
+	var $properties:=This:C1470.properties
 	
-	$default:=$properties.default
-	$hOffset:=$properties.titleWidth
+	var $default : Object:=$properties.default
+	var $hOffset : Integer:=$properties.titleWidth
 	
+	var $indx : Integer
+	var $nil : Pointer
+	var $dummy : Integer
+	var $key; $varName : Text
+	
+	var $widget : cs:C1710._widget
 	For each ($widget; $properties.widgets)
 		
 		$indx+=1
-		$tool:="tool_"+String:C10($indx)
+		var $tool:="tool_"+String:C10($indx)
 		
-		$left:=$hOffset
-		$right:=$left+$widget.width
+		var $left:=$hOffset
+		var $right:=$left+$widget.width
 		
 		If ($widget.form#Null:C1517)
 			
 			// MARK:Widget
-			OBJECT DUPLICATE:C1111(*; "widget"; $tool; $nilPtr; ""; $left; 0; $right; 80; *)
+			OBJECT DUPLICATE:C1111(*; "widget"; $tool; $nil; ""; $left; 0; $right; 80; *)
 			OBJECT SET SUBFORM:C1138(*; $tool; $widget.form; "")
 			
 		Else 
 			
 			// MARK:Button
-			OBJECT DUPLICATE:C1111(*; "tool"; $tool; $nilPtr; ""; $left; 0; $right; 80; *)
+			OBJECT DUPLICATE:C1111(*; "tool"; $tool; $nil; ""; $left; 0; $right; 80; *)
 			
-			$icon:="icon_"+String:C10($indx)
-			OBJECT DUPLICATE:C1111(*; "icon"; $icon; $nilPtr; ""; $left)
+			var $icon:="icon_"+String:C10($indx)
+			OBJECT DUPLICATE:C1111(*; "icon"; $icon; $nil; ""; $left)
 			
 			// Set the icon
-			$ptr:=OBJECT Get pointer:C1124(Object named:K67:5; $icon)
+			var $ptr:=OBJECT Get pointer:C1124(Object named:K67:5; $icon)
 			RESOLVE POINTER:C394($ptr; $varName; $dummy; $dummy)
 			$ptr->:=$widget.icon
 			
@@ -487,7 +469,7 @@ Function init()
 			$o.style:=$default.style
 			$o.popupMenu:=Bool:C1537($widget.popup) ? 1+Num:C11($widget.default#Null:C1517) : 0
 			
-			$format:=""
+			var $format:=""
 			
 			For each ($key; $o)
 				
@@ -516,16 +498,12 @@ Function init()
 	// Sends an abort message to the pallet
 Function abort()
 	
-	var $t : Text
-	var $i; $l : Integer
-	
-	For ($i; 1; Count user processes:C343; 1)
+	var $p : Integer
+	For ($p; 1; Count user processes:C343; 1)
 		
-		_O_PROCESS PROPERTIES:C336($i; $t; $l; $l)
-		
-		If ($t="$4DPop")
+		If (Process info:C1843($p).name="$4DPop")
 			
-			POST OUTSIDE CALL:C329($i)
+			POST OUTSIDE CALL:C329($p)
 			break
 			
 		End if 
@@ -550,15 +528,13 @@ Function reload()
 	// Displays the About dialog box
 Function doAbout()
 	
-	var $winRfef : Integer
-	
 	If (This:C1470.motor.infos.headless)
 		
 		return 
 		
 	End if 
 	
-	$winRfef:=Open form window:C675("ABOUT"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
+	var $winRfef:=Open form window:C675("ABOUT"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
 	DIALOG:C40("ABOUT"; This:C1470)
 	CLOSE WINDOW:C154
 	
@@ -566,22 +542,19 @@ Function doAbout()
 	// Displays the Preferences dialog box
 Function doSettings()
 	
-	var $i; $winRfef : Integer
-	var $o; $order; $properties : Object
-	
 	If (This:C1470.motor.infos.headless)
 		
 		return 
 		
 	End if 
 	
-	$winRfef:=Open form window:C675("SETTINGS"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
+	var $winRfef:=Open form window:C675("SETTINGS"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
 	DIALOG:C40("SETTINGS"; This:C1470)
 	CLOSE WINDOW:C154
 	
 	If (Bool:C1537(OK))
 		
-		$properties:=This:C1470.properties
+		var $properties:=This:C1470.properties
 		This:C1470.preferences.set("auto_hide"; Bool:C1537($properties.autoClose))
 		
 		If ($properties.autoClose)
@@ -599,7 +572,9 @@ Function doSettings()
 		
 		If (Bool:C1537(This:C1470._modifiedOrder))
 			
-			$order:={}
+			var $order:={}
+			var $i : Integer
+			var $o : Object
 			
 			For each ($o; $properties.widgets)
 				
@@ -622,21 +597,14 @@ Function doSettings()
 	// Pallet state management
 Function collapseExpand($displayed : Integer)
 	
-	var $collapse : Boolean
-	var $bottom; $left; $offset; $right; $top; $visibleTools : Integer
-	var $wantedWidth : Integer
-	var $form : Object
-	var $widget : cs:C1710._widget
-	var $coord : cs:C1710.coord
+	var $form:=This:C1470.properties
 	
-	$form:=This:C1470.properties
-	
+	var $left; $top; $right; $bottom : Integer
 	GET WINDOW RECT:C443($left; $top; $right; $bottom; $form.window)
-	$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
+	var $coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
 	
-	$offset:=$form.offset+1  //+5
-	
-	$collapse:=$displayed=-1
+	var $offset : Integer:=$form.offset+1
+	var $collapse : Boolean:=$displayed=-1
 	
 	If ($collapse) | (Count parameters:C259=0)
 		
@@ -693,8 +661,9 @@ Function collapseExpand($displayed : Integer)
 			
 		End if 
 		
-		$visibleTools:=0
-		$wantedWidth:=0
+		var $visibleTools : Integer
+		var $wantedWidth : Integer
+		var $widget : cs:C1710._widget
 		
 		For each ($widget; $form.widgets)
 			
@@ -748,17 +717,14 @@ Function collapseExpand($displayed : Integer)
 	// Palett menu
 Function doMenu()
 	
-	var $item; $widget : Object
-	var $c : Collection
-	var $menu; $sub : cs:C1710.menu
-	
-	$menu:=cs:C1710.menu.new()
-	
-	$menu.append(":xliff:About"; "about")\
+	var $menu:=cs:C1710.menu.new()\
+		.append(":xliff:About"; "about")\
 		.line()\
 		.append(":xliff:settings"; "settings")\
 		.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_924.png")\
 		.line()
+	
+	var $widget : Object
 	
 	For each ($widget; This:C1470.properties.widgets)
 		
@@ -769,7 +735,8 @@ Function doMenu()
 			
 		Else 
 			
-			$sub:=cs:C1710.menu.new()
+			var $tool:=cs:C1710.menu.new()
+			var $item : Object
 			
 			For each ($item; $widget.tools)
 				
@@ -781,16 +748,16 @@ Function doMenu()
 				
 				If ($item.name="-")
 					
-					$sub.line()
+					$tool.line()
 					
 				Else 
 					
-					$sub.append($item.name; $widget.name+"/"+$item.method)
+					$tool.append($item.name; $widget.name+"/"+$item.method)
 					
 				End if 
 			End for each 
 			
-			$menu.append($widget.name; $sub)\
+			$menu.append($widget.name; $tool)\
 				.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_606.png")
 			
 		End if 
@@ -802,7 +769,7 @@ Function doMenu()
 	
 	If ($menu.popup().selected)
 		
-		$c:=Split string:C1554($menu.choice; "/")
+		var $c:=Split string:C1554($menu.choice; "/")
 		
 		Case of 
 				
@@ -851,16 +818,15 @@ Function doMenu()
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function position($position : Text)
 	
-	var $bottom; $height; $left; $right; $top; $width : Integer
-	var $screen : Object
-	var $coord : cs:C1710.coord
-	
+	var $bottom; $left; $right; $top : Integer
 	GET WINDOW RECT:C443($left; $top; $right; $bottom; Form:C1466.window)
-	$coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
-	$width:=$coord.width
-	$height:=$coord.height
+	
+	var $coord:=cs:C1710.coord.new($left; $top; $right; $bottom)
+	var $width:=$coord.width
+	var $height:=$coord.height
 	
 	// Get current screen
+	var $screen : Object
 	For each ($screen; strip.env.screens)
 		
 		If ($coord.left>=$screen.coordinates.left)\
@@ -916,18 +882,14 @@ Function position($position : Text)
 	// Calling a component
 Function execute($e : Object) : Boolean
 	
-	var $method : Text
-	var $nil; $ptr : Pointer
-	var $widget : Object
-	
-	$widget:=$e.widget
+	var $widget : Object:=$e.widget
 	
 	Case of 
 			
 			//______________________________________________________
 		: ($e.method="default")
 			
-			$method:=$widget.default
+			var $method : Text:=$widget.default
 			
 			//______________________________________________________
 		: ($e.method="onDrop")
@@ -958,12 +920,9 @@ Function execute($e : Object) : Boolean
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function doDrop() : Integer
 	
-	var $pathname : Text
+	var $e:=FORM Event:C1606
+	var $pathname:=Get file from pasteboard:C976(1)
 	var $accept : Boolean
-	var $e : Object
-	
-	$e:=FORM Event:C1606
-	$pathname:=Get file from pasteboard:C976(1)
 	
 	SET CURSOR:C469(9019)
 	
@@ -1012,7 +971,7 @@ Function doDrop() : Integer
 	End case 
 	
 	// Show or hide the visual effect of drag & drop.
-	OBJECT SET VISIBLE:C603(*; "hightlight"; $accept)
+	OBJECT SET VISIBLE:C603(*; "dropIndicator"; $accept)
 	
 	// Set the timer for hide the visual effect if user chooses to don't drop the dragged elements
 	Form:C1466.event:=This:C1470.properties.DROP

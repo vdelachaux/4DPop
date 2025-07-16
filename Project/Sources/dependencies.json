@@ -1,28 +1,3 @@
 {
-	"dependencies": {
-		"4DPop": {
-			"github": "vdelachaux/4DPop",
-			"version": "latest"
-		},
-		"4DPop AppMaker": {
-			"github": "vdelachaux/4DPop-AppMaker",
-			"version": "latest"
-		},
-		"4DPop Git": {
-			"github": "vdelachaux/4DPop-Git",
-			"version": "latest"
-		},
-		"4DPop Macros": {
-			"github": "vdelachaux/4DPop-Macros",
-			"version": "latest"
-		},
-		"4DPop QuickOpen": {
-			"github": "vdelachaux/4DPop-QuickOpen",
-			"version": "latest"
-		},
-		"4DPop XLIFF Pro": {
-			"github": "vdelachaux/4DPop-XLIFF-Pro",
-			"tag": "20.7.3"
-		}
-	}
+	"dependencies": {}
 }
