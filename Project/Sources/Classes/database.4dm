@@ -15,16 +15,14 @@ property parameters : Variant
 property project : Object
 property compatibilityVersion : Integer
 
-property motor : cs:C1710.motor
+// MARK:-Delegates 📦
+property motor:=cs:C1710.motor.me
 
 Class extends _classCore
 
 Class constructor($full : Boolean)
 	
 	Super:C1705()
-	
-	// MARK:-Delegates 📦
-	This:C1470.motor:=cs:C1710.motor.me
 	
 	This:C1470.type:=\
 		This:C1470.motor.isLocal ? "Local" : \
@@ -187,13 +185,6 @@ Class constructor($full : Boolean)
 		$custom:=Replace string:C233($custom; "&quot;"; "\"")
 		
 		This:C1470.parameters:=This:C1470.isJson($custom) ? JSON Parse:C1218($custom) : $custom
-		
-	End if 
-	
-	If (Not:C34(This:C1470.internal))
-		
-		// Make a _singleton
-		This:C1470.Singletonize(This:C1470)
 		
 	End if 
 	

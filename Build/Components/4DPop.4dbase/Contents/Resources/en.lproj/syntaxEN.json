@@ -437,24 +437,13 @@
 			"Params": [],
 			"Summary": ""
 		},
-		"get matrix()": {
-			"Syntax": "**.get matrix**() : Boolean",
+		"set success()": {
+			"Syntax": "**.set success**( *value* : Boolean )",
 			"Params": [
 				[
-					"",
+					"value",
 					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get fail()": {
-			"Syntax": "**.get fail**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
+					"->"
 				]
 			],
 			"Summary": ""
@@ -475,13 +464,35 @@
 			],
 			"Summary": ""
 		},
-		"set success()": {
-			"Syntax": "**.set success**( *value* : Boolean )",
+		"get fail()": {
+			"Syntax": "**.get fail**() : Boolean",
 			"Params": [
 				[
-					"value",
+					"",
 					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set errors()": {
+			"Syntax": "**.set errors**( *errors* : Collection )",
+			"Params": [
+				[
+					"errors",
+					"Collection",
 					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get matrix()": {
+			"Syntax": "**.get matrix**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
 				]
 			],
 			"Summary": ""

@@ -84,6 +84,11 @@ Function get errors() : Collection
 	return This:C1470._.errors
 	
 	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
+Function set errors($errors : Collection)
+	
+	This:C1470._.errors:=$errors
+	
+	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <==
 Function get uid() : Text
 	
 	return This:C1470._.uid
