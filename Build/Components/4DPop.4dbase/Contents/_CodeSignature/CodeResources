@@ -74,7 +74,7 @@
 		</data>
 		<key>Resources/Images/4DPop.png</key>
 		<data>
-		Fb4TVW+rriC+lWQzJrHuvseD7Gc=
+		5gqFnTUa7fQtHjkLWi/uBPEkVWo=
 		</data>
 		<key>Resources/Images/black40.png</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>Resources/InfoPlist.strings</key>
 		<data>
-		0dWfcE2N96QA5dAqxKHL2v1Ax6A=
+		bz95bSClMYWowUJXUKeFNMw0dU0=
 		</data>
 		<key>Resources/Skins/4D/Background.png</key>
 		<data>
@@ -350,10 +350,6 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/php.ini</key>
-		<data>
-		jqhDFhfvVHqjxaFnw5CvLOGXJlM=
-		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -361,7 +357,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			PAOGzVOj83zGP4X801FEzVicAgk=
+			sV1+q9ji6YBW0vDJ5y4KQyXu9wc=
 			</data>
 			<key>requirement</key>
 			<string>identifier "4DPop.4DZ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = DYRKW64QA9</string>
@@ -370,11 +366,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jK5BzfF4C/BTC6A8C/CqRiH0KQ0=
+			iOSGOTiDbQey9o9Kda1x9XH/kws=
 			</data>
 			<key>hash2</key>
 			<data>
-			jBP4QF4rXD5Bto+Ra8ObjW6LH7S3n5mwbeSpOW07HyE=
+			hz80XpUC2AHy5Ue95/fDi3QvUlaITZPw6abbiygCizs=
 			</data>
 		</dict>
 		<key>Resources/4DPop constants.xlf</key>
@@ -568,11 +564,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Fb4TVW+rriC+lWQzJrHuvseD7Gc=
+			5gqFnTUa7fQtHjkLWi/uBPEkVWo=
 			</data>
 			<key>hash2</key>
 			<data>
-			53YGlYd3b6R0v9ATwxAYHqIIILGfnQooOPOM1OSac58=
+			u3+fWxy3Se6VnkzDoPpwSwVtBXcqvWaob0PzmpOA5zw=
 			</data>
 		</dict>
 		<key>Resources/Images/black40.png</key>
@@ -623,11 +619,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0dWfcE2N96QA5dAqxKHL2v1Ax6A=
+			bz95bSClMYWowUJXUKeFNMw0dU0=
 			</data>
 			<key>hash2</key>
 			<data>
-			WmrDPKR5+TO9BjeOlAJizIsoVTb3yrO5uj2W0FWwHzg=
+			zZhDHkAigUw5i78Wuv3fZ46/XklHahS6wLYMik95Ngo=
 			</data>
 		</dict>
 		<key>Resources/Skins/4D/Background.png</key>
@@ -1210,17 +1206,6 @@
 			</data>
 			<key>optional</key>
 			<true/>
-		</dict>
-		<key>Resources/php.ini</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			jqhDFhfvVHqjxaFnw5CvLOGXJlM=
-			</data>
-			<key>hash2</key>
-			<data>
-			HolJ6s87WPi8M/49+C+pKs1nJ/lRV9SfJODEw2hJero=
-			</data>
 		</dict>
 	</dict>
 	<key>rules</key>
