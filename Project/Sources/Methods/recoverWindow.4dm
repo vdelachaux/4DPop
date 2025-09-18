@@ -8,21 +8,17 @@
 // ----------------------------------------------------
 #DECLARE($resize : Boolean)
 
-var $bottom; $buffer; $dH; $dV; $height; $i : Integer
-var $left; $mainScreen; $menuBarHeight; $offset; $right; $screen : Integer
-var $screenNumber; $top; $width; $winRef : Integer
-
 // Get the number of screen monitors connected to the machine
-$screenNumber:=Count screens:C437
+var $screenNumber:=Count screens:C437
 
 // Get the number of the screen where the menu bar is located
-$mainScreen:=Menu bar screen:C441
+var $mainScreen:=Menu bar screen:C441
 
 // Get the the frontmost window's reference number
-$winRef:=Frontmost window:C447
+var $winRef:=Frontmost window:C447
 
 // Shift from the edge
-$offset:=10
+var $offset : Integer:=10
 
 // Get the global coordinates of the screens...
 ARRAY LONGINT:C221($screenLefts; $screenNumber)
@@ -37,6 +33,7 @@ ARRAY LONGINT:C221($screenIDs; $screenNumber)
 ARRAY LONGINT:C221($screenWidths; $screenNumber)
 ARRAY LONGINT:C221($screenHeights; $screenNumber)
 
+var $i : Integer
 For ($i; 1; $screenNumber; 1)
 	
 	$screenIDs{$i}:=$i
@@ -47,13 +44,14 @@ For ($i; 1; $screenNumber; 1)
 End for 
 
 // Get the coordinates of the frontmost window
+var $left; $top; $right; $bottom : Integer
 GET WINDOW RECT:C443($left; $top; $right; $bottom; $winRef)
-$width:=$right-$left
-$height:=$bottom-$top
+var $width : Integer:=$right-$left
+var $height : Integer:=$bottom-$top
 
-$buffer:=getWindowOffsets(Window kind:C445($winRef))
-$dH:=($buffer & 0x0FFFF000) >> 16
-$dV:=$buffer & 0xFFFF
+var $winOffset:=getWindowOffsets(Window kind:C445($winRef))
+var $dH : Integer:=($winOffset & 0x0FFFF000) >> 16
+var $dV : Integer:=$winOffset & 0xFFFF
 
 // Get the extremes values
 SORT ARRAY:C229($screenLefts; $screenTops; $screenRights; $screenBottoms; $screenIDs; $screenWidths; $screenHeights)
@@ -73,9 +71,9 @@ If (($left-$dH)<$screenLefts{0})
 	
 End if 
 
-$buffer:=$top
+$winOffset:=$top
 
-If ($buffer<$screenTops{0})
+If ($winOffset<$screenTops{0})
 	
 	// The window is too high
 	$top:=$screenTops{0}+$dV+$offset
@@ -97,66 +95,67 @@ For ($i; 1; $screenNumber; 1)
 			 & ($top<$screenBottoms{$i}))\
 			 | ($top>$screenBottoms{$i})
 			
-			$screen:=$i
+			var $screen:=$i
+			
 			break
 			
 		End if 
 	End if 
 End for 
 
-$menuBarHeight:=Menu bar height:C440*Num:C11($screenIDs{$screen}=$mainScreen)
+var $menuBarHeight : Integer:=Menu bar height:C440*Num:C11($screenIDs{$screen}=$mainScreen)
 
-$buffer:=$screenTops{$screen}+$menuBarHeight+$offset+$dV
+$winOffset:=$screenTops{$screen}+$menuBarHeight+$offset+$dV
 
-If ($top<$buffer)
+If ($top<$winOffset)
 	
-	$top:=$buffer
+	$top:=$winOffset
 	$bottom:=$top+$height
 	
 End if 
 
-$buffer:=$screenRights{$screen}-($offset+$dH)
+$winOffset:=$screenRights{$screen}-($offset+$dH)
 
-If ($right>$buffer)
+If ($right>$winOffset)
 	
 	If ($resize)
 		
 		// Resize the window
-		$right:=$buffer
+		$right:=$winOffset
 		
 	Else 
 		
 		// Try to move the window
-		$buffer:=$right-$buffer+$offset+$dH
+		$winOffset:=$right-$winOffset+$offset+$dH
 		
-		If ($buffer>$screenLefts{$screen})
+		If ($winOffset>$screenLefts{$screen})
 			
 			// Ok, the left stay in the window
-			$left:=$left-$buffer
+			$left:=$left-$winOffset
 			$right:=$left+$width
 			
 		End if 
 	End if 
 End if 
 
-$buffer:=$screenBottoms{$screen}-$offset
+$winOffset:=$screenBottoms{$screen}-$offset
 
-If ($bottom>$buffer)
+If ($bottom>$winOffset)
 	
 	If ($resize)
 		
 		// Resize the window
-		$bottom:=$buffer
+		$bottom:=$winOffset
 		
 	Else 
 		
 		// Try to move the window
-		$buffer:=$bottom-$buffer+$menuBarHeight+$offset+$dH
+		$winOffset:=$bottom-$winOffset+$menuBarHeight+$offset+$dH
 		
-		If ($buffer>$screenTops{$screen})
+		If ($winOffset>$screenTops{$screen})
 			
 			// Ok, the top stay in the window
-			$top:=$top-$buffer
+			$top:=$top-$winOffset
 			$bottom:=$top+$height
 			
 		End if 

@@ -462,7 +462,7 @@ Function init()
 			$ptr->:=$widget.icon
 			
 			// Set the format
-			$o.title:=$widget.name
+			$o.title:=$widget.name || " "
 			$o.picture:=$varName
 			$o.titleVisible:=$default.titleVisible
 			$o.iconVisible:=$default.iconVisible

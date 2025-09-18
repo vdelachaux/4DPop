@@ -480,6 +480,179 @@ Function comment($comment : Text; $attachTo) : cs:C1710.svg
 	$node:=Count parameters:C259=2 ? This:C1470._getContainer($attachTo) : This:C1470.root
 	Super:C1706.comment($node; $comment)
 	
+	//———————————————————————————————————————————————————————————
+	// Define a linear gradient
+Function linearGradient($id : Text; $startColor : Text; $stopColor : Text; $options : Object) : cs:C1710.svg
+	
+	$startColor:=$startColor || "white"
+	$stopColor:=$stopColor || "black"
+	$options:=$options || {}
+	
+	var $defs:=This:C1470._defs()
+	
+	If (This:C1470.success)
+		
+		var $grad:=Super:C1706.create($defs; "linearGradient")
+		
+		If (This:C1470.success)
+			
+			Super:C1706.setAttribute($grad; "id"; $id)
+			
+			If (This:C1470.success)
+				
+				// Gradient vecteur
+				var $rotation : Integer:=Num:C11($options.rotation)
+				
+				Case of 
+						
+						// …………………………………………………………………………………………
+					: ($rotation=0)
+						
+						// Nothing to do
+						
+						// …………………………………………………………………………………………
+					: ($rotation=-45)
+						
+						Super:C1706.setAttributes($grad; {x1: 1; y1: 1; x2: 0; y2: 0})
+						
+						// …………………………………………………………………………………………
+					: ($rotation=45)
+						
+						Super:C1706.setAttributes($grad; {x1: 0; y1: 0; x2: 1; y2: 1})
+						
+						// …………………………………………………………………………………………
+					: ($rotation=90)
+						
+						Super:C1706.setAttributes($grad; {x1: 0; y1: 0; x2: 0; y2: 1})
+						
+						// …………………………………………………………………………………………
+					: ($rotation=-90)
+						
+						Super:C1706.setAttributes($grad; {x1: 0; y1: 1; x2: 0; y2: 0})
+						
+						// …………………………………………………………………………………………
+					: ($rotation=180)
+						
+						Super:C1706.setAttributes($grad; {x1: 0; y1: 0; x2: 1; y2: 0})
+						
+						// …………………………………………………………………………………………
+					: ($rotation=-180)
+						
+						Super:C1706.setAttributes($grad; {x1: 1; y1: 0; x2: 0; y2: 0})
+						
+						// …………………………………………………………………………………………
+					Else 
+						
+						Super:C1706.setAttributes($grad; "gradientTransform"; "rotate("+String:C10($rotation)+")")
+						
+						// …………………………………………………………………………………………
+				End case 
+				
+				// • spreadMethod
+				var $t:=String:C10($options.spreadMethod)
+				
+				If (Length:C16($t)>0)\
+					 && (["pad"; "reflect"; "repeat"].includes($t))
+					
+					Super:C1706.setAttributes($grad; "spreadMethod"; $t)
+					
+				End if 
+				
+				// • color-interpolation
+				$t:=String:C10($options["color-interpolation"])
+				
+				If (Length:C16($t)>0)
+					
+					Super:C1706.setAttributes($grad; "color-interpolation"; $t)
+					
+				End if 
+				
+				If ($options.x1#Null:C1517)\
+					 && ($options.x2#Null:C1517)\
+					 && ($options.y1#Null:C1517)\
+					 && ($options.y2#Null:C1517)
+					
+					For each ($t; ["x1"; "x2"; "y1"; "y2"])
+						
+						var $r : Real:=Num:C11($options[$t])
+						$r:=$r>=1 ? $r/100 : $r
+						
+						Case of 
+								
+								// ______________________________________________________
+							: ($r=0)
+								
+								// Nothing to do
+								
+								// ______________________________________________________
+							: ($r<=1)  // Percent
+								
+								Super:C1706.setAttribute($grad; $t; String:C10($r*100)+"%")
+								
+								// ______________________________________________________
+							Else 
+								
+								Super:C1706.setAttribute($grad; $t; $r)
+								
+								// ______________________________________________________
+						End case 
+					End for each 
+				End if 
+				
+				// Start color
+				$r:=This:C1470._num2Percent(Num:C11($options.startOffset))
+				
+				var $stop:=Super:C1706.create($grad; "stop")
+				Super:C1706.setAttribute($stop; "offset"; String:C10(Int:C8($r))+"%")
+				Super:C1706.setAttribute($stop; "stop-color"; $startColor)
+				
+				If ($options.startOpacity#Null:C1517)
+					
+					Super:C1706.setAttribute($stop; "stop-opacity"; Num:C11($options.startOpacity))
+					
+				End if 
+				
+				// Stop color
+				$r:=This:C1470._num2Percent(Num:C11($options.stopOffset))
+				$r:=$r=0 ? 100 : $r
+				
+				$stop:=Super:C1706.create($grad; "stop")
+				Super:C1706.setAttribute($stop; "offset"; String:C10(Int:C8($r))+"%")
+				Super:C1706.setAttribute($stop; "stop-color"; $stopColor || "none")
+				
+				If ($options.stopOpacity#Null:C1517)
+					
+					Super:C1706.setAttribute($stop; "stop-opacity"; Num:C11($options.stopOpacity))
+					
+				End if 
+			End if 
+			
+		Else 
+			
+			This:C1470._pushError("Failed to create the linearGradient: "+$id)
+			
+		End if 
+		
+	Else 
+		
+		This:C1470._pushError("Failed to locate/create the \"defs\" element")
+		
+	End if 
+	
+	// Restore the root as target
+	This:C1470.latest:=This:C1470.root
+	
+	return This:C1470
+	
+	//*** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+	// Given a real number between >=0 and <=1, return an integer between >=0 and <=100.
+Function _num2Percent($value : Real) : Integer
+	
+	$value:=$value<0 ? 0 : $value
+	$value:=$value<0.9999999999999 ? $value*100 : $value
+	
+	return $value>100 ? 100 : $value
+	
 	//MARK:-DRAWING
 	//———————————————————————————————————————————————————————————
 	// Defines the following coordinates as absolute 

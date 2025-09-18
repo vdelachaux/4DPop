@@ -9,6 +9,8 @@ property order : Integer
 property index : Integer
 property width : Integer
 
+property iconShape:="circle"  // "square"
+
 Class constructor($component : Object; $manifest : Object)
 	
 	var $item; $key : Text
@@ -188,17 +190,43 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 			
 			// Create a 4-state button
 			CREATE THUMBNAIL:C679($media; $pict; $size; $size)
-			COMBINE PICTURES:C987($media; $pict; Vertical concatenation:K61:9; $pict; 0; $size)
-			COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*2)
-			TRANSFORM PICTURE:C988($pict; Fade to grey scale:K61:6)
-			COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*3)
 			
-			TRANSFORM PICTURE:C988($media; Crop:K61:7; 0; 0; $size; $size)
+			var $svg:=cs:C1710.svg.new()
 			
-			var $svg : cs:C1710.svg:=cs:C1710.svg.new()
-			$svg.square($size).radius(10)
-			$svg.clipPath("mask")
-			$svg.image($media)
+			If (Is macOS:C1572)
+				
+				If (This:C1470.iconShape="circle")
+					
+					$svg.circle(($size/2)-2; $size/2; $size/2)
+					
+				Else 
+					
+					$svg.square($size).radius(10)
+					
+				End if 
+				
+				$svg.clipPath("mask")
+				$svg.linearGradient("liquidGlass"; "white"; ""; {rotation: 45})
+				$svg.image($pict).opacity(0.8)
+				
+				If (This:C1470.iconShape="circle")
+					
+					$svg.circle(($size/2)-2; $size/2; $size/2).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(2)
+					
+				Else 
+					
+					$svg.square($size).radius(10).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(2)
+					
+				End if 
+				
+			Else 
+				
+				$svg.square($size).radius(10)
+				$svg.clipPath("mask")
+				$svg.image($pict)
+				
+			End if 
+			
 			$media:=$svg.picture()
 			
 			CONVERT PICTURE:C1002($media; ".png")

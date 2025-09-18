@@ -17,20 +17,25 @@
 	"⚙️ MACROS": {},
 	"👥 NAMESPACE": {
 		"groups": [
+			"👩‍💻 UI",
 			"database",
 			"env"
 		],
 		"classes": [
 			"coord",
-			"menu",
-			"menuBar",
 			"motor",
+			"os",
 			"Preferences",
-			"svg",
 			"xml"
 		]
 	},
-	"👩‍💻 UI": {},
+	"👩‍💻 UI": {
+		"classes": [
+			"menu",
+			"menuBar",
+			"svg"
+		]
+	},
 	"📦 MAIN": {
 		"methods": [
 			"_STRIP_Controller",
@@ -64,6 +69,7 @@
 	},
 	"env": {
 		"methods": [
+			"envNonThreadSafe",
 			"envScreens"
 		],
 		"classes": [
