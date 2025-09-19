@@ -9,8 +9,6 @@ property order : Integer
 property index : Integer
 property width : Integer
 
-property iconShape:="circle"  // "square"
-
 Class constructor($component : Object; $manifest : Object)
 	
 	var $item; $key : Text
@@ -195,29 +193,10 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 			
 			If (Is macOS:C1572)
 				
-				If (This:C1470.iconShape="circle")
-					
-					$svg.circle(($size/2)-2; $size/2; $size/2)
-					
-				Else 
-					
-					$svg.square($size).radius(10)
-					
-				End if 
-				
-				$svg.clipPath("mask")
-				$svg.linearGradient("liquidGlass"; "white"; ""; {rotation: 45})
+				$svg.square($size).radius(15).clipPath("mask")
+				$svg.linearGradient("liquidGlass"; "white"; ""; {rotation: 90})
 				$svg.image($pict).opacity(0.8)
-				
-				If (This:C1470.iconShape="circle")
-					
-					$svg.circle(($size/2)-2; $size/2; $size/2).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(2)
-					
-				Else 
-					
-					$svg.square($size).radius(10).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(2)
-					
-				End if 
+				$svg.square($size).radius(15).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(2).strokeOpacity(0.5)
 				
 			Else 
 				

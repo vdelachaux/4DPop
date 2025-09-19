@@ -6486,9 +6486,6 @@
 			],
 			"Summary": ""
 		},
-		"iconShape": {
-			"Syntax": "iconShape : Text"
-		},
 		"width": {
 			"Syntax": "width : Integer"
 		},

@@ -13,14 +13,14 @@ If (Process info:C1843($p).name="$4DPop")
 		
 		CLEAR VARIABLE:C89(strip)
 		
-		// Allow errors and assertions
+		// Allow all errors and assertions
 		ON ERR CALL:C155(""; ek global:K92:2)
 		SET ASSERT ENABLED:C1131(True:C214; *)
 		
 	Else 
 		
 		// Hide all errors
-		ON ERR CALL:C155(Formula:C1597(noError).source; ek global:K92:2)
+		ON ERR CALL:C155(Formula:C1597(noError).source; ek local:K92:1)
 		
 	End if 
 	
