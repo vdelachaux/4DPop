@@ -1,0 +1,68 @@
+{
+  "dependencies": {
+    "4DPop": {
+      "github": "vdelachaux/4DPop",
+      "version": "4d"
+    },
+    "4DPop AppMaker": {
+      "github": "vdelachaux/4DPop-AppMaker",
+      "version": "4d"
+    },
+    "4DPop Git": {
+      "github": "vdelachaux/4DPop-Git",
+      "version": "4d"
+    },
+    "4DPop Macros": {
+      "github": "vdelachaux/4DPop-Macros",
+      "version": "4d"
+    },
+    "4DPop QuickOpen": {
+      "github": "vdelachaux/4DPop-QuickOpen",
+      "version": "4d"
+    },
+    "4DPop XLIFF Pro": {
+      "github": "vdelachaux/4DPop-XLIFF-Pro",
+      "version": "4d"
+    },
+    "4DPop Bookmarks": {
+      "github": "vdelachaux/4DPop-Bookmarks",
+      "version": "4d"
+    },
+    "4DPop ColorChart": {
+      "github": "vdelachaux/4DPop-ColorChart",
+      "version": "4d"
+    },
+    "4DPop Commands": {
+      "github": "vdelachaux/4DPop-Commands",
+      "version": "4d"
+    },
+    "4DPop Constants Editor": {
+      "github": "vdelachaux/4DPop-Constants-Editor",
+      "version": "4d"
+    },
+    "4DPop Image Buddy": {
+      "github": "vdelachaux/4DPop-Image-Buddy",
+      "version": "4d"
+    },
+    "4DPop KeepIt": {
+      "github": "vdelachaux/4DPop-KeepIt",
+      "version": "4d"
+    },
+    "4DPop Pasteboard": {
+      "github": "vdelachaux/4DPop-Pasteboard",
+      "version": "4d"
+    },
+    "4DPop Rulers": {
+      "github": "vdelachaux/4DPop-Rulers",
+      "version": "4d"
+    },
+    "4DPop sqlSchemas": {
+      "github": "vdelachaux/4DPop-sqlSchemas",
+      "version": "4d"
+    },
+    "4DPop Window": {
+      "github": "vdelachaux/4DPop-Window",
+      "version": "4d"
+    }
+  }
+}

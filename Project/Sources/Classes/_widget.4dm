@@ -208,8 +208,6 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 			
 			$media:=$svg.picture()
 			
-			CONVERT PICTURE:C1002($media; ".png")
-			
 			CREATE THUMBNAIL:C679($media; $pict; $size; $size)
 			COMBINE PICTURES:C987($media; $pict; Vertical concatenation:K61:9; $pict; 0; $size)
 			COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*2)
