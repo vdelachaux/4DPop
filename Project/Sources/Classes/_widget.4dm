@@ -198,7 +198,7 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 				$svg.square($size).radius(20).clipPath("mask")
 				$svg.linearGradient("liquidGlass"; "white"; ""; {rotation: 90})
 				$svg.image($pict).opacity(0.8)
-				$svg.square($size).radius(20).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(2).strokeOpacity(0.5)
+				$svg.square($size-1).radius(20).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(4).strokeOpacity(0.5).position(1.5; 1.5)
 				
 			Else 
 				
