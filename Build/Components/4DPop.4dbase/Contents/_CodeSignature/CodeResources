@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Resources/4DPop Family.json</key>
+		<data>
+		eWkyexGAZIHQxLZFGIEjqwUn+04=
+		</data>
 		<key>Resources/4DPop constants.xlf</key>
 		<data>
 		ADu+oIqb+qfPryoSCzj3jin29Zo=
@@ -94,7 +98,7 @@
 		</data>
 		<key>Resources/InfoPlist.strings</key>
 		<data>
-		9ote+snJDYb3fh5pi7Y5BrsdkNQ=
+		sNDTSWCt0rgypFUo0Vg8RLIPLFY=
 		</data>
 		<key>Resources/Skins/4D/Background.png</key>
 		<data>
@@ -350,6 +354,10 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/logo.png</key>
+		<data>
+		5gqFnTUa7fQtHjkLWi/uBPEkVWo=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -357,28 +365,27 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			ro/hg1KjoOb0SeSHwNEY+NX9l3c=
+			ln/tz4aldAiQ0qUry4r+L/S9ekY=
 			</data>
 			<key>requirement</key>
 			<string>identifier "4DPop.4DZ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = DYRKW64QA9</string>
 		</dict>
 		<key>Libraries/lib4d-arm64.dylib</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Nzd3wmLrXffS7bwWJeLz8jIZi48=
-			</data>
 			<key>hash2</key>
 			<data>
-			DfiYjGjQKaRPfmGtDT7ZuLoSnrr3pnfWV2GhtGXoB44=
+			AfVJduNYhaqgv8POKCLHWWNe46jiyOp7i8X2r87v44g=
+			</data>
+		</dict>
+		<key>Resources/4DPop Family.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			02p0uf2aSNp291oK5EAfPiXEovMmZciHIxWuoDRXDPU=
 			</data>
 		</dict>
 		<key>Resources/4DPop constants.xlf</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ADu+oIqb+qfPryoSCzj3jin29Zo=
-			</data>
 			<key>hash2</key>
 			<data>
 			a5ARQNhH7HO8Qf5VB73vzEYsoURRHKkVw11TkVUTP+A=
@@ -386,10 +393,6 @@
 		</dict>
 		<key>Resources/Common/4d.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hZjxJH26JwMpntKPURx3rBIjRd4=
-			</data>
 			<key>hash2</key>
 			<data>
 			V+UBQy3O/S90VrWU3PdFRv+OzYmghFeuPtT7bQLTEN8=
@@ -397,10 +400,6 @@
 		</dict>
 		<key>Resources/Common/Index.html</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			lNVKIJi8/afl+0HKkgAdFMzOBa0=
-			</data>
 			<key>hash2</key>
 			<data>
 			HcbKi3Y+mdwTB6hHGw4z2YBc/ZDGnFmw+KQaiyZdKzo=
@@ -408,10 +407,6 @@
 		</dict>
 		<key>Resources/Common/Localisation.html</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			r66icf2Bq8m1Uw8oeOIuGzvEbyI=
-			</data>
 			<key>hash2</key>
 			<data>
 			IP0G4+7wsbNmpTZTTGumluaYQw+RM8V+F0Zm/vPp550=
@@ -419,10 +414,6 @@
 		</dict>
 		<key>Resources/Common/close.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xxDQm7UmU1r2wOEfihuLO9AXq7o=
-			</data>
 			<key>hash2</key>
 			<data>
 			hRWodPzp30qD4JUpStl0kDfBcdej+YrCeeLphA8G+8g=
@@ -430,10 +421,6 @@
 		</dict>
 		<key>Resources/Common/de.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			HwQPY3D3so5rBuV4riX9s+4PCgM=
-			</data>
 			<key>hash2</key>
 			<data>
 			Lr7DJMocOPVKnuB6ETQp4X/mX45m5JblR53rohN6zyc=
@@ -441,10 +428,6 @@
 		</dict>
 		<key>Resources/Common/dropComponent.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			LlvL2CJiWAIwRWx39eJHIAOIKp8=
-			</data>
 			<key>hash2</key>
 			<data>
 			c9jBc0+4ZZtJH0MuZHb8hSoYFsWydnFbVSlNN0RN3xU=
@@ -452,10 +435,6 @@
 		</dict>
 		<key>Resources/Common/fr.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Sv34z6X34izeBk3AY9Qn92ZSK0o=
-			</data>
 			<key>hash2</key>
 			<data>
 			RR0+Tc7HHPVZoa1Tn4twqZRekGxkMJqn1ikKVxIGQ5M=
@@ -463,10 +442,6 @@
 		</dict>
 		<key>Resources/Common/ja.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ZZpItQ3KP6Z2PlgHmpQJKyi/phg=
-			</data>
 			<key>hash2</key>
 			<data>
 			paf4sziTrgiWvyx5U+NmhLpufT6mdlZcF9L+vfmYLqk=
@@ -474,10 +449,6 @@
 		</dict>
 		<key>Resources/Common/lang.js</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/2mXrdBKpkEa9+6lhVxENTwLr1k=
-			</data>
 			<key>hash2</key>
 			<data>
 			5zms81wJ21jdJzGY0VZVOcF8hKt7U9r21kP3R/PNHX0=
@@ -485,10 +456,6 @@
 		</dict>
 		<key>Resources/Common/movie.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xfxhbY5cT/6CNkhf341Le/uklcY=
-			</data>
 			<key>hash2</key>
 			<data>
 			QMAdZifxdOovhoDcy699z7LPzFJO7GFNMOWhnnl+ogg=
@@ -496,10 +463,6 @@
 		</dict>
 		<key>Resources/Common/none.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			SIiVPb8TuaPgqyt6+Thj2fqcgjc=
-			</data>
 			<key>hash2</key>
 			<data>
 			clG0EM3uq0nT9lrdWb6TLpPiIWpI9phRzBgTAXXNS8o=
@@ -507,10 +470,6 @@
 		</dict>
 		<key>Resources/Common/palette.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			HtQTOuRlIcb5pagzuOBk99dSBfE=
-			</data>
 			<key>hash2</key>
 			<data>
 			DmItTa1yDwYmwy/K8NlEsWHSiOy9qDyWArHJo5nBflw=
@@ -518,10 +477,6 @@
 		</dict>
 		<key>Resources/Common/sp.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			50WGtvXeDlxhbfoI62nS4jEINx8=
-			</data>
 			<key>hash2</key>
 			<data>
 			Oiz31YnCV834p353qOf9snVCcGK51wQLAxhBPpXfr/U=
@@ -529,10 +484,6 @@
 		</dict>
 		<key>Resources/Common/style.css</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			mW1avF9c2NWQsGlgLrSMGKAk/KM=
-			</data>
 			<key>hash2</key>
 			<data>
 			ZzfYDh2N8FXHxzqN3ygTdAEbln6MYuSwPZwUhbp1Bn0=
@@ -540,10 +491,6 @@
 		</dict>
 		<key>Resources/Common/us.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			FmyzEyO9qQgFh4Fh59ky12QNFAw=
-			</data>
 			<key>hash2</key>
 			<data>
 			Bb18+CfEJf6biGQ1b/mCUNlWHB4Cn7z3BQAQz0eZKeA=
@@ -551,10 +498,6 @@
 		</dict>
 		<key>Resources/Components.html</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			nGrF8WKnublpSylBID/5MWWkFEg=
-			</data>
 			<key>hash2</key>
 			<data>
 			z+S2si3Jlkby2hau5j7WKZa6FLmDhVl1ttAlCyiONic=
@@ -562,10 +505,6 @@
 		</dict>
 		<key>Resources/Images/4DPop.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			5gqFnTUa7fQtHjkLWi/uBPEkVWo=
-			</data>
 			<key>hash2</key>
 			<data>
 			u3+fWxy3Se6VnkzDoPpwSwVtBXcqvWaob0PzmpOA5zw=
@@ -573,10 +512,6 @@
 		</dict>
 		<key>Resources/Images/black40.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			DyPLgM9tXVopXEdEOzpQLait/o8=
-			</data>
 			<key>hash2</key>
 			<data>
 			XWKzPQmv+CvFqu+eMExoSqJ4YK7w2dKbnJnET5TMA5s=
@@ -584,10 +519,6 @@
 		</dict>
 		<key>Resources/Images/cartoons.gif</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			3KU0yRh7vMAdMCszo2625eZ2ulM=
-			</data>
 			<key>hash2</key>
 			<data>
 			Py0EwDzFQ9jETxFnbNrUIw0v51198al1QUy0tHlcBqY=
@@ -595,10 +526,6 @@
 		</dict>
 		<key>Resources/Images/verticalHandle.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			QnefJsdpdm/z2C22rciDusgxZjs=
-			</data>
 			<key>hash2</key>
 			<data>
 			IoWSWLN0soV2OwtVGwrrPsYhxHG8r50Zg4y1Si7EObo=
@@ -606,10 +533,6 @@
 		</dict>
 		<key>Resources/Images/white_50.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			9G3Tj65DqxNdlIRWvxV9nDE3qyA=
-			</data>
 			<key>hash2</key>
 			<data>
 			yRrQT29zNMRqvwwaH6VG+LuzD8OB7sUBr/pJazmlTbo=
@@ -617,21 +540,13 @@
 		</dict>
 		<key>Resources/InfoPlist.strings</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			9ote+snJDYb3fh5pi7Y5BrsdkNQ=
-			</data>
 			<key>hash2</key>
 			<data>
-			LJqqY23BlgU2ek4ESgH3rQCndvOCaPbE/NcMvEfwkuU=
+			LfIgTQa8GM9HpjlkptKEAf4C4TP5aRaaY3G7HVZxoTE=
 			</data>
 		</dict>
 		<key>Resources/Skins/4D/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			lbuwkW5msrLWGhua4X3gFa6a67M=
-			</data>
 			<key>hash2</key>
 			<data>
 			ZBwUXjCoJbO2zNanCpx+tm/brZn3ZTYM/A3q2gGX6E0=
@@ -639,10 +554,6 @@
 		</dict>
 		<key>Resources/Skins/4D/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			0QnusT/70Pm815wsbO83KkO5bXc=
-			</data>
 			<key>hash2</key>
 			<data>
 			lYOeE66qaG1ePVD4YbelBo19JCtqF49C18MbnSX/ngM=
@@ -650,10 +561,6 @@
 		</dict>
 		<key>Resources/Skins/Cologne Blue/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Wztidxd41LCsuUiAsWzCcONNuUU=
-			</data>
 			<key>hash2</key>
 			<data>
 			cZH7UWAvUpSVVtT6TqizaovjR7vwDCEbhbWz7dLvXPM=
@@ -661,10 +568,6 @@
 		</dict>
 		<key>Resources/Skins/Cologne Blue/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			SqZOEGXczCrcmUjFywq3AIlbg1Q=
-			</data>
 			<key>hash2</key>
 			<data>
 			lTTMAkQwtO6NbLUwyB8GzUh1kLcvPlnNqAVjdrtQCNM=
@@ -672,10 +575,6 @@
 		</dict>
 		<key>Resources/Skins/Dark Blue/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			IlrJfWGLZz/kWbFcKkgYLQd7wDw=
-			</data>
 			<key>hash2</key>
 			<data>
 			osXlxt8FNwDaHTDkYC4djowd2qJ5xi/eCcSzuuzV0lY=
@@ -683,10 +582,6 @@
 		</dict>
 		<key>Resources/Skins/Dark Blue/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			iVxU1jR0yzkio9EVAnzjW2rYBqU=
-			</data>
 			<key>hash2</key>
 			<data>
 			YNmQd6M+CzTmBX7Ky4f+5lbtb8hquMwkDNwBdP3cpDU=
@@ -694,10 +589,6 @@
 		</dict>
 		<key>Resources/Skins/Default (Dark)/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			atCKLxnHe25cKgMnTuMmIl6AeTo=
-			</data>
 			<key>hash2</key>
 			<data>
 			V9rlBH+bAIkCgfY2MUUJDQDF13bqOoEyew3AP8tw6ZU=
@@ -705,10 +596,6 @@
 		</dict>
 		<key>Resources/Skins/Default (Dark)/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			MTTYR1xMty/W/ZpBVbjSkNyfoqs=
-			</data>
 			<key>hash2</key>
 			<data>
 			sX9+MH++rHz2b+EekBt2J4e1ePIQbwv3arj1P7OUuNg=
@@ -716,10 +603,6 @@
 		</dict>
 		<key>Resources/Skins/Default/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			7YP1eFP5ESTmbYAHTBBx+1MhANI=
-			</data>
 			<key>hash2</key>
 			<data>
 			s73sNwgGHrm8j8Ig0zff/g5zLGTWferyO7GuXnH4CV8=
@@ -727,10 +610,6 @@
 		</dict>
 		<key>Resources/Skins/Default/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			0QnusT/70Pm815wsbO83KkO5bXc=
-			</data>
 			<key>hash2</key>
 			<data>
 			lYOeE66qaG1ePVD4YbelBo19JCtqF49C18MbnSX/ngM=
@@ -738,10 +617,6 @@
 		</dict>
 		<key>Resources/Skins/Flat/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			0BcLzan9DXe5iZD0ohII/7WdHZ4=
-			</data>
 			<key>hash2</key>
 			<data>
 			aT4GuF+UnNqd53HTnnBZEPf2D9S9zpjZAMFUewKXOHY=
@@ -749,10 +624,6 @@
 		</dict>
 		<key>Resources/Skins/Flat/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			SqZOEGXczCrcmUjFywq3AIlbg1Q=
-			</data>
 			<key>hash2</key>
 			<data>
 			lTTMAkQwtO6NbLUwyB8GzUh1kLcvPlnNqAVjdrtQCNM=
@@ -760,10 +631,6 @@
 		</dict>
 		<key>Resources/Skins/Grass 2/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			4tJXkjOzjxnhi5ipT1qM/TQhEq8=
-			</data>
 			<key>hash2</key>
 			<data>
 			vRPvrn2VIxVQG/IrEi2NNdBK7xRudXd+Dapmqd8tfho=
@@ -771,10 +638,6 @@
 		</dict>
 		<key>Resources/Skins/Grass 2/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			JhUsiQcVd/gMgZ2ZKx0EzrduYpY=
-			</data>
 			<key>hash2</key>
 			<data>
 			3lz/u6I1VQWMLZHkO+YhuSCCtF6Qffgu7LzzZm5rfwk=
@@ -782,10 +645,6 @@
 		</dict>
 		<key>Resources/Skins/Grass/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			3Ai2xQw+/brnOiLfFLodwUd1kMc=
-			</data>
 			<key>hash2</key>
 			<data>
 			lgLuTTypVT59UpM9/IimpFI72dJu0tMHeS3bGh24rYU=
@@ -793,10 +652,6 @@
 		</dict>
 		<key>Resources/Skins/Grass/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			HLO4aRBEU2NSdYXwefH61qmaf5g=
-			</data>
 			<key>hash2</key>
 			<data>
 			DiLWdSZeyry9YaYPCuNdCOKji3JU/xteB5gIQMy4JSU=
@@ -804,10 +659,6 @@
 		</dict>
 		<key>Resources/Skins/Gray/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			phCKQYrHAgqOQPP7ChN8DFzksF0=
-			</data>
 			<key>hash2</key>
 			<data>
 			hxy1w0qicoeAGfVSBMexMifIWXZQqF1lRLdx/lBsKi4=
@@ -815,10 +666,6 @@
 		</dict>
 		<key>Resources/Skins/Gray/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			iVxU1jR0yzkio9EVAnzjW2rYBqU=
-			</data>
 			<key>hash2</key>
 			<data>
 			YNmQd6M+CzTmBX7Ky4f+5lbtb8hquMwkDNwBdP3cpDU=
@@ -826,10 +673,6 @@
 		</dict>
 		<key>Resources/Skins/Leopard/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			+j741nvACCFx2QbxGeU/pZzKs/w=
-			</data>
 			<key>hash2</key>
 			<data>
 			BjNNpaSdXZI2b03Hbwr9u4B38cJTFY1tQZTNiyHdTdE=
@@ -837,10 +680,6 @@
 		</dict>
 		<key>Resources/Skins/Leopard/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			DRLPERA8pvkr3RPrk5n/St7Qg0s=
-			</data>
 			<key>hash2</key>
 			<data>
 			wYPOKk4cMBddf4A0ZhdBx0AMfD2PGx/vXKbmUR+KqLY=
@@ -848,10 +687,6 @@
 		</dict>
 		<key>Resources/Skins/Light blue/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			T5aTeRa4PF4IMHL5/vAW64BxEOE=
-			</data>
 			<key>hash2</key>
 			<data>
 			3P1hl5jgblUjrZm3sawI5OxPYuhcOIy3K0pyMfTr0Js=
@@ -859,10 +694,6 @@
 		</dict>
 		<key>Resources/Skins/Light blue/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			nqunw4QfKXNCQV6ctUd1+iLCEBI=
-			</data>
 			<key>hash2</key>
 			<data>
 			p7+yhxgaVNx084OrSVVT6L+VDAar6GipFDyw+35MVxE=
@@ -870,10 +701,6 @@
 		</dict>
 		<key>Resources/Skins/Metal/Background.tiff</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			vRcxdtC1x8zLKnM5sZ++4VymRBI=
-			</data>
 			<key>hash2</key>
 			<data>
 			qzv4CS13+v7S/z9i7YblR9RZK4lvfuwvGc4Ba54rpmo=
@@ -881,10 +708,6 @@
 		</dict>
 		<key>Resources/Skins/Metal/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			17mNS+uCRcNjhQFz9cKhVRWOx+M=
-			</data>
 			<key>hash2</key>
 			<data>
 			2SD/fuMEJJmQFjNrBayWA+QBa7qrKC9TqxobL+SAY98=
@@ -892,10 +715,6 @@
 		</dict>
 		<key>Resources/Skins/New/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			IhRMLfOs3ocqnnFYzLVKOtSOhO0=
-			</data>
 			<key>hash2</key>
 			<data>
 			9KAc3Sx0+mS6MoAqg0+SOJzwekYpFsBGeA5dzFmd8Vk=
@@ -903,10 +722,6 @@
 		</dict>
 		<key>Resources/Skins/New/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			wRAOxCXF83wFT6OzProGm/P9ZUo=
-			</data>
 			<key>hash2</key>
 			<data>
 			Y3QEN/TqtiGJZzHMbVhnPtLZLSz3uxx9+iHrMGj/7Hk=
@@ -914,10 +729,6 @@
 		</dict>
 		<key>Resources/Skins/Nostalgia/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			l/34tFjPQjK1zyQfLuDtppFI2/c=
-			</data>
 			<key>hash2</key>
 			<data>
 			kMVKyXfRQNjQO/TV0f/Tquok/JQl2UntB9kwg1wRFh4=
@@ -925,10 +736,6 @@
 		</dict>
 		<key>Resources/Skins/OS X/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			0QnusT/70Pm815wsbO83KkO5bXc=
-			</data>
 			<key>hash2</key>
 			<data>
 			lYOeE66qaG1ePVD4YbelBo19JCtqF49C18MbnSX/ngM=
@@ -936,10 +743,6 @@
 		</dict>
 		<key>Resources/Skins/PC/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			iCUHuQUAdUgaUuMIqWoEvAcr/Xg=
-			</data>
 			<key>hash2</key>
 			<data>
 			bk+f1VhUpxTQwXZI8ezsyPtNlW4vIZAmGEyrvYhFrLE=
@@ -947,10 +750,6 @@
 		</dict>
 		<key>Resources/Skins/PC/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			wRAOxCXF83wFT6OzProGm/P9ZUo=
-			</data>
 			<key>hash2</key>
 			<data>
 			Y3QEN/TqtiGJZzHMbVhnPtLZLSz3uxx9+iHrMGj/7Hk=
@@ -958,10 +757,6 @@
 		</dict>
 		<key>Resources/Skins/Push/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			uwhgqCPhpEchu0cgDsrZsuUAgF8=
-			</data>
 			<key>hash2</key>
 			<data>
 			qMAgsBKXT9OLVr3gW4pZXgDfilYA7lG1D6ndP21HtRE=
@@ -969,10 +764,6 @@
 		</dict>
 		<key>Resources/Skins/Rayed/Background.gif</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/RgVO4mJTZOlMufDJINHuwJMm7o=
-			</data>
 			<key>hash2</key>
 			<data>
 			woaQdUXkdhwT1/U05FCh/xKWV70hEVLWY1TCfIbMAxU=
@@ -980,10 +771,6 @@
 		</dict>
 		<key>Resources/Skins/Rayed/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xymqtJ9PgF4QFkKkr5j+IKl6zZk=
-			</data>
 			<key>hash2</key>
 			<data>
 			jz1fdeM2rMLvsu72F12vEtvaekQXBYLqjnnVZ6fLW7g=
@@ -991,10 +778,6 @@
 		</dict>
 		<key>Resources/Skins/Vista/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xfN6RNEDNYNkASO0VeLpMqoBTKE=
-			</data>
 			<key>hash2</key>
 			<data>
 			xsm9OG+EdMb0bAU+zRDhlA6DLS5OVA0FqfAbgkiKCpc=
@@ -1002,10 +785,6 @@
 		</dict>
 		<key>Resources/Skins/Vista/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			yHY7kZa4oykT5fXXoz3F8vDwoNY=
-			</data>
 			<key>hash2</key>
 			<data>
 			fiRU/YWjaE1H518sFu8CF3vQDOqdnyfqYuHuyI25JkQ=
@@ -1013,10 +792,6 @@
 		</dict>
 		<key>Resources/Skins/XP/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			TsQAsFnqedNYSWvwflCpamHRIHQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			u2EmbyD97V50A1ncFpBccR7zPO5GPz0if/WeTlQIpwY=
@@ -1024,10 +799,6 @@
 		</dict>
 		<key>Resources/Skins/XP/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			rZL8w+UKAalbiJjKJReIedN516w=
-			</data>
 			<key>hash2</key>
 			<data>
 			u/8wMur38G4HfjJ31Mj8noATodvuS6so28ObIlS+j2k=
@@ -1035,10 +806,6 @@
 		</dict>
 		<key>Resources/Skins/iOS/Background.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			kDhxaDk6PyDqjOi0ftfiedByvhQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			iWFzq3+el8HNQqkMT8Ad0hqQyZSu8YX22sQIak9qgIQ=
@@ -1046,10 +813,6 @@
 		</dict>
 		<key>Resources/Skins/iOS/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			aQJ3BQwaRt5ENLLTyTSYGuoHuqU=
-			</data>
 			<key>hash2</key>
 			<data>
 			OWA/NqQyETBuLTWZbZctWHGAKtEN/9AcduHWpWglHso=
@@ -1057,10 +820,6 @@
 		</dict>
 		<key>Resources/Skins/v11/Background.tif</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/x+n//7EUVYsYfdWcYM74P0CG+w=
-			</data>
 			<key>hash2</key>
 			<data>
 			Z8WoLUIADi6OELcpofz6W5sXcHDF6L6UgsvlNgkOGuw=
@@ -1068,10 +827,6 @@
 		</dict>
 		<key>Resources/Skins/v11/skin.xml</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			XCJjivTDMj+xYKmiwyXaR/osdNc=
-			</data>
 			<key>hash2</key>
 			<data>
 			zX6Mk07Be/5sB4/t0i8SHzkmAFRJFSVIR5kptByrlKQ=
@@ -1079,10 +834,6 @@
 		</dict>
 		<key>Resources/en.lproj/4DPop.xlf</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			mmdj7apDDZpQmgL/auHBDFiudMw=
-			</data>
 			<key>hash2</key>
 			<data>
 			4f0ovWFLHjCTzLZosV6eRZOtwPXlYeH0Icajqi3YVDY=
@@ -1092,10 +843,6 @@
 		</dict>
 		<key>Resources/en.lproj/help.html</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/TcY5RvMr556RH8ydVxNxGeodI0=
-			</data>
 			<key>hash2</key>
 			<data>
 			oZd9oUoCdodYqvQr24GIuUrcZeu/v7hr9Vn4/tZj7Ik=
@@ -1105,10 +852,6 @@
 		</dict>
 		<key>Resources/en.lproj/help.md</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/q1uRjRvY10zbS1UWjFCEQKtgYc=
-			</data>
 			<key>hash2</key>
 			<data>
 			X1xjk/WxO15AZ9l7vGyPfiSw9NkaPc/OBcYEz3e4Z38=
@@ -1118,10 +861,6 @@
 		</dict>
 		<key>Resources/en.lproj/syntaxEN.json</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			MS3MBnUIXEG6lOpB4c2N3A/Fu7I=
-			</data>
 			<key>hash2</key>
 			<data>
 			tmzKVqNIgs0gRUSZzyToD9NDwrKrnLa4iJz+ERYeAA4=
@@ -1131,10 +870,6 @@
 		</dict>
 		<key>Resources/fr.lproj/4DPop.xlf</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			B5Mss3Aag9JRlFUYt3FqzOsVGMg=
-			</data>
 			<key>hash2</key>
 			<data>
 			JWMvu7SF9WzGerXskFNODRAlLOyLJ8SHuARF+eWFcFU=
@@ -1144,10 +879,6 @@
 		</dict>
 		<key>Resources/fr.lproj/help.html</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			5zxJnjAQnR5ccFka5CO+OzeUH24=
-			</data>
 			<key>hash2</key>
 			<data>
 			nFBA2lQtbeBSFaNDYOKrOCaOonTE9GTVhiJ066jqjxQ=
@@ -1157,10 +888,6 @@
 		</dict>
 		<key>Resources/fr.lproj/images/Assistant_1.png</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ShwFZ8/GVdmg4vRB93js0ESE+ck=
-			</data>
 			<key>hash2</key>
 			<data>
 			g/THKeFRlbd7qBnStyWNMDUtjCahnapAI2AyQKs6cWY=
@@ -1170,10 +897,6 @@
 		</dict>
 		<key>Resources/fr.lproj/images/skin.jpg</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			LccXOVHaPpRKhrG90TyNYOQHot8=
-			</data>
 			<key>hash2</key>
 			<data>
 			YzQlLTvQRbMvhiLClW7H6MeV0H0grl4gHngtk1DLwlI=
@@ -1183,10 +906,6 @@
 		</dict>
 		<key>Resources/ja.lproj/4DPop.xlf</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			6rF14qwes9gj1xVPZ0xQ9TZEcKU=
-			</data>
 			<key>hash2</key>
 			<data>
 			5dwF9/uYOIZFzu2N0vJaOMEJw5yWn6wJW53Cs/kYHhQ=
@@ -1196,16 +915,19 @@
 		</dict>
 		<key>Resources/ja.lproj/help.html</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			G1ND8hsA1+ex79Xu7xcWO2ymEg8=
-			</data>
 			<key>hash2</key>
 			<data>
 			hUiejuMc7SmhXUiZhS0euJsHJfWLJdT1CxvHf58fE8w=
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>Resources/logo.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			u3+fWxy3Se6VnkzDoPpwSwVtBXcqvWaob0PzmpOA5zw=
+			</data>
 		</dict>
 	</dict>
 	<key>rules</key>

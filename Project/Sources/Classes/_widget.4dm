@@ -186,6 +186,8 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 		
 		If (Bool:C1537(OK))
 			
+			$size*=2
+			
 			// Create a 4-state button
 			CREATE THUMBNAIL:C679($media; $pict; $size; $size)
 			
@@ -193,10 +195,10 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 			
 			If (Is macOS:C1572)
 				
-				$svg.square($size).radius(15).clipPath("mask")
+				$svg.square($size).radius(20).clipPath("mask")
 				$svg.linearGradient("liquidGlass"; "white"; ""; {rotation: 90})
 				$svg.image($pict).opacity(0.8)
-				$svg.square($size).radius(15).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(2).strokeOpacity(0.5)
+				$svg.square($size).radius(20).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(2).strokeOpacity(0.5)
 				
 			Else 
 				
@@ -207,6 +209,8 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 			End if 
 			
 			$media:=$svg.picture()
+			
+			$size/=2
 			
 			CREATE THUMBNAIL:C679($media; $pict; $size; $size)
 			COMBINE PICTURES:C987($media; $pict; Vertical concatenation:K61:9; $pict; 0; $size)
