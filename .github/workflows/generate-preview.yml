@@ -1,10 +1,18 @@
 name: Generate Preview PDF
 
 on:
-  push:
-    workflow_dispatch:
-    tags:
-      - '*'   # Déclenché sur tous les tags
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Titre du bundle (optionnel, par défaut: repo name)'
+        required: false
+        default: ''
+      version:
+        description: 'Version du bundle (optionnel, par défaut: tag ou release)'
+        required: false
+        default: ''
+  release:
+    types: [published]  # déclenche lors d’une release publiée
 
 jobs:
   generate-preview:
@@ -14,12 +22,32 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Get repository name and version
+      - name: Set title and version
         id: vars
         run: |
+          INPUT_TITLE="${{ github.event.inputs.title }}"
+          INPUT_VERSION="${{ github.event.inputs.version }}"
+
+          # Nom du repo
           REPO_NAME="${GITHUB_REPOSITORY##*/}"
-          TITLE="${REPO_NAME//-/ }"
-          VERSION="${GITHUB_REF##*/}"
+          TITLE="$INPUT_TITLE"
+          VERSION="$INPUT_VERSION"
+
+          # Fallback si inputs vides
+          if [ -z "$TITLE" ]; then
+            TITLE="${REPO_NAME//-/ }"
+          fi
+
+          # Version automatique selon le type de déclencheur
+          if [ -z "$VERSION" ]; then
+            if [ "${GITHUB_EVENT_NAME}" = "release" ]; then
+              VERSION="${GITHUB_REF_NAME}"  # tag de la release
+            elif [[ "$GITHUB_REF" == refs/tags/* ]]; then
+              VERSION="${GITHUB_REF##*/}"
+            else
+              VERSION="dev"
+            fi
+          fi
 
           echo "title=$TITLE" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
@@ -27,12 +55,12 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc librsvg2-bin fonts-dejavu
+          sudo apt-get install -y pandoc wkhtmltopdf fonts-dejavu librsvg2-bin
 
       - name: Prepare QuickLook folder
         run: mkdir -p MyBundle/QuickLook
 
-      - name: Generate preview markdown (with SVG)
+      - name: Generate preview markdown
         run: |
           cat <<EOF > preview.md
 ---
