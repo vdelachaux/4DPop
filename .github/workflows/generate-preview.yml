@@ -2,6 +2,7 @@ name: Generate Preview PDF
 
 on:
   push:
+    workflow_dispatch:
     tags:
       - '*'   # Déclenché sur tous les tags
 
