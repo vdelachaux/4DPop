@@ -1,0 +1,62 @@
+name: Generate Preview PDF
+
+on:
+  push:
+    tags:
+      - '*'   # Déclenché sur tous les tags
+
+jobs:
+  generate-preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get repository name and version
+        id: vars
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY##*/}"
+          TITLE="${REPO_NAME//-/ }"
+          VERSION="${GITHUB_REF##*/}"
+
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc librsvg2-bin fonts-dejavu
+
+      - name: Prepare QuickLook folder
+        run: mkdir -p MyBundle/QuickLook
+
+      - name: Generate preview markdown (with SVG)
+        run: |
+          cat <<EOF > preview.md
+---
+title: "${{ steps.vars.outputs.title }}"
+---
+
+<img src="Contents/Resources/logo.svg" width="200" />
+
+# ${{ steps.vars.outputs.title }}
+
+**Version :** ${{ steps.vars.outputs.version }}
+
+---
+
+Généré automatiquement depuis GitHub Actions.
+EOF
+
+      - name: Generate Preview.pdf
+        run: |
+          pandoc preview.md \
+            --pdf-engine=wkhtmltopdf \
+            -o MyBundle/QuickLook/Preview.pdf
+
+      - name: Upload Preview.pdf artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-pdf
+          path: MyBundle/QuickLook/Preview.pdf
