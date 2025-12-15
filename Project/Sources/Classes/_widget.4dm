@@ -170,9 +170,7 @@ Class constructor($component : Object; $manifest : Object)
 	// Create an icon from the media
 Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Picture
 	
-	var $image; $mask; $rect : Text
-	var $media; $pict : Picture
-	var $height; $width : Integer
+	var $media : Picture
 	
 	If (Not:C34($file.exists))
 		
@@ -182,50 +180,64 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 	
 	If ($file.exists)
 		
-		READ PICTURE FILE:C678($file.platformPath; $media)
+		$size*=2
 		
-		If (Bool:C1537(OK))
+		// Create a 4-state button
+		//CREATE THUMBNAIL($media; $pict; $size; $size)
+		
+		var $svg:=cs:C1710.svg.new()
+		
+		If (Is macOS:C1572)
 			
-			$size*=2
+			$svg.square($size).radius(20).clipPath("mask")
+			$svg.linearGradient("liquidGlass"; "white"; ""; {rotation: 90})
 			
-			// Create a 4-state button
-			CREATE THUMBNAIL:C679($media; $pict; $size; $size)
-			
-			var $svg:=cs:C1710.svg.new()
-			
-			If (Is macOS:C1572)
+			// Place logo
+			If ($file.extension=".svg")  // link
 				
-				$svg.square($size).radius(20).clipPath("mask")
-				$svg.linearGradient("liquidGlass"; "white"; ""; {rotation: 90})
-				$svg.image($pict).opacity(0.8)
-				$svg.square($size-1).radius(20).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(4).strokeOpacity(0.5).position(1.5; 1.5)
+				$svg.square($size).color("darkgray")  // Ensure a colored background
+				$svg.image($file).width($size).height($size)
 				
-			Else 
+			Else   // Embedded 
 				
-				$svg.square($size).radius(10)
-				$svg.clipPath("mask")
-				$svg.image($pict)
-				
-			End if 
-			
-			$media:=$svg.picture()
-			
-			$size/=2
-			
-			CREATE THUMBNAIL:C679($media; $pict; $size; $size)
-			COMBINE PICTURES:C987($media; $pict; Vertical concatenation:K61:9; $pict; 0; $size)
-			COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*2)
-			TRANSFORM PICTURE:C988($pict; Fade to grey scale:K61:6)
-			COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*3)
-			
-			If ($crop)
-				
-				// Keep only the first state
-				TRANSFORM PICTURE:C988($media; Crop:K61:7; 0; 0; $size; $size)
+				READ PICTURE FILE:C678($file.platformPath; $media)
+				var $width : Integer
+				PICTURE PROPERTIES:C457($media; $width; $width)
+				$svg.image($media)/*.opacity(0.8)*/.scale($SIZE/$width)
 				
 			End if 
 			
-			return $media
+			//$svg.image($pict).opacity(0.8)
+			$svg.square($size-1).radius(20).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(4).strokeOpacity(0.5).position(1.5; 1.5)
+			
+		Else 
+			
+			var $pict : Picture
+			CREATE THUMBNAIL:C679($media; $pict; $size; $size)
+			
+			$svg.square($size).radius(10)
+			$svg.clipPath("mask")
+			$svg.image($pict)
 			
 		End if 
+		
+		$media:=$svg.picture()
+		
+		$size/=2
+		
+		CREATE THUMBNAIL:C679($media; $pict; $size; $size)
+		COMBINE PICTURES:C987($media; $pict; Vertical concatenation:K61:9; $pict; 0; $size)
+		COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*2)
+		TRANSFORM PICTURE:C988($pict; Fade to grey scale:K61:6)
+		COMBINE PICTURES:C987($media; $media; Vertical concatenation:K61:9; $pict; 0; $size*3)
+		
+		If ($crop)
+			
+			// Keep only the first state
+			TRANSFORM PICTURE:C988($media; Crop:K61:7; 0; 0; $size; $size)
+			
+		End if 
+		
+		return $media
+		
 	End if 
