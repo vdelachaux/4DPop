@@ -381,7 +381,7 @@ Function display()
 		
 		If ($coord.left#0)
 			
-			$coord.left:=0  //C'est pas vrai si à droite
+			$coord.left:=0  // That's not true on the right
 			$coord.right:=$width
 			
 		End if 

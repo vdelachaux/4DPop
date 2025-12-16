@@ -108,7 +108,8 @@
 						"onLongClick",
 						"onBeginDragOver"
 					],
-					"customBackgroundPicture": "!0"
+					"customBackgroundPicture": "!0",
+					"iconFrames": 1
 				},
 				"dropIndicator": {
 					"type": "picture",
@@ -344,7 +345,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 555,
+	"geometryStamp": 557,
 	"editor": {
 		"activeView": "button",
 		"defaultView": "main",

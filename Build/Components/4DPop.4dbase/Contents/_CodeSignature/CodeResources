@@ -98,7 +98,7 @@
 		</data>
 		<key>Resources/InfoPlist.strings</key>
 		<data>
-		J6lcJFqLFdtVBe40w8PG5ILv5VM=
+		JiJH4NCgeHP6wIoyq0UUsAP32K0=
 		</data>
 		<key>Resources/Skins/4D/Background.png</key>
 		<data>
@@ -304,7 +304,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			B5Mss3Aag9JRlFUYt3FqzOsVGMg=
+			nuC+j3kPm6UI7g5uwJ79hDD4bQ0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -354,9 +354,9 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/logo.png</key>
+		<key>Resources/logo.svg</key>
 		<data>
-		5gqFnTUa7fQtHjkLWi/uBPEkVWo=
+		zViGKH4OiaSiac5RTMtEGw0p5HQ=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -365,7 +365,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			80Sg/BQTW75d6wuEmG1Ji9V/SCI=
+			Yc0kGZPKoj6xQtJjRmFogqaXucs=
 			</data>
 			<key>requirement</key>
 			<string>identifier "4DPop.4DZ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = DYRKW64QA9</string>
@@ -374,7 +374,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			84MSvh5yN88Qf6PRn1TXRgJ9oCc/N6hEA0ORyin+zvc=
+			tgAobe1X1mY3APdzbthsYr1hJkmj1xIWD+N9+ugackg=
 			</data>
 		</dict>
 		<key>Resources/4DPop Family.json</key>
@@ -542,7 +542,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h+E9GokqDEPxWknK1Xip3MKxw7Ejine5T0WP+gQtGpU=
+			g0mlZPzmiitIDoAJJpqPG/snwVMvXSdedoUbiuO1vj0=
 			</data>
 		</dict>
 		<key>Resources/Skins/4D/Background.png</key>
@@ -872,7 +872,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JWMvu7SF9WzGerXskFNODRAlLOyLJ8SHuARF+eWFcFU=
+			GtBiiQrU3lPb/y+ZCeYcD/LT9IKJC6WjgK3IHw8tqIo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -922,11 +922,11 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/logo.png</key>
+		<key>Resources/logo.svg</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			u3+fWxy3Se6VnkzDoPpwSwVtBXcqvWaob0PzmpOA5zw=
+			Li2KNRWWbuvX5Pc7I9myXm/amS0Gb6ZxL/HH4347Lpg=
 			</data>
 		</dict>
 	</dict>
