@@ -202,7 +202,7 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 		If (Is macOS:C1572)
 			
 			$svg.linearGradient("liquidGlass"; "white"; ""; {rotation: 90})
-			$svg.square($size-1).radius(10).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(1).strokeOpacity(0.5).position(1.5; 1.5)
+			$svg.square($size-2).radius(10).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(1).strokeOpacity(0.5).position(1.5; 1.5)
 			
 		End if 
 		
