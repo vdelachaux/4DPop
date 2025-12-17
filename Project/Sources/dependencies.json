@@ -1,9 +1,4 @@
 {
 	"version": 2100,
-	"dependencies": {
-		"svg with classes": {
-			"github": "vdelachaux/svg-with-classes",
-			"version": "4d"
-		}
-	}
+	"dependencies": {}
 }
