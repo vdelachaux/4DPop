@@ -6,15 +6,15 @@
     <key>NSHumanReadableCopyright</key>
     <string>©vdl 2007-2025</string>
     <key>CFBundleVersion</key>
-    <string>301</string>
+    <string>302</string>
     <key>CFBundleDisplayName</key>
     <string>4DPop</string>
     <key>CFBundleShortVersionString</key>
-    <string>21R2</string>
+    <string>21R3</string>
     <key>CFBundleGetInfoString</key>
-    <string>21R2</string>
+    <string>21R3</string>
     <key>CFBundleLongVersionString</key>
-    <string>21R2 (300)</string>
+    <string>21R3 (301)</string>
     <key>CFBundleName</key>
     <string>4DPop</string>
   </dict>

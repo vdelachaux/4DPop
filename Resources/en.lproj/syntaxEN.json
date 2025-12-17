@@ -6461,7 +6461,7 @@
 	},
 	"_widget": {
 		"getIcon()": {
-			"Syntax": "**.getIcon**( *file* : 4D.File; *size* : Integer; *crop* : Boolean ) : Picture",
+			"Syntax": "**.getIcon**( *file* : 4D.File; *size* : Integer ) : Picture",
 			"Params": [
 				[
 					"file",
@@ -6471,11 +6471,6 @@
 				[
 					"size",
 					"Integer",
-					"->"
-				],
-				[
-					"crop",
-					"Boolean",
 					"->"
 				],
 				[
@@ -6497,9 +6492,6 @@
 		},
 		"popup": {
 			"Syntax": "popup : Boolean"
-		},
-		"picture": {
-			"Syntax": "picture : Picture"
 		},
 		"icon": {
 			"Syntax": "icon : Picture"

@@ -1,7 +1,7 @@
 property file; manifest : Object
 property name; default; ondrop; helptip; tool; form; infos; copyright : Text
 property help; plist : 4D:C1709.File
-property icon; picture : Picture
+property icon : Picture
 property popup; visible : Boolean
 property handler : 4D:C1709.Function
 property tools : Collection
@@ -10,10 +10,6 @@ property index : Integer
 property width : Integer
 
 Class constructor($component : Object; $manifest : Object)
-	
-	var $item; $key : Text
-	var $tool : Object
-	var $file : 4D:C1709.File
 	
 	If ($component=Null:C1517)
 		
@@ -51,23 +47,24 @@ Class constructor($component : Object; $manifest : Object)
 		End if 
 	End if 
 	
+	var $key : Text
 	For each ($key; $manifest)
 		
 		Case of 
 				
-				//______________________________________________________
+				// ______________________________________________________
 			: ($key="handler")\
 				 | ($key="initproc")
 				
 				// Already handled
 				
-				//______________________________________________________
+				// ______________________________________________________
 			: ($key="widget")
 				
 				This:C1470.form:=$manifest[$key].name
 				This:C1470.width:=$manifest[$key].width
 				
-				//______________________________________________________
+				// ______________________________________________________
 			: ($key="name")\
 				 | ($key="helptip")
 				
@@ -81,20 +78,19 @@ Class constructor($component : Object; $manifest : Object)
 				
 				If (This:C1470.handler=Null:C1517)
 					
-					// FIXME:ERROR
+					// FIXME: ERROR
 					continue
 					
 				End if 
 				
 				This:C1470[$key]:=This:C1470.handler.call(Null:C1517; ":C991($1)").call(Null:C1517; Delete string:C232($manifest[$key]; 1; 7))
 				
-				//______________________________________________________
+				// ______________________________________________________
 			: ($key="media")
 				
-				This:C1470.picture:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48; True:C214)
-				This:C1470.icon:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48)
+				continue
 				
-				//______________________________________________________
+				// ______________________________________________________
 			: ($key="tools")
 				
 				If (Value type:C1509($manifest.tools)=Is object:K8:27)
@@ -108,17 +104,23 @@ Class constructor($component : Object; $manifest : Object)
 					
 					If (This:C1470.handler#Null:C1517)
 						
-						If (($manifest.tools#Null:C1517) && ($manifest.tools.length>0))
+						If (($manifest.tools#Null:C1517)\
+							 && ($manifest.tools.length>0))
+							
 							
 							This:C1470.popup:=True:C214
 							
+							var $tool : Object
+							
 							For each ($tool; $manifest.tools)
+								
+								var $item : Text
 								
 								For each ($item; $tool)
 									
 									Case of 
 											
-											//………………………………………………………………………………
+											// ………………………………………………………………………………
 										: ($item="name")
 											
 											If ($item="-")\
@@ -135,18 +137,7 @@ Class constructor($component : Object; $manifest : Object)
 												
 											End if 
 											
-											//………………………………………………………………………………
-										: ($item="picture")
-											
-											$file:=$component.file("Resources/"+$tool.picture)
-											
-											If ($file.exists)
-												
-												$tool.picture_path:=$file.platformPath
-												
-											End if 
-											
-											//………………………………………………………………………………
+											// ………………………………………………………………………………
 									End case 
 								End for each 
 								
@@ -157,18 +148,43 @@ Class constructor($component : Object; $manifest : Object)
 					End if 
 				End if 
 				
-				//______________________________________________________
+				// ______________________________________________________
 			Else 
 				
 				This:C1470[$key]:=$manifest[$key]
 				
-				//______________________________________________________
+				// ______________________________________________________
 		End case 
 	End for each 
 	
+	var $path : Text
+	For each ($path; [\
+		"logo.svg"; \
+		"logo.png"; \
+		"Resources/logo.svg"; \
+		"Resources/logo.png"])
+		
+		var $file : 4D:C1709.File:=$component.file($path)
+		
+		If (Not:C34($file.exists))
+			
+			continue
+			
+		End if 
+		
+		If ($file.extension=".svg")\
+			 || ($file.extension=".png")
+			
+			break
+			
+		End if 
+	End for each 
+	
+	This:C1470.icon:=This:C1470.getIcon($file; 48)
+	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Create an icon from the media
-Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Picture
+Function getIcon($file : 4D:C1709.File; $size : Integer) : Picture
 	
 	var $media : Picture
 	
@@ -199,10 +215,11 @@ Function getIcon($file : 4D:C1709.File; $size : Integer; $crop : Boolean) : Pict
 			
 		End if 
 		
-		If (Is macOS:C1572)
+		If (Is macOS:C1572)\
+			 & ($file.fullName#"Plugin.png") & False:C215
 			
-			$svg.linearGradient("liquidGlass"; "white"; ""; {rotation: 90})
-			$svg.square($size-2).radius(10).fill("url(#liquidGlass)").fillOpacity(0.3).stroke("white").strokeWidth(1).strokeOpacity(0.5).position(1.5; 1.5)
+			$svg.linearGradient("liquidGlass"; ""; ""; {rotation: 90})
+			$svg.square($size).radius(10).color("url(#liquidGlass)").fillOpacity(0.3).strokeWidth(1).strokeOpacity(0.5).position(0.5; 0.5)
 			
 		End if 
 		

@@ -52,7 +52,7 @@
 							},
 							"name": "Column1",
 							"dataSourceTypeHint": "picture",
-							"dataSource": "This:C1470.picture",
+							"dataSource": "This:C1470.icon",
 							"footer": {
 								"name": "Footer1"
 							},

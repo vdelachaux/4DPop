@@ -76,10 +76,6 @@
 		<data>
 		nGrF8WKnublpSylBID/5MWWkFEg=
 		</data>
-		<key>Resources/Images/4DPop.png</key>
-		<data>
-		5gqFnTUa7fQtHjkLWi/uBPEkVWo=
-		</data>
 		<key>Resources/Images/black40.png</key>
 		<data>
 		DyPLgM9tXVopXEdEOzpQLait/o8=
@@ -98,7 +94,7 @@
 		</data>
 		<key>Resources/InfoPlist.strings</key>
 		<data>
-		JiJH4NCgeHP6wIoyq0UUsAP32K0=
+		mqa0Z9iDxj+45ow13/GdZIB/few=
 		</data>
 		<key>Resources/Skins/4D/Background.png</key>
 		<data>
@@ -295,7 +291,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MS3MBnUIXEG6lOpB4c2N3A/Fu7I=
+			wTeyr9y1lStKmEeU0Gwfaa7R9dE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -358,6 +354,10 @@
 		<data>
 		zViGKH4OiaSiac5RTMtEGw0p5HQ=
 		</data>
+		<key>Resources/php.ini</key>
+		<data>
+		jqhDFhfvVHqjxaFnw5CvLOGXJlM=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -365,7 +365,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			Yc0kGZPKoj6xQtJjRmFogqaXucs=
+			Jmo0hnqfHDa+5zzL+EyTcO+T9NM=
 			</data>
 			<key>requirement</key>
 			<string>identifier "4DPop.4DZ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = DYRKW64QA9</string>
@@ -374,7 +374,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tgAobe1X1mY3APdzbthsYr1hJkmj1xIWD+N9+ugackg=
+			jbpuAI8rq026mDwoCCIGz4sArUqAsc+shtDbzVnzSmE=
 			</data>
 		</dict>
 		<key>Resources/4DPop Family.json</key>
@@ -503,13 +503,6 @@
 			z+S2si3Jlkby2hau5j7WKZa6FLmDhVl1ttAlCyiONic=
 			</data>
 		</dict>
-		<key>Resources/Images/4DPop.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			u3+fWxy3Se6VnkzDoPpwSwVtBXcqvWaob0PzmpOA5zw=
-			</data>
-		</dict>
 		<key>Resources/Images/black40.png</key>
 		<dict>
 			<key>hash2</key>
@@ -542,7 +535,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			g0mlZPzmiitIDoAJJpqPG/snwVMvXSdedoUbiuO1vj0=
+			/A2CvyNUtgXrW7+5avMTW4TwVY2McrtF5pA4USWc9pc=
 			</data>
 		</dict>
 		<key>Resources/Skins/4D/Background.png</key>
@@ -863,7 +856,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tmzKVqNIgs0gRUSZzyToD9NDwrKrnLa4iJz+ERYeAA4=
+			Mdh/4U/AlVdgONyPua0FcXTVpHm3F17nx8ZbgLMhhuw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -927,6 +920,13 @@
 			<key>hash2</key>
 			<data>
 			Li2KNRWWbuvX5Pc7I9myXm/amS0Gb6ZxL/HH4347Lpg=
+			</data>
+		</dict>
+		<key>Resources/php.ini</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HolJ6s87WPi8M/49+C+pKs1nJ/lRV9SfJODEw2hJero=
 			</data>
 		</dict>
 	</dict>

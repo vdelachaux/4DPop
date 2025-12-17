@@ -50,7 +50,7 @@ Function load() : Object
 		plist: $plist; \
 		infos: $plist.CFBundleDisplayName+"\r"+$plist.CFBundleShortVersionString+" ("+$plist.CFBundleVersion+")"; \
 		copyright: $plist.NSHumanReadableCopyright; \
-		icon: cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/Images/4DPop.png"); 48; True:C214); \
+		icon: cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/logo.svg"); 48; True:C214); \
 		widgets: []; \
 		maxWidth: 0\
 		}
