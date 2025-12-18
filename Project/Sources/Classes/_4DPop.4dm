@@ -50,7 +50,7 @@ Function load() : Object
 		plist: $plist; \
 		infos: $plist.CFBundleDisplayName+"\r"+$plist.CFBundleShortVersionString+" ("+$plist.CFBundleVersion+")"; \
 		copyright: $plist.NSHumanReadableCopyright; \
-		icon: cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/logo.svg"); 48; True:C214); \
+		icon: cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/logo.svg"); 48); \
 		widgets: []; \
 		maxWidth: 0\
 		}
@@ -113,7 +113,7 @@ Function load() : Object
 			If ($file.exists)
 				
 				// Load the manifest
-				$manifest:=cs:C1710.xml.new($file).toObject()
+				$manifest:=cs:C1710.svgx.xml.new($file).toObject()
 				
 			End if 
 		End if 

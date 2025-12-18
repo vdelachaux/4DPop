@@ -94,7 +94,7 @@
 		</data>
 		<key>Resources/InfoPlist.strings</key>
 		<data>
-		F+RF+2DhHVXKG/R0PjMq8RO3Y6Y=
+		R1CMuiK9pebBalZDCiRC6rus97U=
 		</data>
 		<key>Resources/Skins/4D/Background.png</key>
 		<data>
@@ -291,7 +291,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wTeyr9y1lStKmEeU0Gwfaa7R9dE=
+			MmmZlKz85IDGj0M39waGF9JkW9w=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -354,10 +354,6 @@
 		<data>
 		zViGKH4OiaSiac5RTMtEGw0p5HQ=
 		</data>
-		<key>Resources/php.ini</key>
-		<data>
-		jqhDFhfvVHqjxaFnw5CvLOGXJlM=
-		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -365,7 +361,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			HTbouI8BFpTiSmYZ2uVmQkb6Soo=
+			qMDqpLuHuTove8STGJR4ft7oQ2U=
 			</data>
 			<key>requirement</key>
 			<string>identifier "4DPop.4DZ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = DYRKW64QA9</string>
@@ -374,7 +370,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			HiJvSsXQ5YAeoKk/6FTwMYEUvRMM73vx0Pm5U8WZIzs=
+			nOJFuFJZeCgOVdo+7CpytiIf3b/0oMnKYTGJmYQq9bg=
 			</data>
 		</dict>
 		<key>Resources/4DPop Family.json</key>
@@ -535,7 +531,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GoPTEBKtwq4WQ7pLa8cw8BWwweHhYOi1lpBQf8Q4A54=
+			XZubHPeRtVMEpOD3bClYW7S/gu8mWwgd7GTSxzDM2TY=
 			</data>
 		</dict>
 		<key>Resources/Skins/4D/Background.png</key>
@@ -856,7 +852,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Mdh/4U/AlVdgONyPua0FcXTVpHm3F17nx8ZbgLMhhuw=
+			j9+zZGuBl7HOrOFJba2P469rCYXXHpI6vlpEaiYBvV8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -920,13 +916,6 @@
 			<key>hash2</key>
 			<data>
 			Li2KNRWWbuvX5Pc7I9myXm/amS0Gb6ZxL/HH4347Lpg=
-			</data>
-		</dict>
-		<key>Resources/php.ini</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			HolJ6s87WPi8M/49+C+pKs1nJ/lRV9SfJODEw2hJero=
 			</data>
 		</dict>
 	</dict>
