@@ -90,7 +90,7 @@ Function load() : Object
 			
 		Else 
 			
-			//MARK:New component architecture
+			// MARK: New component architecture
 			If ($component.folder("Contents").exists)
 				
 				$component:=$component.folder("Contents")
@@ -143,7 +143,8 @@ Function load() : Object
 					
 					$widget.infos+="\r"+$plist.CFBundleShortVersionString
 					
-					If (Length:C16(String:C10($plist.CFBundleVersion))>0)
+					If (Length:C16(String:C10($plist.CFBundleVersion))>0)\
+						 && ($plist.CFBundleVersion#$plist.CFBundleShortVersionString)
 						
 						$widget.infos+=" ("+$plist.CFBundleVersion+")"
 						
