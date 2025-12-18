@@ -70,15 +70,9 @@ Class constructor($component : Object; $manifest : Object)
 				
 				This:C1470[$key]:=$manifest[$key]
 				
-				If (Position:C15(":xliff:"; $manifest[$key])#1)
+				If (Position:C15(":xliff:"; $manifest[$key])#1)\
+					 || (This:C1470.handler=Null:C1517)
 					
-					continue
-					
-				End if 
-				
-				If (This:C1470.handler=Null:C1517)
-					
-					// FIXME: ERROR
 					continue
 					
 				End if 

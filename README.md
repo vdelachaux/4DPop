@@ -181,7 +181,8 @@ You can download a pre-configured `dependencies.json` file for the complete coll
 ## Earlier versions of 4D or binary database
 
 1. Create a `Components` folder next to the `Project` folder of your database \*.
-2. Place the `4DPop.4dbase` component \** in the `Components` folder.
+2. Downlods the `4DPop.4dbase` component corresponding to your version of 4D and place it in the `Components` folder.
+3. ⚠️ 4D21+ : for a binary database you must also place the component `SVG with Classes` that you [download here](https://github.com/vdelachaux/SVG-with-Classes/releases)
 3. Place one or more `4DPop components` you want to use in the same folder. 
 3. Open your database.
 4. Open the structure settings dialog and go to the `Security` page to activate, if any, the option `Execute "On Host Database Event" Method of the component`
