@@ -119,7 +119,7 @@ Function _getFile() : 4D:C1709.File
 	var $i; $version : Integer
 	var $attributes; $data : Object
 	var $file; $previous : 4D:C1709.File
-	var $xml : cs:C1710.xml
+	var $xml : cs:C1710.svgx.xml
 	
 	// Get the path of current 4DPop preference's file
 	$file:=Folder:C1567(fk user preferences folder:K87:10).file("4dPop v"+String:C10(This:C1470.version)+" preferences.json")
@@ -153,7 +153,7 @@ Function _getFile() : 4D:C1709.File
 		If ($previous.exists)
 			
 			// MARK:Convert to json
-			$xml:=cs:C1710.xml.new($previous)
+			$xml:=cs:C1710.svgx.xml.new($previous)
 			
 			If ($xml.success)
 				

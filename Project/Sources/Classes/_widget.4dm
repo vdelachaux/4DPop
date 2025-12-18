@@ -196,34 +196,39 @@ Function getIcon($file : 4D:C1709.File; $size : Integer) : Picture
 	
 	If ($file.exists)
 		
-		var $svg:=cs:C1710.svg.new()
+		var $svg:=cs:C1710.svgx.svg.new()
 		
-		$svg.square($size).radius(10).clipPath("mask")
+		// Define a rounded square as a mask
+		$svg.Square($size).radius(10).clipPath("mask")
+		
+		// & apply to the root
+		$svg.clipPath("mask"; "root")
+		
+		// Ensure a colored background
+		$svg.Square($size).color("darkgray")
 		
 		// Place logo
-		If ($file.extension=".svg")  // link
+		If ($file.extension=".svg")
 			
-			$svg.square($size).color("darkgray")  // Ensure a colored background
-			$svg.image($file).width($size).height($size)
+			$svg.image($file)  // link
 			
-		Else   // Embedded 
+		Else 
 			
 			READ PICTURE FILE:C678($file.platformPath; $media)
-			var $width : Integer
-			PICTURE PROPERTIES:C457($media; $width; $width)
-			$svg.image($media)/*.opacity(0.8)*/.scale($SIZE/$width)
+			$svg.image($media)  // Embedded 
 			
 		End if 
 		
-/*
-If (Is macOS)\
-& ($file.fullName#"Plugin.png")
+		// Define dimensions
+		$svg.width($size).height($size)
 		
-$svg.linearGradient("liquidGlass"; ""; ""; {rotation: 90})
-$svg.Square($size).radius(10).color("url(#liquidGlass)").fillOpacity(0.3).strokeWidth(1).strokeOpacity(0.5).position(0.5; 0.5)
+		//If (Is macOS)\
+			& ($file.fullName#"Plugin.png")
 		
-End if 
-*/
+		//$svg.linearGradient("liquidGlass"; ""; ""; {rotation: 90})
+		//$svg.Square($size).radius(10).color("url(#liquidGlass)").fillOpacity(0.3).strokeWidth(1).strokeOpacity(0.5).position(0.5; 0.5)
+		
+		//End if 
 		
 		return $svg.picture()
 		

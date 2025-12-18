@@ -25,15 +25,13 @@
 			"coord",
 			"motor",
 			"os",
-			"Preferences",
-			"xml"
+			"Preferences"
 		]
 	},
 	"👩‍💻 UI": {
 		"classes": [
 			"menu",
-			"menuBar",
-			"svg"
+			"menuBar"
 		]
 	},
 	"📦 MAIN": {
@@ -61,7 +59,8 @@
 	},
 	"database": {
 		"methods": [
-			"databaseNonThreadSafe"
+			"databaseNonThreadSafe",
+			"getProject"
 		],
 		"classes": [
 			"database"
