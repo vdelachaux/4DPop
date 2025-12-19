@@ -1,0 +1,55 @@
+name: Fetch 4D component
+description: Download a 4D component bundle from another repository using sparse checkout
+inputs:
+  source-repo:
+    description: GitHub repository (owner/name)
+    required: true
+
+  source-ref:
+    description: Branch, tag or commit to checkout
+    required: false
+    default: master
+
+  destination:
+    description: Destination directory in current repository
+    required: false
+    default: Components
+
+runs:
+  using: composite
+  steps:
+    - name: Compute bundle name from repo
+      shell: pwsh
+      run: |
+        $repoName = "${{ inputs.source-repo }}" -split "/" | Select-Object -Last 1
+        # remplace les tirets par des espaces
+        $bundleName = $repoName -replace "-", " " + ".4dbase"
+        Write-Host "Bundle name will be: $bundleName"
+        echo "BUNDLE_NAME=$bundleName" >> $GITHUB_ENV
+
+    - name: Checkout bundle repository (sparse)
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ inputs.source-repo }}
+        ref: ${{ inputs.source-ref }}
+        path: _tmp_bundle_repo
+        sparse-checkout: |
+          BUILD/Components/${{ env.BUNDLE_NAME }}
+        sparse-checkout-cone-mode: false
+
+    - name: Copy bundle to destination
+      shell: pwsh
+      run: |
+        $source = "_tmp_bundle_repo/BUILD/Components/${{ env.BUNDLE_NAME }}"
+        $destination = "${{ inputs.destination }}"
+
+        Write-Host "Creating destination directory if needed..."
+        New-Item -ItemType Directory -Force -Path $destination | Out-Null
+
+        Write-Host "Copying bundle $source → $destination"
+        Copy-Item -Recurse -Force -Path $source -Destination $destination
+
+    - name: Cleanup temporary repository
+      shell: pwsh
+      run: |
+        Remove-Item -Recurse -Force _tmp_bundle_repo

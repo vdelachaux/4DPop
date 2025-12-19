@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  DEPENDENCIES_BRANCH: master
+  DEPENDENCIES_BRANCH: master  # repo branch to be retrieved
 
 jobs:
   build:
@@ -20,32 +20,19 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      # 1️⃣ Checkout of the current repository
       - name: Checkout current repository
         uses: actions/checkout@v4
 
-      - name: Checkout SVG-with-Classes bundle only
-        uses: actions/checkout@v4
+      # 2️⃣ Recovery of dependencies
+      - name: Fetch SVG with Classes
+        uses: ./.github/actions/fetch-4d-component
         with:
-          repository: vdelachaux/SVG-with-Classes
-          path: _tmp_svg_with_classes
-          sparse-checkout: |
-            BUILD/Components/SVG with Classes.4dbase
-          sparse-checkout-cone-mode: false
+          source-repo: vdelachaux/SVG-with-Classes
+          source-ref: ${{ env.DEPENDENCIES_BRANCH }}
+          destination: Components
 
-      - name: Copy bundle into Components (cross-platform)
-        shell: pwsh
-        run: |
-          $source = "_tmp_svg_with_classes/BUILD/Components/SVG with Classes.4dbase"
-          $destination = "Components"
-
-          Write-Host "Creating Components directory if needed..."
-          New-Item -ItemType Directory -Force -Path $destination | Out-Null
-
-          Write-Host "Copying bundle..."
-          Copy-Item -Recurse -Force -Path $source -Destination $destination
-
-          Write-Host "Bundle copied successfully."
-
+      # 3️⃣ Component build
       - name: Build
         uses: 4d/build4d-action@main
         with:
