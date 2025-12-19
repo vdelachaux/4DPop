@@ -13,18 +13,16 @@ env:
 
 jobs:
   build:
-    name: "Build on ${{ matrix.os }}"
     strategy:
-      fail-fast: false
       matrix:
-        os: [ macos-latest, windows-latest ]
+        os: [macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
-    
-    steps:    
-    - name: Checkout current repository
+
+    steps:
+      - name: Checkout current repository
         uses: actions/checkout@v4
 
-      - name: Checkout SVG-with-Classes bundle
+      - name: Checkout SVG-with-Classes bundle only
         uses: actions/checkout@v4
         with:
           repository: vdelachaux/SVG-with-Classes
@@ -33,10 +31,19 @@ jobs:
             BUILD/Components/SVG with Classes.4dbase
           sparse-checkout-cone-mode: false
 
-      - name: Copy bundle into Components
+      - name: Copy bundle into Components (cross-platform)
+        shell: pwsh
         run: |
-          mkdir -p Components
-          cp -R "_tmp_svg_with_classes/BUILD/Components/SVG with Classes.4dbase" Components/
+          $source = "_tmp_svg_with_classes/BUILD/Components/SVG with Classes.4dbase"
+          $destination = "Components"
+
+          Write-Host "Creating Components directory if needed..."
+          New-Item -ItemType Directory -Force -Path $destination | Out-Null
+
+          Write-Host "Copying bundle..."
+          Copy-Item -Recurse -Force -Path $source -Destination $destination
+
+          Write-Host "Bundle copied successfully."
           
     - name: Build
       uses: 4d/build4d-action@main
