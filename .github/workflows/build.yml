@@ -3,9 +3,11 @@ on:
   push:
     paths:
       - '**.4dm'
+      
   pull_request:
     paths:
       - '**.4dm'
+      
   workflow_dispatch:
 
 env:
