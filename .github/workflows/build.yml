@@ -16,7 +16,12 @@ jobs:
       matrix:
         os: [ macos-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
-    steps:
+    steps:    
+    - name: Check out svg
+      uses: actions/checkout@v4
+      with:
+        repository: vdelachaux/SVG-with-Classes
+        path: BUILD/Components/SVG with Classes.4dbase
     - name: Checkout
       uses: actions/checkout@v4
     - name: Build
