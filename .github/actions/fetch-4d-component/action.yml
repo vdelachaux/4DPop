@@ -23,7 +23,7 @@ runs:
       run: |
         $repoName = "${{ inputs.source-repo }}" -split "/" | Select-Object -Last 1
         # remplace les tirets par des espaces
-        $bundleName = $repoName -replace "-", " " + ".4dbase"
+        $bundleName = ($repoName -replace "-", " ") + ".4dbase"
         Write-Host "Bundle name will be: $bundleName"
         echo "BUNDLE_NAME=$bundleName" >> $GITHUB_ENV
 
