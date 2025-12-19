@@ -19,14 +19,25 @@ jobs:
       matrix:
         os: [ macos-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
+    
     steps:    
-    - name: Check out svg
-      uses: actions/checkout@v4
-      with:
-        repository: vdelachaux/SVG-with-Classes
-        path: BUILD/Components/SVG with Classes.4dbase     
-    - name: Checkout
-      uses: actions/checkout@v4
+    - name: Checkout current repository
+        uses: actions/checkout@v4
+
+      - name: Checkout SVG-with-Classes bundle
+        uses: actions/checkout@v4
+        with:
+          repository: vdelachaux/SVG-with-Classes
+          path: _tmp_svg_with_classes
+          sparse-checkout: |
+            BUILD/Components/SVG with Classes.4dbase
+          sparse-checkout-cone-mode: false
+
+      - name: Copy bundle into Components
+        run: |
+          mkdir -p Components
+          cp -R "_tmp_svg_with_classes/BUILD/Components/SVG with Classes.4dbase" Components/
+          
     - name: Build
       uses: 4d/build4d-action@main
       with:
