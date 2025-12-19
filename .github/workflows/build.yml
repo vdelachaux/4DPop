@@ -8,6 +8,9 @@ on:
       - '**.4dm'
   workflow_dispatch:
 
+env:
+  DEPENDENCIES_BRANCH: master
+
 jobs:
   build:
     name: "Build on ${{ matrix.os }}"
@@ -21,7 +24,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: vdelachaux/SVG-with-Classes
-        path: Components/SVG with Classes.4dbase
+        path: BUILD/Components/SVG with Classes.4dbase     
     - name: Checkout
       uses: actions/checkout@v4
     - name: Build
