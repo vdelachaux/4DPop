@@ -89,7 +89,7 @@
 								"text": "Header3"
 							},
 							"name": "icon",
-							"dataSource": "This:C1470.picture",
+							"dataSource": "This:C1470.icon",
 							"dataSourceTypeHint": "picture",
 							"pictureFormat": "proportionalTopLeft",
 							"footer": {
