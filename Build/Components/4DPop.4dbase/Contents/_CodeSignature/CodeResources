@@ -94,7 +94,7 @@
 		</data>
 		<key>Resources/InfoPlist.strings</key>
 		<data>
-		1BPTM1aY3AJvDH+f93MFOJgLjbo=
+		d26g8juZFaGjzlTEgkUCOX+ggmI=
 		</data>
 		<key>Resources/Skins/4D/Background.png</key>
 		<data>
@@ -361,7 +361,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			4GqNATVcL28FoLyFq7jhd35aW/w=
+			xm8wapqOrYsuEUA/6LTJ8yf+nE4=
 			</data>
 			<key>requirement</key>
 			<string>identifier "4DPop.4DZ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = DYRKW64QA9</string>
@@ -370,7 +370,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EfhUvdosrxkHn29bP18n6vYyfkWpFNaEYB3CyzKjkWA=
+			pASD7bjGZ0PwKvteFEsGlXuBGDMyOSuWhtw9mAtiiM8=
 			</data>
 		</dict>
 		<key>Resources/4DPop Family.json</key>
@@ -531,7 +531,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			enMREKPH4v/BssqlORjZLr8IYwQGyvXbz0jarHk7t/8=
+			sfM2ap6vGzOqGRgPmen+c15dfH21SsOEUtE/DdQ58u4=
 			</data>
 		</dict>
 		<key>Resources/Skins/4D/Background.png</key>
