@@ -1,13 +1,12 @@
 name: Build
+
 on:
   push:
     paths:
       - '**.4dm'
-      
   pull_request:
     paths:
       - '**.4dm'
-      
   workflow_dispatch:
 
 env:
@@ -46,12 +45,11 @@ jobs:
           Copy-Item -Recurse -Force -Path $source -Destination $destination
 
           Write-Host "Bundle copied successfully."
-          
-    - name: Build
-      uses: 4d/build4d-action@main
-      with:
-        product-line: vcs
-        version: vcs
-        build: official
-        token: ${{ secrets.DLTK }}
 
+      - name: Build
+        uses: 4d/build4d-action@main
+        with:
+          product-line: vcs
+          version: vcs
+          build: official
+          token: ${{ secrets.DLTK }}
