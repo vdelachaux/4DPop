@@ -216,13 +216,13 @@ Function getIcon($file : 4D:C1709.File; $size : Integer) : Picture
 		// Define dimensions
 		$svg.width($size).height($size)
 		
-		//If (Is macOS)\
-			& ($file.fullName#"Plugin.png")
-		
-		//$svg.linearGradient("liquidGlass"; ""; ""; {rotation: 90})
-		//$svg.Square($size).radius(10).color("url(#liquidGlass)").fillOpacity(0.3).strokeWidth(1).strokeOpacity(0.5).position(0.5; 0.5)
-		
-		//End if 
+		If (Is macOS:C1572)\
+			 & ($file.fullName#"Plugin.png")
+			
+			$svg.linearGradient("liquidGlass"; ""; ""; {rotation: 90})
+			$svg.Square($size).radius(10).color("url(#liquidGlass)").fillOpacity(0.3).strokeWidth(1).strokeOpacity(0.5).position(0.5; 0.5)
+			
+		End if 
 		
 		return $svg.picture()
 		
