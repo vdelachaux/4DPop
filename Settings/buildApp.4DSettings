@@ -44,6 +44,8 @@
       <ArrayLicenseMac>
         <ItemsCount>0</ItemsCount>
       </ArrayLicenseMac>
+      <AutomaticLicenseIntegration>False</AutomaticLicenseIntegration>
+      <EvaluationMode>False</EvaluationMode>
     </Licenses>
     <RuntimeVL>
       <LastDataPathLookup>ByAppName</LastDataPathLookup>

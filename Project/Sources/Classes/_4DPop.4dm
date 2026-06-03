@@ -1,14 +1,15 @@
 // ----------------------------------------------------
 // Created 01-02-2023 by Vincent de Lachaux
 // ----------------------------------------------------
-property motor : cs:C1710.motor
-property database : cs:C1710.database
-property preferences : cs:C1710.Preferences
-property env : cs:C1710.env
-property properties : Object
+// Mark:Delegates 📦
+property motor:=cs:C1710.motor.new()
+property database:=cs:C1710.database.new()
+property preferences:=cs:C1710.Preferences.new()
+property env:=cs:C1710.env.new(True:C214)
 
-property formName : Text
-property windowType : Integer
+property /* Form name */formName:="STRIP"
+property /* Window type */type : Integer:=-(Plain dialog box:K34:4+Texture appearance:K34:17+4096)  // 
+property /* Form definition */properties : Object
 
 property _setPosition : Text
 property _modifiedOrder : Boolean
@@ -16,16 +17,6 @@ property _modifiedOrder : Boolean
 // Mark:-
 Class constructor
 	
-	// Mark:Delegates 📦
-	This:C1470.motor:=cs:C1710.motor.new()
-	This:C1470.database:=cs:C1710.database.new()
-	This:C1470.env:=cs:C1710.env.new(True:C214)
-	This:C1470.preferences:=cs:C1710.Preferences.new()
-	
-	This:C1470.formName:="STRIP"
-	This:C1470.windowType:=-(Plain dialog box:K34:4+Texture appearance:K34:17+/*_o_Compositing mode*/4096)
-	
-	// Loading compatible components
 	This:C1470.properties:=This:C1470.load()
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
@@ -50,7 +41,7 @@ Function load() : Object
 		plist: $plist; \
 		infos: $plist.CFBundleDisplayName+"\r"+$plist.CFBundleShortVersionString+" ("+$plist.CFBundleVersion+")"; \
 		copyright: $plist.NSHumanReadableCopyright; \
-		icon: cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/logo.svg"); 48); \
+		icon: cs:C1710._widget.new().getIcon(File:C1566("/RESOURCES/Images/logo.svg"); 48); \
 		widgets: []; \
 		maxWidth: 0\
 		}
@@ -99,15 +90,15 @@ Function load() : Object
 		End if 
 		
 		// Get the definition file
-		var $manifest : Object
 		var $file : 4D:C1709.File:=$component.file("Resources/4DPop.json")
 		
 		If ($file.exists)
 			
-			$manifest:=JSON Parse:C1218($file.getText())
+			var $manifest:=JSON Parse:C1218($file.getText())
 			
 		Else 
 			
+			// MARK: Backward compatibility
 			$file:=$component.file("Resources/4DPop.xml")
 			
 			If ($file.exists)
@@ -120,8 +111,7 @@ Function load() : Object
 		
 		If (Not:C34($file.exists))
 			
-			// No 4DPop
-			continue
+			continue  // No 4DPop
 			
 		End if 
 		
@@ -191,15 +181,8 @@ Function getComponents($folder : 4D:C1709.Folder) : Collection
 		.combine($folder.files().query("extension = :1 & original.extension =:1"; ".4DProject"))
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Returns the package manager dependencies folders
+	// Returns the package manager dependencies
 Function getPMComponents() : Collection
-	
-	var $name : Text
-	var $env : Object
-	var $c : Collection
-	var $file : 4D:C1709.File
-	var $folder : 4D:C1709.Folder
-	var $o : 4D:C1709.Object
 	
 	If (This:C1470.motor.isRemote)
 		
@@ -208,7 +191,7 @@ Function getPMComponents() : Collection
 	End if 
 	
 	// Get dependency files from the package manager
-	$file:=This:C1470.database.databaseFolder.file("Project/Sources/dependencies.json")
+	var $file : 4D:C1709.File:=This:C1470.database.databaseFolder.file("Project/Sources/dependencies.json")
 	$file:=$file.original
 	
 	If (Not:C34($file.exists))
@@ -217,7 +200,7 @@ Function getPMComponents() : Collection
 		
 	End if 
 	
-	$o:=JSON Parse:C1218($file.getText())
+	var $o:=JSON Parse:C1218($file.getText())
 	
 	If ($o.dependencies=Null:C1517)
 		
@@ -226,7 +209,7 @@ Function getPMComponents() : Collection
 	End if 
 	
 	// Get the package manager env file
-	$folder:=This:C1470.database.databaseFolder
+	var $folder : 4D:C1709.Folder:=This:C1470.database.databaseFolder
 	$file:=$folder.file("environment4d.json")
 	$file:=$file.original
 	
@@ -246,14 +229,16 @@ Function getPMComponents() : Collection
 		
 	End while 
 	
+	var $env : Object
+	
 	If ($file.exists)
 		
 		$env:=JSON Parse:C1218($file.getText()).dependencies
 		
 	End if 
 	
-	$c:=[]
-	
+	var $c:=[]
+	var $name : Text
 	For each ($name; $o.dependencies)
 		
 		Case of 
@@ -264,8 +249,6 @@ Function getPMComponents() : Collection
 				 || (Length:C16(String:C10($env[$name]))=0))
 				
 				$c.push(This:C1470.database.databaseFolder.parent.folder($name))
-				
-				continue
 				
 				//┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 			: (Position:C15("file://"; $env[$name])=1)
@@ -290,7 +273,7 @@ Function getPMComponents() : Collection
 	return $c
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Returns the loaded dependencies folders
+	// Returns the loaded dependencies
 Function getDependencies() : Collection
 	
 	var $file:=File:C1566("/PACKAGE/userPreferences."+Current system user:C484+"/dependencies-lock.json"; *)
@@ -316,7 +299,6 @@ Function getDependencies() : Collection
 	
 	var $c:=[]
 	var $key : Text
-	
 	For each ($key; $dependencies)
 		
 		If (Not:C34($dependencies[$key].loaded))
@@ -346,7 +328,7 @@ Function getDependencies() : Collection
 	return $c
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Display the palette
+	// Display the strip
 Function display()
 	
 	If (This:C1470.motor.infos.headless)
@@ -402,11 +384,11 @@ Function display()
 		End if 
 	End if 
 	
-	This:C1470.properties.window:=Open window:C153($coord.left; $coord.top; $coord.right; $coord.bottom; This:C1470.windowType)
+	This:C1470.properties.window:=Open window:C153($coord.left; $coord.top; $coord.right; $coord.bottom; This:C1470.type)
 	DIALOG:C40(This:C1470.formName; This:C1470.properties; *)
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Initialization of the palett
+	// Initializing the strip
 Function init()
 	
 	var $o:={\
@@ -425,16 +407,16 @@ Function init()
 		}
 	
 	var $properties:=This:C1470.properties
-	
 	var $default : Object:=$properties.default
 	var $hOffset : Integer:=$properties.titleWidth
 	
+	var $varName : Text
+	var $dummy : Integer
 	var $indx : Integer
 	var $nil : Pointer
-	var $dummy : Integer
-	var $key; $varName : Text
-	
+	var $key : Text
 	var $widget : cs:C1710._widget
+	
 	For each ($widget; $properties.widgets)
 		
 		$indx+=1
@@ -471,7 +453,6 @@ Function init()
 			$o.popupMenu:=Bool:C1537($widget.popup) ? 1+Num:C11($widget.default#Null:C1517) : 0
 			
 			var $format:=""
-			
 			For each ($key; $o)
 				
 				$format+=String:C10($o[$key])+";"
@@ -496,7 +477,7 @@ Function init()
 	$properties.displayedTools:=Num:C11(This:C1470.preferences.data.viewingNumber)
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Sends an abort message to the pallet
+	// Sends an abort message to the strip
 Function abort()
 	
 	var $p : Integer
@@ -511,14 +492,14 @@ Function abort()
 	End for 
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Closes the palett
+	// Closes the strip
 Function close()
 	
 	SET TIMER:C645(0)
 	CANCEL:C270
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Reload the palett
+	// Reload the strip
 Function reload()
 	
 	This:C1470.close()
@@ -591,11 +572,12 @@ Function doSettings()
 		End if 
 	End if 
 	
+	// Delete temporary items
 	OB REMOVE:C1226(This:C1470; "$modifiedOrder")
 	OB REMOVE:C1226(This:C1470; "$setPosition")
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Pallet state management
+	// Strip state management
 Function collapseExpand($displayed : Integer)
 	
 	var $form:=This:C1470.properties
@@ -607,12 +589,14 @@ Function collapseExpand($displayed : Integer)
 	var $offset : Integer:=$form.offset+1
 	var $collapse : Boolean:=$displayed=-1
 	
-	If ($collapse) | (Count parameters:C259=0)
+	If ($collapse)\
+		 || (Count parameters:C259=0)
 		
 		If ($form.page=1)
 			
 			If ($coord.width>$form.maxWidth)
 				
+				// Expand
 				$offset:=$form.maxWidth-$coord.width
 				$coord.right+=$offset
 				
@@ -715,7 +699,7 @@ Function collapseExpand($displayed : Integer)
 	$coord.applyToWidget("_background")
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-	// Palett menu
+	// Strip menu
 Function doMenu()
 	
 	var $menu:=cs:C1710.menu.new()\
@@ -910,72 +894,10 @@ Function execute($e : Object) : Boolean
 		 | ($widget.handler=Null:C1517)
 		
 		ERROR:=-15002
-		return False:C215
+		return 
 		
 	End if 
 	
 	CLEAR VARIABLE:C89(ERROR)
 	$widget.handler.call(Null:C1517; $method).call(Null:C1517; $widget)
 	return ERROR=0
-	
-	// === === === === === === === === === === === === === === === === === === === === === === === ===
-Function doDrop() : Integer
-	
-	var $e:=FORM Event:C1606
-	var $pathname:=Get file from pasteboard:C976(1)
-	var $accept : Boolean
-	
-	SET CURSOR:C469(9019)
-	
-	Case of 
-			
-			//______________________________________________________
-		: ($e.code=On Mouse Leave:K2:34)
-			
-			//______________________________________________________
-		: (Application type:C494=4D Remote mode:K5:5)
-			
-			// Installing a new component is not possible, for the moment,  in remote mode
-			
-			//______________________________________________________
-		: (Test path name:C476($pathname)#Is a document:K24:1)
-			
-			// Only folders are allowed for installation by drag & drop
-			
-			//______________________________________________________
-		: ($pathname#"@.4dbase")
-			
-			//Only ".4dbase" are allowed for installation by drag & drop
-			
-			//______________________________________________________
-		: (Test path name:C476($pathname+Folder separator:K24:12+"Resources"+Folder separator:K24:12+"4DPop.xml")#Is a document:K24:1)\
-			 & (Test path name:C476($pathname+Folder separator:K24:12+"Extras"+Folder separator:K24:12+"4DPop.xml")#Is a document:K24:1)
-			
-			// This component is not compatible with 4DPop
-			
-			//______________________________________________________
-		: ($e.code=On Drag Over:K2:13)
-			
-			// Accept the drop
-			SET CURSOR:C469(9016)
-			$accept:=True:C214
-			
-			//______________________________________________________
-		Else   // On drop
-			
-			// Display the installation wizard
-			//$winRef:=Open form window("ASSISTANT"; Movable form dialog box; Horizontally centered; Vertically centered)
-			//DIALOG("ASSISTANT")
-			// CLOSE WINDOW
-			
-			//______________________________________________________
-	End case 
-	
-	// Show or hide the visual effect of drag & drop.
-	OBJECT SET VISIBLE:C603(*; "dropIndicator"; $accept)
-	
-	// Set the timer for hide the visual effect if user chooses to don't drop the dragged elements
-	Form:C1466.event:=This:C1470.properties.DROP
-	SET TIMER:C645(20)
-	
-	return $accept ? 0 : -1

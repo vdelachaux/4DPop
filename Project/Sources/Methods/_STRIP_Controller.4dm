@@ -67,7 +67,6 @@ If ($e.objectName=Null:C1517)
 			// Constants
 			Form:C1466.INIT:=-1
 			Form:C1466.RESIZE:=1
-			Form:C1466.DROP:=99
 			Form:C1466.AUTO:=999
 			Form:C1466.MOVED:=8858
 			
@@ -314,7 +313,6 @@ depending on the origin of the most upstream process
 					$coord.left:=0
 					$coord.top:=0
 					$coord.applyToWidget("_background")
-					$coord.applyToWidget("dropIndicator")
 					
 					//………………………………………………………………………………………………………………
 				: ($e.event=Form:C1466.AUTO)
@@ -381,12 +379,6 @@ depending on the origin of the most upstream process
 					strip.preferences.set("palette"; $coord)
 					
 					//………………………………………………………………………………………………………………
-				: ($e.event=Form:C1466.DROP)
-					
-					// MARK: ▶︎ End of drag and drop on the strip
-					// TODO: Install component
-					
-					//………………………………………………………………………………………………………………
 			End case 
 			
 			If (Form:C1466.event#0)
@@ -399,15 +391,6 @@ depending on the origin of the most upstream process
 			If (Form:C1466.mdi)
 				
 				SET TIMER:C645(10)  // We must track the redimensioning of window MDI
-				
-				return 
-				
-			End if 
-			
-			If ($e.event=Form:C1466.DROP)  // End drag & drop
-				
-				SET TIMER:C645(20)
-				OBJECT SET VISIBLE:C603(*; "dropIndicator.@"; False:C215)
 				
 				return 
 				
