@@ -84,6 +84,10 @@
 		<data>
 		3KU0yRh7vMAdMCszo2625eZ2ulM=
 		</data>
+		<key>Resources/Images/logo.svg</key>
+		<data>
+		zViGKH4OiaSiac5RTMtEGw0p5HQ=
+		</data>
 		<key>Resources/Images/verticalHandle.png</key>
 		<data>
 		QnefJsdpdm/z2C22rciDusgxZjs=
@@ -94,7 +98,7 @@
 		</data>
 		<key>Resources/InfoPlist.strings</key>
 		<data>
-		d26g8juZFaGjzlTEgkUCOX+ggmI=
+		4XDHfP1rPEhszePrK520tlQnA6s=
 		</data>
 		<key>Resources/Skins/4D/Background.png</key>
 		<data>
@@ -291,7 +295,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MmmZlKz85IDGj0M39waGF9JkW9w=
+			edJ/XYMGTkKrDr1TaIMYC5p/kYg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -361,7 +365,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			xm8wapqOrYsuEUA/6LTJ8yf+nE4=
+			kfv1FixbcYalARJlKWOXhdpnhy4=
 			</data>
 			<key>requirement</key>
 			<string>identifier "4DPop.4DZ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = DYRKW64QA9</string>
@@ -370,7 +374,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pASD7bjGZ0PwKvteFEsGlXuBGDMyOSuWhtw9mAtiiM8=
+			QlAg2/a0sQZRivoHp393V4wjiW/Yt1aEewmcQofK6es=
 			</data>
 		</dict>
 		<key>Resources/4DPop Family.json</key>
@@ -513,6 +517,13 @@
 			Py0EwDzFQ9jETxFnbNrUIw0v51198al1QUy0tHlcBqY=
 			</data>
 		</dict>
+		<key>Resources/Images/logo.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Li2KNRWWbuvX5Pc7I9myXm/amS0Gb6ZxL/HH4347Lpg=
+			</data>
+		</dict>
 		<key>Resources/Images/verticalHandle.png</key>
 		<dict>
 			<key>hash2</key>
@@ -531,7 +542,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sfM2ap6vGzOqGRgPmen+c15dfH21SsOEUtE/DdQ58u4=
+			b375K53/cmRvIiQ1Xy5Mj247FEYbDboSJQEAMK4VQCM=
 			</data>
 		</dict>
 		<key>Resources/Skins/4D/Background.png</key>
@@ -852,7 +863,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			j9+zZGuBl7HOrOFJba2P469rCYXXHpI6vlpEaiYBvV8=
+			VA8t/0aUEqmkB3V2A6PqZ0TBy1g4fIgjZtYeFzx81hs=
 			</data>
 			<key>optional</key>
 			<true/>

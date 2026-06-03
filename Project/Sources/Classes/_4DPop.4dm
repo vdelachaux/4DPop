@@ -409,14 +409,9 @@ Function init()
 	var $properties:=This:C1470.properties
 	var $default : Object:=$properties.default
 	var $hOffset : Integer:=$properties.titleWidth
-	
-	var $varName : Text
-	var $dummy : Integer
 	var $indx : Integer
 	var $nil : Pointer
-	var $key : Text
 	var $widget : cs:C1710._widget
-	
 	For each ($widget; $properties.widgets)
 		
 		$indx+=1
@@ -441,6 +436,8 @@ Function init()
 			
 			// Set the icon
 			var $ptr:=OBJECT Get pointer:C1124(Object named:K67:5; $icon)
+			var $varName : Text
+			var $dummy : Integer
 			RESOLVE POINTER:C394($ptr; $varName; $dummy; $dummy)
 			$ptr->:=$widget.icon
 			
@@ -453,6 +450,7 @@ Function init()
 			$o.popupMenu:=Bool:C1537($widget.popup) ? 1+Num:C11($widget.default#Null:C1517) : 0
 			
 			var $format:=""
+			var $key : Text
 			For each ($key; $o)
 				
 				$format+=String:C10($o[$key])+";"

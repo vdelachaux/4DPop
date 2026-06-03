@@ -1980,17 +1980,6 @@
 		}
 	},
 	"_4DPop": {
-		"doDrop()": {
-			"Syntax": "**.doDrop**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
 		"execute()": {
 			"Syntax": "**.execute**( *e* : Object ) : Boolean",
 			"Params": [
@@ -2129,17 +2118,17 @@
 			"Params": [],
 			"Summary": ""
 		},
+		"type": {
+			"Syntax": "type : Integer"
+		},
 		"formName": {
 			"Syntax": "formName : Text"
 		},
-		"windowType": {
-			"Syntax": "windowType : Integer"
+		"properties": {
+			"Syntax": "properties : Object"
 		},
 		"motor": {
 			"Syntax": "motor : cs.pop.motor"
-		},
-		"properties": {
-			"Syntax": "properties : Object"
 		},
 		"preferences": {
 			"Syntax": "preferences : cs.pop.Preferences"

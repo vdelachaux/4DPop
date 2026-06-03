@@ -556,11 +556,6 @@ Case of
 					$e.method:="onDrop"
 					$e.success:=strip.execute($e)
 					
-				Else 
-					
-					// FIXME:On Drop
-					// Button_OnDrop
-					
 				End if 
 				
 				//…………………………………………………………………………………………………………………………
