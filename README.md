@@ -97,6 +97,7 @@
 
 [strip]:./assets/4DPop.png
 [settings]:./assets/settings.png
+[install]:./assets/install.png
 
 <!--BADGES-->
 ![Static Badge](https://img.shields.io/badge/Dev%20Component-blue?logo=4d&link=https%3A%2F%2Fdeveloper.4d.com)
@@ -138,7 +139,7 @@ You can enhance `4DPop` with [your own components](#how-to), and you are also ab
 
 # <a name="collection">The complete collection</a>
 
-| Repository| Last release | Build status | 
+| Name| Last release | Build status | 
 |:------:|--------------|--------------|
 |**4DPop**|[![release][release-shield]][release-url]|[![release][build-shield]][build-url]
 |[**AppMaker**][AppMaker-url]|[![release][AppMaker-release-shield]][AppMaker-release-url]|[![release][AppMaker-build-shield]][AppMaker-build-url]
@@ -170,7 +171,13 @@ You can enhance `4DPop` with [your own components](#how-to), and you are also ab
 
 ## ![Static Badge](https://img.shields.io/badge/Project%20Dependencies-blue?logo=4d&link=https%3A%2F%2Fdeveloper.4d.com%2Fdocs%2FProject%2Fcomponents%2F%23loading-components)
 
-All the components in the 4DPop collection are compatible with the [Project dependencies](https://developer.4d.com/docs/Project/components#monitoring-project-dependencies) feature. So you can simply integrate one or components into your project by selecting `Design` > `Project dependencies` and adding `vdelachaux/4DPop{-name}` as the repository address in the dedicated dialog box. **This way, you can benefit from updates over time**.
+All the components in the 4DPop collection are compatible with the [Project dependencies](https://developer.4d.com/docs/Project/components#monitoring-project-dependencies) feature. 
+
+Go to the `Design` > `Project Dependencies` menu, switch to the `GitHub` tab and type `vdelachaux/4DPop`.<br>Set `Dependency Rule` to `Follow 4D version`.
+
+![install]
+
+You can simply integrate one or components of the 4DPop collection into your project by adding `vdelachaux/4DPop{-name}` as the repository address in the dedicated dialog box. **This way, you can benefit from updates over time**.
 
 You can download a pre-configured `dependencies.json` file for the complete collection [**here**](./dependencies.json) and place it in the `Sources` folder of your project.
 
@@ -232,7 +239,6 @@ The manifest describes the elements of the component that will be available via 
 ```json
 {
   "name": "Dev tool",
-  "media": "devTool.png",
   "handler": "_4DPopDevTool",
   "default": "run", 
   "tools": [
@@ -254,7 +260,6 @@ The manifest describes the elements of the component that will be available via 
 | Attributes |    |      |    |
 |------------|----|:----:|----|
 | `name`     | The name that will be displayed below the button | ① | Mandatory
-| `media`    | File name of the image used for the button. |⑦| If omitted a default picture is used
 | `handler`  | The name of the ‘entry point’ method for your component. <br>I suggest that this name starts with an underscore (`_`) to avoid it interfering with the type ahead, as it is shared. | ② | Mandatory
 | `default`  | The name of the method to be executed when the user clicks on the strip's button | ③ ⑤| Optional if `tools`is defined
 | `tools`    | Collection of [tool objects](#tool) that will be displayed as a linked menu  | ④ ⑥
@@ -262,6 +267,7 @@ The manifest describes the elements of the component that will be available via 
 | `ondrop`   | The name of the method to be executed at the time of a drop on the button | ③
 | `initproc` | The name of the method to be executed when the component is loaded | ③
 | `helptip`  | Text of help tip associated with button | ① 
+| `media`  (deprecated)  | File name of the image used for the button. |⑦| If this parameter is omitted, the file: `/RESOURCES/logo.svg` or `/RESOURCES/logo.png` is used if it exists; otherwise, a default image is used.
 
 ### <a name="tool">tool object</a>
 
@@ -290,9 +296,9 @@ return Formula(Formula from string($1))
 
 > ⑥ If more than one tool is defined and the `default` attribute is set, a single click launches the `default` method and a long click or click on the arrow displays the tool menu. If there is no `default` attribute, the menu is always displayed.
 
-> ⑦  You must provide an image of 512x512 pixels, 4DPop builds the various icons needed to display in the strip, the settings or the About dialog.
+> ⑦  The SVG format is recommended. You must provide an image of 512x512 pixels, 4DPop builds the various icons needed to display in the strip, the settings or the About dialog. 
 
-> ⑧  Put “-” to display a separator line
+> ⑧  Use “-” to display a separator line. In this case, the “method” attribute is ignored.
 
 # <a name="topic">Topic 4DPop</a>
 
