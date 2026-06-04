@@ -1,19 +1,14 @@
 #DECLARE() : Integer
 
-var $uri : Text
-var $button; $column; $i; $indx; $row; $x : Integer
-var $y : Integer
-var $blb : Blob
-var $data; $e; $o : Object
-var $c : Collection
-
-$e:=FORM Event:C1606
-$uri:="com.4DPop.widget"
+var $e:=FORM Event:C1606
+var $uri:="com.4DPop.widget"
 
 Case of 
 		
-		//______________________________________________________
+		// ______________________________________________________
 	: ($e.code=On Load:K2:1)
+		
+		var $o : Object
 		
 		For each ($o; Form:C1466.properties.widgets)
 			
@@ -21,7 +16,7 @@ Case of
 			
 		End for each 
 		
-		//______________________________________________________
+		// ______________________________________________________
 	: ($e.code=On Unload:K2:2)
 		
 		For each ($o; Form:C1466.properties.widgets)
@@ -30,11 +25,15 @@ Case of
 			
 		End for each 
 		
-		//______________________________________________________
+		// ______________________________________________________
 	: ($e.code=On Mouse Move:K2:35)
 		
+		var $x; $y; $button : Integer
 		MOUSE POSITION:C468($x; $y; $button)
+		var $column; $row : Integer
 		LISTBOX GET CELL POSITION:C971(*; "list"; $x; $y; $column; $row)
+		
+		var $i : Integer
 		
 		For each ($o; Form:C1466.properties.widgets)
 			
@@ -45,7 +44,7 @@ Case of
 		
 		Form:C1466.properties.widgets:=Form:C1466.properties.widgets
 		
-		//______________________________________________________
+		// ______________________________________________________
 	: ($e.code=On Mouse Leave:K2:34)
 		
 		For each ($o; Form:C1466.properties.widgets)
@@ -54,14 +53,15 @@ Case of
 			
 		End for each 
 		
-		//______________________________________________________
+		// ______________________________________________________
 	: ($e.code=On Begin Drag Over:K2:44)
 		
-		$data:=Form:C1466.current
+		var $data : Object:=Form:C1466.current
+		var $blb : Blob
 		VARIABLE TO BLOB:C532($data; $blb)
 		APPEND DATA TO PASTEBOARD:C403($uri; $blb)
 		
-		//______________________________________________________
+		// ______________________________________________________
 	: ($e.code=On Drag Over:K2:13)
 		
 		GET PASTEBOARD DATA:C401($uri; $blb)
@@ -72,17 +72,17 @@ Case of
 			
 		End if 
 		
-		//______________________________________________________
+		// ______________________________________________________
 	: ($e.code=On Drop:K2:12)
 		
 		GET PASTEBOARD DATA:C401($uri; $blb)
 		BLOB TO VARIABLE:C533($blb; $data)
 		
-		$c:=Form:C1466.properties.widgets
+		var $c : Collection:=Form:C1466.properties.widgets
 		$c.remove($c.indices("name = :1"; $data.name).first())
 		$c.insert(Drop position:C608-1; $data)
 		
 		Form:C1466._modifiedOrder:=True:C214
 		
-		//______________________________________________________
+		// ______________________________________________________
 End case 

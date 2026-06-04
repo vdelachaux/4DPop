@@ -528,6 +528,8 @@ Function doSettings()
 		
 	End if 
 	
+	This:C1470._setPosition:=This:C1470.preferences.get("position")
+	
 	var $winRfef:=Open form window:C675("SETTINGS"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
 	DIALOG:C40("SETTINGS"; This:C1470)
 	CLOSE WINDOW:C154
@@ -569,10 +571,6 @@ Function doSettings()
 			
 		End if 
 	End if 
-	
-	// Delete temporary items
-	OB REMOVE:C1226(This:C1470; "$modifiedOrder")
-	OB REMOVE:C1226(This:C1470; "$setPosition")
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Strip state management
@@ -856,6 +854,7 @@ Function position($position : Text)
 			//……………………………………………………………………………………………
 	End case 
 	
+	This:C1470.preferences.set("position"; $position)
 	This:C1470.preferences.set("palette"; $coord)
 	
 	SET WINDOW RECT:C444($coord.left; $coord.top; $coord.right; $coord.bottom; This:C1470.properties.window)

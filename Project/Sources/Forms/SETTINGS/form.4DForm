@@ -81,7 +81,8 @@
 							"textAlign": "center",
 							"maxWidth": 32,
 							"resizable": false,
-							"visibility": "hidden"
+							"visibility": "hidden",
+							"minWidth": 32
 						},
 						{
 							"header": {
@@ -98,7 +99,8 @@
 							"width": 32,
 							"maxWidth": 32,
 							"resizable": false,
-							"enterable": false
+							"enterable": false,
+							"minWidth": 32
 						},
 						{
 							"header": {
@@ -111,7 +113,9 @@
 							},
 							"dataSource": "This:C1470.name",
 							"enterable": false,
-							"width": 200
+							"width": 220,
+							"minWidth": 220,
+							"maxWidth": 220
 						},
 						{
 							"header": {
@@ -131,7 +135,8 @@
 								"name": "Footer4"
 							},
 							"verticalAlign": "top",
-							"stroke": "#c0c0c0"
+							"stroke": "#c0c0c0",
+							"minWidth": 32
 						}
 					]
 				},
@@ -189,8 +194,8 @@
 					"left": 32,
 					"width": 288,
 					"height": 156,
-					"fill": "automatic",
-					"borderRadius": 8
+					"borderRadius": 8,
+					"fill": "#c0c0c0"
 				},
 				"expandCollapseBox": {
 					"type": "groupBox",
@@ -237,34 +242,32 @@
 				},
 				"TopLeft": {
 					"type": "radio",
-					"text": ":xliff:TopLeft",
 					"top": 50,
 					"left": 42,
-					"width": 95,
-					"height": 22,
+					"width": 32,
+					"height": 32,
 					"events": [
 						"onClick"
 					],
-					"style": "toolbar",
+					"style": "custom",
 					"radioGroup": "positions",
 					"imageHugsTitle": false,
-					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/TopLeft.png",
+					"icon": "Images/topLeft.svg",
 					"iconFrames": 1,
 					"textPlacement": "right",
 					"dataSourceTypeHint": "boolean"
 				},
 				"TopRight": {
 					"type": "radio",
-					"text": ":xliff:TopRight",
 					"top": 50,
-					"left": 212,
-					"width": 95,
-					"height": 22,
+					"left": 270,
+					"width": 32,
+					"height": 32,
 					"events": [
 						"onClick"
 					],
-					"style": "toolbar",
-					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/TopRight.png",
+					"style": "custom",
+					"icon": "Images/topRight.svg",
 					"iconFrames": 1,
 					"textPlacement": "left",
 					"radioGroup": "positions",
@@ -273,44 +276,42 @@
 				},
 				"BottomLeft": {
 					"type": "radio",
-					"text": ":xliff:BottomLeft",
-					"top": 172,
+					"top": 158,
 					"left": 42,
-					"width": 95,
-					"height": 22,
+					"width": 32,
+					"height": 32,
 					"events": [
 						"onClick"
 					],
-					"style": "toolbar",
-					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/BtmLeft.png",
-					"iconFrames": 1,
+					"style": "custom",
+					"icon": "Images/bottomLeft.svg",
 					"textPlacement": "right",
 					"radioGroup": "positions",
 					"imageHugsTitle": false,
-					"dataSourceTypeHint": "boolean"
+					"dataSourceTypeHint": "boolean",
+					"iconFrames": 1
 				},
 				"BottomRight": {
 					"type": "radio",
-					"text": ":xliff:BottomRight",
-					"top": 172,
-					"left": 212,
-					"width": 95,
-					"height": 22,
+					"top": 158,
+					"left": 278,
+					"width": 32,
+					"height": 32,
 					"events": [
 						"onClick"
 					],
-					"style": "toolbar",
-					"icon": "/.PRODUCT_RESOURCES/Images/FormEditor/Handles/BtmRight.png",
+					"style": "custom",
+					"icon": "Images/bottomRight.svg",
 					"iconFrames": 1,
-					"textPlacement": "left",
+					"textPlacement": "top",
 					"radioGroup": "positions",
-					"imageHugsTitle": false,
+					"imageHugsTitle": true,
 					"dataSourceTypeHint": "boolean"
 				}
 			}
 		}
 	],
-	"geometryStamp": 334,
+	"geometryStamp": 381,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",

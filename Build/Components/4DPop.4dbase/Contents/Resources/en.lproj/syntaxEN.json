@@ -1,6 +1,26 @@
 {
 	"_method_": {},
 	"cs.pop": {
+		"_strip": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"Preferences": {
+			"new()": {
+				"Syntax": "**.new**( *module* : Text )",
+				"Params": [
+					[
+						"module",
+						"Text",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
 		"database": {
 			"new()": {
 				"Syntax": "**.new**( *full* : Boolean )",
@@ -95,13 +115,6 @@
 				"Summary": ""
 			}
 		},
-		"_4DPop": {
-			"new()": {
-				"Syntax": "**.new**()",
-				"Params": [],
-				"Summary": ""
-			}
-		},
 		"_classCore": {
 			"new()": {
 				"Syntax": "**.new**()",
@@ -126,19 +139,234 @@
 				],
 				"Summary": ""
 			}
-		},
-		"Preferences": {
-			"new()": {
-				"Syntax": "**.new**( *module* : Text )",
-				"Params": [
-					[
-						"module",
-						"Text",
-						"->"
-					]
+		}
+	},
+	"_strip": {
+		"execute()": {
+			"Syntax": "**.execute**( *e* : Object ) : Boolean",
+			"Params": [
+				[
+					"e",
+					"Object",
+					"->"
 				],
-				"Summary": ""
-			}
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"position()": {
+			"Syntax": "**.position**( *position* : Text )",
+			"Params": [
+				[
+					"position",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"collapseExpand()": {
+			"Syntax": "**.collapseExpand**( *displayed* : Integer )",
+			"Params": [
+				[
+					"displayed",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"doSettings()": {
+			"Syntax": "**.doSettings**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"init()": {
+			"Syntax": "**.init**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"close()": {
+			"Syntax": "**.close**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"doAbout()": {
+			"Syntax": "**.doAbout**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"doMenu()": {
+			"Syntax": "**.doMenu**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"display()": {
+			"Syntax": "**.display**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"getDependencies()": {
+			"Syntax": "**.getDependencies**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getTools()": {
+			"Syntax": "**.getTools**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getPMComponents()": {
+			"Syntax": "**.getPMComponents**() : Collection",
+			"Params": [
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"load()": {
+			"Syntax": "**.load**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"abort()": {
+			"Syntax": "**.abort**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"getComponents()": {
+			"Syntax": "**.getComponents**( *folder* : 4D.Folder ) : Collection",
+			"Params": [
+				[
+					"folder",
+					"4D.Folder",
+					"->"
+				],
+				[
+					"",
+					"Collection",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"reload()": {
+			"Syntax": "**.reload**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"type": {
+			"Syntax": "type : Integer"
+		},
+		"formName": {
+			"Syntax": "formName : Text"
+		},
+		"properties": {
+			"Syntax": "properties : Object"
+		},
+		"motor": {
+			"Syntax": "motor : cs.pop.motor"
+		},
+		"preferences": {
+			"Syntax": "preferences : cs.pop.Preferences"
+		},
+		"env": {
+			"Syntax": "env : cs.pop.env"
+		},
+		"database": {
+			"Syntax": "database : cs.pop.database"
+		}
+	},
+	"Preferences": {
+		"save()": {
+			"Syntax": "**.save**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"default()": {
+			"Syntax": "**.default**( *default* : Object )",
+			"Params": [
+				[
+					"default",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set()": {
+			"Syntax": "**.set**( *key* : Variant; *value* : Variant ) : cs.pop.Preferences",
+			"Params": [
+				[
+					"key",
+					"Variant",
+					"->"
+				],
+				[
+					"value",
+					"Variant",
+					"->"
+				],
+				[
+					"",
+					"cs.pop.Preferences",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get()": {
+			"Syntax": "**.get**( *key* : Text ) : Variant",
+			"Params": [
+				[
+					"key",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"module": {
+			"Syntax": "module : Text"
+		},
+		"version": {
+			"Syntax": "version : Integer"
+		},
+		"data": {
+			"Syntax": "data : Object"
+		},
+		"file": {
+			"Syntax": "file : 4D.File"
 		}
 	},
 	"database": {
@@ -1979,167 +2207,6 @@
 			"Syntax": "version : Text"
 		}
 	},
-	"_4DPop": {
-		"execute()": {
-			"Syntax": "**.execute**( *e* : Object ) : Boolean",
-			"Params": [
-				[
-					"e",
-					"Object",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"position()": {
-			"Syntax": "**.position**( *position* : Text )",
-			"Params": [
-				[
-					"position",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"collapseExpand()": {
-			"Syntax": "**.collapseExpand**( *displayed* : Integer )",
-			"Params": [
-				[
-					"displayed",
-					"Integer",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"doSettings()": {
-			"Syntax": "**.doSettings**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"init()": {
-			"Syntax": "**.init**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"close()": {
-			"Syntax": "**.close**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"doAbout()": {
-			"Syntax": "**.doAbout**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"doMenu()": {
-			"Syntax": "**.doMenu**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"display()": {
-			"Syntax": "**.display**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"getDependencies()": {
-			"Syntax": "**.getDependencies**() : Collection",
-			"Params": [
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getTools()": {
-			"Syntax": "**.getTools**() : Collection",
-			"Params": [
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getPMComponents()": {
-			"Syntax": "**.getPMComponents**() : Collection",
-			"Params": [
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"load()": {
-			"Syntax": "**.load**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"abort()": {
-			"Syntax": "**.abort**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"getComponents()": {
-			"Syntax": "**.getComponents**( *folder* : 4D.Folder ) : Collection",
-			"Params": [
-				[
-					"folder",
-					"4D.Folder",
-					"->"
-				],
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"reload()": {
-			"Syntax": "**.reload**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"type": {
-			"Syntax": "type : Integer"
-		},
-		"formName": {
-			"Syntax": "formName : Text"
-		},
-		"properties": {
-			"Syntax": "properties : Object"
-		},
-		"motor": {
-			"Syntax": "motor : cs.pop.motor"
-		},
-		"preferences": {
-			"Syntax": "preferences : cs.pop.Preferences"
-		},
-		"env": {
-			"Syntax": "env : cs.pop.env"
-		},
-		"database": {
-			"Syntax": "database : cs.pop.database"
-		}
-	},
 	"_classCore": {
 		"isJson()": {
 			"Syntax": "**.isJson**( *value* : Variant ) : Boolean",
@@ -2563,73 +2630,6 @@
 		},
 		"manifest": {
 			"Syntax": "manifest : Object"
-		}
-	},
-	"Preferences": {
-		"save()": {
-			"Syntax": "**.save**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"default()": {
-			"Syntax": "**.default**( *default* : Object )",
-			"Params": [
-				[
-					"default",
-					"Object",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"set()": {
-			"Syntax": "**.set**( *key* : Variant; *value* : Variant ) : cs.pop.Preferences",
-			"Params": [
-				[
-					"key",
-					"Variant",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.Preferences",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get()": {
-			"Syntax": "**.get**( *key* : Text ) : Variant",
-			"Params": [
-				[
-					"key",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Variant",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"module": {
-			"Syntax": "module : Text"
-		},
-		"version": {
-			"Syntax": "version : Integer"
-		},
-		"data": {
-			"Syntax": "data : Object"
-		},
-		"file": {
-			"Syntax": "file : 4D.File"
 		}
 	}
 }

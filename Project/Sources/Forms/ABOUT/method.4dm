@@ -4,7 +4,7 @@ Case of
 		//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 	: (FORM Event:C1606.code=On Load:K2:1)
 		
-		OBJECT SET SCROLLBAR:C843(*; "list"; 0; 2)
+		OBJECT SET SCROLLBAR:C843(*; "list"; False:C215; 2)
 		
 		//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 	: (FORM Event:C1606.code=On Close Box:K2:21)

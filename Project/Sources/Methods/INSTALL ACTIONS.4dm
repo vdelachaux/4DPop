@@ -1,5 +1,4 @@
 //%attributes = {"invisible":true}
-
 EXECUTE METHOD:C1007("quickOpenPushAction"; *; {\
 name: "Make symbolic link"; \
 shortcut: "link"; \

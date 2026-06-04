@@ -7,7 +7,7 @@ var $matrix:=Structure file:C489=Structure file:C489(*)
 
 If (Process info:C1843($p).name="$4DPop")
 	
-	var strip : cs:C1710._4DPop
+	var strip : cs:C1710._strip
 	
 	If ($matrix)
 		
@@ -24,7 +24,7 @@ If (Process info:C1843($p).name="$4DPop")
 		
 	End if 
 	
-	strip:=strip || cs:C1710._4DPop.new()
+	strip:=strip || cs:C1710._strip.new()
 	strip.display()
 	
 Else 
