@@ -26,7 +26,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p Components
-          curl -fL "https://github.com/vdelachaux/SVG-with-Classes/raw/master/BUILD/SVG-with-Classes.zip" -o "SVG-with-Classes.zip"
+          curl -fL "https://github.com/vdelachaux/SVG-with-Classes/raw/main/BUILD/SVG-with-Classes.zip" -o "SVG-with-Classes.zip"
           rm -rf "Components/SVG with Classes.4dbase"
           unzip -o "SVG-with-Classes.zip" -d Components
           rm -rf "Components/__MACOSX"
@@ -37,7 +37,7 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Path Components -Force | Out-Null
-          Invoke-WebRequest -Uri "https://github.com/vdelachaux/SVG-with-Classes/raw/master/BUILD/SVG-with-Classes.zip" -OutFile "SVG-with-Classes.zip"
+          Invoke-WebRequest -Uri "https://github.com/vdelachaux/SVG-with-Classes/raw/main/BUILD/SVG-with-Classes.zip" -OutFile "SVG-with-Classes.zip"
           Remove-Item -Recurse -Force "Components/SVG with Classes.4dbase" -ErrorAction SilentlyContinue
           Expand-Archive -Path "SVG-with-Classes.zip" -DestinationPath "Components" -Force
           Remove-Item -Path "SVG-with-Classes.zip" -Force
