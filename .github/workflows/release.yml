@@ -12,7 +12,7 @@ jobs:
       contents: write # for asset upload
     steps:
       - name: ⬇️ Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Upload
         run: |
           gh release upload ${{github.event.release.tag_name}} build/${{github.event.repository.name}}.zip
