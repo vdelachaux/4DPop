@@ -9,9 +9,6 @@ on:
       - '**.4dm'
   workflow_dispatch:
 
-env:
-  DEPENDENCIES_BRANCH: master
-
 jobs:
   build:
     strategy:
@@ -23,28 +20,27 @@ jobs:
       - name: Checkout current repository
         uses: actions/checkout@v4
 
-      - name: Checkout SVG-with-Classes bundle only
-        uses: actions/checkout@v4
-        with:
-          repository: vdelachaux/SVG-with-Classes
-          path: _tmp_svg_with_classes
-          sparse-checkout: |
-            BUILD/Components/SVG with Classes.4dbase
-          sparse-checkout-cone-mode: false
+      - name: Get SVG-with-Classes from BUILD zip (macOS)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p Components
+          curl -fL "https://github.com/vdelachaux/SVG-with-Classes/raw/master/BUILD/SVG-with-Classes.zip" -o "SVG-with-Classes.zip"
+          rm -rf "Components/SVG with Classes.4dbase"
+          unzip -o "SVG-with-Classes.zip" -d Components
+          rm -rf "Components/__MACOSX"
+          rm -f "SVG-with-Classes.zip"
 
-      - name: Copy bundle into Components (cross-platform)
+      - name: Get SVG-with-Classes from BUILD zip (Windows)
+        if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          $source = "_tmp_svg_with_classes/BUILD/Components/SVG with Classes.4dbase"
-          $destination = "Components"
-
-          Write-Host "Creating Components directory if needed..."
-          New-Item -ItemType Directory -Force -Path $destination | Out-Null
-
-          Write-Host "Copying bundle..."
-          Copy-Item -Recurse -Force -Path $source -Destination $destination
-
-          Write-Host "Bundle copied successfully."
+          New-Item -ItemType Directory -Path Components -Force | Out-Null
+          Invoke-WebRequest -Uri "https://github.com/vdelachaux/SVG-with-Classes/raw/master/BUILD/SVG-with-Classes.zip" -OutFile "SVG-with-Classes.zip"
+          Remove-Item -Recurse -Force "Components/SVG with Classes.4dbase" -ErrorAction SilentlyContinue
+          Expand-Archive -Path "SVG-with-Classes.zip" -DestinationPath "Components" -Force
+          Remove-Item -Path "SVG-with-Classes.zip" -Force
 
       - name: Build
         uses: 4d/build4d-action@main
