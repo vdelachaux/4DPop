@@ -229,6 +229,7 @@ Function _getFile() : 4D:C1709.File
 										$data[$name][$key]:=[]
 										
 										$node:=$xml.firstChild($node)
+										var $i : Integer
 										
 										For ($i; 1; 16; 1)
 											
@@ -243,8 +244,7 @@ Function _getFile() : 4D:C1709.File
 										$data[$name][$key]:=[]
 										
 										$node:=$xml.firstChild($node)
-										
-										var $i : Integer
+									
 										For ($i; 1; 8; 1)
 											
 											$data[$name][$key].push($xml.getAttribute($node; "name"))
