@@ -593,7 +593,7 @@ Case of
 						
 					Else 
 						
-						var $menu:=cs:C1710.menu.new()
+						var $menu:=cs:C1710.ui.menu.new()
 						$e.index:=0
 						
 						var $item : Object

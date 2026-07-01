@@ -698,10 +698,10 @@ Function collapseExpand($displayed : Integer)
 	// Strip menu
 Function doMenu()
 	
-	var $menu:=cs:C1710.menu.new()\
-		.append(":xliff:About"; "about")\
+	var $menu:=cs:C1710.ui.menu.new()\
+		.append(Localized string:C991("About"); "about")\
 		.line()\
-		.append(":xliff:settings"; "settings")\
+		.append(Localized string:C991("settings"); "settings")\
 		.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_924.png")\
 		.line()
 	
@@ -716,7 +716,7 @@ Function doMenu()
 			
 		Else 
 			
-			var $tool:=cs:C1710.menu.new()
+			var $tool:=cs:C1710.ui.menu.new()
 			var $item : Object
 			
 			For each ($item; $widget.tools)
@@ -745,7 +745,7 @@ Function doMenu()
 	End for each 
 	
 	$menu.line()\
-		.append(":xliff:closePalette"; "close")\
+		.append(Localized string:C991("closePalette"); "close")\
 		.icon("/.PRODUCT_RESOURCES/Images/WatchIcons/Watch_851.png")
 	
 	If ($menu.popup().selected)

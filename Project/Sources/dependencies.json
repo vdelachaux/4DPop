@@ -4,6 +4,10 @@
 		"SVG with Classes": {
 			"github": "vdelachaux/SVG-with-Classes",
 			"version": "4d"
+		},
+		"UI with Classes": {
+			"github": "vdelachaux/UI-with-Classes",
+			"version": "latest"
 		}
 	}
 }
