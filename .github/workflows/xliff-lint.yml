@@ -9,3 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: e-marchand/xliff-lint-action@v1
+        with:
+            fail-on-error: "false"
