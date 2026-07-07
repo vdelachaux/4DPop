@@ -50,25 +50,6 @@
 					"dragging": "none",
 					"class": "dev"
 				},
-				"bOnDrop": {
-					"type": "button",
-					"top": 0,
-					"left": 0,
-					"width": 92,
-					"height": 68,
-					"sizingX": "grow",
-					"display": false,
-					"dropping": "custom",
-					"method": "ObjectMethods/bOnDrop.4dm",
-					"events": [
-						"onClick",
-						"onDrop",
-						"onDragOver",
-						"onMouseLeave",
-						"onLongClick"
-					],
-					"visibility": "hidden"
-				},
 				"cartoons": {
 					"type": "picture",
 					"top": 6,
@@ -110,17 +91,6 @@
 					],
 					"customBackgroundPicture": "!0",
 					"iconFrames": 1
-				},
-				"dropIndicator": {
-					"type": "picture",
-					"top": 135,
-					"left": 0,
-					"width": 36,
-					"height": 80,
-					"visibility": "hidden",
-					"sizingX": "grow",
-					"pictureFormat": "tiled",
-					"picture": "/RESOURCES/Images/black40.png"
 				}
 			}
 		},
@@ -345,7 +315,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 557,
+	"geometryStamp": 559,
 	"editor": {
 		"activeView": "button",
 		"defaultView": "main",
@@ -356,12 +326,7 @@
 					"tool"
 				]
 			},
-			"ondrop": {
-				"visible": false,
-				"objects": [
-					"bOnDrop"
-				]
-			},
+			"ondrop": {},
 			"widget": {
 				"objects": [
 					"widget"

@@ -1,0 +1,13 @@
+name: XLIFF lint
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ["**.xlf", "**.4dm"]
+jobs:
+  xliff-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: e-marchand/xliff-lint-action@v1
+        with:
+            fail-on-error: "false"

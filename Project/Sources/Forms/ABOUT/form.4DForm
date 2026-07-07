@@ -4,20 +4,11 @@
 	"windowSizingX": "fixed",
 	"width": 460,
 	"height": 505,
-	"markerHeader": 15,
-	"markerBody": 200,
-	"markerBreak": 220,
-	"markerFooter": 240,
 	"events": [
 		"onLoad",
 		"onCloseBox"
 	],
 	"method": "method.4dm",
-	"pageFormat": {
-		"paperName": "A4",
-		"paperWidth": "595pt",
-		"paperHeight": "842pt"
-	},
 	"pages": [
 		null,
 		{
@@ -59,7 +50,9 @@
 							"resizable": false,
 							"enterable": false,
 							"pictureFormat": "proportionalCenter",
-							"width": 70
+							"width": 70,
+							"maxWidth": 70,
+							"minWidth": 70
 						},
 						{
 							"header": {
@@ -74,7 +67,9 @@
 							"resizable": false,
 							"enterable": false,
 							"truncateMode": "none",
-							"width": 230
+							"width": 230,
+							"minWidth": 230,
+							"maxWidth": 230
 						},
 						{
 							"header": {
@@ -148,5 +143,5 @@
 			"main": {}
 		}
 	},
-	"geometryStamp": 26
+	"geometryStamp": 27
 }

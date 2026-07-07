@@ -84,6 +84,10 @@
 		<data>
 		3KU0yRh7vMAdMCszo2625eZ2ulM=
 		</data>
+		<key>Resources/Images/logo.svg</key>
+		<data>
+		59aF0EE7UIphiur2mKP6PiWF4Ns=
+		</data>
 		<key>Resources/Images/verticalHandle.png</key>
 		<data>
 		QnefJsdpdm/z2C22rciDusgxZjs=
@@ -94,7 +98,7 @@
 		</data>
 		<key>Resources/InfoPlist.strings</key>
 		<data>
-		d26g8juZFaGjzlTEgkUCOX+ggmI=
+		DkwPdUnzO5uCGTCrPcAHdRtnIZY=
 		</data>
 		<key>Resources/Skins/4D/Background.png</key>
 		<data>
@@ -282,7 +286,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/q1uRjRvY10zbS1UWjFCEQKtgYc=
+			3Dh6gaJZZDQaLN0tMv5Km3Dl75s=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -291,7 +295,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MmmZlKz85IDGj0M39waGF9JkW9w=
+			BErDyhamM6AfAXkVw5Nm/UZQ2ws=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -352,7 +356,7 @@
 		</dict>
 		<key>Resources/logo.svg</key>
 		<data>
-		zViGKH4OiaSiac5RTMtEGw0p5HQ=
+		59aF0EE7UIphiur2mKP6PiWF4Ns=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -361,7 +365,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			xm8wapqOrYsuEUA/6LTJ8yf+nE4=
+			OpnlQeS/fdrUKbpBNpIOkuyHJaU=
 			</data>
 			<key>requirement</key>
 			<string>identifier "4DPop.4DZ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = DYRKW64QA9</string>
@@ -370,7 +374,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pASD7bjGZ0PwKvteFEsGlXuBGDMyOSuWhtw9mAtiiM8=
+			NKE7NbRIBY2dMqVv2cQH80zJkXtZyigDjjqbeeuAIJE=
 			</data>
 		</dict>
 		<key>Resources/4DPop Family.json</key>
@@ -513,6 +517,13 @@
 			Py0EwDzFQ9jETxFnbNrUIw0v51198al1QUy0tHlcBqY=
 			</data>
 		</dict>
+		<key>Resources/Images/logo.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Or8g+Ns2RI0HOK717m7yD2L0fpOXypKbP+5aF/rmBMk=
+			</data>
+		</dict>
 		<key>Resources/Images/verticalHandle.png</key>
 		<dict>
 			<key>hash2</key>
@@ -531,7 +542,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sfM2ap6vGzOqGRgPmen+c15dfH21SsOEUtE/DdQ58u4=
+			WOOlU6FH2atjssuaVUSW1ul6HruLx4z5sRTyY0poi2g=
 			</data>
 		</dict>
 		<key>Resources/Skins/4D/Background.png</key>
@@ -843,7 +854,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			X1xjk/WxO15AZ9l7vGyPfiSw9NkaPc/OBcYEz3e4Z38=
+			RMytyaNPgNHEsR8vPyAxU/4o0uAVIounLzExXWBNl+Q=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -852,7 +863,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			j9+zZGuBl7HOrOFJba2P469rCYXXHpI6vlpEaiYBvV8=
+			H8R4YBoYnX7if9+jqnFMfVYiewzWio6ltN1RJH8yyQ4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -915,7 +926,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Li2KNRWWbuvX5Pc7I9myXm/amS0Gb6ZxL/HH4347Lpg=
+			Or8g+Ns2RI0HOK717m7yD2L0fpOXypKbP+5aF/rmBMk=
 			</data>
 		</dict>
 	</dict>

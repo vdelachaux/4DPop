@@ -17,8 +17,7 @@
 	"⚙️ MACROS": {},
 	"👥 NAMESPACE": {
 		"groups": [
-			"👩‍💻 UI",
-			"database",
+			"🗂️ database",
 			"env"
 		],
 		"classes": [
@@ -28,18 +27,11 @@
 			"Preferences"
 		]
 	},
-	"👩‍💻 UI": {
-		"classes": [
-			"menu",
-			"menuBar"
-		]
-	},
 	"📦 MAIN": {
 		"methods": [
 			"_STRIP_Controller",
 			"DISPLAY 4DPOP STRIP",
-			"INSTALL ACTIONS",
-			"recoverWindow"
+			"INSTALL ACTIONS"
 		],
 		"forms": [
 			"ABOUT",
@@ -47,23 +39,24 @@
 			"STRIP"
 		],
 		"classes": [
-			"_4DPop",
+			"_strip",
 			"_widget"
 		]
 	},
-	"🛠️ Tools": {
-		"methods": [
-			"getWindowOffsets",
-			"makeSymbolicLink"
-		]
-	},
-	"database": {
+	"🗂️ database": {
 		"methods": [
 			"databaseNonThreadSafe",
 			"getProject"
 		],
 		"classes": [
 			"database"
+		]
+	},
+	"🛠️ Tools": {
+		"methods": [
+			"getWindowOffsets",
+			"makeSymbolicLink",
+			"recoverWindow"
 		]
 	},
 	"env": {

@@ -4,14 +4,17 @@ property help; plist : 4D:C1709.File
 property icon : Picture
 property popup; visible : Boolean
 property handler : 4D:C1709.Function
-property tools : Collection
-property order : Integer
-property index : Integer
-property width : Integer
+
+property tools:=[]
+property order : Integer:=0
+property index : Integer:=0
+property width : Integer:=70
 
 Class constructor($component : Object; $manifest : Object)
 	
 	If ($component=Null:C1517)
+		
+		This:C1470.name:="4DPop"
 		
 		return 
 		
@@ -21,16 +24,9 @@ Class constructor($component : Object; $manifest : Object)
 	This:C1470.manifest:=OB Copy:C1225($manifest)  // Keep the original manifest
 	This:C1470.name:=$component.name
 	This:C1470.help:=$component.file($component.name+".htm")
-	This:C1470.helptip:=""
-	This:C1470.icon:=Null:C1517
 	This:C1470.default:=String:C10($manifest.default)
 	This:C1470.ondrop:=String:C10($manifest.ondrop)
 	This:C1470.popup:=Bool:C1537($manifest.popup)
-	This:C1470.handler:=Null:C1517
-	This:C1470.tools:=[]
-	This:C1470.order:=0
-	This:C1470.index:=0
-	This:C1470.width:=70
 	
 	If ($manifest.handler#Null:C1517)
 		
@@ -38,13 +34,11 @@ Class constructor($component : Object; $manifest : Object)
 		
 	End if 
 	
-	If ($manifest.initproc#Null:C1517)
+	If ($manifest.initproc#Null:C1517)\
+		 && (This:C1470.handler#Null:C1517)
 		
-		If (This:C1470.handler#Null:C1517)
-			
-			This:C1470.handler.call(Null:C1517; $manifest.initproc).call()
-			
-		End if 
+		This:C1470.handler.call(Null:C1517; $manifest.initproc).call()
+		
 	End if 
 	
 	var $key : Text
@@ -84,7 +78,7 @@ Class constructor($component : Object; $manifest : Object)
 				// Keep back icon from "media" key if any 
 				This:C1470.icon:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48)
 				
-				continue
+				This:C1470.icon:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48)
 				
 				// ______________________________________________________
 			: ($key="tools")
@@ -98,49 +92,44 @@ Class constructor($component : Object; $manifest : Object)
 					
 				Else 
 					
-					If (This:C1470.handler#Null:C1517)
+					If (This:C1470.handler#Null:C1517)\
+						 && ($manifest.tools#Null:C1517)\
+						 && ($manifest.tools.length>0)
 						
-						If (($manifest.tools#Null:C1517)\
-							 && ($manifest.tools.length>0))
+						This:C1470.popup:=True:C214
+						
+						var $tool : Object
+						For each ($tool; $manifest.tools)
 							
-							
-							This:C1470.popup:=True:C214
-							
-							var $tool : Object
-							
-							For each ($tool; $manifest.tools)
+							var $item : Text
+							For each ($item; $tool)
 								
-								var $item : Text
-								
-								For each ($item; $tool)
-									
-									Case of 
+								Case of 
+										
+										// ………………………………………………………………………………
+									: ($item="name")
+										
+										If ($item="-")\
+											 || ($item="(-")\
+											 || (Position:C15(":xliff:"; $tool.name)#1)
 											
-											// ………………………………………………………………………………
-										: ($item="name")
+											continue
 											
-											If ($item="-")\
-												 || ($item="(-")\
-												 || (Position:C15(":xliff:"; $tool.name)#1)
-												
-												continue
-												
-											End if 
+										End if 
+										
+										If (This:C1470.handler#Null:C1517)
 											
-											If (This:C1470.handler#Null:C1517)
-												
-												$tool.name:=This:C1470.handler.call(Null:C1517; ":C991($1)").call(Null:C1517; Delete string:C232($tool.name; 1; 7))
-												
-											End if 
+											$tool.name:=This:C1470.handler.call(Null:C1517; ":C991($1)").call(Null:C1517; Delete string:C232($tool.name; 1; 7))
 											
-											// ………………………………………………………………………………
-									End case 
-								End for each 
-								
-								This:C1470.tools.push($tool)
-								
+										End if 
+										
+										// ………………………………………………………………………………
+								End case 
 							End for each 
-						End if 
+							
+							This:C1470.tools.push($tool)
+							
+						End for each 
 					End if 
 				End if 
 				
@@ -222,7 +211,7 @@ Function getIcon($file : 4D:C1709.File; $size : Integer) : Picture
 		$svg.width($size).height($size)
 		
 		If (Is macOS:C1572)\
-			 & ($file.fullName#"Plugin.png")
+			 && ($file.fullName#"Plugin.png")
 			
 			$svg.linearGradient("liquidGlass"; ""; ""; {rotation: 90})
 			$svg.Square($size).radius(10).color("url(#liquidGlass)").fillOpacity(0.3).strokeWidth(1).strokeOpacity(0.5).position(0.5; 0.5)

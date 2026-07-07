@@ -3,11 +3,11 @@
 // Created 01/12/06 by Vincent de Lachaux
 // ----------------------------------------------------
 var $p:=Current process:C322
-var $matrix : Boolean:=Structure file:C489=Structure file:C489(*)
+var $matrix:=Structure file:C489=Structure file:C489(*)
 
 If (Process info:C1843($p).name="$4DPop")
 	
-	var strip : cs:C1710._4DPop
+	var strip : cs:C1710._strip
 	
 	If ($matrix)
 		
@@ -24,7 +24,7 @@ If (Process info:C1843($p).name="$4DPop")
 		
 	End if 
 	
-	strip:=strip || cs:C1710._4DPop.new()
+	strip:=strip || cs:C1710._strip.new()
 	strip.display()
 	
 Else 
@@ -32,10 +32,12 @@ Else
 	// Create a new process
 	If ($matrix)
 		
+		// Display the process creation so that you can trace it in case of an error
 		$p:=New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *)
 		
 	Else 
 		
+		// The strip will appear at the appropriate time
 		HIDE PROCESS:C324(New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *))
 		
 	End if 

@@ -28,8 +28,6 @@ Class constructor($module : Text)
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function get($key : Text) : Variant
 	
-	var $o : Object
-	
 	If (Count parameters:C259>=1)
 		
 		return This:C1470.module#Null:C1517\
@@ -38,7 +36,7 @@ Function get($key : Text) : Variant
 		
 	Else 
 		
-		$o:=This:C1470.module#Null:C1517\
+		var $o : Object:=This:C1470.module#Null:C1517\
 			 ? This:C1470.data[This:C1470.module]\
 			 : This:C1470.data
 		
@@ -96,10 +94,9 @@ Function set($key; $value) : cs:C1710.Preferences
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function default($default : Object)
 	
-	var $key : Text
-	
 	This:C1470._factory:={}
 	
+	var $key : Text
 	For each ($key; $default)
 		
 		This:C1470._factory[$key]:=$default[$key]
@@ -115,24 +112,18 @@ Function save()
 	// *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
 Function _getFile() : 4D:C1709.File
 	
-	var $child; $key; $name; $node : Text
-	var $i; $version : Integer
-	var $attributes; $data : Object
-	var $file; $previous : 4D:C1709.File
-	var $xml : cs:C1710.svgx.xml
-	
 	// Get the path of current 4DPop preference's file
-	$file:=Folder:C1567(fk user preferences folder:K87:10).file("4dPop v"+String:C10(This:C1470.version)+" preferences.json")
+	var $file:=Folder:C1567(fk user preferences folder:K87:10).file("4dPop v"+String:C10(This:C1470.version)+" preferences.json")
 	
 	If (Not:C34($file.exists))
 		
 		// Try it with the older xml format
-		$previous:=Folder:C1567(fk user preferences folder:K87:10).file("4dPop v"+String:C10(This:C1470.version)+" preference.xml")
+		var $previous:=Folder:C1567(fk user preferences folder:K87:10).file("4dPop v"+String:C10(This:C1470.version)+" preference.xml")
 		
 		If (Not:C34($previous.exists))
 			
 			// The file does not exist: an earlier version may be available
-			$version:=This:C1470.version
+			var $version : Integer:=This:C1470.version
 			
 			Repeat 
 				
@@ -148,25 +139,26 @@ Function _getFile() : 4D:C1709.File
 			Until ($version=11)  // The first version
 		End if 
 		
-		$data:={}
+		var $data:={}
 		
 		If ($previous.exists)
 			
 			// MARK:Convert to json
-			$xml:=cs:C1710.svgx.xml.new($previous)
+			var $xml:=cs:C1710.svgx.xml.new($previous)
 			
 			If ($xml.success)
 				
+				var $child : Text
 				For each ($child; $xml.childrens())
 					
-					$name:=$xml.getName($child)
+					var $name:=$xml.getName($child)
 					
 					Case of 
 							
 							//______________________________________________________
 						: ($xml.childrens($child).length=0)  // 4DPop
 							
-							$attributes:=$xml.getAttributes($child)
+							var $attributes:=$xml.getAttributes($child)
 							
 							If ($attributes.name#Null:C1517 || $attributes.value#Null:C1517)
 								
@@ -183,9 +175,10 @@ Function _getFile() : 4D:C1709.File
 							
 							$data[$name]:={}
 							
+							var $node : Text
 							For each ($node; $xml.childrens($child))
 								
-								$key:=$xml.getName($node)
+								var $key:=$xml.getName($node)
 								
 								Case of 
 										
@@ -236,6 +229,7 @@ Function _getFile() : 4D:C1709.File
 										$data[$name][$key]:=[]
 										
 										$node:=$xml.firstChild($node)
+										var $i : Integer
 										
 										For ($i; 1; 16; 1)
 											
@@ -250,7 +244,7 @@ Function _getFile() : 4D:C1709.File
 										$data[$name][$key]:=[]
 										
 										$node:=$xml.firstChild($node)
-										
+									
 										For ($i; 1; 8; 1)
 											
 											$data[$name][$key].push($xml.getAttribute($node; "name"))
@@ -283,4 +277,3 @@ Function _getFile() : 4D:C1709.File
 	End if 
 	
 	return $file
-	
