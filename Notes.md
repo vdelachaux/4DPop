@@ -9,6 +9,7 @@
 - [ ] Remplacer les `.PRODUCT` en chargeant les images dans les composants.
 - [ ] **4DPop-KeepIt** : revoir/moderniser le code et supprimer les warnings de compilation.
 - [ ] **4DPop-XLIFF-Pro** : revoir pour utiliser les classes `ui-with_classes`.
+- [ ] **4DPop-Bookmarks** : supprimer les warnings de compilation.
 
 ### Fichiers sources référençant `.PRODUCT_RESOURCES/` (hors `BUILD/`)
 
@@ -38,7 +39,7 @@
 - `Project/Sources/Classes/static.4dm`
 - `Project/Sources/Forms/EDITOR/form.4DForm`
 
-**4DPop-Bookmarks**
+**4DPop-Bookmarks** ✅ fait
 - `Project/Sources/Classes/menu.4dm`
 
 **4DPop-Constants-Editor**
