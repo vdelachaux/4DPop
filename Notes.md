@@ -7,20 +7,21 @@
 ## TODO
 
 - [ ] Remplacer les `.PRODUCT` en chargeant les images dans les composants.
+- [ ] **4DPop-KeepIt** : revoir/moderniser le code et supprimer les warnings de compilation.
 
 ### Fichiers sources référençant `.PRODUCT_RESOURCES/` (hors `BUILD/`)
 
-**4DPop**
+**4DPop** ✅ fait
 - `Project/Sources/Classes/_strip.4dm`
 - `Project/Sources/Classes/_widget.4dm`
 - `Project/Sources/Forms/STRIP/form.4DForm`
 
-**4DPop-Window**
+**4DPop-Window** ✅ fait
 - `Project/Sources/Classes/_component.4dm`
 - `Project/Sources/Classes/menu.4dm`
 - `Resources/desc.json`
 
-**4DPop-KeepIt**
+**4DPop-KeepIt** ✅ fait
 - `Project/Sources/Classes/menu.4dm`
 - `Resources/desc.json`
 
