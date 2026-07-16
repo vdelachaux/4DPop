@@ -702,7 +702,7 @@ Function doMenu()
 		.append(Localized string:C991("About"); "about")\
 		.line()\
 		.append(Localized string:C991("settings"); "settings")\
-		.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_924.png")\
+		.icon("/RESOURCES/Images/menus/settings.png")\
 		.line()
 	
 	var $widget : Object
@@ -712,7 +712,7 @@ Function doMenu()
 		If ($widget.tools.length<=1)
 			
 			$menu.append($widget.name; $widget.name+"/"+$widget.default)\
-				.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_606.png")
+				.icon("/RESOURCES/Images/menus/component.png")
 			
 		Else 
 			
@@ -739,14 +739,14 @@ Function doMenu()
 			End for each 
 			
 			$menu.append($widget.name; $tool)\
-				.icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_606.png")
+				.icon("/RESOURCES/Images/menus/component.png")
 			
 		End if 
 	End for each 
 	
 	$menu.line()\
 		.append(Localized string:C991("closePalette"); "close")\
-		.icon("/.PRODUCT_RESOURCES/Images/WatchIcons/Watch_851.png")
+		.icon("/RESOURCES/Images/menus/close.png")
 	
 	If ($menu.popup().selected)
 		

@@ -177,7 +177,7 @@ Function getIcon($file : 4D:C1709.File; $size : Integer) : Picture
 	
 	If (Not:C34($file.exists))
 		
-		$file:=File:C1566("/.PRODUCT_RESOURCES/Images/Plugin.png")
+		$file:=File:C1566("/RESOURCES/Images/plugin.png")
 		
 	End if 
 	

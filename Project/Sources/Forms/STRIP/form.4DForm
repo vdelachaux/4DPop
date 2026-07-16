@@ -178,7 +178,7 @@
 					"left": 0,
 					"width": 23,
 					"height": 21,
-					"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_604.png",
+					"icon": "/RESOURCES/Images/menus/more.png",
 					"style": "custom",
 					"events": [
 						"onClick"
@@ -285,7 +285,7 @@
 					"left": 14,
 					"width": 22,
 					"height": 21,
-					"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_604.png",
+					"icon": "/RESOURCES/Images/menus/more.png",
 					"style": "custom",
 					"events": [
 						"onClick"
@@ -315,7 +315,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 559,
+	"geometryStamp": 561,
 	"editor": {
 		"activeView": "button",
 		"defaultView": "main",
