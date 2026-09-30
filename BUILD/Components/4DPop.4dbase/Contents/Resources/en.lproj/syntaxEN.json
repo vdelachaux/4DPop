@@ -21,47 +21,6 @@
 				"Summary": ""
 			}
 		},
-		"database": {
-			"new()": {
-				"Syntax": "**.new**( *full* : Boolean )",
-				"Params": [
-					[
-						"full",
-						"Boolean",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
-		"coord": {
-			"new()": {
-				"Syntax": "**.new**( *left* : Variant; *top* : Integer; *right* : Integer; *bottom* : Integer )",
-				"Params": [
-					[
-						"left",
-						"Variant",
-						"->"
-					],
-					[
-						"top",
-						"Integer",
-						"->"
-					],
-					[
-						"right",
-						"Integer",
-						"->"
-					],
-					[
-						"bottom",
-						"Integer",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
 		"env": {
 			"new()": {
 				"Syntax": "**.new**( *full* : Boolean )",
@@ -75,26 +34,13 @@
 				"Summary": ""
 			}
 		},
-		"menu": {
+		"database": {
 			"new()": {
-				"Syntax": "**.new**( *data* : Variant )",
+				"Syntax": "**.new**( *full* : Boolean )",
 				"Params": [
 					[
-						"data",
-						"Variant",
-						"->"
-					]
-				],
-				"Summary": ""
-			}
-		},
-		"menuBar": {
-			"new()": {
-				"Syntax": "**.new**( *menus* : Collection )",
-				"Params": [
-					[
-						"menus",
-						"Collection",
+						"full",
+						"Boolean",
 						"->"
 					]
 				],
@@ -134,6 +80,34 @@
 					[
 						"manifest",
 						"Object",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"coord": {
+			"new()": {
+				"Syntax": "**.new**( *left* : Variant; *top* : Integer; *right* : Integer; *bottom* : Integer )",
+				"Params": [
+					[
+						"left",
+						"Variant",
+						"->"
+					],
+					[
+						"top",
+						"Integer",
+						"->"
+					],
+					[
+						"right",
+						"Integer",
+						"->"
+					],
+					[
+						"bottom",
+						"Integer",
 						"->"
 					]
 				],
@@ -367,6 +341,313 @@
 		},
 		"file": {
 			"Syntax": "file : 4D.File"
+		}
+	},
+	"env": {
+		"decodePathURL()": {
+			"Syntax": "**.decodePathURL**( *url* : Text ) : Object",
+			"Params": [
+				[
+					"url",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"applicationSupport()": {
+			"Syntax": "**.applicationSupport**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get windows()": {
+			"Syntax": "**.get windows**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"windowOffsets()": {
+			"Syntax": "**.windowOffsets**( *type* : Integer; *isWindows* : Boolean ) : Object",
+			"Params": [
+				[
+					"type",
+					"Integer",
+					"->"
+				],
+				[
+					"isWindows",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"logs()": {
+			"Syntax": "**.logs**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"caches()": {
+			"Syntax": "**.caches**( *path* : Variant; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Variant",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"library()": {
+			"Syntax": "**.library**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"preferences()": {
+			"Syntax": "**.preferences**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"getScreenInfos()": {
+			"Syntax": "**.getScreenInfos**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"startupDisk()": {
+			"Syntax": "**.startupDisk**( *path* : Text; *create* : Boolean ) : Object",
+			"Params": [
+				[
+					"path",
+					"Text",
+					"->"
+				],
+				[
+					"create",
+					"Boolean",
+					"->"
+				],
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"updateEnvironmentValues()": {
+			"Syntax": "**.updateEnvironmentValues**( *system* : Boolean )",
+			"Params": [
+				[
+					"system",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get linux()": {
+			"Syntax": "**.get linux**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get macos()": {
+			"Syntax": "**.get macos**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"dateMonthPosition": {
+			"Syntax": "dateMonthPosition : Integer"
+		},
+		"dateDayPosition": {
+			"Syntax": "dateDayPosition : Integer"
+		},
+		"timeShortPattern": {
+			"Syntax": "timeShortPattern : Text"
+		},
+		"timeLongPattern": {
+			"Syntax": "timeLongPattern : Text"
+		},
+		"timePMLabel": {
+			"Syntax": "timePMLabel : Text"
+		},
+		"timeAMLabel": {
+			"Syntax": "timeAMLabel : Text"
+		},
+		"fileURI": {
+			"Syntax": "fileURI : Text"
+		},
+		"timeSeparator": {
+			"Syntax": "timeSeparator : Text"
+		},
+		"dateMediumPattern": {
+			"Syntax": "dateMediumPattern : Text"
+		},
+		"dateLongPattern": {
+			"Syntax": "dateLongPattern : Text"
+		},
+		"thousandSeparator": {
+			"Syntax": "thousandSeparator : Text"
+		},
+		"decimalSeparator": {
+			"Syntax": "decimalSeparator : Text"
+		},
+		"currencySymbol": {
+			"Syntax": "currencySymbol : Text"
+		},
+		"systemFolder": {
+			"Syntax": "systemFolder : 4D.Folder"
+		},
+		"mainScreen": {
+			"Syntax": "mainScreen : Object"
+		},
+		"dateShortPattern": {
+			"Syntax": "dateShortPattern : Text"
+		},
+		"machineName": {
+			"Syntax": "machineName : Text"
+		},
+		"mainScreenID": {
+			"Syntax": "mainScreenID : Integer"
+		},
+		"screens": {
+			"Syntax": "screens : Collection"
+		},
+		"dateSeparator": {
+			"Syntax": "dateSeparator : Text"
+		},
+		"dateYearPosition": {
+			"Syntax": "dateYearPosition : Integer"
+		},
+		"homeFolder": {
+			"Syntax": "homeFolder : 4D.Folder"
+		},
+		"userName": {
+			"Syntax": "userName : Text"
+		},
+		"desktopFolder": {
+			"Syntax": "desktopFolder : 4D.Folder"
+		},
+		"documentsFolder": {
+			"Syntax": "documentsFolder : 4D.Folder"
+		},
+		"cacheFolder": {
+			"Syntax": "cacheFolder : 4D.Folder"
+		},
+		"applicationsFolder": {
+			"Syntax": "applicationsFolder : 4D.Folder"
+		},
+		"toolBarHeight": {
+			"Syntax": "toolBarHeight : Integer"
+		},
+		"timeMediumPattern": {
+			"Syntax": "timeMediumPattern : Text"
+		},
+		"menuBarHeight": {
+			"Syntax": "menuBarHeight : Integer"
+		},
+		"systemInfos": {
+			"Syntax": "systemInfos : Object"
 		}
 	},
 	"database": {
@@ -781,1147 +1062,6 @@
 			"Syntax": "internal : Boolean"
 		},
 		"_inheritedFrom_": "_classCore"
-	},
-	"coord": {
-		"applyToWindow()": {
-			"Syntax": "**.applyToWindow**( *winRef* : Integer )",
-			"Params": [
-				[
-					"winRef",
-					"Integer",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get dimensions()": {
-			"Syntax": "**.get dimensions**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get height()": {
-			"Syntax": "**.get height**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"applyToWidget()": {
-			"Syntax": "**.applyToWidget**( *name* : Text )",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get width()": {
-			"Syntax": "**.get width**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get screenCoordinates()": {
-			"Syntax": "**.get screenCoordinates**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get windowCoordinates()": {
-			"Syntax": "**.get windowCoordinates**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"bottom": {
-			"Syntax": "bottom : Integer"
-		},
-		"right": {
-			"Syntax": "right : Integer"
-		},
-		"top": {
-			"Syntax": "top : Integer"
-		},
-		"left": {
-			"Syntax": "left : Integer"
-		},
-		"name": {
-			"Syntax": "name : Text"
-		}
-	},
-	"env": {
-		"decodePathURL()": {
-			"Syntax": "**.decodePathURL**( *url* : Text ) : Object",
-			"Params": [
-				[
-					"url",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"applicationSupport()": {
-			"Syntax": "**.applicationSupport**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get windows()": {
-			"Syntax": "**.get windows**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"windowOffsets()": {
-			"Syntax": "**.windowOffsets**( *type* : Integer; *isWindows* : Boolean ) : Object",
-			"Params": [
-				[
-					"type",
-					"Integer",
-					"->"
-				],
-				[
-					"isWindows",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"logs()": {
-			"Syntax": "**.logs**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"caches()": {
-			"Syntax": "**.caches**( *path* : Variant; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Variant",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"library()": {
-			"Syntax": "**.library**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"preferences()": {
-			"Syntax": "**.preferences**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getScreenInfos()": {
-			"Syntax": "**.getScreenInfos**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"startupDisk()": {
-			"Syntax": "**.startupDisk**( *path* : Text; *create* : Boolean ) : Object",
-			"Params": [
-				[
-					"path",
-					"Text",
-					"->"
-				],
-				[
-					"create",
-					"Boolean",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"updateEnvironmentValues()": {
-			"Syntax": "**.updateEnvironmentValues**( *system* : Boolean )",
-			"Params": [
-				[
-					"system",
-					"Boolean",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get linux()": {
-			"Syntax": "**.get linux**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get macos()": {
-			"Syntax": "**.get macos**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"dateMonthPosition": {
-			"Syntax": "dateMonthPosition : Integer"
-		},
-		"dateDayPosition": {
-			"Syntax": "dateDayPosition : Integer"
-		},
-		"timeShortPattern": {
-			"Syntax": "timeShortPattern : Text"
-		},
-		"timeLongPattern": {
-			"Syntax": "timeLongPattern : Text"
-		},
-		"timePMLabel": {
-			"Syntax": "timePMLabel : Text"
-		},
-		"timeAMLabel": {
-			"Syntax": "timeAMLabel : Text"
-		},
-		"fileURI": {
-			"Syntax": "fileURI : Text"
-		},
-		"timeSeparator": {
-			"Syntax": "timeSeparator : Text"
-		},
-		"dateMediumPattern": {
-			"Syntax": "dateMediumPattern : Text"
-		},
-		"dateLongPattern": {
-			"Syntax": "dateLongPattern : Text"
-		},
-		"thousandSeparator": {
-			"Syntax": "thousandSeparator : Text"
-		},
-		"decimalSeparator": {
-			"Syntax": "decimalSeparator : Text"
-		},
-		"currencySymbol": {
-			"Syntax": "currencySymbol : Text"
-		},
-		"systemFolder": {
-			"Syntax": "systemFolder : 4D.Folder"
-		},
-		"mainScreen": {
-			"Syntax": "mainScreen : Object"
-		},
-		"dateShortPattern": {
-			"Syntax": "dateShortPattern : Text"
-		},
-		"machineName": {
-			"Syntax": "machineName : Text"
-		},
-		"mainScreenID": {
-			"Syntax": "mainScreenID : Integer"
-		},
-		"screens": {
-			"Syntax": "screens : Collection"
-		},
-		"dateSeparator": {
-			"Syntax": "dateSeparator : Text"
-		},
-		"dateYearPosition": {
-			"Syntax": "dateYearPosition : Integer"
-		},
-		"homeFolder": {
-			"Syntax": "homeFolder : 4D.Folder"
-		},
-		"userName": {
-			"Syntax": "userName : Text"
-		},
-		"desktopFolder": {
-			"Syntax": "desktopFolder : 4D.Folder"
-		},
-		"documentsFolder": {
-			"Syntax": "documentsFolder : 4D.Folder"
-		},
-		"cacheFolder": {
-			"Syntax": "cacheFolder : 4D.Folder"
-		},
-		"applicationsFolder": {
-			"Syntax": "applicationsFolder : 4D.Folder"
-		},
-		"toolBarHeight": {
-			"Syntax": "toolBarHeight : Integer"
-		},
-		"timeMediumPattern": {
-			"Syntax": "timeMediumPattern : Text"
-		},
-		"menuBarHeight": {
-			"Syntax": "menuBarHeight : Integer"
-		},
-		"systemInfos": {
-			"Syntax": "systemInfos : Object"
-		}
-	},
-	"menu": {
-		"fonts()": {
-			"Syntax": "**.fonts**( *withStyle* : Variant; *callback* : Text ) : cs.pop.menu",
-			"Params": [
-				[
-					"withStyle",
-					"Variant",
-					"->"
-				],
-				[
-					"callback",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"edit()": {
-			"Syntax": "**.edit**() : cs.pop.menu",
-			"Params": [
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"windows()": {
-			"Syntax": "**.windows**( *callback* : Text ) : cs.pop.menu",
-			"Params": [
-				[
-					"callback",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"popup()": {
-			"Syntax": "**.popup**( *where* : Variant; *x* : Variant; *y* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"where",
-					"Variant",
-					"->"
-				],
-				[
-					"x",
-					"Variant",
-					"->"
-				],
-				[
-					"y",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getProperty()": {
-			"Syntax": "**.getProperty**( *property* : Text; *index* : Integer ) : Variant",
-			"Params": [
-				[
-					"property",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"Variant",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"icon()": {
-			"Syntax": "**.icon**( *proxy* : Text; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"proxy",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"disable()": {
-			"Syntax": "**.disable**( *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"itemSubMenuRef()": {
-			"Syntax": "**.itemSubMenuRef**( *withTitle* : Text ) : Text",
-			"Params": [
-				[
-					"withTitle",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"item()": {
-			"Syntax": "**.item**( *item* : Variant; *ref* : Text ) : Object",
-			"Params": [
-				[
-					"item",
-					"Variant",
-					"->"
-				],
-				[
-					"ref",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"itemCount()": {
-			"Syntax": "**.itemCount**() : Integer",
-			"Params": [
-				[
-					"",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"setData()": {
-			"Syntax": "**.setData**( *name* : Text; *value* : Variant; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"enable()": {
-			"Syntax": "**.enable**( *enabled* : Boolean; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"enabled",
-					"Boolean",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"getData()": {
-			"Syntax": "**.getData**( *name* : Text; *ref* : Text ) : Variant",
-			"Params": [
-				[
-					"name",
-					"Text",
-					"->"
-				],
-				[
-					"ref",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Variant",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"property()": {
-			"Syntax": "**.property**( *property* : Text; *value* : Variant; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"property",
-					"Text",
-					"->"
-				],
-				[
-					"value",
-					"Variant",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"indent()": {
-			"Syntax": "**.indent**( *index* : Integer; *number* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"number",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"parameter()": {
-			"Syntax": "**.parameter**( *param* : Text; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"param",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"mark()": {
-			"Syntax": "**.mark**( *checked* : Boolean; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"checked",
-					"Boolean",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"method()": {
-			"Syntax": "**.method**( *method* : Text; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"method",
-					"Text",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"isSeparatorItem()": {
-			"Syntax": "**.isSeparatorItem**( *item* : Integer; *ref* : Text ) : Boolean",
-			"Params": [
-				[
-					"item",
-					"Integer",
-					"->"
-				],
-				[
-					"ref",
-					"Text",
-					"->"
-				],
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"items()": {
-			"Syntax": "**.items**() : Collection",
-			"Params": [
-				[
-					"",
-					"Collection",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"setStyle()": {
-			"Syntax": "**.setStyle**( *tyle* : Integer; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"tyle",
-					"Integer",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"delete()": {
-			"Syntax": "**.delete**( *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"file()": {
-			"Syntax": "**.file**() : cs.pop.menu",
-			"Params": [
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"shortcut()": {
-			"Syntax": "**.shortcut**( *key* : Variant; *modifier* : Integer; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"key",
-					"Variant",
-					"->"
-				],
-				[
-					"modifier",
-					"Integer",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"add()": {
-			"Syntax": "**.add**( *ref* : Text; *text* : Text; *param* : Variant; *mark* : Boolean )",
-			"Params": [
-				[
-					"ref",
-					"Text",
-					"->"
-				],
-				[
-					"text",
-					"Text",
-					"->"
-				],
-				[
-					"param",
-					"Variant",
-					"->"
-				],
-				[
-					"mark",
-					"Boolean",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"release()": {
-			"Syntax": "**.release**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"action()": {
-			"Syntax": "**.action**( *action* : Variant; *index* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"action",
-					"Variant",
-					"->"
-				],
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"line()": {
-			"Syntax": "**.line**( *afterItem* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"afterItem",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"append()": {
-			"Syntax": "**.append**( *item* : Variant; *param* : Variant; *mark* : Variant; *afterItem* : Integer ) : cs.pop.menu",
-			"Params": [
-				[
-					"item",
-					"Variant",
-					"->"
-				],
-				[
-					"param",
-					"Variant",
-					"->"
-				],
-				[
-					"mark",
-					"Variant",
-					"->"
-				],
-				[
-					"afterItem",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menu",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"selected": {
-			"Syntax": "selected : Boolean"
-		},
-		"localize": {
-			"Syntax": "localize : Boolean"
-		},
-		"metacharacters": {
-			"Syntax": "metacharacters : Boolean"
-		},
-		"released": {
-			"Syntax": "released : Boolean"
-		},
-		"autoRelease": {
-			"Syntax": "autoRelease : Boolean"
-		},
-		"submenus": {
-			"Syntax": "submenus : Collection"
-		},
-		"ref": {
-			"Syntax": "ref : Text"
-		},
-		"choice": {
-			"Syntax": "choice : Text"
-		},
-		"data": {
-			"Syntax": "data : Collection"
-		}
-	},
-	"menuBar": {
-		"menuSelected()": {
-			"Syntax": "**.menuSelected**() : Object",
-			"Params": [
-				[
-					"",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"defaultMinimalMenuBar()": {
-			"Syntax": "**.defaultMinimalMenuBar**() : cs.pop.menuBar",
-			"Params": [
-				[
-					"",
-					"cs.pop.menuBar",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"enableItem()": {
-			"Syntax": "**.enableItem**( *item* : Text; *enabled* : Boolean )",
-			"Params": [
-				[
-					"item",
-					"Text",
-					"->"
-				],
-				[
-					"enabled",
-					"Boolean",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"disableItem()": {
-			"Syntax": "**.disableItem**( *item* : Text )",
-			"Params": [
-				[
-					"item",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"update()": {
-			"Syntax": "**.update**( *index* : Integer; *menu* : cs.pop.menu ) : cs.pop.menuBar",
-			"Params": [
-				[
-					"index",
-					"Integer",
-					"->"
-				],
-				[
-					"menu",
-					"cs.pop.menu",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menuBar",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"setHelpMenu()": {
-			"Syntax": "**.setHelpMenu**( *items* : Collection )",
-			"Params": [
-				[
-					"items",
-					"Collection",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"resetsAbout()": {
-			"Syntax": "**.resetsAbout**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"getMenuItemParameter()": {
-			"Syntax": "**.getMenuItemParameter**( *type* : Integer ) : Variant",
-			"Params": [
-				[
-					"type",
-					"Integer",
-					"->"
-				],
-				[
-					"",
-					"Variant",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"setAbout()": {
-			"Syntax": "**.setAbout**( *label* : Text; *method* : Text )",
-			"Params": [
-				[
-					"label",
-					"Text",
-					"->"
-				],
-				[
-					"method",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"set()": {
-			"Syntax": "**.set**() : cs.pop.menuBar",
-			"Params": [
-				[
-					"",
-					"cs.pop.menuBar",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"populate()": {
-			"Syntax": "**.populate**( *menus* : Collection ) : cs.pop.menuBar",
-			"Params": [
-				[
-					"menus",
-					"Collection",
-					"->"
-				],
-				[
-					"",
-					"cs.pop.menuBar",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"_inheritedFrom_": "menu"
 	},
 	"motor": {
 		"acceptNewConnections()": {
@@ -2630,6 +1770,100 @@
 		},
 		"manifest": {
 			"Syntax": "manifest : Object"
+		}
+	},
+	"coord": {
+		"applyToWindow()": {
+			"Syntax": "**.applyToWindow**( *winRef* : Integer )",
+			"Params": [
+				[
+					"winRef",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get dimensions()": {
+			"Syntax": "**.get dimensions**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get height()": {
+			"Syntax": "**.get height**() : Integer",
+			"Params": [
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"applyToWidget()": {
+			"Syntax": "**.applyToWidget**( *name* : Text )",
+			"Params": [
+				[
+					"name",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get width()": {
+			"Syntax": "**.get width**() : Integer",
+			"Params": [
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get screenCoordinates()": {
+			"Syntax": "**.get screenCoordinates**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get windowCoordinates()": {
+			"Syntax": "**.get windowCoordinates**() : Object",
+			"Params": [
+				[
+					"",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"bottom": {
+			"Syntax": "bottom : Integer"
+		},
+		"right": {
+			"Syntax": "right : Integer"
+		},
+		"top": {
+			"Syntax": "top : Integer"
+		},
+		"left": {
+			"Syntax": "left : Integer"
+		},
+		"name": {
+			"Syntax": "name : Text"
 		}
 	}
 }

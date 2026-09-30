@@ -3,7 +3,7 @@
 	"dependencies": {
 		"SVG with Classes": {
 			"github": "vdelachaux/SVG-with-Classes",
-			"version": "4d"
+			"version": "latest"
 		},
 		"UI with Classes": {
 			"github": "vdelachaux/UI-with-Classes",

@@ -88,6 +88,62 @@
 		<data>
 		59aF0EE7UIphiur2mKP6PiWF4Ns=
 		</data>
+		<key>Resources/Images/menus/close.png</key>
+		<data>
+		64rMNWRE4ch4Mts9RoyT8fBc49Y=
+		</data>
+		<key>Resources/Images/menus/component.png</key>
+		<data>
+		Aa3Yx+pxFlPTbXsdSKsLJnqMsXc=
+		</data>
+		<key>Resources/Images/menus/component@2x.png</key>
+		<data>
+		L6gQrkLD0VXXJYxrMyqsVMi/gww=
+		</data>
+		<key>Resources/Images/menus/component@2x_dark.png</key>
+		<data>
+		sXIdYwWLwL0OIyanHK4hCZKuxyk=
+		</data>
+		<key>Resources/Images/menus/component_dark.png</key>
+		<data>
+		NSd8UYFTAcL8pk+UsyAnotdxweE=
+		</data>
+		<key>Resources/Images/menus/more dark.png</key>
+		<data>
+		Wkz9f4QTYi8RHOYK4mmrdOJxk1k=
+		</data>
+		<key>Resources/Images/menus/more.png</key>
+		<data>
+		WuvD34e3EVFVoXR5Y35SGbttXq8=
+		</data>
+		<key>Resources/Images/menus/more@2x.png</key>
+		<data>
+		rxHM3+IPhCRSsGeSxgwgix2Pjg0=
+		</data>
+		<key>Resources/Images/menus/more@2x_dark.png</key>
+		<data>
+		Jx3hVoajf3/YzVFmr3ykR57sRcw=
+		</data>
+		<key>Resources/Images/menus/settings.png</key>
+		<data>
+		rdsF3KW1qx131nnlVyuOomxPEmw=
+		</data>
+		<key>Resources/Images/menus/settings@2x.png</key>
+		<data>
+		KSKFL2gK77AhBdwHa9GYaGQQXZU=
+		</data>
+		<key>Resources/Images/menus/settings@2x_dark.png</key>
+		<data>
+		dnetwEQ5RhxUSxCNLL+CJJPgk/g=
+		</data>
+		<key>Resources/Images/menus/settings_dark.png</key>
+		<data>
+		SC2Fk5hgA7/0chl8leShSc1ubi0=
+		</data>
+		<key>Resources/Images/plugin.png</key>
+		<data>
+		NxMSo4gHOhGemzeeSGcEH4CKSjI=
+		</data>
 		<key>Resources/Images/verticalHandle.png</key>
 		<data>
 		QnefJsdpdm/z2C22rciDusgxZjs=
@@ -98,7 +154,7 @@
 		</data>
 		<key>Resources/InfoPlist.strings</key>
 		<data>
-		DkwPdUnzO5uCGTCrPcAHdRtnIZY=
+		a/6QP/F+went43TFIg7ZWnW6UUk=
 		</data>
 		<key>Resources/Skins/4D/Background.png</key>
 		<data>
@@ -268,7 +324,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mmdj7apDDZpQmgL/auHBDFiudMw=
+			sejbxYaS5KvhdkOHUQL0UrKW5g0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -286,7 +342,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3Dh6gaJZZDQaLN0tMv5Km3Dl75s=
+			/q1uRjRvY10zbS1UWjFCEQKtgYc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -295,7 +351,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BErDyhamM6AfAXkVw5Nm/UZQ2ws=
+			fihbRQO6N13iSI3YtuyFyeFT1UI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -304,7 +360,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nuC+j3kPm6UI7g5uwJ79hDD4bQ0=
+			1co1kmF75+A2B/fNVUdSgRBGG6w=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -340,7 +396,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6rF14qwes9gj1xVPZ0xQ9TZEcKU=
+			1waYLP8KUnlMKsOM9gxzNM9/siI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -358,6 +414,10 @@
 		<data>
 		59aF0EE7UIphiur2mKP6PiWF4Ns=
 		</data>
+		<key>Resources/php.ini</key>
+		<data>
+		jqhDFhfvVHqjxaFnw5CvLOGXJlM=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -365,7 +425,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			OpnlQeS/fdrUKbpBNpIOkuyHJaU=
+			CItzBrHpqfuAJrB7RTT537Z4H8o=
 			</data>
 			<key>requirement</key>
 			<string>identifier "4DPop.4DZ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = DYRKW64QA9</string>
@@ -374,7 +434,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NKE7NbRIBY2dMqVv2cQH80zJkXtZyigDjjqbeeuAIJE=
+			X/i0Xr0e8kX4Ku/6dqz1/8NatIWe6RZj+3BmCuF42xw=
 			</data>
 		</dict>
 		<key>Resources/4DPop Family.json</key>
@@ -524,6 +584,104 @@
 			Or8g+Ns2RI0HOK717m7yD2L0fpOXypKbP+5aF/rmBMk=
 			</data>
 		</dict>
+		<key>Resources/Images/menus/close.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oEu8V5cIwze25TbLlMz74741AsiPmCCpCnZUURq5saQ=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/component.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			u5JzqAzHg1q1xsiLtgDySptvpQFypYeiSWWnpHuk8wA=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/component@2x.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			22APONw8ujYuyP2sBp23C6zGEInwKdFO8VeDoDyzNRs=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/component@2x_dark.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			eOIyQ9ZmKECXAlT7RYdW6IB5hMw3ldAFPr8CzmpHlTQ=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/component_dark.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			7NNkzcSbGfi7QPQeorMmszgiFuTnCEJOG5CEp23Xuks=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/more dark.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zYFtQVUE0NOsky4q/6apQ7NwSPAJAgfSZW8H6rwPvaQ=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/more.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xQkX5wNv7g23QfptKAWxBi7qq1rE7WiPuVfMG8QYWPo=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/more@2x.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bFDM/wmMlB3Dh38Tas1LdSeTSGrvAFVnv42FjoCHW3s=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/more@2x_dark.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gpYxhDFYc2TXZdFfjGraM+K6iMbqwo+sK5F2UpDz2Zw=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/settings.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CdBb/A4dzJV3H4K5SXBbI8ML2amm1UA40prgC9EdKOQ=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/settings@2x.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wo149dR5YmhX5Mg9JH3xaA3T5ARHZgHPkEzDhKFR9po=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/settings@2x_dark.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yEpqkCZ7AHty8bpvOP4ykrd0qClFDKd5q7p7biDZgxk=
+			</data>
+		</dict>
+		<key>Resources/Images/menus/settings_dark.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			MGl+bTLOJNrjqeQemmUbNBWcbrhZmkEcZpzzBt9STkU=
+			</data>
+		</dict>
+		<key>Resources/Images/plugin.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ieBK4/aPFAqrAz26IeMNt/X4MIpUSHnNLb0Iwbp7OqA=
+			</data>
+		</dict>
 		<key>Resources/Images/verticalHandle.png</key>
 		<dict>
 			<key>hash2</key>
@@ -542,7 +700,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WOOlU6FH2atjssuaVUSW1ul6HruLx4z5sRTyY0poi2g=
+			vCbUfi/XUlD/9DwC3jHQx9ozfiIOHt1TrlLiy1+j60k=
 			</data>
 		</dict>
 		<key>Resources/Skins/4D/Background.png</key>
@@ -836,7 +994,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4f0ovWFLHjCTzLZosV6eRZOtwPXlYeH0Icajqi3YVDY=
+			h0rCEi++AWrA8xrSDqDgk5jW5nzRPINGIA7+kF8Eiuk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -854,7 +1012,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			RMytyaNPgNHEsR8vPyAxU/4o0uAVIounLzExXWBNl+Q=
+			X1xjk/WxO15AZ9l7vGyPfiSw9NkaPc/OBcYEz3e4Z38=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -863,7 +1021,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			H8R4YBoYnX7if9+jqnFMfVYiewzWio6ltN1RJH8yyQ4=
+			y7v1gEfCvX7pbSi5O26jeG42QznFykLktfviksrZb7g=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -872,7 +1030,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GtBiiQrU3lPb/y+ZCeYcD/LT9IKJC6WjgK3IHw8tqIo=
+			AjSC0qzNMsLx1HPcUs49Fq+h83kalm82Qi8WFPIF9qo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -908,7 +1066,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5dwF9/uYOIZFzu2N0vJaOMEJw5yWn6wJW53Cs/kYHhQ=
+			+BmBt9nGN2StP4N9H599fSw/gMW1/C1BuFl5hIvF4UY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -927,6 +1085,13 @@
 			<key>hash2</key>
 			<data>
 			Or8g+Ns2RI0HOK717m7yD2L0fpOXypKbP+5aF/rmBMk=
+			</data>
+		</dict>
+		<key>Resources/php.ini</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HolJ6s87WPi8M/49+C+pKs1nJ/lRV9SfJODEw2hJero=
 			</data>
 		</dict>
 	</dict>
