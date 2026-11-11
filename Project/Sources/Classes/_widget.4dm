@@ -74,7 +74,9 @@ Class constructor($component : Object; $manifest : Object)
 				This:C1470[$key]:=This:C1470.handler.call(Null:C1517; ":C991($1)").call(Null:C1517; Delete string:C232($manifest[$key]; 1; 7))
 				
 				// ______________________________________________________
-			: ($key="media")  // OG - Keep back icon from "media" key if any 
+			: ($key="media")  // OG 2026-0529
+				// Keep back icon from "media" key if any 
+				This:C1470.icon:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48)
 				
 				This:C1470.icon:=This:C1470.getIcon($component.file("Resources/"+String:C10($manifest[$key])); 48)
 				
@@ -141,8 +143,8 @@ Class constructor($component : Object; $manifest : Object)
 	End for each 
 	
 	var $path : Text
-	If (This:C1470.icon=Null:C1517)  // OG - If icon still not initialized, get the new standard
-		
+	If (This:C1470.icon=Null:C1517)  // OG 2026-0529
+		// If icon still not initialized, get the new standard
 		For each ($path; [\
 			"logo.svg"; \
 			"logo.png"; \
@@ -166,7 +168,6 @@ Class constructor($component : Object; $manifest : Object)
 		End for each 
 		
 		This:C1470.icon:=This:C1470.getIcon($file; 48)
-		
 	End if 
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
