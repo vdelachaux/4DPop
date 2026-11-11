@@ -52,7 +52,7 @@
     </RuntimeVL>
     <SignApplication>
       <MacSignature>True</MacSignature>
-      <MacCertificate>Vincent de Lachaux (DYRKW64QA9)</MacCertificate>
+      <MacCertificate>Vincent de Lachaux (99U8H5L528)</MacCertificate>
       <AdHocSign>True</AdHocSign>
     </SignApplication>
     <ArrayExcludedModuleName>

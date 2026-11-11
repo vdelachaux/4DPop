@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="35">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="36">
 	<com.4d>
 		<database>
 			<cache size_fixed="32" size_maximum="100" size_minimum="16" size_reserved="128"/>
@@ -11,12 +11,12 @@
 			<typage default_for_button="2"/>
 			<method_suffix arrays="" interprocess_arrays="" interprocess_variables="" methods="" variables=""/>
 		</compiler>
-		<general component_classStore_name="pop" execute_host_database_event="true">
+		<general component_classStore_name="pop">
 			<mover always_display_dialog="2" forms="1"/>
 		</general>
 		<interface>
 			<developper allow_read_only_structure="false"/>
-			<user print_progress="false"/>
+			<user/>
 			<shortcuts>
 				<accept_input_form alt="false" command="false" ctrl="false" key_code="0" shift="false"/>
 				<cancel_input_form alt="false" command="false" ctrl="false" key_code="0" shift="false"/>
@@ -25,11 +25,11 @@
 			<misc/>
 		</interface>
 		<sql>
-			<publication port_number="1919"/>
+			<publication/>
 		</sql>
 		<server>
 			<network>
-				<options publication_name="4DPop" use_legacy_network_layer="false"/>
+				<options/>
 			</network>
 			<misc/>
 		</server>
@@ -38,15 +38,18 @@
 				<options>
 					<web_passwords generic_web_user="2"/>
 				</options>
-				<configuration automatic_session_management="false">
+				<configuration>
 					<hosts>
-						<host home_page="index.html" html_root="./DossierWeb/" id="0" name="Default"/>
+						<host id="0" name="Default"/>
 					</hosts>
 				</configuration>
 				<log>
 					<backup daily="" hourly="" monthly="" size="0" weekly=""/>
 				</log>
 				<misc/>
+				<webservices>
+					<server/>
+				</webservices>
 			</standalone_server>
 			<remote>
 				<configuration allow_ssl="false" automatic_session_management="false"/>

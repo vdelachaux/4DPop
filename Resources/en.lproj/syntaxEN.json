@@ -1,5 +1,17 @@
 {
-	"_method_": {},
+	"_method_": {
+		"4DPop_Palette": {
+			"Syntax": "**4DPop_Palette**() : Variant",
+			"Params": [
+				[
+					"",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
 	"cs.pop": {
 		"_strip": {
 			"new()": {

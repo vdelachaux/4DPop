@@ -5,7 +5,11 @@
 			"00_test"
 		]
 	},
-	"#️⃣ API": {},
+	"#️⃣ API": {
+		"methods": [
+			"4DPop_Palette"
+		]
+	},
 	"♻️ LIBRAIRIES": {
 		"methods": [
 			"noError"

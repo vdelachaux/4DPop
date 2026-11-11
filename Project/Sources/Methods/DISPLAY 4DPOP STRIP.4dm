@@ -27,18 +27,19 @@ If (Process info:C1843($p).name="$4DPop")
 	strip:=strip || cs:C1710._strip.new()
 	strip.display()
 	
+	return 
+	
+End if 
+
+// Create a new process
+If ($matrix)
+	
+	// Display the process creation so that you can trace it in case of an error
+	$p:=New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *)
+	
 Else 
 	
-	// Create a new process
-	If ($matrix)
-		
-		// Display the process creation so that you can trace it in case of an error
-		$p:=New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *)
-		
-	Else 
-		
-		// The strip will appear at the appropriate time
-		HIDE PROCESS:C324(New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *))
-		
-	End if 
+	// The strip will appear at the appropriate time
+	HIDE PROCESS:C324(New process:C317("DISPLAY 4DPOP STRIP"; 0; "$4DPop"; *))
+	
 End if 
